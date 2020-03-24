@@ -1,0 +1,226 @@
+//height
+.fh{
+  //height: 100%;
+}
+
+//floating of object
+.f-c{
+  margin: 0 auto;
+}
+.f-r{
+  float: right;
+}
+.f-l{
+  float: left;
+}
+
+//text alignment
+.t-a-c{
+  text-align: center;
+}
+
+.t-a-l{
+  text-align: left;
+}
+.t-a-r{
+  text-align: right;
+}
+
+
+//margin
+.m-b-0{
+  margin-bottom: 0 !important;
+}
+.m-h-auto{
+  margin-left: auto ;
+  margin-right: auto;
+}
+
+
+
+//reset for bootstrap container to have no padding
+//container padding zero
+.c-p-0{
+  margin-right: 0;
+  margin-left: 0;
+  .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+
+    padding-right: 3px;
+    padding-left: 3px;
+
+  }
+}
+
+.c-p-m-0{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+
+//text containers style
+.wrap{
+  word-wrap: break-word;
+}
+.nowrap{
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+//********************************************* this are div positioners
+.center{
+  margin:0 auto;
+  @extend .clearfix;
+}
+.clearMargin{
+  margin:0 !important;
+}
+
+.centerVer{
+  position: relative;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  //@include transform(translateY(-50%));
+}
+.centerVerDes{
+  position: static;
+  top: 0;
+  //transform: translateY(-50%);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.centerAll{
+  @extend .center;
+  @extend .centerVer;
+}
+
+//removes the caret on a dropdown button
+.no-caret:before,.no-caret:after{
+  display: none !important;
+}
+
+
+
+.m-l-5{
+  margin-left: 5px;
+}
+
+.m-5{
+  margin: 5px !important;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.w-80{
+  width: 80%;
+  //margin: 0 auto;
+}
+
+
+
+.c-history-con{
+  margin-top: 20px;
+}
+.c-card{
+  padding: 0 !important;
+  .card-title{
+    font-size: 14px;
+
+  }
+  .card-text{
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: #6a6a6a;
+  }
+  .bold{
+    margin-left: 5px;
+    color: #2a2a2a;
+    font-weight: 700;
+  }
+
+  .blue{
+    color: #007bff!important;
+  }
+}
+
+.status-card{
+  //border: 1px solid;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0 !important;
+}
+
+
+.m-t--50{
+  margin-top: -50px !important;
+}
+
+.c-profile{
+  font-size: 12px;
+
+  p{
+    margin-bottom: 0;
+  }
+  .bold{
+    font-weight: 700;
+    color: #334c89;
+  }
+}
+
+.c-card-2{
+  padding: 10px;
+  .card-title{
+    font-size: 12px;
+  }
+}
+
+
+.m-r-10{
+  margin-right: 10px;
+}
+
+.bcg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%; }
+
+.center-img {
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%; }
+
+.bcimg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.n-o-f{
+  overflow-x: hidden !important;
+}
+
+.p-l-8{
+  padding-left: 8px;
+}
+
+.m-t-0{
+  margin-top: 0;
+}

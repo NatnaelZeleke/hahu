@@ -1,0 +1,25 @@
+.ph{
+  width: 100%;
+}
+.ph1,.ph2,.ph3{
+  @extend .ph;
+}
+.ph1{
+  height: 10px;
+}
+.ph2{
+  height: 20px;
+}
+.ph3{
+  height: 30px;
+}
+
+.ph4{
+  height: 40px;
+}
+.ph5{
+  height: 50px;
+}
+.ph6{
+  height: 60px;
+}

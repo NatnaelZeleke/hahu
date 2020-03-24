@@ -23,9 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/font-awesome/scss/font-awesome.scss",
+              "./node_modules/@creative-tim-official/argon-dashboard-free/assets/css/argon-dashboard.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss",
+              "src/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/@creative-tim-official/argon-dashboard-free/assets/js/plugins/jquery/dist/jquery.min.js",
+              "./node_modules/@creative-tim-official/argon-dashboard-free/assets/js/argon-dashboard.min.js"
+            ]
           },
           "configurations": {
             "production": {

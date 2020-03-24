@@ -1,0 +1,35 @@
+.connection{
+  .icon{
+    font-size: 45px;
+    color: #ffc003;
+    text-shadow: 2px 1px 0 #e6e6e6;
+  }
+  p{
+    color: #3b3b3b;
+    font-size: 14px;
+  }
+}
+
+.error{
+  .icon{
+    font-size: 55px;
+    color: #ff5c34;
+    text-shadow: 2px 1px 0 #e6e6e6;
+  }
+  p{
+    color: #3b3b3b;
+    font-size: 14px;
+  }
+}
+
+.success{
+  .icon{
+    font-size: 55px;
+    color: rgb(68, 199, 98);
+    text-shadow: 2px 1px 0 #d5d5d5;
+  }
+  p{
+    color: #3b3b3b;
+    font-size: 14px;
+  }
+}

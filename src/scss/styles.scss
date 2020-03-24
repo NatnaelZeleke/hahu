@@ -1,0 +1,113 @@
+@import "common";
+@import "color";
+@import "home";
+@import "login";
+@import "shared";
+@import "buttons";
+@import "tables";
+@import "font";
+@import "place_holder";
+@import "modal";
+@import "hahu";
+
+.p-0-i {
+  padding: 0 !important;
+}
+
+html, body {
+  font-family:"Noto Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" ;
+  height: 100%;
+  font-size: 90%;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+}
+
+.c-container {
+  padding: 0 !important;
+}
+
+.header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  nav {
+    background-color: $header-color !important;
+    color: white;
+  }
+}
+
+.c-form {
+  label {
+    font-size: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #383838;
+    margin-bottom: 3px;
+  }
+}
+
+.top-desc {
+  padding: 10px;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  small {
+    color: #009d15;
+
+  }
+  p {
+    color: #000000;
+    font-size: 15px !important;
+  }
+}
+
+.tend-desc-con {
+  padding: 10px;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+}
+
+.b-0 {
+  border-radius: 0;
+}
+
+.ct {
+  font-size: 16px;
+  color: #7aa533;
+}
+
+.pc {
+  small {
+    font-size: 12px;
+  }
+}
+
+.m-r-5 {
+  margin-right: 5px;
+}
+
+.badge {
+  cursor: pointer;
+}
+
+.h90 {
+  height: 90px;
+}
+
+.sch-h {
+  height: 90px;
+}
+
+.time-con {
+  background-color: #fff;
+  font-size: 20px !important;
+  color: #bfbfbf;
+  line-height: 43px;
+}
+
