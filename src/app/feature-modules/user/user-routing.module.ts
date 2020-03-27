@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {UserComponent} from './user/user.component';
-import {HomePageComponent} from './home-page/home-page.component';
 
 const routes: Routes = [
   {
@@ -9,12 +8,12 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       {
-        path: 'homepage',
-        component: HomePageComponent
+        path: 'homecon',
+        loadChildren: './home-con/home-con.module#HomeConModule',
       },
       {
         path: '',
-        redirectTo: 'homepage',
+        redirectTo: 'homecon',
         pathMatch: 'full'
       }
     ]
@@ -31,4 +30,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {
+}
