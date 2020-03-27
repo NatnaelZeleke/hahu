@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {HomePageComponent} from './home-page/home-page.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {SchoolfeedComponent} from './schoolfeed/schoolfeed.component';
+import {SavesComponent} from './saves/saves.component';
 
- const routes: Routes = [
+const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -11,6 +13,14 @@ import {DashboardComponent} from './dashboard/dashboard.component';
       {
         path: 'home',
         component: HomePageComponent
+      },
+      {
+        path: 'schoolfeed',
+        component: SchoolfeedComponent
+      },
+      {
+        path: 'saves',
+        component: SavesComponent
       },
       {
         path: '',
@@ -30,4 +40,5 @@ import {DashboardComponent} from './dashboard/dashboard.component';
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeConRoutingModule { }
+export class HomeConRoutingModule {
+}

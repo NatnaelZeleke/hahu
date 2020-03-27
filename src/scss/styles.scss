@@ -24,7 +24,6 @@ html, body {
 
 body {
   margin: 0;
-  background-color: #fff;
 }
 
 .c-container {
@@ -110,5 +109,10 @@ body {
   font-size: 20px !important;
   color: #bfbfbf;
   line-height: 43px;
+}
+
+
+::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  selected = 1;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  changeMenu(id: number) {
+    this.selected = id;
+  }
+
+  isSelected(id: number) {
+    if (this.selected == id) {
+      return true;
+    }
+    return false;
   }
 
 }

@@ -1,13 +1,14 @@
 <div class="hd-menu">
-    <div class="t-m-c">
-      <div class="t-menu active">
-        FOR YOU
-      </div><div class="t-menu">
-        SCHOOL FEEDS
-      </div>
-      <div class="t-menu">
-        SAVED
-      </div>
+  <div class="t-m-c">
+    <div class="t-menu" routerLink="./home" (click)="changeMenu(1)" [ngClass]="{'active': isSelected(1)}">
+      FOR YOU
     </div>
+    <div class="t-menu" routerLink="./schoolfeed" (click)="changeMenu(2)" [ngClass]="{'active': isSelected(2)}">
+      SCHOOL FEEDS
+    </div>
+    <div class="t-menu" routerLink="./saves" (click)="changeMenu(3)"   [ngClass]="{'active': isSelected(3)}">
+      SAVED
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>
