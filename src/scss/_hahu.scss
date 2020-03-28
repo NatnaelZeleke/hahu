@@ -350,7 +350,7 @@ $ppw: 36px;
     width: 90%;
     margin: 0 auto;
     left: 5%;
-    top: 220px;
+    top: 45%;
   }
   .r-o-t-c {
     position: absolute;
@@ -453,7 +453,7 @@ $ppw: 36px;
     text-align: center;
     color: #a9a9a9;
     p{
-      font-size: 19px;
+      font-size: 25px;
       margin-bottom: 3px;
     }
     .active{
@@ -463,16 +463,17 @@ $ppw: 36px;
   .h-div{
     width: 100%;
     height: 2px;
-    background-color: #444864;
+    background-color: #4d64e9;
   }
 }
 
 .tag-con{
-  padding: 5px 10px;
+  padding: 10px 10px;
   overflow: auto;
   white-space: nowrap;
   .badge{
-    margin-right:5px;
+    font-size: 12px;
+    margin-right:7px;
   }
   .badge-default {
     color: #091428;
