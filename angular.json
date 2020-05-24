@@ -30,7 +30,9 @@
             ],
             "scripts": [
               "./node_modules/@creative-tim-official/argon-dashboard-free/assets/js/plugins/jquery/dist/jquery.min.js",
-              "./node_modules/@creative-tim-official/argon-dashboard-free/assets/js/argon-dashboard.min.js"
+              "./node_modules/@creative-tim-official/argon-dashboard-free/assets/js/argon-dashboard.min.js",
+              "./node_modules/@creative-tim-official/argon-dashboard-free/assets/js/plugins/chart.js/dist/Chart.min.js",
+              "./node_modules/@creative-tim-official/argon-dashboard-free/assets/js/plugins/chart.js/dist/Chart.extension.js"
             ]
           },
           "configurations": {

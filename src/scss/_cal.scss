@@ -1,0 +1,32 @@
+.cal-c{
+  margin-left: -25px;
+  background-color: #fff;
+  bs-datepicker-inline{
+    bs-datepicker-inline-container{
+      display: inline !important;
+
+    }
+    margin: 0 auto;
+    width: 100%;
+    box-shadow: none;
+    .bs-datepicker{
+      box-shadow: none;
+    }
+    .bs-datepicker-container{
+      box-shadow: none;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0;
+    }
+  }
+}
+
+.td-c{
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  p{
+    margin-bottom: 0;
+    text-align: center;
+  }
+}

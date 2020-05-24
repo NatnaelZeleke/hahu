@@ -1,0 +1,198 @@
+@import "common";
+.pro {
+  padding-top: 30px;
+  background-color: #4d35a1;
+  height: 365px;
+  .pro-h-con{
+  }
+  .pro-h {
+    font-size: 18px;
+    padding-left: 10px;
+  }
+  .p-b-con{
+    @extend .clearfix;
+    color: #000;
+    float: right;
+    padding-right: 27px;
+    i{
+      padding: 0 10px ;
+      font-size: 17px;
+      line-height: 41px;
+    }
+  }
+}
+
+.p-cont-con{
+  border-radius: 8px;
+  //height: 200px;
+  background-color: #fff;
+  padding: 10px;
+  margin: -200px 10px 10px;
+  .p-i-con{
+    .p-p{
+      width: 116px;
+      height: 116px;
+      border-radius: 58px;
+      background-color: #eeeeee;
+      margin: -58px auto 0;
+    }
+    .p-m-c{
+      text-align: center;
+      padding: 30px;
+      p{
+        margin-bottom: 0;
+        font-weight: 700;
+        font-size: 16px;
+      }
+      small{
+        font-size: 12px;
+      }
+    }
+    .p-n{
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 0;
+      color: #2a3039;
+    }
+    .p-l{
+      text-align: center;
+    }
+    hr{
+      margin-bottom: 7px;
+    }
+    .p-desc{
+      text-align: center;
+      padding-left: 20px ;
+      padding-right: 20px;
+    }
+    .d-c{
+      text-align: center;
+    }
+    .s-m{
+      color: #445ad9;
+      font-size: 14px;
+    }
+  }
+}
+
+.al-h-p{
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 14px;
+  .l{
+    font-size: 15px;
+  }
+  .r{
+    font-size: 14px;
+  }
+}
+
+.set-con{
+  width: 100%;
+  background-color: #f1f3f5;
+  min-height: 200px;
+  z-index: 1000;
+  position: relative;
+  .set-p-h{
+    color: #1d1d1d;
+    height: 54px;
+    background-color: #a2aab8;
+    .a-c{
+      color: #000;
+    }
+    .set-h{
+      font-size: 23px;
+      padding-left: 20px;
+    }
+  }
+  .set-n{
+
+    text-align: center;
+    .l{
+      font-size: 25px;
+      color: #323233;
+      margin-bottom: 0;
+    }
+    .s{
+      font-size: 14px;
+      color: #323233;
+    }
+    hr{
+      margin: 5px;
+    }
+  }
+
+}
+
+//profile menu list
+.p-m-l{
+  padding: 15px;
+  background-color: #fff;
+  .ml{
+    p{
+      margin-bottom: 0;
+      color: #1a1a1a;
+      margin-top: 10px;
+    }
+    small{
+      color: #8b8b8b;
+    }
+    i{
+      float: right;
+      color: #2e2e2e;
+      font-weight: 700;
+      margin-top: -4px;
+    }
+  }
+  hr{
+    margin: 15px 0 !important;
+  }
+}
+
+.theme-con{
+  overflow: auto;
+  white-space: nowrap;
+  width: 100%;
+  @extend .s-style;
+  .t-con{
+    display: inline-block;
+    height: 50px;
+    width: 100px;
+  }
+  .theme1{
+    background-color: #615bf5;
+  }
+  .theme2{
+    background-color: #536ff5;
+  }
+  .theme3{
+    background-color: #3291f3;
+  }
+  .theme4{
+    background-color: #38c3d9;
+  }
+  .theme5{
+    background-color: #86ff51;
+  }
+}
+.profile-c-c{
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 250px;
+  .p-c-c-h{
+    color: #221d37;
+    padding-top: 20px;
+    .pm{
+      width: 33%;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      float: left;
+      border-bottom: 1px solid #bcbcbc;
+      &.active{
+        border-bottom: 2px solid #1592e6;
+      }
+    }
+  }
+}

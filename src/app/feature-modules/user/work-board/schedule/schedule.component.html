@@ -1,0 +1,97 @@
+<div class="n-c">
+
+  <div class="n-c-h">
+    <div class="a-c">
+      <i class="fa fa-angle-left" routerLink="../dashboard"></i>
+      <!--<i class="fa fa-search float-right srch"></i>-->
+    </div>
+    <p class="nh">Schedule</p>
+
+    <div class="row cal-c">
+      <bs-datepicker-inline [bsValue]="bsInlineValue" [bsConfig]="bsConfig"></bs-datepicker-inline>
+      <div class="td-c">
+        <p class=""> Today : {{bsInlineValue | date:'EEEE , MMMM dd'}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-con">
+
+    <p class="w-h">Tasks</p>
+    <div class="w-b-m-con sch-con">
+      <div class="w-b-con w-not sc">
+        <div>
+          <p class="w-h d-inline-block">Today</p>
+          <i class="fa fa-plus ps"></i>
+        </div>
+        <div class="sc-c-c">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1"><del>Start your book. </del></label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck2">
+            <label class="custom-control-label" for="customCheck2">Arrange a sit down.</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck3">
+            <label class="custom-control-label" for="customCheck3">Just relax.</label>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <br>
+    <div class="w-b-m-con sch-con">
+      <div class="w-b-con w-not sc tc">
+        <div>
+          <p class="w-h d-inline-block">Tomorrow</p>
+          <i class="fa fa-plus ps"></i>
+        </div>
+        <div class="sc-c-c">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1"><del>Start your book. </del></label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck2">
+            <label class="custom-control-label" for="customCheck2">Arrange a sit down.</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck3">
+            <label class="custom-control-label" for="customCheck3">Just relax.</label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="w-b-m-con sch-con">
+      <div class="w-b-con w-not sp soon">
+        <div>
+          <p class="w-h d-inline-block">Soon</p>
+          <i class="fa fa-plus ps"></i>
+        </div>
+        <!--<div class="sp-c">-->
+          <!--<div class="sp-s-c">-->
+            <!--<div class="text">Last average result obtained</div>-->
+            <!--<div class="result">78%</div>-->
+          <!--</div>-->
+          <!--<div class="sp-s-c">-->
+            <!--<div class="text">Ranking</div>-->
+            <!--<div class="result">6</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="d-a">-->
+          <!--<i class="fa fa-angle-down"></i>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <div>
+      <div class="b-ps"><i class="fa fa-plus"></i></div>
+    </div>
+  </div>
+
+</div>

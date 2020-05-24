@@ -9,6 +9,11 @@
 @import "place_holder";
 @import "modal";
 @import "hahu";
+@import "workboard";
+@import "search";
+@import "fonts";
+@import "cal";
+@import "profile";
 
 .p-0-i {
   padding: 0 !important;
@@ -16,8 +21,8 @@
 
 html, body {
   background-color: #2b2e3f;
-  font-family:"Noto Sans", sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" ;
+  //font-family: gibson_man;
+  font-family: microsoftSans;
   height: 100%;
   font-size: 90%;
 }

@@ -10,6 +10,15 @@ const routes: Routes = [
       {
         path: 'homecon',
         loadChildren: './home-con/home-con.module#HomeConModule',
+      }, {
+        path: 'workboard',
+        loadChildren: './work-board/work-board.module#WorkBoardModule',
+      }, {
+        path: 'search',
+        loadChildren: './search/search.module#SearchModule',
+      }, {
+        path: 'profile',
+        loadChildren: './profile/profile.module#ProfileModule',
       },
       {
         path: '',

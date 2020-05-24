@@ -45,7 +45,7 @@
             </div>
           </div>
 
-          <form>
+          <form [formGroup]="registerForm" class="form c-form c-f">
             <div class="row r-f-c">
               <div class="col-12">
                 <br>
@@ -54,13 +54,20 @@
 
               <div class="col-12">
                 <div class="form-group">
-                  <!--<small>Phone Number</small>-->
-                  <!--<input type="text" placeholder="phone number" class="form-control form-control-alternative">-->
                   <div class="input-group input-group-alternative mb-4">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-phone"></i></span>
                     </div>
-                    <input class="form-control form-control-alternative" placeholder="Phone Number" type="text">
+                    <input class="form-control form-control-alternative"
+                           placeholder="email address"
+                           type="text" formControlName="login">
+                    <div *ngIf="submitted || (f.login.invalid && (f.login.dirty || f.login.touched))">
+                      <div *ngIf="registerForm.hasError('required',['login'])">
+                        <small class="text-danger">
+                          this field is required
+                        </small>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -100,11 +107,15 @@
               </div>
 
               <div class="col-12 t-a-c">
-                <div class="btn btn-primary r-btn" routerLink="../user">
+                <div class="btn btn-primary r-btn" (click)="register()">
                   Create Account
                 </div>
                 <br>
                 <br>
+              </div>
+              <div class="col-12 t-a-c">
+                <p>Already have an account <span class="badge badge-success" routerLink="../login">Sign In Here </span>
+                </p>
               </div>
 
 
