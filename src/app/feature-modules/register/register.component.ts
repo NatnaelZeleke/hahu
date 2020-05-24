@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  rememberMe = false;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -43,5 +44,11 @@ export class RegisterComponent implements OnInit {
       console.log(this.registerForm.value);
     }
   }
+
+  changeStatus() {
+    this.rememberMe = !this.rememberMe;
+  }
+
+
 
 }

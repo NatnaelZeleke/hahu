@@ -78,7 +78,15 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-inbox"></i></span>
                     </div>
-                    <input class="form-control form-control-alternative" placeholder="Email" type="text">
+                    <input class="form-control form-control-alternative"
+                           placeholder="Email" type="text" formControlName="email">
+                    <div *ngIf="submitted || (f.email.invalid && (f.email.dirty || f.email.touched))">
+                      <div *ngIf="registerForm.hasError('required',['email'])">
+                        <small class="text-danger">
+                          this field is required
+                        </small>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -89,7 +97,39 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
                     </div>
-                    <input class="form-control form-control-alternative" placeholder="password" type="text">
+                    <input class="form-control form-control-alternative" placeholder="password"
+                           formControlName="password" type="password">
+                    <div *ngIf="submitted || (f.password.invalid && (f.password.dirty || f.password.touched))">
+                      <div *ngIf="registerForm.hasError('required',['password'])">
+                        <small class="text-danger">
+                          this field is required
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
+                    </div>
+                    <input class="form-control form-control-alternative" placeholder="confirm password"
+                           formControlName="confirmPassword" type="password">
+                    <div *ngIf="submitted || (f.confirmPassword.invalid && (f.confirmPassword.dirty || f.confirmPassword.touched))">
+                      <div *ngIf="registerForm.hasError('required',['confirmPassword'])">
+                        <small class="text-danger">
+                          this field is required
+                        </small>
+                      </div>
+                      <div *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword ">
+                        <small id="passwordHelp" class="text-danger">
+                          Password Mis Match
+                        </small>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -100,7 +140,7 @@
                     class="custom-control-input" id=" customCheckLogin" type="checkbox">
                   <label
                     class="custom-control-label" for=" customCheckLogin"><span
-                    class="text-muted">Remember me </span></label>
+                    class="text-muted" (click)="changeStatus()">Remember me </span></label>
                 </div>
                 <br>
                 <br>
