@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { HomeComponent } from './feature-modules/home/home.component';
 import { RegisterComponent } from './feature-modules/register/register.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RegisterComponent } from './feature-modules/register/register.component
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

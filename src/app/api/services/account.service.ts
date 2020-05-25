@@ -33,7 +33,7 @@ export class AccountService {
   authenticate(key: string, newPassword: string): Observable<{}> {
     return this.http.post(SERVER_API_URL + 'api/account/reset-password/finish', { key, newPassword });
   }
-  authenticate(credentials: Login): Observable<JWTToken> {
+  authenticate2(credentials: Login): Observable<JWTToken> {
     return this.http.post<JWTToken>(SERVER_API_URL + 'api/authenticate', credentials);
   }
 }
