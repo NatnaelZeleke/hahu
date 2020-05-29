@@ -1,381 +1,397 @@
-<div class="">
-  <div class="t-l">
-    <div class="post">
-      <div class="c-c">
-        <div class="p-c bcimg" style="background-image: url('./assets/images/background2.jpg'); height: 800px">
-        </div>
-      </div>
-      <div class="p-con-c">
-        <div class="container ">
-          <div class=" row">
-            <div class="col-6 p-l-8">
-              <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/profile.jpg')">
+<div infinite-scroll=""
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="300"
+     (scrolled)="loadPost()">
+  <div class="">
+    <div class="t-l">
 
+      <div *ngFor="let p of postList;let i = index;">
+        <app-post [post]="p"></app-post>
+      </div>
+
+      <div class="post">
+        <div class="c-c">
+          <div class="p-c bcimg" style="background-image: url('./assets/images/background2.jpg'); height: 800px">
+          </div>
+        </div>
+        <div class="p-con-c">
+          <div class="container ">
+            <div class=" row">
+              <div class="col-6 p-l-8">
+                <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/profile.jpg')">
+
+                </div>
+                <div class="n-con">
+                  <p>Selam Abate</p>
+                  <p class="u-n">@selam23</p>
+                </div>
               </div>
-              <div class="n-con">
-                <p>Selam Abate</p>
-                <p class="u-n">@selam23</p>
+
+              <div class="col-6">
+                <div class="ic-c">
+                  <div class="a-con more">
+
+                    <i class="fa fa-ellipsis-v"></i>
+                  </div>
+                  <div class="a-con">
+                    <div class="value">34</div>
+                    <i class="fa fa-heart liked"></i>
+                  </div>
+                  <div class="a-con">
+                    <div class="value">123</div>
+                    <i class="fa fa-comment"></i>
+                  </div>
+
+
+                </div>
               </div>
             </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="com-con">
+                <div class="comen">
+                  <div class="com-p-c-c">
+                    <div class="com-p-c bcimg" style="background-image: url('./assets/images/profile3.jpg')">
 
-            <div class="col-6">
-              <div class="ic-c">
-                <div class="a-con more">
+                    </div>
+                  </div>
 
-                  <i class="fa fa-ellipsis-v"></i>
+                  <div class="com-t-c">
+                    <div class="p-n-c">
+                      <p class="name">Daniel Solomon</p>
+                      <p class="more">1 hour ago</p>
+                    </div>
+                    <p>Wow that looks really great. Hit me up when you go hiking another time. </p>
+                  </div>
                 </div>
-                <div class="a-con">
-                  <div class="value">34</div>
-                  <i class="fa fa-heart liked"></i>
-                </div>
-                <div class="a-con">
-                  <div class="value">123</div>
-                  <i class="fa fa-comment"></i>
-                </div>
+                <div class="comen">
+                  <div class="com-p-c-c">
+                    <div class="com-p-c bcimg" style="background-image: url('./assets/images/profile2.jpg')">
 
+                    </div>
+                  </div>
+
+                  <div class="com-t-c">
+                    <div class="p-n-c">
+                      <p class="name">Daniel Solomon</p>
+                      <p class="more">1 hour ago</p>
+                    </div>
+                    <p>Wow that looks really great.</p>
+                  </div>
+                </div>
 
               </div>
             </div>
           </div>
+
         </div>
+      </div>
+
+      <div class="post">
+        <div class="c-c">
+          <div class="p-c bcimg" style="background-image: url('./assets/images/background3.jpg');height: 600px">
+
+          </div>
+        </div>
+        <div class="p-con-c">
+          <div class="container ">
+            <div class=" row">
+              <div class="col-6 p-l-8">
+                <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
+
+                </div>
+                <div class="n-con">
+                  <p>Selam Abate</p>
+                  <p class="u-n">@selam23</p>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="ic-c">
+                  <div class="a-con more">
+
+                    <i class="fa fa-ellipsis-v"></i>
+                  </div>
+                  <div class="a-con">
+                    <div class="value">34</div>
+                    <i class="fa fa-heart liked"></i>
+                  </div>
+                  <div class="a-con">
+                    <div class="value">123</div>
+                    <i class="fa fa-comment"></i>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="c-c">
+
+          <div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">
+
+          </div>
+        </div>
+        <div class="p-con-c">
+          <div class="container ">
+            <div class=" row">
+              <div class="col-6 p-l-8">
+                <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
+
+                </div>
+                <div class="n-con">
+                  <p>Selam Abate</p>
+                  <p class="u-n">@selam23</p>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="ic-c">
+                  <div class="a-con more">
+
+                    <i class="fa fa-ellipsis-v"></i>
+                  </div>
+                  <div class="a-con">
+                    <div class="value">34</div>
+                    <i class="fa fa-heart liked"></i>
+                  </div>
+                  <div class="a-con">
+                    <div class="value">123</div>
+                    <i class="fa fa-comment"></i>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="post">
         <div class="container">
-          <div class="row">
-            <div class="com-con">
-              <div class="comen">
-                <div class="com-p-c-c">
-                  <div class="com-p-c bcimg" style="background-image: url('./assets/images/profile3.jpg')">
+          <div class="row recom-con">
+            <div class="col-12 p-0">
+              <div class="r-h-c">
+                <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>-->
+                <p> Recommendation</p>
+              </div>
+              <!--<hr class="hr-r">-->
+            </div>
+            <div class="r-com-con">
+              <div class="recom">
+                <div class="">
+                  <div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">
+
+                    <div class="r-o-c">
+                      <div class="t-t-c">
+                        <p>some stuff about planes</p>
+                        <p class="sm"><i class="fa fa-share-square"></i> funky</p>
+                      </div>
+                      <div class="btn btn-block btn-success bcp b1">follow</div>
+                      <div class="r-o-t-c">
+                        <p>Wild West</p>
+                        <p class="sm">Robin Dark</p>
+                      </div>
+                    </div>
+                    <div class="r-o-c-b">
+
+                    </div>
 
                   </div>
-                </div>
 
-                <div class="com-t-c">
-                  <div class="p-n-c">
-                    <p class="name">Daniel Solomon</p>
-                    <p class="more">1 hour ago</p>
-                  </div>
-                  <p>Wow that looks really great. Hit me up when you go hiking another time. </p>
                 </div>
               </div>
-              <div class="comen">
-                <div class="com-p-c-c">
-                  <div class="com-p-c bcimg" style="background-image: url('./assets/images/profile2.jpg')">
+              <div class="recom">
+                <div class="">
+                  <div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">
+
+                    <div class="r-o-c">
+                      <div class="t-t-c">
+                        <p>some stuff about planes</p>
+                        <p class="sm"><i class="fa fa-share-square"></i> funky</p>
+                      </div>
+                      <div class="btn btn-block btn-success bcp b2">follow</div>
+                      <div class="r-o-t-c">
+                        <p>Wild West</p>
+                        <p class="sm">Robin Dark</p>
+                      </div>
+                    </div>
+                    <div class="r-o-c-b">
+
+                    </div>
 
                   </div>
+
                 </div>
+              </div>
+              <div class="recom">
+                <div class="">
+                  <div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">
 
-                <div class="com-t-c">
-                  <div class="p-n-c">
-                    <p class="name">Daniel Solomon</p>
-                    <p class="more">1 hour ago</p>
+                    <div class="r-o-c">
+                      <div class="t-t-c">
+                        <p>some stuff about planes</p>
+                        <p class="sm"><i class="fa fa-share-square"></i> funky</p>
+                      </div>
+                      <div class="btn btn-block btn-success bcp b1">follow</div>
+                      <div class="r-o-t-c">
+                        <p>Wild West</p>
+                        <p class="sm">Robin Dark</p>
+                      </div>
+                    </div>
+                    <div class="r-o-c-b">
+
+                    </div>
+
                   </div>
-                  <p>Wow that looks really great.</p>
+
+                </div>
+              </div>
+              <div class="recom">
+                <div class="">
+                  <div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">
+
+                    <div class="r-o-c">
+                      <div class="t-t-c">
+                        <p>some stuff about planes</p>
+                        <p class="sm"><i class="fa fa-share-square"></i> funky</p>
+                      </div>
+                      <div class="btn btn-block btn-success bcp b2">follow</div>
+                      <div class="r-o-t-c">
+                        <p>Wild West</p>
+                        <p class="sm">Robin Dark</p>
+                      </div>
+                    </div>
+                    <div class="r-o-c-b">
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+              <div class="recom">
+                <div class="">
+                  <div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">
+
+                    <div class="r-o-c">
+                      <div class="t-t-c">
+                        <p>some stuff about planes</p>
+                        <p class="sm"><i class="fa fa-share-square"></i> funky</p>
+                      </div>
+                      <div class="btn btn-block btn-success bcp b1">follow</div>
+                      <div class="r-o-t-c">
+                        <p>Wild West</p>
+                        <p class="sm">Robin Dark</p>
+                      </div>
+                    </div>
+                    <div class="r-o-c-b">
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+              <div class="recom">
+                <div class="">
+                  <div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">
+
+                    <div class="r-o-c">
+                      <div class="t-t-c">
+                        <p>some stuff about planes</p>
+                        <p class="sm"><i class="fa fa-share-square"></i> funky</p>
+                      </div>
+                      <div class="btn btn-block btn-success bcp b2">follow</div>
+                      <div class="r-o-t-c">
+                        <p>Wild West</p>
+                        <p class="sm">Robin Dark</p>
+                      </div>
+                    </div>
+                    <div class="r-o-c-b">
+
+                    </div>
+
+                  </div>
+
                 </div>
               </div>
 
             </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="post">
-      <div class="c-c">
-        <div class="p-c bcimg" style="background-image: url('./assets/images/background3.jpg');height: 600px">
-
-        </div>
-      </div>
-      <div class="p-con-c">
-        <div class="container ">
-          <div class=" row">
-            <div class="col-6 p-l-8">
-              <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
-
-              </div>
-              <div class="n-con">
-                <p>Selam Abate</p>
-                <p class="u-n">@selam23</p>
-              </div>
-            </div>
-
-            <div class="col-6">
-              <div class="ic-c">
-                <div class="a-con more">
-
-                  <i class="fa fa-ellipsis-v"></i>
-                </div>
-                <div class="a-con">
-                  <div class="value">34</div>
-                  <i class="fa fa-heart liked"></i>
-                </div>
-                <div class="a-con">
-                  <div class="value">123</div>
-                  <i class="fa fa-comment"></i>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-    <div class="post">
-      <div class="c-c">
-
-        <div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">
-
-        </div>
-      </div>
-      <div class="p-con-c">
-        <div class="container ">
-          <div class=" row">
-            <div class="col-6 p-l-8">
-              <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
-
-              </div>
-              <div class="n-con">
-                <p>Selam Abate</p>
-                <p class="u-n">@selam23</p>
-              </div>
-            </div>
-
-            <div class="col-6">
-              <div class="ic-c">
-                <div class="a-con more">
-
-                  <i class="fa fa-ellipsis-v"></i>
-                </div>
-                <div class="a-con">
-                  <div class="value">34</div>
-                  <i class="fa fa-heart liked"></i>
-                </div>
-                <div class="a-con">
-                  <div class="value">123</div>
-                  <i class="fa fa-comment"></i>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-    <div class="post">
-      <div class="container">
-        <div class="row recom-con">
-          <div class="col-12 p-0">
-            <div class="r-h-c">
-              <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>-->
-              <p> Recommendation</p>
-            </div>
-            <!--<hr class="hr-r">-->
-          </div>
-          <div class="r-com-con">
-            <div class="recom">
-              <div class="">
-                <div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">
-
-                  <div class="r-o-c">
-                    <div class="t-t-c">
-                      <p>some stuff about planes</p>
-                      <p class="sm"><i class="fa fa-share-square"></i> funky</p>
-                    </div>
-                    <div class="btn btn-block btn-success bcp b1">follow</div>
-                    <div class="r-o-t-c">
-                      <p>Wild West</p>
-                      <p class="sm">Robin Dark</p>
-                    </div>
-                  </div>
-                  <div class="r-o-c-b">
-
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-            <div class="recom">
-              <div class="">
-                <div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">
-
-                  <div class="r-o-c">
-                    <div class="t-t-c">
-                      <p>some stuff about planes</p>
-                      <p class="sm"><i class="fa fa-share-square"></i> funky</p>
-                    </div>
-                    <div class="btn btn-block btn-success bcp b2">follow</div>
-                    <div class="r-o-t-c">
-                      <p>Wild West</p>
-                      <p class="sm">Robin Dark</p>
-                    </div>
-                  </div>
-                  <div class="r-o-c-b">
-
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-            <div class="recom">
-              <div class="">
-                <div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">
-
-                  <div class="r-o-c">
-                    <div class="t-t-c">
-                      <p>some stuff about planes</p>
-                      <p class="sm"><i class="fa fa-share-square"></i> funky</p>
-                    </div>
-                    <div class="btn btn-block btn-success bcp b1">follow</div>
-                    <div class="r-o-t-c">
-                      <p>Wild West</p>
-                      <p class="sm">Robin Dark</p>
-                    </div>
-                  </div>
-                  <div class="r-o-c-b">
-
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-            <div class="recom">
-              <div class="">
-                <div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">
-
-                  <div class="r-o-c">
-                    <div class="t-t-c">
-                      <p>some stuff about planes</p>
-                      <p class="sm"><i class="fa fa-share-square"></i> funky</p>
-                    </div>
-                    <div class="btn btn-block btn-success bcp b2">follow</div>
-                    <div class="r-o-t-c">
-                      <p>Wild West</p>
-                      <p class="sm">Robin Dark</p>
-                    </div>
-                  </div>
-                  <div class="r-o-c-b">
-
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-            <div class="recom">
-              <div class="">
-                <div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">
-
-                  <div class="r-o-c">
-                    <div class="t-t-c">
-                      <p>some stuff about planes</p>
-                      <p class="sm"><i class="fa fa-share-square"></i> funky</p>
-                    </div>
-                    <div class="btn btn-block btn-success bcp b1">follow</div>
-                    <div class="r-o-t-c">
-                      <p>Wild West</p>
-                      <p class="sm">Robin Dark</p>
-                    </div>
-                  </div>
-                  <div class="r-o-c-b">
-
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-            <div class="recom">
-              <div class="">
-                <div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">
-
-                  <div class="r-o-c">
-                    <div class="t-t-c">
-                      <p>some stuff about planes</p>
-                      <p class="sm"><i class="fa fa-share-square"></i> funky</p>
-                    </div>
-                    <div class="btn btn-block btn-success bcp b2">follow</div>
-                    <div class="r-o-t-c">
-                      <p>Wild West</p>
-                      <p class="sm">Robin Dark</p>
-                    </div>
-                  </div>
-                  <div class="r-o-c-b">
-
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
-    </div>
-    <div class="post">
-      <div class="container news-con">
-        <div class="row recom-con">
-          <div class="col-12 p-0">
-            <div class="n-h-c">
-              <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-newspaper-o"></i></div>-->
-              <p> News</p>
+
+      <div class="post">
+        <div class="container news-con">
+          <div class="row recom-con">
+            <div class="col-12 p-0">
+              <div class="n-h-c">
+                <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-newspaper-o"></i></div>-->
+                <p> News</p>
+              </div>
+              <!--<hr class="hr-r">-->
+
             </div>
-            <!--<hr class="hr-r">-->
 
           </div>
-
-        </div>
-        <div class="news-content col-8">
-          <div class="news-con-in">
-            <small>May 1</small>
-            <p class="head">Bernald Nolan</p>
-            <p class="desc">The content of the news snippet will be seen here. </p>
-          </div>
-          <div class="n-i-con bcimg" style="background-image: url('./assets/images/background3.jpg')">
-
-          </div>
-        </div>
-        <div class="row recom-con">
-          <div class="col-12 p-0">
-            <div class="n-h-c">
-              <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-newspaper-o"></i></div>-->
-              <p> News</p>
+          <div class="news-content col-8">
+            <div class="news-con-in">
+              <small>May 1</small>
+              <p class="head">Bernald Nolan</p>
+              <p class="desc">The content of the news snippet will be seen here. </p>
             </div>
-            <!--<hr class="hr-r">-->
+            <div class="n-i-con bcimg" style="background-image: url('./assets/images/background3.jpg')">
+
+            </div>
+          </div>
+          <div class="row recom-con">
+            <div class="col-12 p-0">
+              <div class="n-h-c">
+                <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-newspaper-o"></i></div>-->
+                <p> News</p>
+              </div>
+              <!--<hr class="hr-r">-->
+
+            </div>
 
           </div>
+          <div class="news-content col-8">
+            <div class="news-con-in">
+              <small>May 1</small>
+              <p class="head">Bernald Nolan</p>
+              <p class="desc">The content of the news snippet will be seen here. </p>
+            </div>
+            <div class="n-i-con bcimg" style="background-image: url('./assets/images/background.jpg')">
 
-        </div>
-        <div class="news-content col-8">
-          <div class="news-con-in">
-            <small>May 1</small>
-            <p class="head">Bernald Nolan</p>
-            <p class="desc">The content of the news snippet will be seen here. </p>
-          </div>
-          <div class="n-i-con bcimg" style="background-image: url('./assets/images/background.jpg')">
-
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="loading row">
-      <div class="col">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+
+      <div class="loading row">
+        <div class="col">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
       </div>
+
     </div>
   </div>
 </div>

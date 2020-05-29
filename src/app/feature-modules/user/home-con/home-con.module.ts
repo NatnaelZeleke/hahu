@@ -4,17 +4,24 @@ import {CommonModule} from '@angular/common';
 import {HomeConRoutingModule} from './home-con-routing.module';
 import {SharedModule} from '../../../shared/shared.module';
 import {HomePageComponent} from './home-page/home-page.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SchoolfeedComponent } from './schoolfeed/schoolfeed.component';
-import { SavesComponent } from './saves/saves.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {SchoolfeedComponent} from './schoolfeed/schoolfeed.component';
+import {SavesComponent} from './saves/saves.component';
+import {PostComponent} from './home-page/post/post.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeConRoutingModule,
-    SharedModule
+    SharedModule,
+    InfiniteScrollModule
   ],
-  declarations: [HomePageComponent, DashboardComponent, SchoolfeedComponent, SavesComponent]
+  declarations: [HomePageComponent,
+      DashboardComponent,
+      SchoolfeedComponent,
+      SavesComponent,
+      PostComponent]
 })
 export class HomeConModule {
 }

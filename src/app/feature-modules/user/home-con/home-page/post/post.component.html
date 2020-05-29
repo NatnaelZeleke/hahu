@@ -1,0 +1,65 @@
+<div class="post">
+  <div class="c-c">
+    <div class="p-c bcimg"
+         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post.featuredImage + ')' , 'height':'800px'}">
+    </div>
+    <!--[ngStyle]="{'background-image':'url( https://' + i.imgs[0] + ')'}"-->
+    <!--style="background-image: url('./assets/images/background2.jpg'); height: 800px"-->
+  </div>
+  <div class="p-con-c">
+    <div class="container ">
+      <div class=" row">
+        <div class="col-6 p-l-8">
+          <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/profile.jpg')">
+
+          </div>
+          <div class="n-con">
+            <p>Selam Abate</p>
+            <p class="u-n">@selam23</p>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="ic-c">
+            <div class="a-con more">
+
+              <i class="fa fa-ellipsis-v"></i>
+            </div>
+            <div class="a-con">
+              <div class="value">{{post?.likes?.length || 0}}</div>
+              <i class="fa fa-heart liked"></i>
+            </div>
+            <div class="a-con">
+              <div class="value">{{post?.comments?.length || 0}}</div>
+              <i class="fa fa-comment"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="com-con">
+          <div class="comen" *ngFor="let c of post?.comments; let i = index;">
+            <div class="com-p-c-c">
+              <div class="com-p-c bcimg" style="background-image: url('./assets/images/profile3.jpg')">
+
+              </div>
+            </div>
+
+            <div class="com-t-c">
+              <div class="p-n-c">
+                <p class="name">Daniel Solomon</p>
+                <p class="more">1 hour ago</p>
+              </div>
+              <p>{{c.content}}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
