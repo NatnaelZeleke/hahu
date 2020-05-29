@@ -10,7 +10,7 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<ILikes>;
 type EntityArrayResponseType = HttpResponse<ILikes[]>;
-
+type CountResponseType = HttpResponse<number>;
 @Injectable({ providedIn: 'root' })
 export class LikesService {
   public resourceUrl = SERVER_API_URL + 'api/likes';
@@ -43,7 +43,12 @@ export class LikesService {
       .get<ILikes[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
-
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
+  }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

@@ -8,6 +8,7 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<IUserGroup>;
 type EntityArrayResponseType = HttpResponse<IUserGroup[]>;
+type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class UserGroupService {
@@ -31,7 +32,12 @@ export class UserGroupService {
     const options = createRequestOption(req);
     return this.http.get<IUserGroup[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
-
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
+  }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

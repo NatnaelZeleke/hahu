@@ -10,6 +10,7 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<IUsersConnection>;
 type EntityArrayResponseType = HttpResponse<IUsersConnection[]>;
+type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class UsersConnectionService {
@@ -42,6 +43,12 @@ export class UsersConnectionService {
     return this.http
       .get<IUsersConnection[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

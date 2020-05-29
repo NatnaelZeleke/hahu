@@ -8,6 +8,7 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<IScheduleType>;
 type EntityArrayResponseType = HttpResponse<IScheduleType[]>;
+type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class ScheduleTypeService {
@@ -30,6 +31,12 @@ export class ScheduleTypeService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IScheduleType[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

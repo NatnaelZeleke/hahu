@@ -8,6 +8,7 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<IProfile>;
 type EntityArrayResponseType = HttpResponse<IProfile[]>;
+type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
@@ -30,6 +31,12 @@ export class ProfileService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IProfile[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
