@@ -6,7 +6,7 @@
     <div class="t-l">
 
       <div *ngFor="let p of postList;let i = index;">
-        <app-post [post]="p"></app-post>
+        <app-post [post]="p" [account]="account" ></app-post>
       </div>
 
       <div class="post">
