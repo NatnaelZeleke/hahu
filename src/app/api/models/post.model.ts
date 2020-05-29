@@ -6,6 +6,8 @@ import {IComment} from './comment.model';
 import {ILikes} from './likes.model';
 import {ICategory} from './category.model';
 import {ITag} from './tag.model';
+import {IViews} from './views.model';
+import {IShares} from './shares.model';
 
 export interface IPost {
   id?: number;
@@ -18,9 +20,13 @@ export interface IPost {
   postedDate?: Moment;
   modifiedDate?: Moment;
   instantPostEndDate?: Moment;
+  popularityIndex?: number;
+  trendingIndex?: number;
   postMetaData?: IPostMetaData[];
   comments?: IComment[];
   likes?: ILikes[];
+  views?: IViews[];
+  shares?: IShares[];
   userLogin?: string;
   userId?: number;
   categories?: ICategory[];
@@ -39,9 +45,13 @@ export class Post implements IPost {
     public postedDate?: Moment,
     public modifiedDate?: Moment,
     public instantPostEndDate?: Moment,
+    public popularityIndex?: number,
+    public trendingIndex?: number,
     public postMetaData?: IPostMetaData[],
     public comments?: IComment[],
     public likes?: ILikes[],
+    public views?: IViews[],
+    public shares?: IShares[],
     public userLogin?: string,
     public userId?: number,
     public categories?: ICategory[],
