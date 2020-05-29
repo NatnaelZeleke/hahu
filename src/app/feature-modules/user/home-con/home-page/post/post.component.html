@@ -26,7 +26,7 @@
 
               <i class="fa fa-ellipsis-v"></i>
             </div>
-            <div class="a-con">
+            <div class="a-con" (click)="like()">
               <div class="value">{{post?.likes?.length || 0}}</div>
               <i class="fa fa-heart" [ngClass]="{'liked': isLiked}"></i>
             </div>

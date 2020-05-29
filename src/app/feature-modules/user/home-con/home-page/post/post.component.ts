@@ -4,6 +4,7 @@ import {ProfileService} from '../../../../../api/services/profile.service';
 import {IProfile} from '../../../../../api/models/profile.model';
 import {Account} from '../../../../../api/models/account.model';
 import {LikesService} from '../../../../../api/services/likes.service';
+import {ILikes} from '../../../../../api/models/likes.model';
 
 @Component({
   selector: 'app-post',
@@ -16,6 +17,8 @@ export class PostComponent implements OnInit {
   @Input() account: Account;
   profile: IProfile[] = [];
   isLiked = false;
+  likeObject: ILikes;
+
   constructor(public postService: ProfileService,
               public likeService: LikesService) {
   }
@@ -49,10 +52,41 @@ export class PostComponent implements OnInit {
       'postId.equals': this.post.id,
       'userLogin.equals': this.account.login
     }).subscribe(result => {
-        if (result.body.length > 0) {
-            this.isLiked = true;
-        }
+      if (result.body.length > 0) {
+        this.isLiked = true;
+        this.likeObject = result.body[0];
+      }
     });
+  }
+
+  like() {
+    if (!this.isLiked) {
+      this.isLiked = true;
+      // create like
+      // change status
+      const like: ILikes = {
+        postId: this.post.id,
+        userLogin: this.account.login
+      };
+      this.likeService.create(like)
+        .subscribe(result => {
+          if (result.body != null) {
+
+            this.likeObject = result.body;
+          }
+        });
+
+    } else {
+      this.likeService.delete(this.likeObject.id)
+        .subscribe(result => {
+
+        });
+      // delete like
+      // change status
+      this.likeObject = null;
+      this.isLiked = false;
+
+    }
   }
 
 
