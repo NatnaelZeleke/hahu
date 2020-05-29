@@ -7,6 +7,7 @@ import {IAlbum} from '../models/album.model';
 import {createRequestOption} from '../util/request-util';
 type EntityResponseType = HttpResponse<IAlbum>;
 type EntityArrayResponseType = HttpResponse<IAlbum[]>;
+type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class AlbumService {
@@ -30,7 +31,12 @@ export class AlbumService {
     const options = createRequestOption(req);
     return this.http.get<IAlbum[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
-
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
+  }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

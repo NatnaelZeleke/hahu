@@ -9,6 +9,7 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<IShares>;
 type EntityArrayResponseType = HttpResponse<IShares[]>;
+type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class SharesService {
@@ -41,6 +42,12 @@ export class SharesService {
     return this.http
       .get<IShares[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

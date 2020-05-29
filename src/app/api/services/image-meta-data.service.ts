@@ -8,6 +8,7 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<IImageMetaData>;
 type EntityArrayResponseType = HttpResponse<IImageMetaData[]>;
+type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class ImageMetaDataService {
@@ -30,6 +31,12 @@ export class ImageMetaDataService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IImageMetaData[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+  queryCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
