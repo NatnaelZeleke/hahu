@@ -289,6 +289,18 @@ $ppw: 36px;
 }
 
 .com-con {
+  .comen-form{
+    padding: 7px;
+    position: relative;
+    textarea{
+      padding-right: 44px;
+    }
+    .p-btn{
+      position: absolute;
+      right:12px;
+      bottom: 12px;
+    }
+  }
   border-top: 1px solid #e4e4e4;
   margin-top: 10px;
   width: 100%;

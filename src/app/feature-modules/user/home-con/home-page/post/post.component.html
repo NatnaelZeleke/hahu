@@ -1,0 +1,98 @@
+<div class="post">
+  <div class="c-c">
+    <div class="p-c bcimg"
+         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post.featuredImage + ')' , 'height':'800px'}">
+    </div>
+    <!--[ngStyle]="{'background-image':'url( https://' + i.imgs[0] + ')'}"-->
+    <!--style="background-image: url('./assets/images/background2.jpg'); height: 800px"-->
+  </div>
+  <div class="p-con-c">
+
+    <div class="container ">
+      <div class=" row">
+        <div class="col-6 p-l-8">
+          <div class="u-p-p bcimg f-l"
+               [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')'}">
+
+          </div>
+          <div class="n-con">
+            <p>{{profile[0]?.userLogin}}</p>
+            <p class="u-n">@selam23</p>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="ic-c">
+            <div class="a-con more">
+
+              <i class="fa fa-ellipsis-v"></i>
+            </div>
+            <div class="a-con" (click)="like()">
+              <div class="value">{{likeCount || ''}}</div>
+              <i class="fa fa-heart" [ngClass]="{'liked': isLiked}"></i>
+            </div>
+            <div class="a-con" (click)="toggleComment()">
+              <div class="value">{{commentCount || ''}}</div>
+              <i class="fa fa-comment"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" *ngIf="isCommentShown">
+      <div class="row">
+        <div class="com-con">
+          <form class="comen-form" [formGroup]="commentForm" (submit)="postComment()">
+            <textarea class="form-control form-control-sm"
+                      placeholder="Add a comment ... "
+                      formControlName="comment"></textarea>
+            <button type="submit" [disabled]="commentForm.invalid"
+                    class="btn btn-sm btn-outline-success p-btn">post
+            </button>
+          </form>
+          <div class="comen" *ngFor="let c of comments; let i = index;">
+            <div class="com-p-c-c">
+              <div class="com-p-c bcimg" style="background-image: url('./assets/images/profile3.jpg')">
+
+              </div>
+            </div>
+
+            <div class="com-t-c">
+              <div class="p-n-c">
+                <p class="name">Daniel Solomon</p>
+                <p class="more">{{c.postedDate |  date:'MMM d, y, h:mm a'}}</p>
+              </div>
+              <p>{{c?.content}}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="com-con">-->
+<!--<div class="comen" *ngFor="let c of post?.comments; let i = index;">-->
+<!--<div class="com-p-c-c">-->
+<!--<div class="com-p-c bcimg">-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="com-t-c">-->
+<!--<div class="p-n-c">-->
+<!--<p class="name">Daniel Solomon</p>-->
+<!--<p class="more">1 hour ago</p>-->
+<!--</div>-->
+<!--<p>{{c.content}}</p>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

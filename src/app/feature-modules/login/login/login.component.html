@@ -17,27 +17,44 @@
           <div class="row">
             <div class="col">
 
-              <br>
+
               <p class="t-a-c">Sign in </p>
               <br>
               <br>
             </div>
           </div>
 
-          <form>
+          <form [formGroup]="loginForm" (submit)="login()">
             <div class="row r-f-c">
               <div class="col-12">
                 <br>
 
+              </div>
+              <div class="col-12" *ngIf="authenticationError">
+                <div class="alert alert-danger"><strong>Failed to sign in!</strong> Please check your credentials and
+                  try again.
+                </div>
               </div>
 
               <div class="col-12">
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-4">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-inbox"></i></span>
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
                     </div>
-                    <input class="form-control form-control-alternative" placeholder="Email" type="text">
+                    <input class="form-control form-control-alternative"
+                           placeholder="email or user name"
+                           type="text"
+                           formControlName="username">
+
+                  </div>
+                  <div *ngIf="submitted || (f.username.invalid && (f.username.dirty || f.username.touched))"
+                       class="text-danger">
+                    <div *ngIf="loginForm.hasError('required',['username'])">
+                      <small class="text-danger">
+                        Enter user name or email
+                      </small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -48,7 +65,18 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
                     </div>
-                    <input class="form-control form-control-alternative" placeholder="password" type="text">
+                    <input class="form-control form-control-alternative"
+                           placeholder="password"
+                           type="password"
+                           formControlName="password">
+                  </div>
+                  <div *ngIf="submitted || (f.password.invalid && (f.password.dirty || f.password.touched))"
+                       class="text-danger">
+                    <div *ngIf="loginForm.hasError('required',['password'])">
+                      <small class="text-danger">
+                        Enter Password
+                      </small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -56,9 +84,11 @@
               <div class="col-12">
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input
-                    class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                    class="custom-control-input"
+                    id="customCheckLogin"
+                    type="checkbox" (click)="toggleRememberMe()">
                   <label
-                    class="custom-control-label" for=" customCheckLogin"><span
+                    class="custom-control-label" for="customCheckLogin"><span
                     class="text-muted">Remember me </span></label>
                 </div>
                 <br>
@@ -66,9 +96,10 @@
               </div>
 
               <div class="col-12 t-a-c">
-                <div class="btn btn-primary r-btn" routerLink="../user">
+                <button type="submit" class="btn btn-primary r-btn" >
                   Login
-                </div>
+                </button>
+
                 <br>
                 <br>
               </div>
