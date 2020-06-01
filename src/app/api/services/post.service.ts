@@ -14,7 +14,7 @@ type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  public resourceUrl = SERVER_API_URL + 'api/posts';
+  public resourceUrl = SERVER_API_URL + 'api/posts/custom';
 
   constructor(protected http: HttpClient) {}
 

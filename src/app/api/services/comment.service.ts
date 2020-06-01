@@ -14,7 +14,7 @@ type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class CommentService {
-  public resourceUrl = SERVER_API_URL + 'api/comments';
+  public resourceUrl = SERVER_API_URL + 'api/comments/custom';
 
   constructor(protected http: HttpClient) {}
 
