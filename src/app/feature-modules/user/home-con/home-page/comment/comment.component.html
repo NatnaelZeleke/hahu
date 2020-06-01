@@ -2,15 +2,16 @@
   <div class="com-p-c-c">
     <div class="com-p-c bcimg"
 
-      [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0].curentProfilePic + ')' }">
+      [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')' }">
 
     </div>
   </div>
   <div class="com-t-c">
     <div class="p-n-c">
-      <p class="name">{{profile[0].userLogin}}</p>
-      <p class="more">{{comment.postedDate |  date:'MMM d'}}</p>
+      <p class="name">{{profile[0]?.userLogin}}</p>
+      <p>{{comment?.content}}</p>
+      <p class="more">{{comment?.postedDate |  date:'MMM d'}}</p>
     </div>
-    <p>{{comment?.content}}</p>
+
   </div>
 </div>

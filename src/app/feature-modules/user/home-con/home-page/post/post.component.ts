@@ -159,7 +159,7 @@ export class PostComponent implements OnInit {
     this.commentService.query({
       page: 0,
       'postId.equals': this.post.id,
-      'sort': ['postedDate', 'desc']
+      'sort': ['postedDate,desc']
     }).subscribe(result => {
       this.comments = result.body;
     });
