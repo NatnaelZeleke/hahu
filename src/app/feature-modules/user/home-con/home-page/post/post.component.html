@@ -16,8 +16,8 @@
 
           </div>
           <div class="n-con">
-            <p>{{profile[0]?.userLogin}}</p>
-            <p class="u-n">@selam23</p>
+            <p>{{user?.firstName}} {{user?.lastName}}</p>
+            <p class="u-n">@{{profile[0]?.userLogin}} </p>
           </div>
         </div>
 
@@ -25,7 +25,7 @@
           <div class="ic-c">
             <div class="a-con more">
 
-              <i class="fa fa-ellipsis-v"></i>
+              <!--<i class="fa fa-ellipsis-v"></i>-->
             </div>
             <div class="a-con" (click)="like()">
               <div class="value">{{likeCount || ''}}</div>
@@ -44,6 +44,7 @@
     <div class="container" *ngIf="isCommentShown">
       <div class="row">
         <div class="com-con">
+
           <form class="comen-form" [formGroup]="commentForm" (submit)="postComment()">
             <textarea class="form-control form-control-sm"
                       placeholder="Add a comment ... "
@@ -52,20 +53,9 @@
                     class="btn btn-sm btn-outline-success p-btn">post
             </button>
           </form>
-          <div class="comen" *ngFor="let c of comments; let i = index;">
-            <div class="com-p-c-c">
-              <div class="com-p-c bcimg" style="background-image: url('./assets/images/profile3.jpg')">
 
-              </div>
-            </div>
-
-            <div class="com-t-c">
-              <div class="p-n-c">
-                <p class="name">Daniel Solomon</p>
-                <p class="more">{{c.postedDate |  date:'MMM d, y, h:mm a'}}</p>
-              </div>
-              <p>{{c?.content}}</p>
-            </div>
+          <div   *ngFor="let c of comments; let i = index;">
+            <app-comment [comment]="c" ></app-comment>
           </div>
 
         </div>

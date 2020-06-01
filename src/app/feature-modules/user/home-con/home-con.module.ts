@@ -9,6 +9,7 @@ import {SchoolfeedComponent} from './schoolfeed/schoolfeed.component';
 import {SavesComponent} from './saves/saves.component';
 import {PostComponent} from './home-page/post/post.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { CommentComponent } from './home-page/comment/comment.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
       DashboardComponent,
       SchoolfeedComponent,
       SavesComponent,
-      PostComponent]
+      PostComponent,
+      CommentComponent]
 })
 export class HomeConModule {
 }

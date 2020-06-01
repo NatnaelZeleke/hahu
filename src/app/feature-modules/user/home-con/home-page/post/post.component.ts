@@ -8,6 +8,9 @@ import {ILikes} from '../../../../../api/models/likes.model';
 import {CommentService} from '../../../../../api/services/comment.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Comment, IComment} from '../../../../../api/models/comment.model';
+import * as moment from 'moment';
+import {UserService} from '../../../../../api/services/user.service';
+import {IUser} from '../../../../../api/models/user.model';
 
 
 @Component({
@@ -28,11 +31,14 @@ export class PostComponent implements OnInit {
   commentForm: FormGroup;
   comments: IComment[] = [];
   isCommentLoaded = false;
+  commentPlaceHolder = '';
+  user: IUser;
 
   constructor(public postService: ProfileService,
               public likeService: LikesService,
               public commentService: CommentService,
-              public formBuilder: FormBuilder) {
+              public formBuilder: FormBuilder,
+              public userService: UserService) {
   }
 
   ngOnInit() {
@@ -40,7 +46,6 @@ export class PostComponent implements OnInit {
     this.isPostLiked();
     this.loadProfilePicture();
     this.getLikeCount();
-
     this.commentForm = this.formBuilder.group(
       {
         comment: ['', Validators.required]
@@ -57,6 +62,7 @@ export class PostComponent implements OnInit {
       .subscribe(
         (response) => {
           this.profile = response.body;
+          this.getUserAccount(this.profile[0].userLogin);
         },
         () => {
         }
@@ -80,6 +86,7 @@ export class PostComponent implements OnInit {
   like() {
     if (!this.isLiked) {
       this.isLiked = true;
+      this.likeCount = this.likeCount + 1;
       const like: ILikes = {
         postId: this.post.id,
         userLogin: this.account.login
@@ -94,9 +101,9 @@ export class PostComponent implements OnInit {
       this.likeService.delete(this.likeObject.id)
         .subscribe(result => {
         });
+      this.likeCount = this.likeCount - 1;
       this.likeObject = null;
       this.isLiked = false;
-
     }
   }
 
@@ -115,6 +122,7 @@ export class PostComponent implements OnInit {
       page: 0,
       size: 1,
       'postId.equals': this.post.id
+
     }).subscribe(result => {
       this.commentCount = result.body;
     });
@@ -128,35 +136,45 @@ export class PostComponent implements OnInit {
     }
   }
 
-  // comment control section
-
   postComment() {
     if (this.commentForm.valid) {
       const com: Comment = {
         content: this.commentForm.value.comment,
         postId: this.post.id,
-        userLogin: this.account.login
+        userLogin: this.account.login,
+        postedDate: moment().startOf('second')
       };
+      this.commentPlaceHolder = this.commentForm.value.comment;
+      this.comments.splice(0, 0, com);
+      this.commentCount = this.comments.length;
       this.commentService.create(com)
         .subscribe(result => {
           // if(result)
         });
+      this.commentForm.reset();
     }
-
   }
 
   getCommentList() {
     this.commentService.query({
       page: 0,
-      size: 1,
-      'postId.equals': this.post.id
+      'postId.equals': this.post.id,
+      'sort': ['postedDate', 'desc']
     }).subscribe(result => {
       this.comments = result.body;
     });
   }
 
+  getUserAccount(userLogin: string) {
+    this.userService.find(userLogin)
+      .subscribe(result => {
+        this.user = result;
+      });
+  }
+
   get f() {
     return this.commentForm.controls;
   }
+
 
 }

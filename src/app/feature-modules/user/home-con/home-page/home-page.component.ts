@@ -3,6 +3,7 @@ import {PostService} from '../../../../api/services/post.service';
 import {IPost} from '../../../../api/models/post.model';
 import {AccountService} from '../../../../api/services/account.service';
 import {Account} from '../../../../api/models/account.model';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -20,7 +21,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.getUserAccount();
   }
-
 
   loadPost() {
     this.postService.query(
