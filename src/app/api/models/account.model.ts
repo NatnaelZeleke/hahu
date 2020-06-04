@@ -4,6 +4,7 @@ export class Account {
     public authorities: string[],
     public email: string,
     public firstName: string,
+    public id: number,
     public langKey: string,
     public lastName: string,
     public login: string,
