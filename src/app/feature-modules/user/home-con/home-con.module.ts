@@ -10,6 +10,8 @@ import {SavesComponent} from './saves/saves.component';
 import {PostComponent} from './home-page/post/post.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { CommentComponent } from './home-page/comment/comment.component';
+import { ContentComponent } from './home-page/content/content.component';
+import { TagsComponent } from './home-page/content/tags/tags.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { CommentComponent } from './home-page/comment/comment.component';
       SchoolfeedComponent,
       SavesComponent,
       PostComponent,
-      CommentComponent]
+      CommentComponent,
+      ContentComponent,
+      TagsComponent]
 })
 export class HomeConModule {
 }

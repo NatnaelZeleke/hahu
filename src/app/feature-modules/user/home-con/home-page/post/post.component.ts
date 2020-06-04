@@ -11,6 +11,7 @@ import {Comment, IComment} from '../../../../../api/models/comment.model';
 import * as moment from 'moment';
 import {UserService} from '../../../../../api/services/user.service';
 import {IUser} from '../../../../../api/models/user.model';
+import {HashtagService} from '../../../../../services/hashtag.service';
 
 
 @Component({
@@ -51,6 +52,7 @@ export class PostComponent implements OnInit {
         comment: ['', Validators.required]
       }
     );
+
   }
 
   loadProfilePicture() {
@@ -142,16 +144,18 @@ export class PostComponent implements OnInit {
         content: this.commentForm.value.comment,
         postId: this.post.id,
         userLogin: this.account.login,
-        postedDate: moment().startOf('second')
+        postedDate: moment().startOf('second'),
+        userId: this.account.id
       };
       this.commentPlaceHolder = this.commentForm.value.comment;
-      this.comments.splice(0, 0, com);
+
       this.commentCount = this.comments.length;
       this.commentService.create(com)
         .subscribe(result => {
           // if(result)
+          this.comments.splice(0, 0, result.body);
+          this.commentForm.reset();
         });
-      this.commentForm.reset();
     }
   }
 
@@ -174,6 +178,12 @@ export class PostComponent implements OnInit {
 
   get f() {
     return this.commentForm.controls;
+  }
+
+  removeComment(idx: any) {
+    this.comments.splice(idx, 1);
+    console.log(idx);
+    this.commentCount = this.commentCount - 1;
   }
 
 

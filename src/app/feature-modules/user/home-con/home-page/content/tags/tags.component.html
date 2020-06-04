@@ -1,0 +1,52 @@
+<div class="c-c-h">
+  <div class="i-c" (click)="bsModalRef.hide()"><i class="fa fa-angle-left"></i></div>
+  <div class="name">Add tags</div>
+  <div class="p" (click)="bsModalRef.hide()">Done</div>
+</div>
+
+<div class="c-c-i tagg">
+
+  <div class="h-tag">
+    <div class=""><i class="fa fa-hashtag"></i></div>
+  </div>
+  <form [formGroup]="tagForm" (submit)="addTag($event)">
+    <input type="text" class="form-control"
+           placeholder="Add tags"
+           formControlName="tag">
+    <div class="tag-l-c">
+
+      <ngx-spinner bdColor="rgba(152,61,61,0)"
+                   size="small"
+                   color="#6495ff"
+                   type="ball-fall"
+                   name="tagSpinner"
+                   [fullScreen]="false"></ngx-spinner>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col tags-con">
+      <div class="tags added" *ngFor="let t of tags; let i = index;">
+        {{t?.name}}
+        <div class="c-btn" (click)="removeTag(i)">
+          X
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="c-f-c">
+  <div class="container">
+    <div class="row">
+      <div class="col tags-con ht">
+        <div class="tags" *ngFor="let tl of tagList; let i = index;" (click)="addTagFromList(i)">{{tl?.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

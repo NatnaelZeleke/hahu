@@ -1,7 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IComment} from '../../../../../api/models/comment.model';
 import {ProfileService} from '../../../../../api/services/profile.service';
 import {IProfile} from '../../../../../api/models/profile.model';
+import {Account} from '../../../../../api/models/account.model';
+import {CommentService} from '../../../../../api/services/comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -10,10 +12,15 @@ import {IProfile} from '../../../../../api/models/profile.model';
 })
 export class CommentComponent implements OnInit {
 
+  @Input() idx: number;
   @Input() comment: IComment;
   profile: IProfile[] = [];
+  @Input() account: Account;
+  showMoreButton = false;
+  @Output('removeComment') removeComment = new EventEmitter<any>();
 
-  constructor(public profileService: ProfileService) {
+  constructor(public profileService: ProfileService,
+              public commentService: CommentService) {
   }
 
   ngOnInit() {
@@ -24,15 +31,32 @@ export class CommentComponent implements OnInit {
     this.profileService.query({
       page: 0,
       size: 1,
-      'userLogin.equals': this.comment.userLogin
+      'userId.equals': this.comment.userId
     })
       .subscribe(
         (response) => {
           this.profile = response.body;
+          this.shouldShowMoreButton();
         },
         () => {
         }
       );
+
+  }
+
+  shouldShowMoreButton() {
+    if (this.comment.userId == this.account.id) {
+      this.showMoreButton = true;
+    }
+  }
+
+
+  delete() {
+    this.commentService.delete(this.comment.id)
+      .subscribe(result => {
+
+      });
+    this.removeComment.emit(this.idx);
   }
 
 

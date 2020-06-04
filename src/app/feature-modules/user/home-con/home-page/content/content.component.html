@@ -1,0 +1,96 @@
+<div class="c-c-h">
+  <div class="i-c" (click)="bsModalRef.hide()"><i class="fa fa-angle-left"></i></div>
+  <div class="name">add to mag</div>
+  <div class="p" (click)="createPost(file)">Post</div>
+</div>
+<div class="p-bar-con">
+  <progressbar class="pbar" *ngIf="file != null" max="100" [value]="progress" [striped]="true"
+               [animate]="true"></progressbar>
+</div>
+
+<div class="c-c-i">
+
+  <form [formGroup]="captionForm">
+    <input type="text" class="form-control"
+           [(ngModel)]="caption" formControlName="caption" placeholder="add something">
+  </form>
+  <div class="h-tag">
+    <div class="" (click)="addTags()"><i class="fa fa-hashtag"></i></div>
+  </div>
+</div>
+
+<div class="c-d-c-v">
+
+  <!--<div class="d-inline-block">-->
+  <!--<div class="suic" *ngFor="let item of files;let i=index">-->
+  <!--<div class="i-b bcimg" [ngfBackground]="item"></div>-->
+  <!--<p class="sd">size : {{ item.size/1024/1024 | number:'.2' }} MB</p>-->
+  <!--<label class="badge badge-secondary" (click)="files.splice(i,1)"><i class="fa fa-trash"></i>-->
+  <!--Delete</label>-->
+  <!--</div>-->
+  <!--</div>-->
+
+  <div class="data-con">
+    <div class="caption-con">
+      {{caption}}
+    </div>
+    <div class="i-c">
+      <div *ngIf="file != null">
+        <div class="im bcimg"
+
+             [ngStyle]="{'background-image':'url(' + file + ')'}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hashtags-con">
+    <div class="hashtags" *ngFor="let t of tags; let i = index;">#{{t?.name}}</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+
+</div>
+
+<div class="c-f-c">
+  <div class="container">
+    <div class="row">
+      <div class="col"><label for="imageimput"><i class="fa fa-camera"></i></label></div>
+      <div class="col"><i class="fa fa-language"></i></div>
+      <div class="col"><p>GIF</p></div>
+      <div class="col"><i class="fa fa-link"></i></div>
+      <div class="col"><p>Bg</p></div>
+      <div class="col"><i class="fa fa-paint-brush"></i></div>
+      <div class="col"><i class="fa fa-eye"></i></div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <input
+    hidden
+    id="imageimput"
+    ngfSelect
+    multiple
+    type="file"
+    [(lastBaseUrl)]="file"
+    accept="image/*"
+    (filesChange)="lastFileAt=getDate()"/>
+</div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)"
+             size="default"
+             color="#bcc6f3"
+             type="ball-fall"
+             name="posting"
+             [fullScreen]="true"></ngx-spinner>
+
+
+
+
+
+
+

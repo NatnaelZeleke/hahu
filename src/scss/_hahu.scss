@@ -155,6 +155,7 @@
       .n-con {
         p {
           color: #fff;
+
         }
         .p-da {
           color: #939393;
@@ -276,6 +277,11 @@ $ppw: 36px;
     margin-bottom: 0;
     line-height: 16px;
     color: #2a2a2a;
+    max-width: 70px;
+    //text-overflow: no-wrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
   }
   .u-n {
     font-weight: bold;
@@ -305,7 +311,7 @@ $ppw: 36px;
   margin-top: 10px;
   width: 100%;
   .comen {
-    padding: 10px 0 0 10px;
+    padding: 7px 0 0 7px;
     width: 100%;
     display: inline-block;
     $com-p-c-w: 30px;
@@ -321,8 +327,8 @@ $ppw: 36px;
     }
     .com-t-c {
       min-width: 50%;
-      max-width: 85%;
-      margin-left: 6px;
+      max-width: 80%;
+      //margin-left: 6px;
       padding: 5px 8px;
       background-color: #f6f6f6;
       border-radius: 10px;
@@ -346,6 +352,19 @@ $ppw: 36px;
         font-size: 10px;
 
       }
+    }
+    .a-con{
+      margin-left: 0 !important;
+      width: 10%;
+      float: right;
+      text-align: center;
+      .fa{
+        margin: 0;
+      }
+    }
+    .dropdown-menu{
+      min-width: 50px;
+      padding: 2px;
     }
   }
 }
@@ -725,4 +744,24 @@ $ppw: 36px;
   .news-con{
     background-color: #000 !important;
   }
+}
+
+.c-c-b{
+  position: fixed;
+  z-index: 999;
+  right: 22px;
+  bottom: 166px;
+  button{
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    font-size: 23px;
+  }
+}
+
+.spinner-con{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 35%;
 }

@@ -1,17 +1,33 @@
-<div class="comen" >
+<div class="comen">
+
   <div class="com-p-c-c">
     <div class="com-p-c bcimg"
-
-      [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')' }">
-
+         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')' }">
     </div>
   </div>
+
   <div class="com-t-c">
     <div class="p-n-c">
       <p class="name">{{profile[0]?.userLogin}}</p>
       <p>{{comment?.content}}</p>
-      <p class="more">{{comment?.postedDate |  date:'MMM d'}}</p>
+      <p class="more">{{comment?.postedDate | date:'MMM d'}}</p>
     </div>
 
   </div>
+
+  <div class="a-con more" *ngIf="showMoreButton">
+
+    <ul class="nav align-items-center d-md-none">
+      <li class="nav-item dropdown m-auto" dropdown placement="bottom-right">
+
+        <i class="fa fa-ellipsis-v" dropdownToggle></i>
+        <div class="dropdown-menu-arrow dropdown-menu-right dropdown-menu" *dropdownMenu x-placement="bottom-right">
+          <div class=" dropdown-header noti-title">
+            <h6 class="text-overflow m-0" (click)="delete()">DELETE</h6>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
 </div>

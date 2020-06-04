@@ -4,6 +4,8 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {SchoolfeedComponent} from './schoolfeed/schoolfeed.component';
 import {SavesComponent} from './saves/saves.component';
+import {ContentComponent} from './home-page/content/content.component';
+import {TagsComponent} from './home-page/content/tags/tags.component';
 
 const routes: Routes = [
   {
@@ -38,7 +40,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  entryComponents: [ContentComponent, TagsComponent]
 })
 export class HomeConRoutingModule {
 }

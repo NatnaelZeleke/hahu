@@ -9,7 +9,7 @@ import {AccountService} from '../../api/services/account.service';
 export class RegisterComponent implements OnInit {
 
   login?: ElementRef;
-
+  submitted = false;
   doNotMatch = false;
   error = false;
   errorEmailExists = false;

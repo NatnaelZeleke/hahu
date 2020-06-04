@@ -1,0 +1,170 @@
+@import "common";
+
+.c-c-con {
+  app-content {
+    height: 100%;
+  }
+  position: fixed;
+  margin: 0;
+  border-radius: 0;
+  height: 100%;
+  width: 100%;
+  .modal-content {
+    border-radius: 0;
+    height: 100%;
+  }
+  .c-c-h {
+    @extend .clearfix;
+    background-color: #181f4d;
+    font-size: 20px;
+    padding: 6px;
+    color: #fff;
+    .i-c {
+      float: left;
+      width: 10%;
+      text-align: center;
+    }
+    .name {
+      float: left;
+      width: 60%;
+    }
+    .p {
+      float: right;
+      width: 30%;
+      text-align: right;
+      padding-right: 20px;
+    }
+  }
+  .c-c-i {
+    @extend .clearfix;
+    form {
+      width: 85%;
+      float: left;
+      position: relative;
+    }
+    .h-tag {
+      text-align: center;
+      line-height: 38px;
+      font-size: 22px;
+      float: left;
+      width: 15%;
+    }
+    padding: 10px;
+    input {
+      border-radius: 10px;
+      padding: 3px 11px !important;
+      font-size: 19px;
+      height: 37px;
+    }
+    &.tagg {
+      input {
+        border: none;
+      }
+    }
+  }
+  .c-f-c {
+    z-index: 999;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-top: 10px;
+    background-color: #fff;
+    i, p {
+      font-size: 17px;
+      line-height: 17px;
+    }
+  }
+  .data-con {
+    //image container
+    .i-c {
+      .im {
+        min-height: 407px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .caption-con {
+    padding: 15px;
+    font-size: 15px;
+  }
+  .c-d-c-v {
+    overflow-y: auto;
+    height: 78%;
+  }
+
+  progressbar {
+    border-radius: 0;
+    height: 2px;
+    margin-bottom: 0;
+  }
+}
+
+.tags-con {
+  margin-bottom: 8px;
+  &.ht{
+    overflow: auto;
+    white-space: nowrap;
+    width: 700px;
+  }
+}
+
+.tags {
+  display: inline-block;
+  border-radius: 21px;
+  font-size: 17px;
+  text-align: center;
+  padding: 3px 16px 6px;
+  background-color: #6495ff;
+  color: #fff;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  position: relative;
+  .c-btn {
+    color: #060606;
+    font-size: 8px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -8px;
+    right: -4px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    padding: 5px;
+  }
+}
+
+
+.hashtags-con {
+  @extend .clearfix;
+  padding: 10px;
+  .hashtags {
+    float: left;
+    font-style: italic;
+    margin-right: 10px;
+  }
+}
+
+.i-b {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+
+
+
+.tag-l-c{
+  position: absolute;
+  right: 30px;
+  bottom: 8px;
+}
+
+
+.cap-b{
+  background-color: #2b2e3f;
+  color: #fff;
+  padding: 10px;
+  p{
+    margin-bottom: 0;
+  }
+}

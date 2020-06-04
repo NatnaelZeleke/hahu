@@ -5,6 +5,8 @@ import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoadingComponent} from './component/loading/loading.component';
 import {SpinnerComponent} from './component/spinner/spinner.component';
+import {ngfModule} from 'angular-file';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -14,13 +16,17 @@ import {SpinnerComponent} from './component/spinner/spinner.component';
     FormsModule,
     ReactiveFormsModule,
     NgxModuleModule,
+    ngfModule,
+    NgxSpinnerModule
   ],
   declarations: [LoadingComponent, SpinnerComponent],
   exports: [NgxModuleModule,
     FormsModule,
     ReactiveFormsModule,
     LoadingComponent,
-    SpinnerComponent]
+    SpinnerComponent,
+    ngfModule,
+    NgxSpinnerModule]
 })
 export class SharedModule {
 }

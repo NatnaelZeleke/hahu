@@ -1,8 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from '../../../../api/services/post.service';
 import {IPost} from '../../../../api/models/post.model';
-import {AccountService} from '../../../../api/services/account.service';
 import {Account} from '../../../../api/models/account.model';
+import {BsModalService} from 'ngx-bootstrap';
+import {ModalComponent} from '../../../../shared/component/modal/modal.component';
+import {ContentComponent} from './content/content.component';
+import {HashtagService} from '../../../../services/hashtag.service';
+import {AccService} from '../../../../services/acc.service';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {AppPostService} from '../../../../services/app-post.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -11,37 +18,78 @@ import {Account} from '../../../../api/models/account.model';
 })
 export class HomePageComponent implements OnInit {
 
-  postList: IPost[];
+  postList: IPost[] = [];
   account: Account;
 
   constructor(protected postService: PostService,
-              protected accountService: AccountService) {
+              protected accService: AccService,
+              public modalService: BsModalService,
+              public tagService: HashtagService,
+              private spinner: NgxSpinnerService,
+              public appPostService: AppPostService) {
   }
 
   ngOnInit() {
-    this.getUserAccount();
+    this.appPostService.postsSubject
+      .subscribe(result => {
+        this.postList = result;
+      });
+    this.accService.accountSubject
+      .subscribe(result => {
+        this.account = result;
+
+        this.loadPost();
+      });
+    this.accService.getUserAccount();
+
+    this.tagService.getTags();
+    // this.createContent();
   }
 
   loadPost() {
-    this.postService.query(
-      {
-        page: 0,
-        size: 10
-      }
-    ).subscribe((result) => {
-        this.postList = result.body;
-      },
-      (err) => {
-        // TODO handle post scroll errors, things like connection and database errors
+
+    this.spinner.show('postSpinner');
+    this.appPostService.getPost(0, 10)
+      .subscribe(result => {
+        this.spinner.hide('postSpinner');
       });
+
+
+    // this.postService.query(
+    //   {
+    //     page: 0,
+    //     size: 10
+    //   }
+    // ).subscribe((result) => {
+    //     this.postList.push(...result.body);
+    //
+    //   },
+    //   (err) => {
+    //     // TODO handle post scroll errors, things like connection and database errors
+    //   });
   }
 
-  getUserAccount() {
-    this.accountService.getAccount()
-      .subscribe(result => {
-        this.account = result;
-        this.loadPost();
-      });
+
+  createContent() {
+    const initialState = {
+      title: 'create content',
+      message: '',
+    };
+    this.modalService.show(ContentComponent, {
+      initialState: initialState,
+      animated: false,
+      class: 'c-c-con',
+    });
+  }
+
+  openModal(title: string, message: string, success: boolean, error: boolean) {
+    const initialState = {
+      title: title,
+      message: message,
+      success: success,
+      error: error
+    };
+    this.modalService.show(ModalComponent, {initialState});
   }
 
 }
