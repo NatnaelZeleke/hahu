@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {TagsComponent} from './tags/tags.component';
 import {HashtagService} from '../../../../../services/hashtag.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -14,6 +13,7 @@ import {SERVER_API_URL} from '../../../../../api/app.constants';
 import {ITag} from '../../../../../api/models/tag.model';
 import {AppPostService} from '../../../../../services/app-post.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-content',

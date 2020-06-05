@@ -9,16 +9,16 @@ const routes: Routes = [
     children: [
       {
         path: 'homecon',
-        loadChildren: './home-con/home-con.module#HomeConModule',
+        loadChildren: () => import('./home-con/home-con.module').then(m => m.HomeConModule),
       }, {
         path: 'workboard',
-        loadChildren: './work-board/work-board.module#WorkBoardModule',
+        loadChildren: () => import('./work-board/work-board.module').then(m => m.WorkBoardModule),
       }, {
         path: 'search',
-        loadChildren: './search/search.module#SearchModule',
+        loadChildren: () => import('./search/search.module').then(m => m.SearchModule),
       }, {
         path: 'profile',
-        loadChildren: './profile/profile.module#ProfileModule',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
       },
       {
         path: '',

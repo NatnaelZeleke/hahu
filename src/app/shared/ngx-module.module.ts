@@ -8,7 +8,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
-import {TimepickerModule} from 'ngx-bootstrap';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,8 +17,7 @@ import {TimepickerModule} from 'ngx-bootstrap';
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     AlertModule.forRoot(),
-    ProgressbarModule.forRoot(),
-    TimepickerModule.forRoot()
+    ProgressbarModule.forRoot()
   ] ,
   exports: [
     BsDropdownModule,
@@ -27,8 +25,7 @@ import {TimepickerModule} from 'ngx-bootstrap';
     BsDatepickerModule,
     PaginationModule,
     AlertModule,
-    ProgressbarModule,
-    TimepickerModule
+    ProgressbarModule
   ],
   declarations: []
 })

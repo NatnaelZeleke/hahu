@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {map} from 'rxjs/operators';
+import {map, map as __map, filter as __filter} from 'rxjs/operators';
 import {AuthenticationConfigurationService} from './authentication-configuration.service';
 import {UserCredentials} from '../models/user_cridentials';
 import {BaseService} from './base-service';
-import {map as __map, filter as __filter} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
 // import {AuthenticationResponse} from './models/authentication-response';

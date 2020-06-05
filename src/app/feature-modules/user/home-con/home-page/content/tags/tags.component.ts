@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HashtagService} from '../../../../../../services/hashtag.service';
 import {TagService} from '../../../../../../api/services/tag.service';
 import {ITag} from '../../../../../../api/models/tag.model';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-tags',

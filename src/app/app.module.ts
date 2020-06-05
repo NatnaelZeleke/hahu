@@ -12,6 +12,7 @@ import {SharedModule} from './shared/shared.module';
 import {JwtInterceptor} from './auth/jwt.interceptor';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
 import {LoaderInterceptorService} from './interceptors/loader-interceptor.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {LoaderInterceptorService} from './interceptors/loader-interceptor.servic
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     SharedModule

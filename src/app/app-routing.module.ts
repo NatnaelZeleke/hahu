@@ -16,11 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './feature-modules/login/login.module#LoginModule'
+    loadChildren: () => import('./feature-modules/login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'user',
-    loadChildren: './feature-modules/user/user.module#UserModule'
+    loadChildren: () => import('./feature-modules/user/user.module').then(m => m.UserModule)
   },
   {
     path: 'notauthorized',

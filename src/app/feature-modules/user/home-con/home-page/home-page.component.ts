@@ -2,13 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {PostService} from '../../../../api/services/post.service';
 import {IPost} from '../../../../api/models/post.model';
 import {Account} from '../../../../api/models/account.model';
-import {BsModalService} from 'ngx-bootstrap';
 import {ModalComponent} from '../../../../shared/component/modal/modal.component';
 import {ContentComponent} from './content/content.component';
 import {HashtagService} from '../../../../services/hashtag.service';
 import {AccService} from '../../../../services/acc.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {AppPostService} from '../../../../services/app-post.service';
+import {BsModalService} from 'ngx-bootstrap/modal';
 
 
 @Component({
