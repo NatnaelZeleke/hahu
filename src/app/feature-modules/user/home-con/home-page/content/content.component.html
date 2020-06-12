@@ -31,14 +31,12 @@
   <!--</div>-->
 
   <div class="data-con">
-    <div class="caption-con">
+    <div class="caption-con" [ngClass]= "'fc' + fontClass">
       {{caption}}
     </div>
     <div class="i-c">
       <div *ngIf="file != null">
-        <div class="im bcimg"
-
-             [ngStyle]="{'background-image':'url(' + file + ')'}">
+        <div class="im bcimg" [ngStyle]="{'background-image':'url(' + file + ')'}">
         </div>
       </div>
     </div>
@@ -56,16 +54,23 @@
 </div>
 
 <div class="c-f-c">
-  <div class="container">
+  <div class="container t-a-c">
+    <div class="big-c-c">
+      <div class="c">
+        <i class="fa fa-camera"></i>
+      </div>
+
+    </div>
     <div class="row">
-      <div class="col"><label for="imageimput"><i class="fa fa-camera"></i></label></div>
-      <div class="col"><i class="fa fa-language"></i></div>
+      <div class="col"><label for="imageimput"><i class="fa fa-photo"></i></label></div>
+      <div class="col" (click)="changeClass()"><p>አa</p></div>
       <div class="col"><p>GIF</p></div>
       <div class="col"><i class="fa fa-link"></i></div>
       <div class="col"><p>Bg</p></div>
       <div class="col"><i class="fa fa-paint-brush"></i></div>
       <div class="col"><i class="fa fa-eye"></i></div>
     </div>
+
   </div>
 </div>
 
@@ -80,6 +85,10 @@
     accept="image/*"
     (filesChange)="lastFileAt=getDate()"/>
 </div>
+
+<!--<div>-->
+  <!--<input type="file" id="newFileSelect" accept="image/*" (change)="onFileInputChange($event)">-->
+<!--</div>-->
 
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)"
              size="default"

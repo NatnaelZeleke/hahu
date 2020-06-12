@@ -8,6 +8,7 @@ import {SpinnerComponent} from './component/spinner/spinner.component';
 import {ngfModule} from 'angular-file';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ChartsModule} from 'ng2-charts';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     NgxModuleModule,
     ngfModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartsModule
 
   ],
   declarations: [LoadingComponent, SpinnerComponent],
@@ -28,7 +30,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     LoadingComponent,
     SpinnerComponent,
     ngfModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartsModule
     ]
 })
 export class SharedModule {

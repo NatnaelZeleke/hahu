@@ -4,13 +4,16 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
     <name>Hahu</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
+    A sample Apache Cordova application that responds to the deviceready event.
+  </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
+    Apache Cordova Team
+  </author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -19,6 +22,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="file:*" />
+    <allow-intent href="res:*" />
     <allow-intent href="market:*" />
     <icon qualifier="mdpi" src="res/icon/hahu-logo.png" />
     <icon qualifier="hdpi" src="res/icon/hahu-logo.png" />

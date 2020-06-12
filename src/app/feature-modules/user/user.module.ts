@@ -9,6 +9,7 @@ import {SharedModule} from '../../shared/shared.module';
 import { PostComponent } from './post/post/post.component';
 import { CommentComponent } from './post/comment/comment.component';
 import { PostModalComponent } from './post/post-modal/post-modal.component';
+import {AccService} from '../../services/acc.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { PostModalComponent } from './post/post-modal/post-modal.component';
     UserRoutingModule,
     SharedModule
   ],
-  declarations: [UserComponent, SchoolFeedComponent, SavedComponent, PostComponent, CommentComponent, PostModalComponent]
+  declarations: [UserComponent, SchoolFeedComponent, SavedComponent, PostComponent, CommentComponent, PostModalComponent],
+
 })
 export class UserModule { }

@@ -6,5 +6,16 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-camera": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-camera@~2.1.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "CAMERA_USAGE_DESCRIPTION": "App want to access your camera",
+      "PHOTOLIBRARY_USAGE_DESCRIPTION": "App want to access your camera to upload images"
+    }
   }
 }

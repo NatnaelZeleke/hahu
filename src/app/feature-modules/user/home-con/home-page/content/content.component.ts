@@ -25,7 +25,7 @@ export class ContentComponent implements OnInit {
   public tags: ITag[] = [];
   captionForm: FormGroup;
   context = '';
-  caption  = '';
+  caption = 'this is the new text';
   account: Account;
   // this is for uploading image
   // this is for image uploading
@@ -43,6 +43,10 @@ export class ContentComponent implements OnInit {
   reader = new FileReader();
   contentForm: FormGroup;
   image: any;
+  base6dData: string;
+
+  // current font class
+  fontClass = 0;
 
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
@@ -60,17 +64,19 @@ export class ContentComponent implements OnInit {
     this.contentForm = this.formBuilder.group({
       newFile: ['', Validators.required]
     });
-    this.accService.accountSubject
+
+    this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;
       });
-    this.accService.getUserAccount();
 
     this.tagService.tagsSubject
       .subscribe(result => {
         this.tags = result;
       });
+
     this.tagService.getTags();
+
     this.captionForm = this.formBuilder.group(
       {
         caption: ['', Validators.required]
@@ -120,11 +126,11 @@ export class ContentComponent implements OnInit {
     this.spinner.show('posting');
     const post: IPost = {
       userId: this.account.id,
-      title: this.captionForm.value.caption,
       postedDate: moment().startOf('second'),
-      featuredImage: f.slice(23,),
+      featuredImage: f != null ? f.slice(23,) : null,
       featuredImageContentType: 'image/jpeg',
-      tags: this.tags
+      tags: this.tags,
+      content: this.captionForm.value.caption
     };
     this.postService.create(post)
       .subscribe(result => {
@@ -134,10 +140,36 @@ export class ContentComponent implements OnInit {
         this.bsModalRef.hide();
 
         // console.log(result);
+      }, () => {
+        this.spinner.hide('posting');
       });
   }
 
   changeListener(event: Event): void {
+  }
+
+  onFileInputChange(event: Event): void {
+    const eventTarget: HTMLInputElement = event.target as HTMLInputElement;
+    const file: File = eventTarget.files[0];
+    const fileReader: FileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      this.base6dData = (fileReader.result as string).substr((fileReader.result as string).indexOf('base64,') + 'base64,'.length);
+      // console.log(base64Datanew);
+      // this.editForm.patchValue({
+      //   image: base64Data,
+      //   imageContentType: file.type
+      // });
+    };
+  }
+
+  changeClass() {
+    if (this.fontClass == 3) {
+      this.fontClass = 0;
+    } else {
+      this.fontClass = this.fontClass + 1;
+    }
+
   }
 
 
