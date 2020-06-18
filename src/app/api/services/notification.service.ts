@@ -21,33 +21,30 @@ export class NotificationService {
   create(notification: INotification): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(notification);
     return this.http
-      .post<INotification>(this.resourceUrl, copy, { observe: 'response' })
+      .post<INotification>(this.resourceUrl + '/custom' , copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
-
   update(notification: INotification): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(notification);
     return this.http
       .put<INotification>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
-
   find(id: number): Observable<EntityResponseType> {
     return this.http
       .get<INotification>(`${this.resourceUrl}/${id}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
-
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
-      .get<INotification[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .get<INotification[]>(this.resourceUrl + '/custom/my', { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
   queryCount(req?: any): Observable<CountResponseType> {
     const options = createRequestOption(req);
     return this.http
-      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .get<number>(this.resourceUrl + '/count/custom/my' , { params: options, observe: 'response' })
       .pipe();
   }
 
@@ -61,7 +58,6 @@ export class NotificationService {
     });
     return copy;
   }
-
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
       res.body.date = res.body.date ? moment(res.body.date) : undefined;
