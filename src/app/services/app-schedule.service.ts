@@ -22,8 +22,8 @@ export class AppScheduleService {
 
   getTodaySchedule(userId: number) {
 
-    this.scheduleService.query({
-      'userId.equals': userId
+    this.scheduleService.queryToday({
+      'userId.equals': userId,
     })
       .subscribe(result => {
         this.todaySchedule = result.body;
@@ -32,7 +32,7 @@ export class AppScheduleService {
   }
 
   getTomorrowSchedule(userId: number) {
-    this.scheduleService.query({
+    this.scheduleService.queryTomorrow({
       'userId.equals': userId
     })
       .subscribe(result => {
@@ -42,7 +42,7 @@ export class AppScheduleService {
   }
 
   getSoonSchedule(userId: number) {
-    this.scheduleService.query({
+    this.scheduleService.querySoon({
       'userId.equals': userId
     })
       .subscribe(result => {
