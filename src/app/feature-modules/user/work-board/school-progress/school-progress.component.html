@@ -15,12 +15,37 @@
   </div>
   <div class="s-p-c-c">
 
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
 
 
   </div>
 
 </div>
 <div class="s-p-p-a">
+  <br>
+  <p class="pa">Progress Analytics</p>
+  <br>
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType2">
+      </canvas>
+    </div>
+  </div>
 
 </div>
 <div class="s-p-r-p">

@@ -4,9 +4,9 @@
     <p>{{post?.content}}</p>
   </div>
 
-  <div class="c-c">
+  <div class="c-c" *ngIf="post?.featuredImage != null">
     <div class="p-c bcimg"
-         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post.featuredImage + ')' , 'height':'800px'}">
+         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post?.featuredImage + ')' , 'height':'800px'}">
     </div>
     <!--[ngStyle]="{'background-image':'url( https://' + i.imgs[0] + ')'}"-->
     <!--style="background-image: url('./assets/images/background2.jpg'); height: 800px"-->

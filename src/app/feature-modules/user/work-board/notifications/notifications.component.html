@@ -8,50 +8,32 @@
     <p class="nh">Notifications</p>
   </div>
 
+  <div>
+    <ngx-spinner bdColor="rgba(152,61,61,0)"
+                 size="default"
+                 color="#dddddd"
+                 type="ball-fall"
+                 [fullScreen]="false"
+                 name="notification"></ngx-spinner>
+  </div>
   <div class="w-con">
     <div class="w-b-m-con n-w-b-m-con">
-      <div class="w-b-con w-not nc">
-        <div class="s-w-not">
+      <div class="w-b-con w-not nc" *ngIf="notifications.length > 0">
+        <div class="s-w-not" *ngFor="let n of notifications; let i = index;">
           <div class="w-i-c">
             <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
           </div>
           <div class="w-c-c">
             <p>Burns Marks</p>
-            <p class="sm">Shared an ETA</p>
+            <p class="sm">{{n.content}}</p>
             <hr>
           </div>
           <div class="n-t-c">
-            <p>1m ago</p>
-          </div>
-        </div>
-        <div class="s-w-not">
-          <div class="w-i-c">
-            <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-          </div>
-          <div class="w-c-c">
-            <p>Burns Marks</p>
-            <p class="sm">Shared an ETA</p>
-            <hr>
-          </div>
-          <div class="n-t-c">
-            <p>1m ago</p>
-          </div>
-        </div>
-        <div class="s-w-not">
-          <div class="w-i-c">
-            <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-          </div>
-          <div class="w-c-c">
-            <p>Burns Marks</p>
-            <p class="sm">Shared an ETA</p>
-            <hr>
-          </div>
-          <div class="n-t-c">
-            <p>1m ago</p>
+            <p>{{n.date | date:'MMM d, y, h:mm a'}}</p>
           </div>
         </div>
       </div>
-      <div class="w-b-con w-not ncr">
+      <div class="w-b-con w-not ncr" *ngIf="notifications.length > 0">
         <div class="s-w-not">
           <div class="w-i-c">
             <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
@@ -91,7 +73,6 @@
             <p>1m ago</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>

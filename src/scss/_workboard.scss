@@ -46,6 +46,7 @@
 
   .nc{
     background-color: #6059ea;
+    min-height: 100px;
     .s-w-not:last-child{
       hr{
         margin-top: 20px;
@@ -70,6 +71,7 @@
     background-color: #b93ed9;
     padding: 10px;
     border-radius: 20px;
+    min-height: 70px;
   }
   .sp{
     background-color: #ea8755;
@@ -124,6 +126,8 @@
       }
       .sm{
         opacity: 0.5;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
@@ -187,6 +191,7 @@
 
 .tc{
   background-color: #665eff !important;
+  min-height: 70px;
 }
 .soon{
   background-color: #78849e !important;

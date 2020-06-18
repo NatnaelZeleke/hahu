@@ -9,41 +9,31 @@
       </div>
     </div>
   </div>
-  <div class="w-b-m-con">
+  <div class="w-b-m-con"  >
     <div class="w-b-con w-not nc">
-      <div class="s-w-not">
+      <ngx-spinner bdColor="rgba(152,61,61,0)"
+                   size="default"
+                   color="#dddddd"
+                   type="ball-fall"
+                   [fullScreen]="false"
+                   name="wNotification"></ngx-spinner>
+      <div class="s-w-not" *ngFor="let n of notifications; let i =index;">
         <div class="w-i-c">
           <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
         </div>
         <div class="w-c-c">
           <p>Burns Marks</p>
-          <p class="sm">Shared an ETA</p>
-          <hr>
-        </div>
-      </div>
-      <div class="s-w-not">
-        <div class="w-i-c">
-          <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-        </div>
-        <div class="w-c-c">
-          <p>Burns Marks</p>
-          <p class="sm">Shared an ETA</p>
-          <hr>
-        </div>
-      </div>
-      <div class="s-w-not">
-        <div class="w-i-c">
-          <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-        </div>
-        <div class="w-c-c">
-          <p>Burns Marks</p>
-          <p class="sm">Shared an ETA</p>
+          <p class="sm">{{n.content}}</p>
           <hr>
         </div>
       </div>
       <div class="d-a" routerLink="../notifications">
         <i class="fa fa-angle-down"></i>
       </div>
+
+    </div>
+    <div>
+
     </div>
   </div>
   <div class="container">
@@ -59,17 +49,15 @@
         <p class="w-h">Today</p>
       </div>
       <div class="sc-c-c">
-        <div class="custom-control custom-checkbox">
+        <ngx-spinner bdColor="rgba(152,61,61,0)"
+                     size="default"
+                     color="#dddddd"
+                     type="ball-fall"
+                     [fullScreen]="false"
+                     name="scheduleDashboard"></ngx-spinner>
+        <div class="custom-control custom-checkbox" *ngFor="let s of todaySchedule; let i = index;">
           <input type="checkbox" class="custom-control-input" id="customCheck1">
-          <label class="custom-control-label" for="customCheck1"><del>Start your book. </del></label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck2">
-          <label class="custom-control-label" for="customCheck2">Arrange a sit down.</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck3">
-          <label class="custom-control-label" for="customCheck3">Just relax.</label>
+          <label class="custom-control-label" for="customCheck1"><del>{{s.title}}</del></label>
         </div>
 
       </div>

@@ -22,20 +22,20 @@
       <div class="w-b-con w-not sc">
         <div>
           <p class="w-h d-inline-block">Today</p>
-          <i class="fa fa-plus ps"></i>
+          <i class="fa fa-plus ps" (click)="addSchedule(true,false,false, 'Add Today Schedule')"></i>
         </div>
+
         <div class="sc-c-c">
-          <div class="custom-control custom-checkbox">
+          <ngx-spinner bdColor="rgba(152,61,61,0)"
+                       size="small"
+                       color="#dddddd"
+                       type="ball-fall"
+                       [fullScreen]="false"
+                       name="todaySchedule"></ngx-spinner>
+          <div class="custom-control custom-checkbox" *ngFor="let ts of todaySchedule; let i = index;">
             <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1"><del>Start your book. </del></label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck2">
-            <label class="custom-control-label" for="customCheck2">Arrange a sit down.</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck3">
-            <label class="custom-control-label" for="customCheck3">Just relax.</label>
+            <label class="custom-control-label" for="customCheck1">{{ts.title}} </label>
+            <!--<label class="custom-control-label" for="customCheck1"><del>{{ts.title}} </del></label>-->
           </div>
 
         </div>
@@ -48,21 +48,22 @@
       <div class="w-b-con w-not sc tc">
         <div>
           <p class="w-h d-inline-block">Tomorrow</p>
-          <i class="fa fa-plus ps"></i>
+          <i class="fa fa-plus ps" (click)="addSchedule(false,true,false, 'Add Tomorrow Schedule')"></i>
         </div>
         <div class="sc-c-c">
-          <div class="custom-control custom-checkbox">
+          <ngx-spinner bdColor="rgba(152,61,61,0)"
+                       size="small"
+                       color="#dddddd"
+                       type="ball-fall"
+                       [fullScreen]="false"
+                       name="tomorrowSchedule"></ngx-spinner>
+          <div class="custom-control custom-checkbox" *ngFor="let ts of tomorrowSchedule;let i = index;">
             <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1"><del>Start your book. </del></label>
+            <label class="custom-control-label" for="customCheck1">
+              <del>{{ts.title}}</del>
+            </label>
           </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck2">
-            <label class="custom-control-label" for="customCheck2">Arrange a sit down.</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck3">
-            <label class="custom-control-label" for="customCheck3">Just relax.</label>
-          </div>
+
 
         </div>
       </div>
@@ -71,22 +72,24 @@
     <div class="w-b-m-con sch-con">
       <div class="w-b-con w-not sp soon">
         <div>
-          <p class="w-h d-inline-block">Soon</p>
-          <i class="fa fa-plus ps"></i>
+          <p class="w-h d-inline-block" >Soon</p>
+          <i class="fa fa-plus ps" (click)="addSchedule(false,false,true, 'Add Soon Schedule')"></i>
         </div>
-        <!--<div class="sp-c">-->
-          <!--<div class="sp-s-c">-->
-            <!--<div class="text">Last average result obtained</div>-->
-            <!--<div class="result">78%</div>-->
-          <!--</div>-->
-          <!--<div class="sp-s-c">-->
-            <!--<div class="text">Ranking</div>-->
-            <!--<div class="result">6</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="d-a">-->
-          <!--<i class="fa fa-angle-down"></i>-->
-        <!--</div>-->
+        <div class="sc-c-c">
+          <ngx-spinner bdColor="rgba(152,61,61,0)"
+                       size="small"
+                       color="#dddddd"
+                       type="ball-fall"
+                       [fullScreen]="false"
+                       name="soonSchedule"></ngx-spinner>
+          <div class="custom-control custom-checkbox" *ngFor="let ts of soonSchedules;let i = index;">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1">
+              <del>{{ts.title}}</del>
+            </label>
+          </div>
+
+        </div>
       </div>
     </div>
     <div>
@@ -95,3 +98,5 @@
   </div>
 
 </div>
+
+

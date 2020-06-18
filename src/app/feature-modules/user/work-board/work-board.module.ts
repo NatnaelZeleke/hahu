@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SchoolProgressComponent } from './school-progress/school-progress.component';
+import { AddScheduleComponent } from './schedule/add-schedule/add-schedule.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { SchoolProgressComponent } from './school-progress/school-progress.compo
     WorkBoardRoutingModule,
     SharedModule
   ],
-  declarations: [DashboardComponent, NotificationsComponent, ScheduleComponent, SchoolProgressComponent]
+  declarations: [DashboardComponent, NotificationsComponent, ScheduleComponent, SchoolProgressComponent, AddScheduleComponent],
+  entryComponents: [AddScheduleComponent]
+
 })
 export class WorkBoardModule {
 }

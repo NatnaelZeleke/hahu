@@ -98,7 +98,6 @@
     margin-bottom: 0;
   }
 }
-
 .tags-con {
   margin-bottom: 8px;
   &.ht{
@@ -107,7 +106,6 @@
     width: 700px;
   }
 }
-
 .tags {
   display: inline-block;
   border-radius: 21px;
@@ -132,8 +130,6 @@
     padding: 5px;
   }
 }
-
-
 .hashtags-con {
   @extend .clearfix;
   padding: 10px;
@@ -143,23 +139,16 @@
     margin-right: 10px;
   }
 }
-
 .i-b {
   width: 150px;
   height: 150px;
   border-radius: 10px;
 }
-
-
-
-
 .tag-l-c{
   position: absolute;
   right: 30px;
   bottom: 8px;
 }
-
-
 .cap-b{
   background-color: #2b2e3f;
   color: #fff;
@@ -167,4 +156,41 @@
   p{
     margin-bottom: 0;
   }
+}
+.big-c-c{
+  position: absolute;
+  left: 42%;
+  bottom: 34px;
+  .c{
+    i{
+      font-size: 27px;
+      transform: rotate(-30deg);
+    }
+    line-height: 72px;
+    margin: 0 auto 40px;
+    background-color: #3acce1;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    text-align: center;
+  }
+}
+
+
+.fc0{
+  font-size: 15px !important;
+}
+.fc1{
+  font-size: 18px !important;
+}
+.fc2{
+  font-size: 21px !important;
+}
+.fc3{
+  font-size: 24px !important;
+}
+
+.pa{
+  color: #fff;
+  margin: 10px;
 }

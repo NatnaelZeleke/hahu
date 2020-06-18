@@ -13,6 +13,7 @@ import {JwtInterceptor} from './auth/jwt.interceptor';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
 import {LoaderInterceptorService} from './interceptors/loader-interceptor.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AccService} from './services/acc.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
+    AccService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent]
