@@ -5,6 +5,7 @@ export interface ISchedule {
   title?: string;
   startTime?: Moment;
   endTime?: Moment;
+  markAsDone?: boolean;
   userLogin?: string;
   userId?: number;
   userGroupName?: string;
@@ -19,11 +20,14 @@ export class Schedule implements ISchedule {
     public title?: string,
     public startTime?: Moment,
     public endTime?: Moment,
+    public markAsDone?: boolean,
     public userLogin?: string,
     public userId?: number,
     public userGroupName?: string,
     public userGroupId?: number,
     public scheduleTypeName?: string,
     public scheduleTypeId?: number
-  ) {}
+  ) {
+    this.markAsDone = this.markAsDone || false;
+  }
 }
