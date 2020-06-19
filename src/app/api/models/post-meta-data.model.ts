@@ -1,10 +1,12 @@
+import {IPost} from './post.model';
+
 export interface IPostMetaData {
   id?: number;
   name?: string;
   value?: string;
   blobValueContentType?: string;
   blobValue?: any;
-  postId?: number;
+  posts?: IPost[];
 }
 
 export class PostMetaData implements IPostMetaData {
@@ -14,6 +16,6 @@ export class PostMetaData implements IPostMetaData {
     public value?: string,
     public blobValueContentType?: string,
     public blobValue?: any,
-    public postId?: number
+    public posts?: IPost[]
   ) {}
 }
