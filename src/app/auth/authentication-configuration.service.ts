@@ -5,7 +5,7 @@ import {ApiConfiguration} from './api-configuration';
   providedIn: 'root'
 })
 export class AuthenticationConfigurationService {
-  public tokenKey = 'addis_bid_access_token_key';
+  public tokenKey = 'hahu_app_key';
   public loginLink = '/home';
   public baseUrl = this.apiConfiguration.rootUrl;
   public roleKey = 'addis_bid_role_key';

@@ -8,6 +8,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
+import {PopoverModule} from 'ngx-bootstrap/popover';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     AlertModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    PopoverModule.forRoot()
   ] ,
   exports: [
     BsDropdownModule,
@@ -25,7 +27,8 @@ import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
     BsDatepickerModule,
     PaginationModule,
     AlertModule,
-    ProgressbarModule
+    ProgressbarModule,
+    PopoverModule
   ],
   declarations: []
 })

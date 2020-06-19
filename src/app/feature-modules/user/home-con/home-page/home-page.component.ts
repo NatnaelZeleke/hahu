@@ -42,7 +42,7 @@ export class HomePageComponent implements OnInit {
       });
 
     this.tagService.getTags();
-    this.createContent();
+    // this.createContent();
   }
 
   loadPost() {

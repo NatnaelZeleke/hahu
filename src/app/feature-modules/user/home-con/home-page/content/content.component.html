@@ -19,54 +19,91 @@
   </div>
 </div>
 
-<div class="c-d-c-v">
+<div class="c-d-c-v dcc" [ngClass]="backGround">
 
-  <!--<div class="d-inline-block">-->
-  <!--<div class="suic" *ngFor="let item of files;let i=index">-->
-  <!--<div class="i-b bcimg" [ngfBackground]="item"></div>-->
-  <!--<p class="sd">size : {{ item.size/1024/1024 | number:'.2' }} MB</p>-->
-  <!--<label class="badge badge-secondary" (click)="files.splice(i,1)"><i class="fa fa-trash"></i>-->
-  <!--Delete</label>-->
-  <!--</div>-->
-  <!--</div>-->
+    <!--<div class="d-inline-block">-->
+    <!--<div class="suic" *ngFor="let item of files;let i=index">-->
+    <!--<div class="i-b bcimg" [ngfBackground]="item"></div>-->
+    <!--<p class="sd">size : {{ item.size/1024/1024 | number:'.2' }} MB</p>-->
+    <!--<label class="badge badge-secondary" (click)="files.splice(i,1)"><i class="fa fa-trash"></i>-->
+    <!--Delete</label>-->
+    <!--</div>-->
+    <!--</div>-->
 
-  <div class="data-con">
-    <div class="caption-con" [ngClass]= "'fc' + fontClass">
-      {{caption}}
-    </div>
-    <div class="i-c">
-      <div *ngIf="file != null">
-        <div class="im bcimg" [ngStyle]="{'background-image':'url(' + file + ')'}">
+    <div class="data-con">
+      <div class="caption-con" [ngClass]="'fc' + fontClass">
+        {{caption}}
+      </div>
+
+
+
+
+
+      <div class="i-c">
+        <div *ngIf="file != null">
+          <div class="im bcimg" [ngStyle]="{'background-image':'url(' + file + ')'}">
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="hashtags-con">
+      <div class="hashtags" *ngFor="let t of tags; let i = index;">#{{t?.name}}</div>
+      <br>
+      <br>
+      <br>
+
+    </div>
+
   </div>
 
-  <div class="hashtags-con">
-    <div class="hashtags" *ngFor="let t of tags; let i = index;">#{{t?.name}}</div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-  </div>
 
-</div>
 
 <div class="c-f-c">
   <div class="container t-a-c">
+
     <div class="big-c-c">
       <div class="c">
         <i class="fa fa-camera"></i>
       </div>
-
     </div>
+
+
+    <ng-template #popTemplate>
+      <div class="container">
+        <div class="row pu-c dcc">
+          <div class="bc-c ww wb" (click)="changeBackground('ww')"></div>
+          <div class="bc-c gg" (click)="changeBackground('gg')"></div>
+          <div class="bc-c bb" (click)="changeBackground('bb')"></div>
+          <div class="bc-c grn" (click)="changeBackground('grn')"></div>
+          <div class="bc-c dg" (click)="changeBackground('dg')"></div>
+          <div class="bc-c lb" (click)="changeBackground('lb')"></div>
+          <div class="bc-c db" (click)="changeBackground('db')"></div>
+
+        </div>
+        <div class="row pu-c dcc">
+
+          <div class="bc-c pp" (click)="changeBackground('pp')"></div>
+          <div class="bc-c dp" (click)="changeBackground('dp')"></div>
+          <div class="bc-c rr" (click)="changeBackground('rr')"></div>
+          <div class="bc-c dr" (click)="changeBackground('dr')"></div>
+          <div class="bc-c bb" (click)="changeBackground('bb')"></div>
+
+          <div class="bc-c do" (click)="changeBackground('do')"></div>
+          <div class="bc-c oo" (click)="changeBackground('oo')"></div>
+        </div>
+      </div>
+
+    </ng-template>
+
+
     <div class="row">
       <div class="col"><label for="imageimput"><i class="fa fa-photo"></i></label></div>
       <div class="col" (click)="changeClass()"><p>አa</p></div>
       <div class="col"><p>GIF</p></div>
       <div class="col"><i class="fa fa-link"></i></div>
-      <div class="col"><p>Bg</p></div>
+      <div class="col" [popover]="popTemplate"
+           [outsideClick]="true"><p>Bg</p></div>
       <div class="col"><i class="fa fa-paint-brush"></i></div>
       <div class="col"><i class="fa fa-eye"></i></div>
     </div>
@@ -87,7 +124,7 @@
 </div>
 
 <!--<div>-->
-  <!--<input type="file" id="newFileSelect" accept="image/*" (change)="onFileInputChange($event)">-->
+<!--<input type="file" id="newFileSelect" accept="image/*" (change)="onFileInputChange($event)">-->
 <!--</div>-->
 
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)"

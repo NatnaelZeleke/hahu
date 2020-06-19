@@ -1,16 +1,21 @@
 <div class="post">
 
-  <div class="cap-b" *ngIf="post?.content != null">
+  <div class="cap-b" *ngIf="post?.content != null" (click)="toggleTags()">
     <p>{{post?.content}}</p>
   </div>
 
-  <div class="c-c" *ngIf="post?.featuredImage != null">
+  <div class="c-c" *ngIf="post?.featuredImage != null" (click)="toggleTags()">
     <div class="p-c bcimg"
          [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post?.featuredImage + ')' , 'height':'800px'}">
     </div>
     <!--[ngStyle]="{'background-image':'url( https://' + i.imgs[0] + ')'}"-->
     <!--style="background-image: url('./assets/images/background2.jpg'); height: 800px"-->
   </div>
+
+  <div class="p-t-c" *ngIf="showTags">
+    <p *ngFor="let t of post?.tags">#{{t.name}}</p>
+  </div>
+
   <div class="p-con-c">
 
     <div class="container ">
@@ -28,9 +33,12 @@
 
         <div class="col-6">
           <div class="ic-c">
-            <div class="a-con more">
+            <div class="a-con more" [popover]="menuTemplate"
+                 [outsideClick]="true">
 
-              <!--<i class="fa fa-ellipsis-v"></i>-->
+              <i class="fa fa-ellipsis-v" ></i>
+
+
             </div>
             <div class="a-con" (click)="like()">
               <div class="value">{{likeCount || ''}}</div>
@@ -72,6 +80,16 @@
 
   </div>
 </div>
+
+<ng-template #menuTemplate >
+  <div class="e-m">
+    <p>Share</p>
+    <p>Save</p>
+    <p>Report</p>
+    <p>Notify me</p>
+  </div>
+
+</ng-template>
 
 <!--<div class="container">-->
 <!--<div class="row">-->

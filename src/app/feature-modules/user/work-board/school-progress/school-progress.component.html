@@ -11,12 +11,62 @@
 </div>
 <div class="s-p-c">
   <div class="s-h-t">
-      <p>Statistics</p>
+    <p>Statistics</p>
   </div>
+
+  <div class="s-m-c">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <select class="form-control f" id="exampleFormControlSelect1">
+              <option>MID 1</option>
+              <option>MID 2</option>
+              <option>MID 3</option>
+              <option>MID 4</option>
+              <option>MID 5</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <select class="form-control s" id="2">
+              <option>Semester 1</option>
+              <option>Semester 2</option>
+              <option>Semester 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <select class="form-control l" id="3">
+              <option>2021</option>
+              <option>2022</option>
+              <option>2023</option>
+              <option>2024</option>
+              <option>2025</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="s-p-c-c">
 
     <div>
-      <div style="display: block">
+      <div class="a-r-c">
+        <p>74%  <span><small>cumulative average result</small></span></p>
+      </div>
+      <div style="display: block" class="p-r">
+        <div class="l-c">
+          <ngx-spinner bdColor="rgba(152,61,61,0)"
+                       size="default"
+                       color="#2b2e3f"
+                       type="ball-fall"
+                       [fullScreen]="false"
+                       name="barChart"></ngx-spinner>
+        </div>
         <canvas baseChart
                 [datasets]="barChartData"
                 [labels]="barChartLabels"
@@ -27,27 +77,33 @@
       </div>
     </div>
 
-
   </div>
 
-</div>
-<div class="s-p-p-a">
-  <br>
-  <p class="pa">Progress Analytics</p>
-  <br>
-  <div>
-    <div style="display: block">
-      <canvas baseChart
-              [datasets]="barChartData"
-              [labels]="barChartLabels"
-              [options]="barChartOptions"
-              [legend]="barChartLegend"
-              [chartType]="barChartType2">
-      </canvas>
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-12 p-r-c">
+        <div class="card">
+          <div class="card-body  row">
+            <div class="col">
+              <h2>75</h2>
+              <small>avgr</small>
+            </div>
+            <div class="col">
+              <h2>50</h2>
+              <small>below avgr</small>
+            </div>
+            <div class="col">
+              <h2>85</h2>
+              <small>satisfactory</small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
 </div>
+
 <div class="s-p-r-p">
   <div class="rh-c">
     <p class="rh">Recommended pages</p>
@@ -104,8 +160,8 @@
         <p class="va">View Article</p>
       </div>
     </div>
-    <div class="sm-c sm-s-l">
-      <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background2.jpg')">
+    <div class="sm-c">
+      <div class="sm-c-i bcimg" style="background-image: url('./assets/images/profile2.jpg')">
       </div>
       <div class="desc-c">
         <p>Title of subject</p>
@@ -113,8 +169,8 @@
         <p class="va">View Article</p>
       </div>
     </div>
-    <div class="sm-c sm-s-l">
-      <div class="sm-c-i bcimg" style="background-image: url('./assets/images/traffic.jpg')">
+    <div class="sm-c">
+      <div class="sm-c-i bcimg" style="background-image: url('./assets/images/profile2.jpg')">
       </div>
       <div class="desc-c">
         <p>Title of subject</p>
@@ -123,26 +179,6 @@
       </div>
     </div>
 
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col al-h-c">
-        <p class="float-left l">Album</p>
-        <p class="float-right r">View All</p>
-      </div>
-    </div>
-
-  </div>
-  <div class="">
-    <div class="al-c">
-      <div class="im bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-      <div class="im bcimg" style="background-image: url('./assets/images/background2.jpg')"></div>
-      <div class="im bcimg" style="background-image: url('./assets/images/background3.jpg')"></div>
-      <div class="im bcimg" style="background-image: url('./assets/images/profile.jpg')"></div>
-      <div class="im bcimg" style="background-image: url('./assets/images/profile2.jpg')"></div>
-      <div class="im bcimg" style="background-image: url('./assets/images/profile3.jpg')"></div>
-    </div>
   </div>
 
 
@@ -157,7 +193,6 @@
     <br>
     <br>
   </div>
-
 
 
 </div>

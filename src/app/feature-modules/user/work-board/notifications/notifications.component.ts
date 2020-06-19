@@ -21,7 +21,6 @@ export class NotificationsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.accountService.getUserAcc()
       .subscribe(result => {
         this.account = result;

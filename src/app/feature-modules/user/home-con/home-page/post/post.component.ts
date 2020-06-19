@@ -34,6 +34,7 @@ export class PostComponent implements OnInit {
   isCommentLoaded = false;
   commentPlaceHolder = '';
   user: IUser;
+  showTags  = false;
 
   constructor(public postService: ProfileService,
               public likeService: LikesService,
@@ -187,4 +188,7 @@ export class PostComponent implements OnInit {
   }
 
 
+  toggleTags() {
+    this.showTags = !this.showTags;
+  }
 }

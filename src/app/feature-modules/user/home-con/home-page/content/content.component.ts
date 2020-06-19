@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TagsComponent} from './tags/tags.component';
 import {HashtagService} from '../../../../../services/hashtag.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {HttpClient, HttpEvent, HttpRequest, HttpResponse} from '@angular/common/http';
 import {PostService} from '../../../../../api/services/post.service';
 import {AccService} from '../../../../../services/acc.service';
@@ -14,6 +14,9 @@ import {ITag} from '../../../../../api/models/tag.model';
 import {AppPostService} from '../../../../../services/app-post.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {PostMetaDataService} from '../../../../../api/services/post-meta-data.service';
+import {IPostMetaData} from '../../../../../api/models/post-meta-data.model';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-content',
@@ -47,6 +50,8 @@ export class ContentComponent implements OnInit {
 
   // current font class
   fontClass = 0;
+  backGround = 'ww';
+
 
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
@@ -56,7 +61,8 @@ export class ContentComponent implements OnInit {
               public postService: PostService,
               public accService: AccService,
               public appPostService: AppPostService,
-              private spinner: NgxSpinnerService) {
+              private spinner: NgxSpinnerService,
+              public metaDataService: PostMetaDataService) {
   }
 
   ngOnInit() {
@@ -135,14 +141,35 @@ export class ContentComponent implements OnInit {
     this.postService.create(post)
       .subscribe(result => {
         this.appPostService.addPost(result.body);
-        this.spinner.hide('posting');
-        this.tagService.resetTags();
-        this.bsModalRef.hide();
-
-        // console.log(result);
+        this.addPostMetaData(result.body.id);
       }, () => {
-        this.spinner.hide('posting');
+        // this.spinner.hide('posting');
       });
+  }
+
+  addPostMetaData(postId: number) {
+    this.addMetaData('fontSize', 'fc' + this.fontClass.toString(), postId)
+      .subscribe(result => {
+        this.addMetaData('backgrdound', this.backGround, postId)
+          .subscribe(result2 => {
+            this.spinner.hide('posting');
+            this.tagService.resetTags();
+            this.bsModalRef.hide();
+          });
+      });
+  }
+
+
+  addMetaData(name: string, value: string, postId: number): Observable<IPostMetaData> {
+    const body: IPostMetaData = {
+      name: name,
+      value: value,
+      postId: postId
+    };
+    return this.metaDataService.create(body)
+      .pipe(map(result => {
+        return result.body;
+      }));
   }
 
   changeListener(event: Event): void {
@@ -169,13 +196,15 @@ export class ContentComponent implements OnInit {
     } else {
       this.fontClass = this.fontClass + 1;
     }
-
   }
 
+  changeBackground(bgClass: string) {
+
+    this.backGround = bgClass;
+  }
 
   getDate() {
     return new Date();
   }
-
 
 }
