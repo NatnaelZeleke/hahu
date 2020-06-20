@@ -12,6 +12,8 @@ export interface INotification {
   link?: string;
   date?: Moment;
   markAsRead?: boolean;
+  notifierLogin?: string;
+  notifierId?: number;
   userLogin?: string;
   userId?: number;
   notificationMetaData?: INotificationMetaData[];
@@ -30,6 +32,8 @@ export class Notification implements INotification {
     public link?: string,
     public date?: Moment,
     public markAsRead?: boolean,
+    public notifierLogin?: string,
+    public notifierId?: number,
     public userLogin?: string,
     public userId?: number,
     public notificationMetaData?: INotificationMetaData[],
