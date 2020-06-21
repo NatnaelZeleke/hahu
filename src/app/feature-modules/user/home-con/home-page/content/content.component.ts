@@ -51,7 +51,7 @@ export class ContentComponent implements OnInit {
   // current font class
   fontClass = 0;
   backGround = 'ww';
-
+  showIcons = true;
 
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
@@ -207,4 +207,7 @@ export class ContentComponent implements OnInit {
     return new Date();
   }
 
+  toggleIcons() {
+    this.showIcons = !this.showIcons;
+  }
 }

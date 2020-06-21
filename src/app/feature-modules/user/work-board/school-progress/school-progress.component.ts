@@ -29,7 +29,6 @@ export class SchoolProgressComponent implements OnInit {
         }
       }]
     },
-
   };
   public barChartLabels = [];
   public barChartType = 'bar';
@@ -70,10 +69,13 @@ export class SchoolProgressComponent implements OnInit {
 
   filterResult(result: ISchoolProgress[]) {
     for (let i = 0; i < result.length; i++) {
-      this.barChartLabels.push(result[i].subject);
+      this.barChartLabels.push(result[i].subjectName);
       this.barChartData[0].data.push(result[i].result);
     }
   }
 
 
+  midChnage(event: any) {
+    console.log(event);
+  }
 }

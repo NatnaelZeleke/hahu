@@ -37,8 +37,6 @@ export class ScheduleComponent implements OnInit {
         this.account = result;
         this.getSchedules();
       });
-
-
   }
 
   getSchedules() {
@@ -72,13 +70,10 @@ export class ScheduleComponent implements OnInit {
   }
 
 
-  addSchedule(isToday: boolean, isTomorrow: boolean, isSoon: boolean, title: string) {
+  addSchedule() {
     const initialState = {
-      title: title,
+      title: 'Add Schedule',
       message: '',
-      today: isToday,
-      tomorrow: isTomorrow,
-      soon: isSoon,
       account: this.account
     };
     this.modalService.show(AddScheduleComponent, {
@@ -88,6 +83,28 @@ export class ScheduleComponent implements OnInit {
   }
 
   changeStatus() {
+
+  }
+
+  toggleTask(i: number, type: number) {
+    console.log(i + '' + type);
+    if (type == 1) {
+      this.todaySchedule[i].markAsDone = this.todaySchedule[i].markAsDone ? false : true;
+
+      console.log(this.todaySchedule[i]);
+      this.appScheduleService.markAsRead(this.todaySchedule[i])
+        .subscribe(result => {
+
+        });
+    }
+    // else if (type == 2) {
+    //   this.tomorrowSchedule[i].markAsDone = !this.tomorrowSchedule[i].markAsDone;
+    //   // this.appScheduleService.markAsRead(this.tomorrowSchedule[i]);
+    // }
+    // else if (type == 3) {
+    //   this.soonSchedules[i].markAsDone = !this.soonSchedules[i].markAsDone;
+    //   // this.appScheduleService.markAsRead(this.soonSchedules[i]);
+    // }
 
   }
 

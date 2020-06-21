@@ -21,42 +21,38 @@
 
 <div class="c-d-c-v dcc" [ngClass]="backGround">
 
-    <!--<div class="d-inline-block">-->
-    <!--<div class="suic" *ngFor="let item of files;let i=index">-->
-    <!--<div class="i-b bcimg" [ngfBackground]="item"></div>-->
-    <!--<p class="sd">size : {{ item.size/1024/1024 | number:'.2' }} MB</p>-->
-    <!--<label class="badge badge-secondary" (click)="files.splice(i,1)"><i class="fa fa-trash"></i>-->
-    <!--Delete</label>-->
-    <!--</div>-->
-    <!--</div>-->
+  <!--<div class="d-inline-block">-->
+  <!--<div class="suic" *ngFor="let item of files;let i=index">-->
+  <!--<div class="i-b bcimg" [ngfBackground]="item"></div>-->
+  <!--<p class="sd">size : {{ item.size/1024/1024 | number:'.2' }} MB</p>-->
+  <!--<label class="badge badge-secondary" (click)="files.splice(i,1)"><i class="fa fa-trash"></i>-->
+  <!--Delete</label>-->
+  <!--</div>-->
+  <!--</div>-->
 
-    <div class="data-con">
-      <div class="caption-con" [ngClass]="'fc' + fontClass">
-        {{caption}}
-      </div>
-
-
+  <div class="data-con">
+    <div class="caption-con" [ngClass]="'fc' + fontClass">
+      {{caption}}
+    </div>
 
 
-
-      <div class="i-c">
-        <div *ngIf="file != null">
-          <div class="im bcimg" [ngStyle]="{'background-image':'url(' + file + ')'}">
-          </div>
+    <div class="i-c">
+      <div *ngIf="file != null">
+        <div class="im bcimg" [ngStyle]="{'background-image':'url(' + file + ')'}">
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="hashtags-con">
-      <div class="hashtags" *ngFor="let t of tags; let i = index;">#{{t?.name}}</div>
-      <br>
-      <br>
-      <br>
-
-    </div>
+  <div class="hashtags-con">
+    <div class="hashtags" *ngFor="let t of tags; let i = index;">#{{t?.name}}</div>
+    <br>
+    <br>
+    <br>
 
   </div>
 
+</div>
 
 
 <div class="c-f-c">
@@ -97,7 +93,7 @@
     </ng-template>
 
 
-    <div class="row">
+    <div class="row" [ngClass]="showIcons ? '': 't-i'">
       <div class="col"><label for="imageimput"><i class="fa fa-photo"></i></label></div>
       <div class="col" (click)="changeClass()"><p>አa</p></div>
       <div class="col"><p>GIF</p></div>
@@ -105,7 +101,10 @@
       <div class="col" [popover]="popTemplate"
            [outsideClick]="true"><p>Bg</p></div>
       <div class="col"><i class="fa fa-paint-brush"></i></div>
-      <div class="col"><i class="fa fa-eye"></i></div>
+      <div class="col">
+        <i class="fa fa-eye-slash" (click)="toggleIcons()"></i>
+        <i class="fa fa-eye" *ngIf="!showIcons" (click)="toggleIcons()"></i>
+      </div>
     </div>
 
   </div>

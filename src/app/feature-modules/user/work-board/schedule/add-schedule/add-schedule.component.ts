@@ -6,6 +6,7 @@ import {ISchedule} from '../../../../../api/models/schedule.model';
 import {Account} from '../../../../../api/models/account.model';
 import * as moment from 'moment';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-add-schedule',
@@ -17,10 +18,9 @@ export class AddScheduleComponent implements OnInit {
   scheduleForm: FormGroup;
   submitted = false;
   account: Account;
-  today: boolean;
-  tomorrow: boolean;
-  soon: boolean;
+  minDate: Date;
 
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(public bsModalRef: BsModalRef,
               public formBuilder: FormBuilder,
@@ -31,8 +31,14 @@ export class AddScheduleComponent implements OnInit {
   ngOnInit() {
 
     this.scheduleForm = this.formBuilder.group({
-      title: ['', Validators.required]
+      title: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required]
     });
+    this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate());
+    this.bsConfig = Object.assign({}, {containerClass: 'theme-dark-blue'});
+
   }
 
 
@@ -43,10 +49,11 @@ export class AddScheduleComponent implements OnInit {
       const sch: ISchedule = {
         title: this.scheduleForm.value.title,
         userId: this.account.id,
-        startTime: moment().startOf('second'),
-        endTime: moment().startOf('second')
+        startTime: moment(new Date(this.scheduleForm.value.startDate)),
+        endTime: moment(new Date(this.scheduleForm.value.endDate))
       };
-      this.scheduleService.addSchedule(sch, this.today, this.tomorrow, this.soon)
+
+      this.scheduleService.addSchedule(sch)
         .subscribe(result => {
           this.spinner.hide('addSchedule');
           this.bsModalRef.hide();

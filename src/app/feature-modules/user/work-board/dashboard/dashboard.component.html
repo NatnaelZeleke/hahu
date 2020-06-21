@@ -1,7 +1,9 @@
 <div class="w-con">
+
   <div class="w-head">
     <p>WORK BOARD</p>
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col">
@@ -9,6 +11,7 @@
       </div>
     </div>
   </div>
+
   <div class="w-b-m-con"  >
     <div class="w-b-con w-not nc">
       <ngx-spinner bdColor="rgba(152,61,61,0)"
@@ -27,15 +30,18 @@
           <hr>
         </div>
       </div>
+      <div class="z-c" *ngIf="isNotificationLoaded" >
+        <p *ngIf="notifications.length == 0">No new notifications.</p>
+      </div>
       <div class="d-a" routerLink="../notifications">
         <i class="fa fa-angle-down"></i>
       </div>
-
     </div>
     <div>
 
     </div>
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col">
@@ -43,6 +49,7 @@
       </div>
     </div>
   </div>
+
   <div class="w-b-m-con">
     <div class="w-b-con w-not sc">
       <div>
@@ -56,10 +63,15 @@
                      [fullScreen]="false"
                      name="scheduleDashboard"></ngx-spinner>
         <div class="custom-control custom-checkbox" *ngFor="let s of todaySchedule; let i = index;">
-          <input type="checkbox" class="custom-control-input" id="customCheck1">
-          <label class="custom-control-label" for="customCheck1"><del>{{s.title}}</del></label>
+          <input type="checkbox" class="custom-control-input">
+          <label class="custom-control-label" >
+            <del *ngIf="ts?.markAsDone">{{s.title}}</del>
+            <span *ngIf="!ts?.markAsDone">{{s.title}}</span>
+          </label>
         </div>
-
+        <div class="z-c" *ngIf="isScheduleLoaded" >
+          <p *ngIf="todaySchedule.length == 0">No schedules for today.</p>
+        </div>
       </div>
       <div>
         <p class="w-h m-b-0">Tomorrow</p>
@@ -70,6 +82,7 @@
     </div>
 
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col">
@@ -77,6 +90,7 @@
       </div>
     </div>
   </div>
+
   <div class="w-b-m-con">
     <div class="w-b-con w-not sp">
       <div class="sp-c">
@@ -94,4 +108,5 @@
       </div>
     </div>
   </div>
+
 </div>

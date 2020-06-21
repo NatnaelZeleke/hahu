@@ -17,7 +17,9 @@ export class DashboardComponent implements OnInit {
 
   account: Account;
   notifications: INotification[] = [];
+  isNotificationLoaded  = false;
   todaySchedule: ISchedule[];
+  isScheduleLoaded = false;
 
   constructor(public notifService: NotificationService,
               public accountService: AccService,
@@ -47,8 +49,10 @@ export class DashboardComponent implements OnInit {
         .subscribe(result => {
           this.notifications = result.body;
           this.ngxSpinner.hide('wNotification');
+          this.isNotificationLoaded = true;
         }, (err) => {
           this.ngxSpinner.hide('wNotification');
+          this.isNotificationLoaded = true;
         });
     }
   }
@@ -61,8 +65,10 @@ export class DashboardComponent implements OnInit {
       .subscribe(result => {
         this.todaySchedule = result;
         this.ngxSpinner.hide('scheduleDashboard');
+        this.isScheduleLoaded = true;
       }, (err) => {
         this.ngxSpinner.hide('scheduleDashboard');
+        this.isScheduleLoaded = true;
       });
     this.scheduleService.getTodaySchedule(id);
   }

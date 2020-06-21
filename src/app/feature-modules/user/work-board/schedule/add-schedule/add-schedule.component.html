@@ -16,9 +16,45 @@
 
       <div class="form-group">
         <small>Title</small>
-        <input type="text" formControlName="title" placeholder="add schedule title" class="form-control">
+        <input type="text" formControlName="title" placeholder="add schedule title" class="form-control form-control-sm">
         <div *ngIf="submitted || (f.title.invalid && (f.title.dirty || f.title.touched))">
           <div *ngIf="scheduleForm.hasError('required',['title'])">
+            <small class="text-danger">
+              this field is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <small>Start Time</small>
+        <input type="text"
+               placeholder="start time"
+               formControlName="startDate"
+               class="form-control form-control-sm"
+               [bsConfig]="bsConfig"
+               [minDate]="minDate"
+               bsDatepicker>
+        <div *ngIf="submitted || (f.startDate.invalid && (f.startDate.dirty || f.startDate.touched))">
+          <div *ngIf="scheduleForm.hasError('required',['startDate'])">
+            <small class="text-danger">
+              this field is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <small>End Time</small>
+        <input type="text"
+               placeholder="end time"
+               formControlName="endDate"
+               class="form-control form-control-sm"
+               [bsConfig]="bsConfig"
+               [minDate]="minDate"
+               bsDatepicker>
+        <div *ngIf="submitted || (f.endDate.invalid && (f.endDate.dirty || f.endDate.touched))">
+          <div *ngIf="scheduleForm.hasError('required',['endDate'])">
             <small class="text-danger">
               this field is required
             </small>

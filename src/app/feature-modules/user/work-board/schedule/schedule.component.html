@@ -22,33 +22,35 @@
       <div class="w-b-con w-not sc">
         <div>
           <p class="w-h d-inline-block">Today</p>
-          <i class="fa fa-plus ps" (click)="addSchedule(true,false,false, 'Add Today Schedule')"></i>
+          <!--<i class="fa fa-plus ps" (click)="addSchedule(true,false,false, 'Add Today Schedule')"></i>-->
         </div>
 
         <div class="sc-c-c">
+
           <ngx-spinner bdColor="rgba(152,61,61,0)"
                        size="small"
                        color="#dddddd"
                        type="ball-fall"
                        [fullScreen]="false"
                        name="todaySchedule"></ngx-spinner>
+
           <div class="custom-control custom-checkbox" *ngFor="let ts of todaySchedule; let i = index;">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">{{ts.title}} </label>
-            <!--<label class="custom-control-label" for="customCheck1"><del>{{ts.title}} </del></label>-->
+            <input type="checkbox" class="custom-control-input" id="ts{{i}}" (change)="toggleTask(i,1)" >
+            <label class="custom-control-label" for="ts{{i}}">
+              <del *ngIf="ts.markAsDone">{{ts.title}}</del>
+              <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
+            </label>
           </div>
 
         </div>
-
       </div>
-
     </div>
     <br>
     <div class="w-b-m-con sch-con">
       <div class="w-b-con w-not sc tc">
         <div>
           <p class="w-h d-inline-block">Tomorrow</p>
-          <i class="fa fa-plus ps" (click)="addSchedule(false,true,false, 'Add Tomorrow Schedule')"></i>
+          <!--<i class="fa fa-plus ps" (click)="addSchedule(false,true,false, 'Add Tomorrow Schedule')"></i>-->
         </div>
         <div class="sc-c-c">
           <ngx-spinner bdColor="rgba(152,61,61,0)"
@@ -58,9 +60,10 @@
                        [fullScreen]="false"
                        name="tomorrowSchedule"></ngx-spinner>
           <div class="custom-control custom-checkbox" *ngFor="let ts of tomorrowSchedule;let i = index;">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">
-              <del>{{ts.title}}</del>
+            <input type="checkbox" class="custom-control-input" (change)="toggleTask(i,2)">
+            <label class="custom-control-label">
+              <del *ngIf="ts.markAsDone">{{ts.title}}</del>
+              <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
           </div>
 
@@ -72,8 +75,8 @@
     <div class="w-b-m-con sch-con">
       <div class="w-b-con w-not sp soon">
         <div>
-          <p class="w-h d-inline-block" >Soon</p>
-          <i class="fa fa-plus ps" (click)="addSchedule(false,false,true, 'Add Soon Schedule')"></i>
+          <p class="w-h d-inline-block">Soon</p>
+          <!--<i class="fa fa-plus ps" (click)="addSchedule(false,false,true, 'Add Soon Schedule')"></i>-->
         </div>
         <div class="sc-c-c">
           <ngx-spinner bdColor="rgba(152,61,61,0)"
@@ -83,9 +86,10 @@
                        [fullScreen]="false"
                        name="soonSchedule"></ngx-spinner>
           <div class="custom-control custom-checkbox" *ngFor="let ts of soonSchedules;let i = index;">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">
-              <del>{{ts.title}}</del>
+            <input type="checkbox" class="custom-control-input" (change)="toggleTask(i,3)">
+            <label class="custom-control-label">
+              <del *ngIf="ts.markAsDone">{{ts.title}}</del>
+              <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
           </div>
 
@@ -93,7 +97,7 @@
       </div>
     </div>
     <div>
-      <div class="b-ps"><i class="fa fa-plus"></i></div>
+      <div class="b-ps"><i class="fa fa-plus" (click)="addSchedule()"></i></div>
     </div>
   </div>
 

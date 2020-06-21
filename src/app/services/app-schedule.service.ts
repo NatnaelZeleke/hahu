@@ -51,24 +51,28 @@ export class AppScheduleService {
       });
   }
 
-  addSchedule(schedule: ISchedule, today: boolean, tomorrow: boolean, soon: boolean): Observable<ISchedule> {
+  addSchedule(schedule: ISchedule): Observable<ISchedule> {
     return this.scheduleService.create(schedule)
       .pipe(map(result => {
         if (result.body != null) {
-          if (today) {
-            this.todaySchedule.push(result.body);
-            this.todayScheduleSubject.next(this.todaySchedule);
-          } else if (tomorrow) {
-            this.tomorrowSchedule.push(result.body);
-            this.tomorrowScheduleSubject.next(this.tomorrowSchedule);
-          } else {
-            this.soonSchedule.push(result.body);
-            this.soonScheduleSubject.next(this.soonSchedule);
-          }
+          this.refreshSchedules(result.body.userId);
         }
         return result.body;
       }));
   }
 
+  refreshSchedules(id: number) {
+    this.getTodaySchedule(id);
+    this.getSoonSchedule(id);
+    this.getTomorrowSchedule(id);
+  }
+
+
+  markAsRead(schedule: ISchedule): Observable<ISchedule> {
+    return this.scheduleService.update(schedule)
+        .pipe(map(result => {
+          return result.body;
+        }));
+  }
 
 }

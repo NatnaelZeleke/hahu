@@ -53,19 +53,6 @@ export class HomePageComponent implements OnInit {
         this.spinner.hide('postSpinner');
       });
 
-
-    // this.postService.query(
-    //   {
-    //     page: 0,
-    //     size: 10
-    //   }
-    // ).subscribe((result) => {
-    //     this.postList.push(...result.body);
-    //
-    //   },
-    //   (err) => {
-    //     // TODO handle post scroll errors, things like connection and database errors
-    //   });
   }
 
 

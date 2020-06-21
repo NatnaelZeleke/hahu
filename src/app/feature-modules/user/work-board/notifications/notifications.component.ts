@@ -42,7 +42,6 @@ export class NotificationsComponent implements OnInit {
       }, (err) => {
         this.ngxSpinner.hide('notification');
       });
-
   }
 
 
