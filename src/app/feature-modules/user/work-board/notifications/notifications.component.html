@@ -18,61 +18,48 @@
   </div>
   <div class="w-con">
     <div class="w-b-m-con n-w-b-m-con">
-      <div class="w-b-con w-not nc" *ngIf="notifications.length > 0">
-        <div class="s-w-not" *ngFor="let n of notifications; let i = index;">
-          <div class="w-i-c">
-            <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-          </div>
-          <div class="w-c-c">
-            <p>Burns Marks</p>
-            <p class="sm">{{n.content}}</p>
-            <hr>
-          </div>
-          <div class="n-t-c">
-            <p>{{n.date | date:'MMM d, y, h:mm a'}}</p>
+      <div *ngIf="showNew">
+        <div class="w-b-con w-not nc" *ngIf="notifications.length > 0">
+          <div class="s-w-not" *ngFor="let n of notifications; let i = index;">
+            <div *ngIf="!n.markAsRead">
+              <div class="w-i-c">
+                <div class="w-i-c-c bcimg"
+                     [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + n?.featuredImage + ')'}"></div>
+              </div>
+              <div class="w-c-c">
+                <p>{{n.userLogin}}</p>
+                <p class="sm">{{n.content}}</p>
+                <hr>
+              </div>
+              <div class="n-t-c">
+                <p>{{n.date | date:'MMM d, y'}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="w-b-con w-not ncr" *ngIf="notifications.length > 0">
-        <div class="s-w-not">
-          <div class="w-i-c">
-            <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-          </div>
-          <div class="w-c-c">
-            <p>Burns Marks</p>
-            <p class="sm">Shared an ETA</p>
-            <hr>
-          </div>
-          <div class="n-t-c">
-            <p>1m ago</p>
-          </div>
-        </div>
-        <div class="s-w-not">
-          <div class="w-i-c">
-            <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-          </div>
-          <div class="w-c-c">
-            <p>Burns Marks</p>
-            <p class="sm">Shared an ETA</p>
-            <hr>
-          </div>
-          <div class="n-t-c">
-            <p>1m ago</p>
+        <div class="s-w-not" *ngFor="let n of notifications; let i = index;">
+          <div *ngIf="n.markAsRead">
+            <div class="w-i-c">
+              <div class="w-i-c-c bcimg"
+                   [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + n?.featuredImage + ')'}"></div>
+            </div>
+            <div class="w-c-c">
+              <p>{{n.userLogin}}</p>
+              <p class="sm">{{n.content}}</p>
+              <hr>
+            </div>
+            <div class="n-t-c">
+              <p>{{n.date | date:'MMM d, y'}}</p>
+            </div>
           </div>
         </div>
-        <div class="s-w-not">
-          <div class="w-i-c">
-            <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
-          </div>
-          <div class="w-c-c">
-            <p>Burns Marks</p>
-            <p class="sm">Shared an ETA</p>
-            <hr>
-          </div>
-          <div class="n-t-c">
-            <p>1m ago</p>
-          </div>
-        </div>
+
+      </div>
+      <div class="z-c" *ngIf="isNotificationLoaded" >
+        <p *ngIf="notifications.length == 0">No new notifications.</p>
       </div>
     </div>
   </div>

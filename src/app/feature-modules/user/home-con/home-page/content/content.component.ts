@@ -53,6 +53,8 @@ export class ContentComponent implements OnInit {
   backGround = 'ww';
   showIcons = true;
 
+  newPost: IPost;
+
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
               public tagService: HashtagService,
@@ -130,27 +132,39 @@ export class ContentComponent implements OnInit {
 
   createPost(f: any) {
     this.spinner.show('posting');
-    const post: IPost = {
+    this.newPost = {
       userId: this.account.id,
       postedDate: moment().startOf('second'),
       featuredImage: f != null ? f.slice(23,) : null,
       featuredImageContentType: 'image/jpeg',
       tags: this.tags,
-      content: this.captionForm.value.caption
+      content: this.captionForm.value.caption,
+      postMetaData: []
     };
-    this.postService.create(post)
+
+    this.addMetaData('fontSize', 'fc' + this.fontClass.toString())
       .subscribe(result => {
-        this.appPostService.addPost(result.body);
-        this.addPostMetaData(result.body.id);
-      }, () => {
-        // this.spinner.hide('posting');
+        this.newPost.postMetaData.push(result);
+        this.addMetaData('backGround', this.backGround)
+          .subscribe(result2 => {
+            this.newPost.postMetaData.push(result2);
+            this.postService.create(this.newPost)
+              .subscribe(result3 => {
+                this.appPostService.addPost(result3.body);
+                this.tagService.resetTags();
+                this.bsModalRef.hide();
+              }, () => {
+                this.spinner.hide('posting');
+              });
+          });
       });
+
   }
 
   addPostMetaData(postId: number) {
-    this.addMetaData('fontSize', 'fc' + this.fontClass.toString(), postId)
+    this.addMetaData('fontSize', 'fc' + this.fontClass.toString())
       .subscribe(result => {
-        this.addMetaData('backgrdound', this.backGround, postId)
+        this.addMetaData('backGround', this.backGround)
           .subscribe(result2 => {
             this.spinner.hide('posting');
             this.tagService.resetTags();
@@ -160,11 +174,10 @@ export class ContentComponent implements OnInit {
   }
 
 
-  addMetaData(name: string, value: string, postId: number): Observable<IPostMetaData> {
+  addMetaData(name: string, value: string): Observable<IPostMetaData> {
     const body: IPostMetaData = {
       name: name,
-      value: value,
-      postId: postId
+      value: value
     };
     return this.metaDataService.create(body)
       .pipe(map(result => {

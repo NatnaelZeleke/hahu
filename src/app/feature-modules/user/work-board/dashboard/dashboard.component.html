@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="w-b-m-con"  >
+  <div class="w-b-m-con">
     <div class="w-b-con w-not nc">
       <ngx-spinner bdColor="rgba(152,61,61,0)"
                    size="default"
@@ -22,23 +22,21 @@
                    name="wNotification"></ngx-spinner>
       <div class="s-w-not" *ngFor="let n of notifications; let i =index;">
         <div class="w-i-c">
-          <div class="w-i-c-c bcimg" style="background-image: url('./assets/images/background.jpg')"></div>
+          <div class="w-i-c-c bcimg"
+               [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + n?.featuredImage + ')'}"></div>
         </div>
         <div class="w-c-c">
-          <p>Burns Marks</p>
+          <p>{{n.userLogin}}</p>
           <p class="sm">{{n.content}}</p>
           <hr>
         </div>
       </div>
-      <div class="z-c" *ngIf="isNotificationLoaded" >
+      <div class="z-c" *ngIf="isNotificationLoaded">
         <p *ngIf="notifications.length == 0">No new notifications.</p>
       </div>
       <div class="d-a" routerLink="../notifications">
         <i class="fa fa-angle-down"></i>
       </div>
-    </div>
-    <div>
-
     </div>
   </div>
 
@@ -64,12 +62,12 @@
                      name="scheduleDashboard"></ngx-spinner>
         <div class="custom-control custom-checkbox" *ngFor="let s of todaySchedule; let i = index;">
           <input type="checkbox" class="custom-control-input">
-          <label class="custom-control-label" >
+          <label class="custom-control-label">
             <del *ngIf="ts?.markAsDone">{{s.title}}</del>
             <span *ngIf="!ts?.markAsDone">{{s.title}}</span>
           </label>
         </div>
-        <div class="z-c" *ngIf="isScheduleLoaded" >
+        <div class="z-c" *ngIf="isScheduleLoaded">
           <p *ngIf="todaySchedule.length == 0">No schedules for today.</p>
         </div>
       </div>

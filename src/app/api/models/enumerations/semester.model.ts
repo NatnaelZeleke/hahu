@@ -1,4 +1,4 @@
-export const enum Semester {
+export  enum Semester {
   SEMESTER_I = 'SEMESTER_I',
 
   SEMESTER_II = 'SEMESTER_II',
