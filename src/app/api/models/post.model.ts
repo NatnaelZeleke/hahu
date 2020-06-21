@@ -1,13 +1,13 @@
 import { Moment } from 'moment';
 import {ContentType} from './enumerations/content-type.model';
 import {PostType} from './enumerations/post-type.model';
-import {IPostMetaData} from './post-meta-data.model';
 import {IComment} from './comment.model';
 import {ILikes} from './likes.model';
-import {ICategory} from './category.model';
-import {ITag} from './tag.model';
 import {IViews} from './views.model';
 import {IShares} from './shares.model';
+import {IPostMetaData} from './post-meta-data.model';
+import {ICategory} from './category.model';
+import {ITag} from './tag.model';
 
 export interface IPost {
   id?: number;
@@ -22,7 +22,6 @@ export interface IPost {
   instantPostEndDate?: Moment;
   popularityIndex?: number;
   trendingIndex?: number;
-  postMetaData?: IPostMetaData[];
   comments?: IComment[];
   likes?: ILikes[];
   views?: IViews[];
@@ -30,6 +29,7 @@ export interface IPost {
   posts?: IPost[];
   userLogin?: string;
   userId?: number;
+  postMetaData?: IPostMetaData[];
   categories?: ICategory[];
   tags?: ITag[];
   pageId?: number;
@@ -49,7 +49,6 @@ export class Post implements IPost {
     public instantPostEndDate?: Moment,
     public popularityIndex?: number,
     public trendingIndex?: number,
-    public postMetaData?: IPostMetaData[],
     public comments?: IComment[],
     public likes?: ILikes[],
     public views?: IViews[],
@@ -57,6 +56,7 @@ export class Post implements IPost {
     public posts?: IPost[],
     public userLogin?: string,
     public userId?: number,
+    public postMetaData?: IPostMetaData[],
     public categories?: ICategory[],
     public tags?: ITag[],
     public pageId?: number

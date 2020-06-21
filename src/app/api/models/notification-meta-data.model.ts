@@ -1,10 +1,12 @@
+import {INotification} from './notification.model';
+
 export interface INotificationMetaData {
   id?: number;
   name?: string;
   value?: string;
   blobValueContentType?: string;
   blobValue?: any;
-  notificationId?: number;
+  notifications?: INotification[];
 }
 
 export class NotificationMetaData implements INotificationMetaData {
@@ -14,6 +16,6 @@ export class NotificationMetaData implements INotificationMetaData {
     public value?: string,
     public blobValueContentType?: string,
     public blobValue?: any,
-    public notificationId?: number
+    public notifications?: INotification[]
   ) {}
 }

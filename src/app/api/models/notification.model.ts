@@ -12,9 +12,11 @@ export interface INotification {
   link?: string;
   date?: Moment;
   markAsRead?: boolean;
-  notificationMetaData?: INotificationMetaData[];
+  notifierLogin?: string;
+  notifierId?: number;
   userLogin?: string;
   userId?: number;
+  notificationMetaData?: INotificationMetaData[];
   userGroupName?: string;
   userGroupId?: number;
 }
@@ -30,9 +32,11 @@ export class Notification implements INotification {
     public link?: string,
     public date?: Moment,
     public markAsRead?: boolean,
-    public notificationMetaData?: INotificationMetaData[],
+    public notifierLogin?: string,
+    public notifierId?: number,
     public userLogin?: string,
     public userId?: number,
+    public notificationMetaData?: INotificationMetaData[],
     public userGroupName?: string,
     public userGroupId?: number
   ) {
