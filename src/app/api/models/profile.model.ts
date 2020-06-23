@@ -4,6 +4,8 @@ export interface IProfile {
   phone?: string;
   curentProfilePicContentType?: string;
   curentProfilePic?: any;
+  location?: any;
+  bio?: any;
   userLogin?: string;
   userId?: number;
 }
@@ -15,6 +17,8 @@ export class Profile implements IProfile {
     public phone?: string,
     public curentProfilePicContentType?: string,
     public curentProfilePic?: any,
+    public location?: any,
+    public bio?: any,
     public userLogin?: string,
     public userId?: number
   ) {}
