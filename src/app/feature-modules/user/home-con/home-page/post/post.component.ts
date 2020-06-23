@@ -34,7 +34,7 @@ export class PostComponent implements OnInit {
   isCommentLoaded = false;
   commentPlaceHolder = '';
   user: IUser;
-  showTags  = false;
+  showTags = false;
 
   constructor(public postService: ProfileService,
               public likeService: LikesService,
@@ -183,8 +183,9 @@ export class PostComponent implements OnInit {
 
   removeComment(idx: any) {
     this.comments.splice(idx, 1);
-    console.log(idx);
-    this.commentCount = this.commentCount - 1;
+    if (this.commentCount > 0) {
+      this.commentCount = this.commentCount - 1;
+    }
   }
 
 

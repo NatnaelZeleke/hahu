@@ -1,0 +1,63 @@
+<div class="set-con">
+  <div class="n-c set-p-h">
+
+    <div class="n-c-h ">
+      <div class="a-c" routerLink="../profilesetting">
+        <i class="fa fa-angle-left"></i>
+        <span class="set-h">Edit Profile</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="p-cont-con p-c-n">
+    <div class="p-i-con">
+
+      <div class="p-p bcimg"
+
+           [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
+        <ngx-spinner bdColor="rgba(152,61,61,0)"
+                     size="small"
+                     color="#000"
+                     type="ball-fall"
+                     [fullScreen]="false"
+                     name="loadingProfilePic"></ngx-spinner>
+      </div>
+      <br>
+
+      <!--<div class="row">-->
+      <!--<div class="col-3"></div>-->
+      <!--<div class="col-3">-->
+      <!--<div class="btn btn-sm btn-info">Hahu-Cash</div>-->
+      <!--</div>-->
+      <!--<div class="col-3">-->
+      <!--<div class="btn btn-sm btn-default">Connect</div>-->
+      <!--</div>-->
+      <!--<div class="col-3"></div>-->
+      <!--</div>-->
+
+      <br>
+      <form [formGroup]="profileForm" class="row">
+        <div class="col-sm-12 d-c n-c-f">
+          <!--<p class="p-n">{{user?.firstName}} {{user?.lastName}}, {{profile?.age}}</p>-->
+          <input class="form-control form-control-sm fn"
+                 placeholder="first name" formControlName="firstName">
+          <input class="form-control form-control-sm ln"
+                 placeholder="last name" formControlName="lastName">
+          <input class="form-control form-control-sm a"
+                 placeholder="age" formControlName="age">
+        </div>
+        <div class="col-sm-12 l-f-c">
+          <!--<p class="p-l">San fransisco USA</p>-->
+          <br>
+          <input type="text" placeholder="city" class="form-control form-control-sm a-f">
+          <hr>
+          <textarea type="text" placeholder="city" class="form-control form-control-sm bio">An artist of considerable range, Jessica name taken by melbourne ...</textarea>
+
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</div>

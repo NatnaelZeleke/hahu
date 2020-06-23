@@ -3,7 +3,10 @@
 
     <div class="n-c-h ">
       <div class="a-c">
-        <i class="fa fa-angle-left" routerLink="../../../user"></i> <span class="pro-h">Profile</span>
+        <span routerLink="../../../user">
+          <i class="fa fa-angle-left" ></i>
+        <span class="pro-h">Profile</span>
+        </span>
         <!--<i class="fa fa-search float-right srch"></i>-->
         <div class="p-b-con">
           <i class="fa fa-bell"></i>
@@ -18,7 +21,17 @@
 </div>
 <div class="p-cont-con">
   <div class="p-i-con">
-    <div class="p-p bcimg" style="background-image: url('./assets/images/profile2.jpg')"></div>
+
+    <div class="p-p bcimg"
+
+         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
+      <ngx-spinner bdColor="rgba(152,61,61,0)"
+                   size="small"
+                   color="#000"
+                   type="ball-fall"
+                   [fullScreen]="false"
+                   name="loadingProfilePic"></ngx-spinner>
+    </div>
     <br>
 
     <div class="row">
@@ -31,29 +44,17 @@
       </div>
       <div class="col-3"></div>
     </div>
-    <!--<div class="row p-m-c">-->
-      <!--<div class="col">-->
-        <!--<p>2K</p>-->
-        <!--<small>Friends</small>-->
-      <!--</div>-->
-      <!--<div class="col">-->
-        <!--<p>10</p>-->
-        <!--<small>Photos</small>-->
-      <!--</div>-->
-      <!--<div class="col">-->
-        <!--<p>89</p>-->
-        <!--<small>Comments</small>-->
-      <!--</div>-->
-    <!--</div>-->
+
     <br>
     <div class="row">
       <div class="col d-c">
 
-        <p class="p-n">Jessica Jones, 27</p>
+        <p class="p-n">{{user?.firstName}} {{user?.lastName}}, {{profile?.age}}</p>
         <p class="p-l">San fransisco USA</p>
         <hr>
         <p class="p-desc">An artist of considerable range, Jessica name taken by melbourne ...</p>
         <div class="s-m">show more</div>
+
       </div>
     </div>
     <div class="s-p-r-p">

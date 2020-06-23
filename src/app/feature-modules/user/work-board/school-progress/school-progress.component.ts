@@ -55,7 +55,6 @@ export class SchoolProgressComponent implements OnInit {
   }];
 
   ngOnInit() {
-
     this.progressFormGroup = this.formBuilder.group(
       {
         assesment: ['', Validators.required],
@@ -63,20 +62,15 @@ export class SchoolProgressComponent implements OnInit {
         year: [this.currentYear, Validators.required],
       }
     );
-
-
     this.ngxSpinner.show('barChart');
     this.accountService.getUserAcc()
       .subscribe(result => {
         this.account = result;
         this.getFormValues();
       });
-
-
   }
 
   updateData() {
-    console.log('update called');
     this.ngxSpinner.show('barChart');
     if (this.progressFormGroup.valid) {
       this.schoolProgress.query({
@@ -97,7 +91,6 @@ export class SchoolProgressComponent implements OnInit {
     for (let i = 0; i < result.length; i++) {
       this.barChartLabels.push(result[i].subjectName);
       this.barChartData[0].data.push(result[i].result);
-
     }
     this.calculateAverageResult(this.barChartData[0].data);
   }
@@ -120,6 +113,11 @@ export class SchoolProgressComponent implements OnInit {
   calculateAverageResult(result: number[]) {
     for (let i = 0; i < result.length; i++) {
       this.acr = this.acr + result[i];
+    }
+    if (result.length > 0) {
+      this.acr = this.acr / result.length;
+    } else {
+      this.acr = 0;
     }
     this.showResult = true;
   }

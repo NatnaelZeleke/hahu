@@ -19,7 +19,7 @@ export class AddScheduleComponent implements OnInit {
   submitted = false;
   account: Account;
   minDate: Date;
-
+  title = '';
   bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(public bsModalRef: BsModalRef,

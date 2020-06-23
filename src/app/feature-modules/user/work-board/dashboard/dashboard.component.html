@@ -94,12 +94,12 @@
       <div class="sp-c">
         <div class="sp-s-c">
           <div class="text">Last average result obtained</div>
-          <div class="result">78%</div>
+          <div class="result" *ngIf="showResult">{{acr}}%</div>
         </div>
-        <div class="sp-s-c">
-          <div class="text">Ranking</div>
-          <div class="result">6</div>
-        </div>
+        <!--<div class="sp-s-c">-->
+          <!--<div class="text">Ranking</div>-->
+          <!--<div class="result">6</div>-->
+        <!--</div>-->
       </div>
       <div class="d-a" routerLink="../schoolprogress">
         <i class="fa fa-angle-down"></i>

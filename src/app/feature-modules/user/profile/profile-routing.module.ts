@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileSettingComponent} from './profile-setting/profile-setting.component';
+import {GeneralSettingComponent} from './general-setting/general-setting.component';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
   {
     path: 'profilesetting',
     component: ProfileSettingComponent
+  },
+  {
+    path: 'generalsetting',
+    component: GeneralSettingComponent
+  },
+  {
+    path: 'editprofile',
+    component: EditProfileComponent
   },
   {
     path: '',

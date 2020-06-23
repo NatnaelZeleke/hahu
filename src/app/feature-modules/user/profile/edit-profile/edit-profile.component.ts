@@ -1,31 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-import {ProfileService} from '../../../../api/services/profile.service';
-import {AccService} from '../../../../services/acc.service';
 import {Account} from '../../../../api/models/account.model';
 import {IProfile} from '../../../../api/models/profile.model';
-import {UserService} from '../../../../api/services/user.service';
 import {IUser} from '../../../../api/models/user.model';
+import {ProfileService} from '../../../../api/services/profile.service';
+import {AccService} from '../../../../services/acc.service';
+import {UserService} from '../../../../api/services/user.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
 
   account: Account;
   profile: IProfile;
   user: IUser;
+  profileForm: FormGroup;
 
   constructor(public profileService: ProfileService,
               public accountService: AccService,
               public userService: UserService,
-              public ngxSpinner: NgxSpinnerService) {
+              public ngxSpinner: NgxSpinnerService,
+              public formBuilder: FormBuilder) {
 
   }
 
+
   ngOnInit() {
+    this.profileForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      age: ['', Validators.required]
+    });
     this.ngxSpinner.show('loadingProfilePic');
     this.accountService.getUserAcc()
       .subscribe(result => {
@@ -53,8 +62,13 @@ export class ProfileComponent implements OnInit {
     this.userService.find(userLogin)
       .subscribe(result => {
         this.user = result;
+        this.profileForm.patchValue({
+          'firstName': this.user.firstName,
+          'lastName': this.user.lastName,
+          'age': this.profile.age
+        });
+
       });
   }
-
 
 }

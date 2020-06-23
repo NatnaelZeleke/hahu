@@ -34,15 +34,12 @@ export class HomePageComponent implements OnInit {
       .subscribe(result => {
         this.postList = result;
       });
-
     this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;
         this.loadPost();
       });
-
     this.tagService.getTags();
-    // this.createContent();
   }
 
   loadPost() {

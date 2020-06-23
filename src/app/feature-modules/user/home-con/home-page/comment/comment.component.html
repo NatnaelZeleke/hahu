@@ -9,17 +9,14 @@
   <div class="com-t-c">
     <div class="p-n-c">
       <p class="name">{{profile[0]?.userLogin}}</p>
-      <p>{{comment?.content}}</p>
+      <p class="c-cont">{{comment?.content}}</p>
       <p class="more">{{comment?.postedDate | date:'MMM d'}}</p>
     </div>
-
   </div>
 
   <div class="a-con more" *ngIf="showMoreButton">
-
     <ul class="nav align-items-center d-md-none">
       <li class="nav-item dropdown m-auto" dropdown placement="bottom-right">
-
         <i class="fa fa-ellipsis-v" dropdownToggle></i>
         <div class="dropdown-menu-arrow dropdown-menu-right dropdown-menu" *dropdownMenu x-placement="bottom-right">
           <div class=" dropdown-header noti-title">

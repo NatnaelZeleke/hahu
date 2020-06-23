@@ -7,6 +7,8 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {ScheduleService} from '../../../../api/services/schedule.service';
 import {AppScheduleService} from '../../../../services/app-schedule.service';
 import {ISchedule} from '../../../../api/models/schedule.model';
+import {SchoolProgressService} from '../../../../api/services/school-progress.service';
+import {ISchoolProgress} from '../../../../api/models/school-progress.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,28 +19,29 @@ export class DashboardComponent implements OnInit {
 
   account: Account;
   notifications: INotification[] = [];
-  isNotificationLoaded  = false;
+  isNotificationLoaded = false;
   todaySchedule: ISchedule[];
   isScheduleLoaded = false;
+  results = [];
+  acr = 0;
+  showResult = false;
 
   constructor(public notifService: NotificationService,
               public accountService: AccService,
               public ngxSpinner: NgxSpinnerService,
-              public scheduleService: AppScheduleService) {
+              public scheduleService: AppScheduleService,
+              public schoolProgress: SchoolProgressService) {
   }
 
   ngOnInit() {
-
     this.accountService.getUserAcc()
       .subscribe(result => {
         this.account = result;
         this.getNotifications(this.account.id);
         this.getScheduleService(this.account.id);
+        this.getSchoolProgress(this.account.id);
       });
-
-
   }
-
 
   getNotifications(id: number) {
     if (id != null) {
@@ -72,5 +75,33 @@ export class DashboardComponent implements OnInit {
       });
     this.scheduleService.getTodaySchedule(id);
   }
+
+  getSchoolProgress(userId: number) {
+    this.schoolProgress.query({'userId.equals': userId})
+      .subscribe(result => {
+        this.filterResult(result.body);
+      });
+  }
+
+  filterResult(result: ISchoolProgress[]) {
+
+    for (let i = 0; i < result.length; i++) {
+      this.results.push(result[i].result);
+    }
+    this.calculateAverageResult(this.results);
+  }
+
+  calculateAverageResult(result: number[]) {
+    for (let i = 0; i < result.length; i++) {
+      this.acr = this.acr + result[i];
+    }
+    if (result.length > 0) {
+      this.acr = this.acr / result.length;
+    } else {
+      this.acr = 0;
+    }
+    this.showResult = true;
+  }
+
 
 }

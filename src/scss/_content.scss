@@ -184,25 +184,25 @@
 }
 
 .fc0 {
-  p{
+  p {
     font-size: 15px !important;
   }
 }
 
 .fc1 {
-  p{
+  p {
     font-size: 18px !important;
   }
 }
 
 .fc2 {
-  p{
+  p {
     font-size: 21px !important;
   }
 }
 
 .fc3 {
-  p{
+  p {
     font-size: 24px !important;
   }
 }
@@ -305,23 +305,29 @@
   background-color: #fe4646;
   color: #fff;
 }
+
 .dr {
   background-color: #ba3040;
   color: #fff;
 }
+
 .bb {
   background-color: #a78a6c;
 }
+
 .pp {
   background-color: #fec3f5;
 }
+
 .do {
   background-color: #e6ae05;
   color: #fff;
 }
+
 .oo {
   background-color: #ffd32d;
 }
+
 .p-t-c {
   padding: 10px;
   font-style: italic;
@@ -333,6 +339,7 @@
     margin-right: 10px;
   }
 }
+
 .e-m {
   padding: 5px;
   p {
@@ -340,52 +347,54 @@
     margin-bottom: 5px;
   }
 }
+
 .s-m-c {
-  .col{
+  .col {
     width: 33%;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  select{
+  select {
     border: none;
     border-radius: 0;
   }
-  .f{
+  .f {
     border-bottom: 5px solid #665eff;;
   }
-  .s{
+  .s {
     border-bottom: 5px solid #5773ff;
     font-size: 11px;
   }
-  .l{
+  .l {
     border-bottom: 5px solid #3acce1;
   }
 }
 
-
-.a-r-c{
+.a-r-c {
   padding: 20px;
-  p{
+  p {
     font-size: 23px;
   }
 }
 
-.t-i{
+.t-i {
   line-height: 30px;
-  i,p{
+  i, p {
     display: none;
 
   }
-  .fa-eye{
+  .fa-eye {
     display: block;
   }
 
 }
-
-.z-c{
+.z-c {
   padding: 10px;
-  p{
+  p {
     color: #fff;
   }
+}
+.c-cont {
+  color: #373737;
 }
