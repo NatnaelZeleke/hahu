@@ -93,6 +93,9 @@
 }
 
 .set-con {
+  &.ep{
+    background-color: #2b2e3f;
+  }
   width: 100%;
   background-color: #f1f3f5;
   min-height: 200px;
@@ -124,6 +127,12 @@
     }
     hr {
       margin: 5px;
+    }
+  }
+  .ep-b-c{
+    padding: 10px;
+    .btn{
+      margin-left: 10px;
     }
   }
 
@@ -187,6 +196,7 @@
   padding: 10px;
   min-height: 250px;
   .p-c-c-h {
+    @extend .clearfix;
     color: #221d37;
     padding-top: 20px;
     .pm {
@@ -238,4 +248,10 @@
     width: 80%;
     margin: 0 auto;
   }
+}
+
+
+.n-c-y{
+  padding: 30px 10px;
+  text-align: center;
 }

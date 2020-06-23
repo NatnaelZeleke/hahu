@@ -1,0 +1,28 @@
+<div class="s-p-r-p p-r">
+  <!--<div class="container">-->
+  <!--<div class="row">-->
+  <!--<div class="col al-h-c al-h-p">-->
+  <!--<p class="float-left l">Album</p>-->
+  <!--<p class="float-right r">View All</p>-->
+  <!--</div>-->
+  <!--</div>-->
+
+  <!--</div>-->
+
+  <div class="">
+    <div class="al-c w-100" *ngIf="loaded">
+
+      <div class="im bcimg" *ngFor="let p of posts"
+           [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + p?.featuredImage + ')'}">
+      </div>
+      <div *ngIf="posts.length == 0" class="n-c-y">No Posts yet</div>
+    </div>
+  </div>
+  <br>
+  <ngx-spinner bdColor="rgba(152,61,61,0)"
+               size="small"
+               color="#000"
+               type="ball-fall"
+               [fullScreen]="false"
+               name="loadingPosts"></ngx-spinner>
+</div>

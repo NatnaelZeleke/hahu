@@ -32,6 +32,9 @@ body {
   margin: 0;
 }
 
+div:focus{
+  outline: none !important;
+}
 .c-container {
   padding: 0 !important;
 }

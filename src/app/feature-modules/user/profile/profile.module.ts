@@ -9,6 +9,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { GeneralSettingComponent } from './general-setting/general-setting.component';
 import { PagesComponent } from './pages/pages.component';
 import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
+import { PostsComponent } from './profile/posts/posts.component';
+import { LikesComponent } from './profile/likes/likes.component';
+import { FollowingComponent } from './profile/following/following.component';
 
 @NgModule({
   imports: [
@@ -16,6 +19,6 @@ import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
     ProfileRoutingModule,
     SharedModule
   ],
-  declarations: [ProfileComponent, ProfileSettingComponent, EditProfileComponent, GeneralSettingComponent, PagesComponent, BlockedUsersComponent]
+  declarations: [ProfileComponent, ProfileSettingComponent, EditProfileComponent, GeneralSettingComponent, PagesComponent, BlockedUsersComponent, PostsComponent, LikesComponent, FollowingComponent]
 })
 export class ProfileModule { }
