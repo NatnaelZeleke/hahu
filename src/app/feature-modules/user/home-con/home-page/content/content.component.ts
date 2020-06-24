@@ -72,19 +72,15 @@ export class ContentComponent implements OnInit {
     this.contentForm = this.formBuilder.group({
       newFile: ['', Validators.required]
     });
-
     this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;
       });
-
     this.tagService.tagsSubject
       .subscribe(result => {
         this.tags = result;
       });
-
     this.tagService.getTags();
-
     this.captionForm = this.formBuilder.group(
       {
         caption: ['', Validators.required]
@@ -107,7 +103,6 @@ export class ContentComponent implements OnInit {
 
   uploadFiles(files: File[]) {
     console.log(files);
-
     const req = new HttpRequest<FormData>(
       'POST',
       this.resourceUrl,
@@ -119,11 +114,9 @@ export class ContentComponent implements OnInit {
       .subscribe(
         event => {
           this.httpEvent = event;
-
           if (event instanceof HttpResponse) {
             delete this.httpEmitter;
             console.log('request done', event);
-
           }
         },
         error => console.log('Error Uploading', error)

@@ -50,10 +50,10 @@
       <div class="col d-c">
 
         <p class="p-n">{{user?.firstName}} {{user?.lastName}}, {{profile?.age}}</p>
-        <p class="p-l">San fransisco USA</p>
+        <p class="p-l">{{profile?.location}}</p>
         <hr>
-        <p class="p-desc">An artist of considerable range, Jessica name taken by melbourne ...</p>
-        <div class="s-m">show more</div>
+        <p class="p-desc">{{profile?.bio}}</p>
+        <!--<div class="s-m">show more</div>-->
 
       </div>
     </div>
@@ -91,7 +91,7 @@
       Following
     </div>
   </div>
-  <div>
+  <div class="profile-dc">
     <router-outlet></router-outlet>
   </div>
 </div>

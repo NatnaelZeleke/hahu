@@ -13,7 +13,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class PostsComponent implements OnInit {
 
   account: Account;
-  posts: IPost[] = [];
+  postList: IPost[] = [];
   loaded = false;
 
   constructor(public accService: AccService,
@@ -25,22 +25,21 @@ export class PostsComponent implements OnInit {
     this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;
-        this.getUserPosts(this.account.id);
+        this.loadPost();
       });
   }
 
+  loadPost() {
+    if (this.account) {
+      this.ngxSpinner.show('loadingPosts');
+      this.postService.query({'userId.equals': this.account.id})
+        .subscribe(result => {
+          this.loaded = true;
+          this.postList.push(...result.body);
+          this.ngxSpinner.hide('loadingPosts');
+        });
+    }
 
-  getUserPosts(userId: number) {
-    this.ngxSpinner.show('loadingPosts');
-
-
-    this.postService.query()
-      .subscribe(result => {
-        this.loaded = true;
-        console.log(result);
-        this.posts = result.body;
-        this.ngxSpinner.hide('loadingPosts');
-      });
   }
 
 }

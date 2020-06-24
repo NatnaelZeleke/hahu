@@ -41,6 +41,11 @@
       margin: -58px auto 0;
       position: relative;
     }
+    .c-b {
+      position: absolute;
+      bottom: -15px;
+      left: 36%;
+    }
     .p-m-c {
       text-align: center;
       padding: 30px;
@@ -93,7 +98,7 @@
 }
 
 .set-con {
-  &.ep{
+  &.ep {
     background-color: #2b2e3f;
   }
   width: 100%;
@@ -129,9 +134,9 @@
       margin: 5px;
     }
   }
-  .ep-b-c{
+  .ep-b-c {
     padding: 10px;
-    .btn{
+    .btn {
       margin-left: 10px;
     }
   }
@@ -192,8 +197,8 @@
 
 .profile-c-c {
   background-color: #fff;
-  border-radius: 10px;
-  padding: 10px;
+  //border-radius: 10px;
+  //padding: 10px;
   min-height: 250px;
   .p-c-c-h {
     @extend .clearfix;
@@ -205,10 +210,22 @@
       font-weight: 700;
       text-align: center;
       float: left;
-      border-bottom: 1px solid #bcbcbc;
+      //border-bottom: 1px solid #bcbcbc;
       &.active {
         border-bottom: 2px solid #1592e6;
       }
+    }
+  }
+  .profile-dc{
+    position: relative;
+    margin-bottom: -20px;
+    .loading{
+      height: 150px;
+    }
+    .p-spin-con{
+      width: 100%;
+      height: 100px;
+      position: relative;
     }
   }
 }
@@ -221,37 +238,43 @@
     text-align: center;
     color: #2b2e3f;
   }
+  .lab {
+    float: left;
+    height: 23px;
+  }
   .fn {
     width: 40%;
     margin-right: 2%;
+    overflow: hidden;
   }
   .ln {
     width: 40%;
     margin-right: 2%;
+    overflow: hidden;
   }
   .a {
     width: 15%;
+    overflow: hidden;
   }
 }
 
-.l-f-c{
-  input,textarea{
+.l-f-c {
+  input, textarea {
     text-align: center;
     color: #2b2e3f;
   }
 
-  .a-f{
+  .a-f {
     width: 63%;
     margin: 0 auto;
   }
-  .bio{
+  .bio {
     width: 80%;
     margin: 0 auto;
   }
 }
 
-
-.n-c-y{
+.n-c-y {
   padding: 30px 10px;
   text-align: center;
 }

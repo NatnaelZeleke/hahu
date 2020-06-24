@@ -150,7 +150,7 @@ export class PostComponent implements OnInit {
       };
       this.commentPlaceHolder = this.commentForm.value.comment;
 
-      this.commentCount = this.comments.length;
+      this.commentCount = this.comments.length + 1;
       this.commentService.create(com)
         .subscribe(result => {
           // if(result)

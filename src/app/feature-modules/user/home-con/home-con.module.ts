@@ -12,20 +12,21 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { CommentComponent } from './home-page/comment/comment.component';
 import { ContentComponent } from './home-page/content/content.component';
 import { TagsComponent } from './home-page/content/tags/tags.component';
+import {SharedPostModule} from '../../../shared/shared-post.module';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeConRoutingModule,
     SharedModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    SharedPostModule
   ],
-  declarations: [HomePageComponent,
+  declarations: [
+    HomePageComponent,
       DashboardComponent,
       SchoolfeedComponent,
       SavesComponent,
-      PostComponent,
-      CommentComponent,
       ContentComponent,
       TagsComponent]
 })

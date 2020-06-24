@@ -7,6 +7,8 @@ import {AccService} from '../../../../services/acc.service';
 import {UserService} from '../../../../api/services/user.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -19,30 +21,37 @@ export class EditProfileComponent implements OnInit {
   profile: IProfile;
   user: IUser;
   profileForm: FormGroup;
+  submitted = false;
+  // file upload code
+  file: File;
 
   constructor(public profileService: ProfileService,
               public accountService: AccService,
               public userService: UserService,
               public ngxSpinner: NgxSpinnerService,
-              public formBuilder: FormBuilder) {
-
+              public formBuilder: FormBuilder,
+              public httpClient: HttpClient,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
-
 
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', Validators.required]
+      age: ['', Validators.required],
+      city: ['', Validators.required],
+      bio: ['', Validators.required]
     });
+
     this.ngxSpinner.show('loadingProfilePic');
+
     this.accountService.getUserAcc()
       .subscribe(result => {
         this.account = result;
         this.getUserProfile(this.account.id);
       });
   }
-
 
   getUserProfile(userId: number) {
 
@@ -57,7 +66,6 @@ export class EditProfileComponent implements OnInit {
       });
   }
 
-
   getUserAccount(userLogin: string) {
     this.userService.find(userLogin)
       .subscribe(result => {
@@ -65,10 +73,56 @@ export class EditProfileComponent implements OnInit {
         this.profileForm.patchValue({
           'firstName': this.user.firstName,
           'lastName': this.user.lastName,
-          'age': this.profile.age
+          'age': this.profile.age,
+          'city': this.profile.location,
+          'bio': this.profile.bio
         });
-
       });
   }
 
+  updateProfile() {
+    this.submitted = true;
+
+
+    if (this.profileForm.valid) {
+      this.profile.age = this.profileForm.value.age;
+      this.profile.bio = this.profileForm.value.bio;
+      this.profile.location = this.profileForm.value.city;
+      this.user.firstName = this.profileForm.value.firstName;
+      this.user.lastName = this.profileForm.value.lastName;
+
+      this.ngxSpinner.show('updatingProfile');
+      this.profileService.update(this.profile)
+        .subscribe(result => {
+          this.userService.update(this.user)
+            .subscribe(result2 => {
+              this.ngxSpinner.hide('updatingProfile');
+              this.router.navigate(['../profile'], { relativeTo: this.route });
+            }, (err) => {
+              this.ngxSpinner.hide('updatingProfile');
+              alert('something went wrong');
+            });
+        });
+    }
+  }
+
+
+  getDate() {
+    return new Date();
+  }
+
+  get f() {
+    return this.profileForm.controls;
+  }
+
+  onFileInputChange(event: Event): void {
+    console.log('caleed');
+    const eventTarget: HTMLInputElement = event.target as HTMLInputElement;
+    const file: File = eventTarget.files[0];
+    const fileReader: FileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      this.profile.curentProfilePic = (fileReader.result as string).substr((fileReader.result as string).indexOf('base64,') + 'base64,'.length);
+    };
+  }
 }

@@ -9,20 +9,37 @@
     </div>
 
   </div>
-  <div class="p-cont-con p-c-n">
+  <div class="p-cont-con p-c-n p-r">
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.4)"
+                 size="default"
+                 color="#bcc6f3"
+                 type="ball-fall"
+                 name="updatingProfile"
+                 [fullScreen]="false"></ngx-spinner>
     <div class="p-i-con">
-
       <div class="p-p bcimg"
-
            [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
+
         <ngx-spinner bdColor="rgba(152,61,61,0)"
                      size="small"
                      color="#000"
                      type="ball-fall"
                      [fullScreen]="false"
                      name="loadingProfilePic"></ngx-spinner>
+        <label class="btn btn-sm btn-default c-b" for="imageimput">
+          <i class="fa fa-camera"></i>
+        </label>
       </div>
       <br>
+      <div>
+        <input
+          hidden
+          id="imageimput"
+          multiple
+          type="file"
+          accept="image/*"
+          (change)="onFileInputChange($event)"/>
+      </div>
 
       <!--<div class="row">-->
       <!--<div class="col-3"></div>-->
@@ -41,17 +58,73 @@
           <!--<p class="p-n">{{user?.firstName}} {{user?.lastName}}, {{profile?.age}}</p>-->
           <input class="form-control form-control-sm fn"
                  placeholder="first name" formControlName="firstName">
+
           <input class="form-control form-control-sm ln"
                  placeholder="last name" formControlName="lastName">
-          <input class="form-control form-control-sm a"
+          <input class="form-control form-control-sm a" type="number"
                  placeholder="age" formControlName="age">
+          <div class="lab fn">
+            <div *ngIf="submitted || (f.firstName.invalid && (f.firstName.dirty || f.firstName.touched))">
+              <div *ngIf="profileForm.hasError('required',['firstName'])">
+                <small class="text-danger">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="lab ln">
+            <div *ngIf="submitted || (f.lastName.invalid && (f.lastName.dirty || f.lastName.touched))">
+              <div *ngIf="profileForm.hasError('required',['lastName'])">
+                <small class="text-danger">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="lab a">
+            <div *ngIf="submitted || (f.age.invalid && (f.age.dirty || f.age.touched))">
+              <div *ngIf="profileForm.hasError('required',['age'])">
+                <small class="text-danger">
+                  required
+                </small>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="col-sm-12 l-f-c">
           <!--<p class="p-l">San fransisco USA</p>-->
           <br>
-          <input type="text" placeholder="city" class="form-control form-control-sm a-f">
+          <input type="text"
+                 placeholder="city"
+                 formControlName="city"
+                 class="form-control form-control-sm a-f">
+          <div class="t-a-c">
+            <div *ngIf="submitted || (f.city.invalid && (f.city.dirty || f.city.touched))">
+              <div *ngIf="profileForm.hasError('required',['city'])">
+                <small class="text-danger">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+
           <hr>
-          <textarea type="text" placeholder="city" class="form-control form-control-sm bio" rows="4">An artist of considerable range, Jessica name taken by melbourne ...</textarea>
+
+          <textarea type="text"
+                    placeholder="bio"
+                    formControlName="bio"
+                    class="form-control form-control-sm bio"
+                    rows="4"></textarea>
+          <div class="t-a-c">
+            <div *ngIf="submitted || (f.bio.invalid && (f.bio.dirty || f.bio.touched))">
+              <div *ngIf="profileForm.hasError('required',['bio'])">
+                <small class="text-danger">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
 
 
         </div>
@@ -62,8 +135,10 @@
 
   <div class="ep-b-c">
     <div class="btn btn-secondary float-right" routerLink="../profilesetting">Cancel</div>
-    <div class="btn btn-success float-right">save</div>
+    <div class="btn btn-success float-right" (click)="updateProfile()">save</div>
   </div>
 
 
 </div>
+
+
