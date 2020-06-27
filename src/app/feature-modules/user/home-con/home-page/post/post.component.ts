@@ -92,7 +92,9 @@ export class PostComponent implements OnInit {
       this.likeCount = this.likeCount + 1;
       const like: ILikes = {
         postId: this.post.id,
-        userLogin: this.account.login
+        userLogin: this.account.login,
+        userId: this.account.id,
+        registeredTime: moment().startOf('second')
       };
       this.likeService.create(like)
         .subscribe(result => {

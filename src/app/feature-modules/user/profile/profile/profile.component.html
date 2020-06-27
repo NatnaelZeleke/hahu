@@ -36,11 +36,25 @@
 
     <div class="row">
       <div class="col-3"></div>
-      <div class="col-3">
-        <div class="btn btn-sm btn-info">Hahu-Cash</div>
+      <div class="col-3 f-b-c">
+        <div *ngIf="loaded">
+          <div class="btn btn-sm btn-info" *ngIf="!visitingProfile">Hahu-Cash</div>
+          <div class="btn btn-sm btn-info" [ngClass]="{'disabled' : loadingFollowingStatus}" *ngIf="visitingProfile"
+               (click)="followUser()"><span *ngIf="isUserFollowing">Following</span>
+                                      <span *ngIf="!isUserFollowing">Follow</span>
+            <div class="f-l-b-c">
+              <ngx-spinner bdColor="rgba(152,61,61,0)"
+                           size="small"
+                           color="#fff"
+                           type="ball-fall"
+                           [fullScreen]="false"
+                           name="followSpinner"></ngx-spinner>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-3">
-        <div class="btn btn-sm btn-default">Connect</div>
+        <div class="btn btn-sm btn-default">Telechat</div>
       </div>
       <div class="col-3"></div>
     </div>
@@ -71,7 +85,6 @@
     <!--<div class="al-c w-100">-->
     <!--&lt;!&ndash;<div class="im bcimg" *ngFor="let a of album"&ndash;&gt;-->
     <!--&lt;!&ndash;[ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + a?. + ')'}">&ndash;&gt;-->
-
     <!--</div>-->
     <!--</div>-->
     <!--</div>-->
@@ -81,13 +94,18 @@
 <div class="profile-c-c">
   <div class="p-c-c-h">
 
-    <div class="pm" [ngClass]="{'active': isActive(1)}" (click)="changeTab(1)" routerLink="./posts">
+    <div class="pm" [ngClass]="{'active': isActive(1)}"
+         (click)="changeTab(1)"
+         routerLink="./posts"
+         [queryParams]="{userId: userId}">
       Posts
     </div>
-    <div class="pm" [ngClass]="{'active': isActive(2)}" (click)="changeTab(2)" routerLink="./likes">
+    <div class="pm" [ngClass]="{'active': isActive(2)}" (click)="changeTab(2)" routerLink="./likes"
+         [queryParams]="{userId: userId}">
       Likes
     </div>
-    <div class="pm" [ngClass]="{'active': isActive(3)}" (click)="changeTab(3)" routerLink="./following">
+    <div class="pm" [ngClass]="{'active': isActive(3)}" (click)="changeTab(3)" routerLink="./following"
+         [queryParams]="{userId: userId}">
       Following
     </div>
   </div>

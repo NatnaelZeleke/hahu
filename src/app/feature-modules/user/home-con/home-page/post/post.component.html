@@ -20,8 +20,9 @@
 
     <div class="container ">
       <div class=" row">
-        <div class="col-6 p-l-8">
+        <div class="col-6 p-l-8" routerLink="/user/user/profile" [queryParams]="{ userId: user?.id }">
           <div class="u-p-p bcimg f-l"
+
                [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')'}">
 
           </div>

@@ -6,6 +6,7 @@ import {PostService} from '../../../../../api/services/post.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {LikesService} from '../../../../../api/services/likes.service';
 import {ILikes} from '../../../../../api/models/likes.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-likes',
@@ -18,29 +19,43 @@ export class LikesComponent implements OnInit {
   likes: ILikes[] = [];
   loaded = false;
   posts: IPost[] = [];
+  userId = 0;
+  queryId = 0;
 
   constructor(public accService: AccService,
               public likeService: LikesService,
               public ngxSpinner: NgxSpinnerService,
-              public postService: PostService) {
+              public postService: PostService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['userId'];
+      console.log(this.userId);
+    });
     this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;
-        this.getUserLikes(this.account.id);
+        if (this.userId > 0 && this.userId != this.account.id) {
+          this.queryId = this.userId;
+        } else {
+          this.queryId = this.account.id;
+        }
+        this.getUserLikes();
       });
   }
 
-  getUserLikes(userId: number) {
+  getUserLikes() {
     this.ngxSpinner.show('loadingLikes');
-    this.likeService.query()
+    this.likeService.query({
+      'postId.specified': true,
+      'userId.equals': this.queryId
+    })
       .subscribe(result => {
-        this.loaded = true;
+        // this.loaded = true;
         console.log(result);
         this.likes = result.body;
-        this.ngxSpinner.hide('loadingLikes');
         this.getLikePosts();
       });
   }
@@ -51,6 +66,9 @@ export class LikesComponent implements OnInit {
       for (let i = 0; i < this.likes.length; i++) {
         this.getPost(this.likes[i].postId);
       }
+    } else {
+      this.ngxSpinner.hide('loadingLikes');
+      this.loaded = true;
     }
   }
 
@@ -58,6 +76,8 @@ export class LikesComponent implements OnInit {
     this.postService.find(postId)
       .subscribe(result => {
         this.posts.push(result.body);
+        this.loaded = true;
+        this.ngxSpinner.hide('loadingLikes');
       });
   }
 

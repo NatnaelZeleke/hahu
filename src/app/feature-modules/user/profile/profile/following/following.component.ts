@@ -8,6 +8,7 @@ import {UsersConnectionService} from '../../../../../api/services/users-connecti
 import {IUsersConnection} from '../../../../../api/models/users-connection.model';
 import {ProfileService} from '../../../../../api/services/profile.service';
 import {IProfile} from '../../../../../api/models/profile.model';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-following',
@@ -21,26 +22,45 @@ export class FollowingComponent implements OnInit {
   connection: IUsersConnection[] = [];
   loaded = false;
   profiles: IProfile[] = [];
+  userId = 0;
+  queryId = 0;
+  parentId = 0;
 
   constructor(public accService: AccService,
               public postService: PostService,
               public ngxSpinner: NgxSpinnerService,
               public userConnectionService: UsersConnectionService,
-              public profileService: ProfileService) {
+              public profileService: ProfileService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['userId'];
+    });
     this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;
-        this.getFollowing(this.account.id);
+        if (this.userId > 0 && this.userId != this.account.id) {
+          this.queryId = this.userId;
+        } else {
+          this.queryId = this.account.id;
+        }
+        this.getFollowing();
       });
   }
 
+  navigateProfile(userId: number) {
+    this.router.navigate(
+      ['../profile/profile'],
+      {queryParams: {userId: userId}}
+      );
+  }
 
-  getFollowing(userId: number) {
+  getFollowing() {
     this.ngxSpinner.show('loadingFollowing');
-    this.userConnectionService.query({'followedId.equals': userId})
+    this.userConnectionService.query({'followingId.equals': this.queryId})
       .subscribe(result => {
         this.loaded = true;
         console.log(result);
@@ -53,7 +73,7 @@ export class FollowingComponent implements OnInit {
 
   getConnectionProfile() {
     for (let i = 0; i < this.connection.length; i++) {
-      this.getProfile(this.connection[i].followingId);
+      this.getProfile(this.connection[i].followerId);
     }
   }
 

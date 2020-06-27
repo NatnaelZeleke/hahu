@@ -8,6 +8,7 @@ import {PostsComponent} from './profile/posts/posts.component';
 import {LikesComponent} from './profile/likes/likes.component';
 import {FollowingComponent} from './profile/following/following.component';
 
+
 const routes: Routes = [
   {
     path: 'profile',
