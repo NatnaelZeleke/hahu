@@ -62,7 +62,7 @@
   margin: 0;
   overflow: hidden;
   .h-menu {
-    z-index: 9;
+    z-index: 9999;
     background-color: #161a2c;
     position: fixed;
     bottom: 0;
@@ -152,6 +152,9 @@
   .post {
     &.dark {
       background-color: #353a50 !important;
+      .p-con-c{
+        background-color: #353a50;
+      }
       .n-con {
         p {
           color: #fff;
@@ -694,7 +697,7 @@ $ppw: 36px;
   .p-s-c-i {
     opacity: 0.4;
     text-align: center;
-    .lb {
+    .lbs {
       border-right: 1px solid #efefef;
     }
     p {

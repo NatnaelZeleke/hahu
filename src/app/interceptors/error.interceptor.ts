@@ -26,17 +26,17 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
       } else if (err.status === 403) {
-        this.openModal('Notice', err.error.message || err.statusText); /// authentication related error
+        // this.openModal('Notice', err.error.message || err.statusText); /// authentication related error
         this.authenticationService.logout();
         this.router.navigate(['/login']);
       } else if (err.status === 404) {
-        this.openModal('Notice', 'The application is not able to connect to services. Check if you are connected to internet');
+        // this.openModal('Notice', 'The application is not able to connect to services. Check if you are connected to internet');
       } else if (err.status >= 500 && err.status < 600) {
 
-        this.openModal('Notice', 'there is temporary problem. contact uni distribution support service or try latter');
+        // this.openModal('Notice', 'there is temporary problem. contact uni distribution support service or try latter');
       } else {
         const error = err.error.message || err.statusText;
-        this.openModalConnection('No Internet Connection.', 'Please check that you are connected to the internet and try again.');
+        // this.openModalConnection('No Internet Connection.', 'Please check that you are connected to the internet and try again.');
       }
       return throwError(err.error.message || err.statusText);
     }));

@@ -1,19 +1,13 @@
-
 <div class="set-con">
   <div class="n-c set-p-h">
-
     <div class="n-c-h ">
       <div class="a-c" routerLink="../">
-        <i class="fa fa-angle-left" ></i> <span class="set-h">Profile</span>
-        <!--<i class="fa fa-search float-right srch"></i>-->
-
+        <i class="fa fa-angle-left"></i> <span class="set-h">Profile</span>
       </div>
-      <!--<p class="nh">Progress</p>-->
     </div>
-
   </div>
   <div class="set-n">
-    <p class="l">Jessica Jones</p>
+    <p class="l pn">{{user?.firstName}} {{user?.lastName}}</p>
     <hr>
     <p class="s">theme</p>
   </div>
@@ -46,39 +40,39 @@
       <small>Display, Notification, Sounds</small>
       <i class="fa fa-angle-right float-right"></i>
     </div>
-    <div class="ml">
-      <p>Change Username</p>
-      <!--<small>Display, Notification, Sounds</small>-->
-      <!--<i class="fa fa-angle-right float-right"></i>-->
-    </div>
-    <div class="ml">
-      <p>Change hahu-gram phone number</p>
-      <!--<small>Display, Notification, Sounds</small>-->
-      <!--<i class="fa fa-angle-right float-right"></i>-->
-    </div>
-    <div class="ml">
+    <!--<div class="ml">-->
+    <!--<p>Change Username</p>-->
+    <!--&lt;!&ndash;<small>Display, Notification, Sounds</small>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="fa fa-angle-right float-right"></i>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="ml">-->
+    <!--<p>Change hahu-gram phone number</p>-->
+    <!--&lt;!&ndash;<small>Display, Notification, Sounds</small>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="fa fa-angle-right float-right"></i>&ndash;&gt;-->
+    <!--</div>-->
+    <div class="ml" routerLink="../pagesetting">
       <p>Pages</p>
       <small>Adjust the visibility of your content</small>
       <i class="fa fa-angle-right float-right"></i>
     </div>
-    <div class="ml">
-      <p>Visibility</p>
-      <!--<small>Adjust the visibility of your content</small>-->
-      <!--<i class="fa fa-angle-right float-right"></i>-->
-    </div>
+    <!--<div class="ml">-->
+    <!--<p>Visibility</p>-->
+    <!--&lt;!&ndash;<small>Adjust the visibility of your content</small>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="fa fa-angle-right float-right"></i>&ndash;&gt;-->
+    <!--</div>-->
     <div class="ml" routerLink="../editprofile">
       <p>Change user profile</p>
       <small>Profile info like page, gender profile picture</small>
       <i class="fa fa-angle-right float-right"></i>
     </div>
-    <hr >
-    <div class="ml">
-      <p>Finger print security</p>
-      <small>Secure your app with your finger print</small>
-      <!--<i class="fa fa-angle-right float-right"></i>-->
-    </div>
-    <hr >
-    <div class="ml">
+    <!--<hr >-->
+    <!--<div class="ml">-->
+    <!--<p>Finger print security</p>-->
+    <!--<small>Secure your app with your finger print</small>-->
+    <!--&lt;!&ndash;<i class="fa fa-angle-right float-right"></i>&ndash;&gt;-->
+    <!--</div>-->
+    <hr>
+    <div class="ml" routerLink="../blockedusers">
       <p>Blocked users</p>
       <small>handle unwanted users or haters as your preference</small>
       <i class="fa fa-angle-right float-right"></i>

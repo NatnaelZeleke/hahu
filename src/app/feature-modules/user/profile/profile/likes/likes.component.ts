@@ -7,6 +7,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {LikesService} from '../../../../../api/services/likes.service';
 import {ILikes} from '../../../../../api/models/likes.model';
 import {ActivatedRoute} from '@angular/router';
+import {PTabService} from '../../../../../services/p-tab.service';
 
 @Component({
   selector: 'app-likes',
@@ -26,14 +27,16 @@ export class LikesComponent implements OnInit {
               public likeService: LikesService,
               public ngxSpinner: NgxSpinnerService,
               public postService: PostService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public pTabService: PTabService) {
   }
 
   ngOnInit() {
+    this.pTabService.changeTab(2);
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
-      console.log(this.userId);
     });
+
     this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;

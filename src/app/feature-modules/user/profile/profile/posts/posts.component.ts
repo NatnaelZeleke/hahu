@@ -5,6 +5,7 @@ import {PostService} from '../../../../../api/services/post.service';
 import {IPost} from '../../../../../api/models/post.model';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {ActivatedRoute} from '@angular/router';
+import {PTabService} from '../../../../../services/p-tab.service';
 
 @Component({
   selector: 'app-posts',
@@ -23,14 +24,25 @@ export class PostsComponent implements OnInit {
   constructor(public accService: AccService,
               public postService: PostService,
               public ngxSpinner: NgxSpinnerService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public pTabService: PTabService) {
   }
 
   ngOnInit() {
+    this.pTabService.changeTab(1);
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
-
+      if (params['reload'] != null) {
+        this.getAccount();
+      }
     });
+    this.getAccount();
+  }
+
+
+  getAccount() {
+    this.loaded = false;
+    this.postList = [];
     this.accService.getUserAcc()
       .subscribe(result => {
         this.account = result;
@@ -38,9 +50,7 @@ export class PostsComponent implements OnInit {
           this.queryId = this.userId;
         } else {
           this.queryId = this.account.id;
-
         }
-
         this.loadPost();
       });
   }

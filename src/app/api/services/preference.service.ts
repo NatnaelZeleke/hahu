@@ -6,14 +6,19 @@ import {SERVER_API_URL} from '../app.constants';
 import {createRequestOption} from '../util/request-util';
 
 
+type EntityBooleanType = HttpResponse<boolean>;
 type EntityResponseType = HttpResponse<IPreference>;
 type EntityArrayResponseType = HttpResponse<IPreference[]>;
 
 @Injectable({ providedIn: 'root' })
 export class PreferenceService {
-  public resourceUrl = SERVER_API_URL + 'api/preferences';
+  public resourceUrl = SERVER_API_URL + 'api/custom/preferences';
 
   constructor(protected http: HttpClient) {}
+
+  checkIfUserBlocked(userId: number): Observable<EntityBooleanType> {
+    return this.http.get<boolean>(this.resourceUrl + '/checkBlockedUser/' + userId, { observe: 'response' });
+  }
 
   create(preference: IPreference): Observable<EntityResponseType> {
     return this.http.post<IPreference>(this.resourceUrl, preference, { observe: 'response' });

@@ -7,6 +7,8 @@ import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {PostsComponent} from './profile/posts/posts.component';
 import {LikesComponent} from './profile/likes/likes.component';
 import {FollowingComponent} from './profile/following/following.component';
+import {BlockedUsersComponent} from './blocked-users/blocked-users.component';
+import {PagesSettingComponent} from './pages-setting/pages-setting.component';
 
 
 const routes: Routes = [
@@ -39,8 +41,16 @@ const routes: Routes = [
     component: GeneralSettingComponent
   },
   {
+    path: 'blockedusers',
+    component: BlockedUsersComponent
+  },
+  {
     path: 'editprofile',
     component: EditProfileComponent
+  },
+  {
+    path: 'pagesetting',
+    component: PagesSettingComponent
   },
   {
     path: '',

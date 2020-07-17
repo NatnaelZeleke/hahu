@@ -93,24 +93,87 @@
 
         </div>
         <div class="col-sm-12 l-f-c">
-          <!--<p class="p-l">San fransisco USA</p>-->
-          <br>
-          <input type="text"
-                 placeholder="city"
-                 formControlName="city"
-                 class="form-control form-control-sm a-f">
-          <div class="t-a-c">
-            <div *ngIf="submitted || (f.city.invalid && (f.city.dirty || f.city.touched))">
-              <div *ngIf="profileForm.hasError('required',['city'])">
-                <small class="text-danger">
-                  This field is required
-                </small>
+
+
+          <div class="row">
+
+            <div class="col">
+              <div class="input-group input-group-sm li">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="text"
+                       placeholder="user name"
+                       formControlName="userName"
+                       class="form-control"
+                       (focusout)="checkUserName()">
+                <div class="t-a-c">
+                  <div *ngIf="submitted || (f.userName.invalid && (f.userName.dirty || f.userName.touched))">
+                    <div *ngIf="profileForm.hasError('required',['userName'])">
+                      <small class="text-danger">
+                        This field is required
+                      </small>
+                    </div>
+
+                  </div>
+                  <small *ngIf="userNameTaken" class="text-danger">
+                    User Name is taken
+                  </small>
+                </div>
               </div>
             </div>
+
+            <div class="col">
+              <input type="text"
+                     placeholder="city"
+                     formControlName="city"
+                     class="form-control form-control-sm ri">
+              <div class="t-a-c">
+                <div *ngIf="submitted || (f.city.invalid && (f.city.dirty || f.city.touched))">
+                  <div *ngIf="profileForm.hasError('required',['city'])">
+                    <small class="text-danger">
+                      This field is required
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row m-t-10">
+            <div class="col">
+              <div class="pc">
+
+                <input type="text"
+                       placeholder="phone number (+251)"
+                       formControlName="phoneNumber"
+                       class="form-control form-control-sm">
+
+                <div class="t-a-c">
+                  <div *ngIf="submitted || (f.phoneNumber.invalid && (f.phoneNumber.dirty || f.phoneNumber.touched))">
+                    <div *ngIf="profileForm.hasError('required',['phoneNumber'])">
+                      <small class="text-danger">
+                        This field is required
+                      </small>
+                    </div>
+                    <div *ngIf="profileForm.hasError('pattern',['phoneNumber'])">
+                      <small  class="text-danger">
+                        Phone number is not valid
+                      </small>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col"></div>
+
           </div>
 
           <hr>
-
           <textarea type="text"
                     placeholder="bio"
                     formControlName="bio"
@@ -125,8 +188,6 @@
               </div>
             </div>
           </div>
-
-
         </div>
       </form>
       <br>

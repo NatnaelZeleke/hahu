@@ -1,4 +1,5 @@
 import {ICategory} from './category.model';
+import {IUser} from './user.model';
 
 export interface IPreference {
   id?: number;
@@ -6,6 +7,7 @@ export interface IPreference {
   userLogin?: string;
   userId?: number;
   categories?: ICategory[];
+  blockedUsers?: IUser[];
 }
 
 export class Preference implements IPreference {
@@ -14,7 +16,8 @@ export class Preference implements IPreference {
     public hasPrefereceSelected?: boolean,
     public userLogin?: string,
     public userId?: number,
-    public categories?: ICategory[]
+    public categories?: ICategory[],
+    public blockedUsers?: IUser[]
   ) {
     this.hasPrefereceSelected = this.hasPrefereceSelected || false;
   }

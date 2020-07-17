@@ -12,6 +12,10 @@ import {ActivatedRoute} from '@angular/router';
 import {UsersConnectionService} from '../../../../api/services/users-connection.service';
 import {IUsersConnection} from '../../../../api/models/users-connection.model';
 import * as moment from 'moment';
+import {PTabService} from '../../../../services/p-tab.service';
+import {PreferenceService} from '../../../../api/services/preference.service';
+import {IPreference} from '../../../../api/models/preference.model';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -30,19 +34,25 @@ export class ProfileComponent implements OnInit {
   isUserFollowing = false;
   loaded = false;
   loadingFollowingStatus = false;
+  loadingBlockedStatus = false;
   connection: IUsersConnection;
+  preference: IPreference;
+  isUserBlocked = false;
 
   constructor(public profileService: ProfileService,
               public accountService: AccService,
               public userService: UserService,
               public ngxSpinner: NgxSpinnerService,
               private route: ActivatedRoute,
-              private userConnection: UsersConnectionService) {
+              private userConnection: UsersConnectionService,
+              public pTabService: PTabService,
+              public preferenceService: PreferenceService) {
 
   }
 
   ngOnInit() {
 
+    this.tabController();
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
       if (params['reload'] != null) {
@@ -52,6 +62,18 @@ export class ProfileComponent implements OnInit {
     this.loadProfile();
   }
 
+  tabController() {
+    this.pTabService.selectedSubject
+      .subscribe(result => {
+        if (result != 0) {
+          this.currentClass = result;
+        } else {
+          this.currentClass = 1;
+        }
+      });
+  }
+
+
   loadProfile() {
     this.resetProfile();
     this.ngxSpinner.show('loadingProfilePic');
@@ -59,9 +81,11 @@ export class ProfileComponent implements OnInit {
       .subscribe(result => {
         this.account = result;
         if (this.userId > 0 && this.userId != this.account.id) {
-
+          // when the users visits profile
           this.visitingProfile = true;
           this.getUserProfile(this.userId);
+          this.checkBlockedStatus(this.userId);
+          this.getPreference(this.account.id);
           this.isFollowing();
         } else {
           this.getUserProfile(this.account.id);
@@ -133,7 +157,6 @@ export class ProfileComponent implements OnInit {
 
   }
 
-
   getUserAccount(userLogin: string) {
     this.userService.find(userLogin)
       .subscribe(result => {
@@ -159,7 +182,54 @@ export class ProfileComponent implements OnInit {
     this.connection = null;
   }
 
+  blockUser() {
+    this.preference.blockedUsers.push(this.user);
+    this.preferenceService.update(this.preference)
+      .subscribe(result => {
+        if (result != null) {
+          this.isUserBlocked = true;
+        }
+      });
+  }
+
   changeTab(number: number) {
     this.currentClass = number;
+  }
+
+  getPreference(userId: number) {
+    this.preferenceService.query({
+      'userId.equals': userId
+    }).subscribe(result => {
+      this.preference = result.body[0];
+    });
+  }
+
+  checkBlockedStatus(userId: number) {
+    this.preferenceService.checkIfUserBlocked(userId)
+      .subscribe(result => {
+        this.isUserBlocked = result.body;
+      });
+  }
+
+  unblockUser() {
+    this.loadingBlockedStatus = true;
+    const idx = this.getBlockedUserIndex(this.user.id);
+    this.preference.blockedUsers.splice(idx, 1);
+    this.ngxSpinner.show('blockSpinner');
+    this.preferenceService.update(this.preference)
+      .subscribe(result => {
+        this.ngxSpinner.hide('blockSpinner');
+        this.isUserBlocked = false;
+        this.loadingBlockedStatus = false;
+      });
+  }
+
+
+  getBlockedUserIndex(blockedUserId: number): number {
+    for (let i = 0; i < this.preference.blockedUsers.length; i++) {
+      if (blockedUserId == this.preference.blockedUsers[i].id) {
+        return i;
+      }
+    }
   }
 }

@@ -14,6 +14,7 @@ import {LikesComponent} from './profile/likes/likes.component';
 import {FollowingComponent} from './profile/following/following.component';
 import {SharedPostModule} from '../../../shared/shared-post.module';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { PagesSettingComponent } from './pages-setting/pages-setting.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     BlockedUsersComponent,
     PostsComponent,
     LikesComponent,
-    FollowingComponent]
+    FollowingComponent,
+    PagesSettingComponent]
 })
 export class ProfileModule {
 }

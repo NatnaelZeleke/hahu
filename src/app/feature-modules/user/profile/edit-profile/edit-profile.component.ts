@@ -9,6 +9,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
+import {PatternService} from '../../../../services/Pattern.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -24,6 +25,7 @@ export class EditProfileComponent implements OnInit {
   submitted = false;
   // file upload code
   file: File;
+  userNameTaken = false;
 
   constructor(public profileService: ProfileService,
               public accountService: AccService,
@@ -32,7 +34,8 @@ export class EditProfileComponent implements OnInit {
               public formBuilder: FormBuilder,
               public httpClient: HttpClient,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private patternService: PatternService) {
   }
 
   ngOnInit() {
@@ -41,7 +44,9 @@ export class EditProfileComponent implements OnInit {
       lastName: ['', Validators.required],
       age: ['', Validators.required],
       city: ['', Validators.required],
-      bio: ['', Validators.required]
+      bio: ['', Validators.required],
+      userName: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.pattern(this.patternService.phonePattern)]],
     });
 
     this.ngxSpinner.show('loadingProfilePic');
@@ -58,7 +63,6 @@ export class EditProfileComponent implements OnInit {
     this.profileService.query({'userId.equals': userId})
       .subscribe(result => {
         this.profile = result.body[0];
-
         this.getUserAccount(this.profile.userLogin);
         this.ngxSpinner.hide('loadingProfilePic');
       }, () => {
@@ -75,21 +79,23 @@ export class EditProfileComponent implements OnInit {
           'lastName': this.user.lastName,
           'age': this.profile.age,
           'city': this.profile.location,
-          'bio': this.profile.bio
+          'bio': this.profile.bio,
+          'userName': this.user.login,
+          'phoneNumber': this.profile.phone
         });
       });
   }
 
   updateProfile() {
     this.submitted = true;
-
-
     if (this.profileForm.valid) {
       this.profile.age = this.profileForm.value.age;
       this.profile.bio = this.profileForm.value.bio;
+      this.profile.phone = this.profileForm.value.phoneNumber;
       this.profile.location = this.profileForm.value.city;
       this.user.firstName = this.profileForm.value.firstName;
       this.user.lastName = this.profileForm.value.lastName;
+      this.user.login = this.profileForm.value.userName;
 
       this.ngxSpinner.show('updatingProfile');
       this.profileService.update(this.profile)
@@ -97,7 +103,7 @@ export class EditProfileComponent implements OnInit {
           this.userService.update(this.user)
             .subscribe(result2 => {
               this.ngxSpinner.hide('updatingProfile');
-              this.router.navigate(['../profile'], { relativeTo: this.route });
+              this.router.navigate(['../profile'], {relativeTo: this.route});
             }, (err) => {
               this.ngxSpinner.hide('updatingProfile');
               alert('something went wrong');
@@ -106,7 +112,6 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-
   getDate() {
     return new Date();
   }
@@ -114,6 +119,21 @@ export class EditProfileComponent implements OnInit {
   get f() {
     return this.profileForm.controls;
   }
+
+  checkUserName() {
+    if (this.profileForm.value.userName != this.user.login) {
+      this.userService.find(this.profileForm.value.userName)
+        .subscribe(result => {
+          if (result != null) {
+            this.userNameTaken = true;
+          }
+        }, (err) => {
+        });
+    } else {
+      this.userNameTaken = false;
+    }
+  }
+
 
   onFileInputChange(event: Event): void {
     console.log('caleed');

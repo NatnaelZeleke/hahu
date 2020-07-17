@@ -9,6 +9,7 @@ import {IUsersConnection} from '../../../../../api/models/users-connection.model
 import {ProfileService} from '../../../../../api/services/profile.service';
 import {IProfile} from '../../../../../api/models/profile.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {PTabService} from '../../../../../services/p-tab.service';
 
 @Component({
   selector: 'app-following',
@@ -32,10 +33,12 @@ export class FollowingComponent implements OnInit {
               public userConnectionService: UsersConnectionService,
               public profileService: ProfileService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              public pTabService: PTabService) {
   }
 
   ngOnInit() {
+    this.pTabService.changeTab(3);
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
     });
@@ -55,7 +58,7 @@ export class FollowingComponent implements OnInit {
     this.router.navigate(
       ['../profile/profile'],
       {queryParams: {userId: userId}}
-      );
+    );
   }
 
   getFollowing() {

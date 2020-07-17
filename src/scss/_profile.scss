@@ -98,12 +98,15 @@
 }
 
 .set-con {
+  &.db{
+    background-color: #2b2e3f;
+  }
   &.ep {
     background-color: #2b2e3f;
   }
   width: 100%;
   background-color: #f1f3f5;
-  min-height: 200px;
+  //min-height: 200px;
   z-index: 1000;
   position: relative;
   .set-p-h {
@@ -288,4 +291,25 @@
     right: 14px;
     bottom: 3px;
   }
+}
+
+
+.set-b-con{
+  .hdesc{
+    padding: 15px;
+    color: #e0e0e0;
+    p{
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
+    hr{
+      border-top: 1px solid rgba(255, 255, 255, 0.58);
+      margin: 0 !important;
+    }
+  }
+}
+
+
+.v-s{
+  color: #fff;
 }

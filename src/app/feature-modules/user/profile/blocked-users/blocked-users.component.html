@@ -1,1 +1,52 @@
-<p>blocked-users works!</p>
+<div class="set-con db">
+  <div class="n-c set-p-h">
+
+    <div class="n-c-h ">
+      <div class="a-c" routerLink="../profilesetting">
+        <i class="fa fa-angle-left"></i>
+        <span class="set-h">Blocked Users</span>
+        <!--<i class="fa fa-search float-right srch"></i>-->
+
+      </div>
+      <!--<p class="nh">Progress</p>-->
+    </div>
+
+  </div>
+
+  <div class="set-b-con">
+    <div class="hdesc">
+      <p>Blocked Users</p>
+      <hr>
+    </div>
+    <div class="s-p-r-p p-r">
+
+
+      <div class="">
+        <div class="al-c w-100" *ngIf="loaded">
+          <div class="fol-con" *ngFor="let p of profiles" routerLink="../../profile" [queryParams]="{userId : p.userId,
+      reload: true}">
+            <div class="im bcimg"
+                 [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + p?.curentProfilePic + ')'}">
+            </div>
+            <p>@{{p?.userLogin}}</p>
+          </div>
+          <div *ngIf="!hasBlockedUsers" class="n-c-y">You have blocked no one.</div>
+        </div>
+      </div>
+
+      <div class="p-spin-con">
+        <ngx-spinner bdColor="rgba(152,61,61,0)"
+                     size="default"
+                     color="#ddd"
+                     type="ball-fall"
+                     [fullScreen]="false"
+                     name="loadingBlocked"></ngx-spinner>
+      </div>
+
+      <div class="loading row">
+      </div>
+
+    </div>
+
+  </div>
+</div>
