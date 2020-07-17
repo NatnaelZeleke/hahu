@@ -9,6 +9,7 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
 import {PopoverModule} from 'ngx-bootstrap/popover';
+import {UiSwitchModule} from 'ngx-ui-switch';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +20,17 @@ import {PopoverModule} from 'ngx-bootstrap/popover';
     PaginationModule.forRoot(),
     AlertModule.forRoot(),
     ProgressbarModule.forRoot(),
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    UiSwitchModule.forRoot({
+      size: 'small',
+      color: 'rgb(0, 189, 99)',
+      switchColor: '#5be593',
+      defaultBgColor: '#c9c9c9',
+      defaultBoColor : '#2b2e3f',
+      checkedLabel: 'on',
+      uncheckedLabel: 'off'
+    })
+
   ] ,
   exports: [
     BsDropdownModule,
@@ -28,7 +39,8 @@ import {PopoverModule} from 'ngx-bootstrap/popover';
     PaginationModule,
     AlertModule,
     ProgressbarModule,
-    PopoverModule
+    PopoverModule,
+    UiSwitchModule
   ],
   declarations: []
 })

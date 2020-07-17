@@ -6,7 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoadingComponent} from './component/loading/loading.component';
 import {SpinnerComponent} from './component/spinner/spinner.component';
 import {ngfModule} from 'angular-file';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartsModule} from 'ng2-charts';
 
@@ -21,7 +21,6 @@ import {ChartsModule} from 'ng2-charts';
     ngfModule,
     NgxSpinnerModule,
     ChartsModule
-
   ],
   declarations: [LoadingComponent, SpinnerComponent],
   exports: [NgxModuleModule,
@@ -32,7 +31,7 @@ import {ChartsModule} from 'ng2-charts';
     ngfModule,
     NgxSpinnerModule,
     ChartsModule
-    ]
+  ]
 })
 export class SharedModule {
 }

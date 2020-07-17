@@ -26,6 +26,7 @@
               "./node_modules/font-awesome/scss/font-awesome.scss",
               "./node_modules/@creative-tim-official/argon-dashboard-free/assets/css/argon-dashboard.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss",
+              "./node_modules/ngx-ui-switch/ui-switch.component.scss",
               "src/scss/styles.scss"
             ],
             "scripts": [
