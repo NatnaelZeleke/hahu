@@ -32,6 +32,7 @@ import {UiSwitchModule} from 'ngx-ui-switch';
     AppRoutingModule,
     SharedModule,
 
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

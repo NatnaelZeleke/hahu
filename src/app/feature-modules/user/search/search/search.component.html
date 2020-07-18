@@ -5,7 +5,14 @@
       <!--<div class="form-group">-->
         <!--<input class="s-in form-control form-control-sm" placeholder="Look around your saves">-->
       <!--</div>-->
-      <div class="form-group">
+      <ng-template #customItemTemplate let-model="item" let-index="index">
+        <div class="">
+          <p>{{model.title}}</p>
+
+        </div>
+
+      </ng-template>
+      <form class="form-group" [formGroup]="searchForm">
         <div class="input-group s-i-g">
           <div class="input-group-prepend s-p">
             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -13,9 +20,18 @@
           <input type="text" class="s-in form-control"
                  placeholder="Look around hahu"
                  aria-label="Username"
-                 aria-describedby="basic-addon1">
+                 aria-describedby="basic-addon1"
+                 [typeahead]="dataSource"
+                 [typeaheadAsync]="true"
+                 [typeaheadSingleWords]="false"
+                 (typeaheadOnSelect)="onSelect($event)"
+                 [typeaheadItemTemplate]="customItemTemplate"
+                 [typeaheadOptionsLimit]="10"
+                 formControlName="query"
+                 required
+                 aria-describedby="button-addon2">
         </div>
-      </div>
+      </form>
     </form>
   </div>
 
@@ -34,29 +50,22 @@
   </div>
 
   <div class="tag-con">
-    <span class="badge  badge-info">featured</span>
-    <span class="badge  badge-primary">e-course</span>
-    <span class="badge  badge-warning">news</span>
-    <span class="badge  badge-danger">tech</span>
-    <span class="badge  badge-success">Success</span>
-    <span class="badge  badge-danger">Danger</span>
-    <span class="badge  badge-warning">Warning</span>
-  </div>
-  <div class="s-p-r-p">
-    <div class="s-p-r-p-c">
-      <div class="sm-c sm-s-l">
-        <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background2.jpg')">
-        </div>
-        <div class="desc-c tab">
-          <p class="b">Discover</p>
-
-          <p class="l">If You are offered a seat ...</p>
-        </div>
-      </div>
-    </div>
+    <span class="badge  " *ngFor="let t of tags; let i = index;"  ngClass="sb{{i+1}}">{{t.name}}</span>
   </div>
 
+  <!--<div class="s-p-r-p">-->
+    <!--<div class="s-p-r-p-c">-->
+      <!--<div class="sm-c sm-s-l">-->
+        <!--<div class="sm-c-i bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
+        <!--</div>-->
+        <!--<div class="desc-c tab">-->
+          <!--<p class="b">Discover</p>-->
 
+          <!--<p class="l">If You are offered a seat ...</p>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <div class="">
     <div class="post">
