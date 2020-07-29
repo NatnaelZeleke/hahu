@@ -251,6 +251,8 @@ ngx-bootstrap/positioning
 
 ngx-bootstrap/progressbar
 
+ngx-bootstrap/typeahead
+
 ngx-bootstrap/utils
 
 ngx-infinite-scroll
@@ -279,6 +281,9 @@ SOFTWARE.
 
 
 ngx-spinner
+MIT
+
+ngx-ui-switch
 MIT
 
 regenerator-runtime

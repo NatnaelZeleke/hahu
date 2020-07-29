@@ -1,0 +1,45 @@
+.dropdown-menu{
+  width: 90% !important;
+}
+.sr{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rc{
+
+  width: 100%;
+}
+.rc p{
+  margin-bottom: 0;
+}
+
+.srlc{
+  width: 100%;
+  height: 20px;
+  position: relative;
+}
+.ftags{
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+.ftags:focus{
+  border: 2px solid #fff;
+}
+.srCon{
+  width: 100%;
+}
+.srOC{
+  width: 50%;
+  display: inline-block;
+  margin-bottom: 14px;
+
+}
+.srOC .sm-c{
+  margin: 0 auto;
+  display: block;
+}
+.conm{
+  margin:0 auto;
+}
+

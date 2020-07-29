@@ -3,16 +3,15 @@
   <div class="search-con">
     <form class="">
       <!--<div class="form-group">-->
-        <!--<input class="s-in form-control form-control-sm" placeholder="Look around your saves">-->
+      <!--<input class="s-in form-control form-control-sm" placeholder="Look around your saves">-->
       <!--</div>-->
-      <ng-template #customItemTemplate let-model="item" let-index="index">
-        <div class="">
-          <p>{{model.title}}</p>
-
+      <ng-template #customItemTemplate let-model="item" let-index="index" class="tc">
+        <div class="rc">
+          <p class="sr">{{model.title}}</p>
         </div>
-
       </ng-template>
-      <form class="form-group" [formGroup]="searchForm">
+
+      <form class="form-group" [formGroup]="searchForm" (submit)="onSearch()">
         <div class="input-group s-i-g">
           <div class="input-group-prepend s-p">
             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -25,11 +24,20 @@
                  [typeaheadAsync]="true"
                  [typeaheadSingleWords]="false"
                  (typeaheadOnSelect)="onSelect($event)"
+                 typeaheadOptionField="posts.title"
                  [typeaheadItemTemplate]="customItemTemplate"
                  [typeaheadOptionsLimit]="10"
                  formControlName="query"
-                 required
-                 aria-describedby="button-addon2">
+                 required>
+          <div class="tag-l-c">
+
+            <ngx-spinner bdColor="rgba(152,61,61,0)"
+                         size="small"
+                         color="#6495ff"
+                         type="ball-fall"
+                         name="searchSpinner"
+                         [fullScreen]="false"></ngx-spinner>
+          </div>
         </div>
       </form>
     </form>
@@ -50,25 +58,65 @@
   </div>
 
   <div class="tag-con">
-    <span class="badge  " *ngFor="let t of tags; let i = index;"  ngClass="sb{{i+1}}">{{t.name}}</span>
+    <button class="badge btn ftags" *ngFor="let t of tags; let i = index;" (click)="searchWithTags(t.id)"
+            ngClass="sb{{i+1}}">{{t.name}}
+    </button>
   </div>
 
   <!--<div class="s-p-r-p">-->
-    <!--<div class="s-p-r-p-c">-->
-      <!--<div class="sm-c sm-s-l">-->
-        <!--<div class="sm-c-i bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
-        <!--</div>-->
-        <!--<div class="desc-c tab">-->
-          <!--<p class="b">Discover</p>-->
-
-          <!--<p class="l">If You are offered a seat ...</p>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
+  <!--<div class="s-p-r-p-c">-->
+  <!--<div class="sm-c sm-s-l">-->
+  <!--<div class="sm-c-i bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
+  <!--</div>-->
+  <!--<div class="desc-c tab">-->
+  <!--<p class="b">Discover</p>-->
+  <!--<p class="l">If You are offered a seat ...</p>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
   <!--</div>-->
 
   <div class="">
+
     <div class="post">
+      <div class="container">
+        <div class="row recom-con">
+          <div class="col-12 p-0">
+            <div class="r-h-c">
+              <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>-->
+            </div>
+            <!--<p class="sm-h"> {{}}</p>-->
+          </div>
+          <div class="srlc">
+            <ngx-spinner bdColor="rgba(152,61,61,0)"
+                         size="default"
+                         color="#dddddd"
+                         type="ball-fall"
+                         [fullScreen]="false"
+                         name="loadingSResult"></ngx-spinner>
+          </div>
+          <br>
+          <div class="srCon">
+            <div class="srOC" *ngFor="let p of searchResult">
+              <div class="conm">
+                <div class="sm-c">
+                  <div class="sm-c-i bcimg"
+                       [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + p.featuredImage + ')'}">
+                  </div>
+                  <div class="desc-c">
+                    <p>{{p.title}}</p>
+                    <p class="s">{{p.title}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post" *ngIf="recentlyOpenedPosts.length > 0">
       <div class="container">
         <div class="row recom-con">
 
@@ -83,70 +131,16 @@
 
           <div class="r-com-con h-scroll">
 
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/profile.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
+            <div class="sm-c" *ngFor="let ro of recentlyOpenedPosts; let i = index;">
+              <div class="sm-c-i bcimg"
+                   [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + ro.featuredImage + ')'}">
               </div>
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/profile2.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
+              <div class="desc-c">
+                <p>Title of subject</p>
+                <p class="s">This will be a placeholder for the text to be on the </p>
               </div>
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
-              </div>
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
-              </div>
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
-              </div>
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
-              </div>
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
-              </div>
-              <div class="sm-c">
-                <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-                </div>
-                <div class="desc-c">
-                  <p>Title of subject</p>
-                  <p class="s">This will be a placeholder for the text to be on the </p>
-                </div>
-              </div>
+            </div>
+
 
 
           </div>
@@ -155,234 +149,61 @@
         </div>
       </div>
     </div>
-    <div class="post">
+
+    <div class="post" *ngIf="trendingPosts.length > 0">
       <div class="container">
         <div class="row recom-con">
-
           <div class="col-12 p-0">
             <div class="r-h-c">
               <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>-->
-
-
             </div>
             <p class="sm-h"> Trending</p>
           </div>
 
           <div class="r-com-con h-scroll">
 
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/traffic.jpg')">
+            <div class="sm-c" *ngFor="let t of trendingPosts; let i = index;">
+              <div class="sm-c-i bcimg"
+                   [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + t.featuredImage + ')'}">
               </div>
               <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
+                <p>{{t.title}}</p>
+                <p class="s">{{t.title}}</p>
               </div>
             </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/transaction.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/profile3.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-
 
           </div>
-
-
         </div>
       </div>
     </div>
-    <div class="post">
-      <div class="container">
-        <div class="row recom-con">
 
+    <div class="post" *ngFor="let po of tagPosts; let i = index;">
+      <div class="container" *ngIf="po.length > 0">
+        <div class="row recom-con">
           <div class="col-12 p-0">
             <div class="r-h-c">
               <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>-->
-
-
             </div>
-            <p class="sm-h"> Local</p>
+            <p class="sm-h"> #{{tags[i].name}}</p>
           </div>
 
           <div class="r-com-con h-scroll">
 
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
+            <div class="sm-c" *ngFor="let p of po; let x = index;">
+              <div class="sm-c-i bcimg"
+                   [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + p.featuredImage + ')'}">
               </div>
               <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
+                <p>{{p.title}}</p>
+                <p class="s">{{p.title}}</p>
               </div>
             </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-            <div class="sm-c">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-              </div>
-              <div class="desc-c">
-                <p>Title of subject</p>
-                <p class="s">This will be a placeholder for the text to be on the </p>
-              </div>
-            </div>
-
 
           </div>
-
-
         </div>
       </div>
     </div>
-    <div class="post">
-      <div class="container">
-        <div class="row recom-con">
 
-          <div class="col-12 p-0">
-            <div class="r-h-c">
-            </div>
-            <p class="sm-h"> Recommendation</p>
-          </div>
-
-          <div class="r-com-con h-scroll">
-
-            <div class="s-l-c">
-              <div class="s-l-i bcimg" style="background-image: url('./assets/images/profile3.jpg')">
-
-              </div>
-              <div class="s-l-des-c lb">
-                <p>Something </p>
-                <p class="s">By Some one</p>
-              </div>
-            </div>
-            <div class="s-l-c">
-              <div class="s-l-i bcimg" style="background-image: url('./assets/images/traffic.jpg')">
-
-              </div>
-              <div class="s-l-des-c y">
-                <p>Something </p>
-                <p class="s">By Some one</p>
-              </div>
-            </div>
-            <div class="s-l-c">
-              <div class="s-l-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-
-              </div>
-              <div class="s-l-des-c p">
-                <p>Something </p>
-                <p class="s">By Some one</p>
-              </div>
-            </div><div class="s-l-c">
-            <div class="s-l-i bcimg" style="background-image: url('./assets/images/background.jpg')">
-
-            </div>
-            <div class="s-l-des-c lb">
-              <p>Something </p>
-              <p class="s">By Some one</p>
-            </div>
-          </div>
-
-          </div>
-
-
-        </div>
-      </div>
-    </div>
     <div class="t-l">
       <div class="loading row">
         <div class="col">
@@ -397,6 +218,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
 </div>

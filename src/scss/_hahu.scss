@@ -382,6 +382,14 @@ $ppw: 36px;
   white-space: nowrap;
   width: 700px;
 
+  &.sresc{
+    width: 100%;
+    overflow: auto;
+    .sm-c{
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
   @extend .s-style;
 
   &.h-scroll {

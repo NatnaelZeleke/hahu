@@ -14,7 +14,6 @@ import {ErrorInterceptor} from './interceptors/error.interceptor';
 import {LoaderInterceptorService} from './interceptors/loader-interceptor.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AccService} from './services/acc.service';
-import {UiSwitchModule} from 'ngx-ui-switch';
 
 @NgModule({
   declarations: [
