@@ -27,10 +27,12 @@ export class SearchComponent implements OnInit {
   posts: IPost[] = [];
   searchResult: IPost[] = [];
   tagPosts: Array<IPost[]> = [];
+  similarTagPosts: Array<IPost[]> = [];
   trendingPosts: IPost[] = [];
   recentlyOpenedPosts: IPost[] = [];
   roViews: IViews[] = [];
-
+  similarTags: ITag[] = [];
+  queryText = '';
   account: Account;
 
   constructor(public tagService: TagService,
@@ -77,6 +79,7 @@ export class SearchComponent implements OnInit {
   searchPosts(queryString?: string): Observable<IPost[]> {
     this.ngxSpinner.show('searchSpinner');
     this.loading = true;
+    this.queryText = queryString;
     return this.postService.query({
       'title.contains': queryString,
     })
@@ -89,6 +92,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSelect(event: TypeaheadMatch) {
+
     this.ngxSpinner.show('loadingSResult');
     this.search(event.value);
     // this.searchProduct(event.value);
@@ -100,10 +104,14 @@ export class SearchComponent implements OnInit {
   }
 
   search(query: string) {
+    this.queryText = query;
     this.ngxSpinner.show('loadingSResult');
+    this.resetExplorePage();
+    this.getSimilarTags(query);
     this.postService.query({'title.contains': query})
       .subscribe(result => {
         this.posts = [];
+
         this.searchResult = result.body;
         this.ngxSpinner.hide('loadingSResult');
       }, (err) => {
@@ -111,16 +119,46 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  searchWithTags(tagId: number) {
+
+  resetExplorePage() {
+    this.tagPosts = [];
+    this.trendingPosts = [];
+    this.similarTagPosts = [];
+    this.recentlyOpenedPosts = [];
+  }
+
+
+  getSimilarTags(query: string) {
+    this.tagService.query({
+      'name.contains': query,
+      page: 0,
+      size: 3
+    })
+      .subscribe(result => {
+        this.similarTags = result.body;
+        for (let i = 0; i < this.similarTags.length; i++) {
+          this.getSimilarPostByTag(this.similarTags[i].id);
+        }
+      });
+  }
+
+  searchWithTags(tagId: number, name: string) {
+    this.queryText = name;
+    this.resetExplorePage();
+    this.getSimilarTags(name);
+
+    this.searchForm.reset();
     this.ngxSpinner.show('loadingSResult');
     this.postService.query({'tagId.in': [tagId]})
       .subscribe(result => {
         this.posts = [];
         this.searchResult = result.body;
         this.ngxSpinner.hide('loadingSResult');
+        console.log(this.similarTagPosts.length);
       }, (err) => {
         this.ngxSpinner.hide('loadingSResult');
       });
+
   }
 
 
@@ -151,6 +189,14 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  getSimilarPostByTag(tagId: number) {
+    this.postService.query({
+      'tagId.equals': tagId
+    }).subscribe(result => {
+      this.similarTagPosts.push(result.body);
+    });
+  }
+
   getTrendingPosts() {
     this.postService.query({
       page: 0, /// since page it is zero indexed to get page 1 we send 0
@@ -161,7 +207,6 @@ export class SearchComponent implements OnInit {
         this.trendingPosts = result.body;
       });
   }
-
 
   getRecentlyOpenedPosts(userId: number) {
     this.viewService.query({
@@ -175,7 +220,6 @@ export class SearchComponent implements OnInit {
         }
       });
   }
-
 
   getPosts(postId: number) {
     this.postService.find(postId)

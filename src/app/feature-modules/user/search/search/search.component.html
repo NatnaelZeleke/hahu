@@ -46,10 +46,9 @@
   <div class="s-m-con">
     <div class="container">
       <div class="row sm-menu">
-        <div class="col active"><p>Explore</p></div>
-        <div class="col active"><p></p></div>
-        <div class="col"><p></p></div>
-        <div class="col"></div>
+        <div class="col active t-a-l"><p>Explore <span *ngIf="queryText != ''">#</span>{{queryText}}</p></div>
+
+
       </div>
     </div>
     <div class="h-div">
@@ -58,7 +57,7 @@
   </div>
 
   <div class="tag-con">
-    <button class="badge btn ftags" *ngFor="let t of tags; let i = index;" (click)="searchWithTags(t.id)"
+    <button class="badge btn ftags" *ngFor="let t of tags; let i = index;" (click)="searchWithTags(t.id, t.name)"
             ngClass="sb{{i+1}}">{{t.name}}
     </button>
   </div>
@@ -78,38 +77,33 @@
 
   <div class="">
 
-    <div class="post">
+    <div class="srlc">
+      <ngx-spinner bdColor="rgba(152,61,61,0)"
+                   size="default"
+                   color="#dddddd"
+                   type="ball-fall"
+                   [fullScreen]="false"
+                   name="loadingSResult"></ngx-spinner>
+    </div>
+
+    <div class="post" *ngIf="searchResult.length > 0">
       <div class="container">
         <div class="row recom-con">
           <div class="col-12 p-0">
             <div class="r-h-c">
               <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>-->
             </div>
-            <!--<p class="sm-h"> {{}}</p>-->
+            <p class="sm-h"></p>
           </div>
-          <div class="srlc">
-            <ngx-spinner bdColor="rgba(152,61,61,0)"
-                         size="default"
-                         color="#dddddd"
-                         type="ball-fall"
-                         [fullScreen]="false"
-                         name="loadingSResult"></ngx-spinner>
-          </div>
-          <br>
-          <div class="srCon">
-            <div class="srOC" *ngFor="let p of searchResult">
-              <div class="conm">
-                <div class="sm-c">
-                  <div class="sm-c-i bcimg"
-                       [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + p.featuredImage + ')'}">
-                  </div>
-                  <div class="desc-c">
-                    <p>{{p.title}}</p>
-                    <p class="s">{{p.title}}</p>
-                  </div>
-                </div>
+          <div class="r-com-con h-scroll">
+            <div class="sm-c" *ngFor="let sr of searchResult; let i = index;">
+              <div class="sm-c-i bcimg"
+                   [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + sr.featuredImage + ')'}">
               </div>
-
+              <div class="desc-c">
+                <p>{{sr.title}}</p>
+                <p class="s">{{sr.title}}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -140,7 +134,6 @@
                 <p class="s">This will be a placeholder for the text to be on the </p>
               </div>
             </div>
-
 
 
           </div>
@@ -202,6 +195,41 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="post" *ngFor="let stp of similarTagPosts; let i = index;">
+      <div class="container" *ngIf="stp.length > 0">
+        <div class="row recom-con">
+          <div class="col-12 p-0">
+            <div class="r-h-c">
+              <!--<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>-->
+            </div>
+            <p class="sm-h"> #{{similarTags[i]?.name}}</p>
+          </div>
+          <div class="r-com-con h-scroll">
+
+            <div class="sm-c" *ngFor="let sp of stp; let x = index;">
+              <div class="sm-c-i bcimg"
+                   [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + sp.featuredImage + ')'}">
+              </div>
+              <div class="desc-c">
+                <p>{{sp.title}}</p>
+                <p class="s">{{sp.title}}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post" *ngIf="searchResult.length == 0 && queryText != ''">
+      <div class="container row" *ngIf="similarTagPosts != null">
+        <div class="col t-a-c white">
+          <small>No results found</small>
+        </div>
+      </div>
+
     </div>
 
     <div class="t-l">
