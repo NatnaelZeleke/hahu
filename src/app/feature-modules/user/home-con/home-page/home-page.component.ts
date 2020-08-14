@@ -40,18 +40,16 @@ export class HomePageComponent implements OnInit {
         this.loadPost();
       });
     this.tagService.getTags();
+    // this.createContent();
   }
 
   loadPost() {
-
     this.spinner.show('postSpinner');
     this.appPostService.getPost(0, 10)
       .subscribe(result => {
         this.spinner.hide('postSpinner');
       });
-
   }
-
 
   createContent() {
     const initialState = {

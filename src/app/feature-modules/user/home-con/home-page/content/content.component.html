@@ -1,7 +1,16 @@
-<div class="c-c-h">
+<div class="c-c-h" *ngIf="!addToMag">
   <div class="i-c" (click)="bsModalRef.hide()"><i class="fa fa-angle-left"></i></div>
-  <div class="name">add to mag</div>
+  <div class="name" (click)="toggleAggToMag()">add to mag</div>
   <div class="p" (click)="createPost(file)">Post</div>
+</div>
+
+<div class="c-c-h cch2" *ngIf="addToMag">
+  <div class="i-c" (click)="toggleAggToMag()"><i class="fa fa-angle-left"></i></div>
+  <div class="p" (click)="createPost(file)">Post</div>
+  <div class="l-d-c">
+    <div class="name active">create new</div>
+    <div class="name">add to existing</div>
+  </div>
 </div>
 <div class="p-bar-con">
   <progressbar class="pbar" *ngIf="file != null" max="100" [value]="progress" [striped]="true"
@@ -12,7 +21,7 @@
 
   <form [formGroup]="captionForm">
     <input type="text" class="form-control"
-           [(ngModel)]="caption" formControlName="caption" placeholder="add something">
+           [(ngModel)]="caption" formControlName="caption" placeholder="add title">
   </form>
   <div class="h-tag">
     <div class="" (click)="addTags()"><i class="fa fa-hashtag"></i></div>
@@ -31,9 +40,17 @@
   <!--</div>-->
 
   <div class="data-con">
-    <div class="caption-con" [ngClass]="'fc' + fontClass">
-      <p>{{caption}}</p>
-    </div>
+    <!--<div class="caption-con" [ngClass]="'fc' + fontClass">-->
+    <!--<p>{{caption}}</p>-->
+    <!--</div>-->
+
+    <form [formGroup]="caption2Form">
+
+      <textarea autosize class="textarea" [ngClass]="'fc' + fontClass" role="textbox" contenteditable formControlName="content"
+                placeholder="Add something ..."></textarea>
+
+    </form>
+    <!--<textarea >Some text</textarea>-->
 
 
     <div class="i-c">
@@ -49,7 +66,6 @@
     <br>
     <br>
     <br>
-
   </div>
 
 </div>
@@ -75,21 +91,17 @@
           <div class="bc-c dg" (click)="changeBackground('dg')"></div>
           <div class="bc-c lb" (click)="changeBackground('lb')"></div>
           <div class="bc-c db" (click)="changeBackground('db')"></div>
-
         </div>
         <div class="row pu-c dcc">
-
           <div class="bc-c pp" (click)="changeBackground('pp')"></div>
           <div class="bc-c dp" (click)="changeBackground('dp')"></div>
           <div class="bc-c rr" (click)="changeBackground('rr')"></div>
           <div class="bc-c dr" (click)="changeBackground('dr')"></div>
           <div class="bc-c bb" (click)="changeBackground('bb')"></div>
-
           <div class="bc-c do" (click)="changeBackground('do')"></div>
           <div class="bc-c oo" (click)="changeBackground('oo')"></div>
         </div>
       </div>
-
     </ng-template>
 
 
@@ -132,10 +144,3 @@
              type="ball-fall"
              name="posting"
              [fullScreen]="true"></ngx-spinner>
-
-
-
-
-
-
-

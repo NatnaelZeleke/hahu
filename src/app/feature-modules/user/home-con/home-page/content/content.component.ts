@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TagsComponent} from './tags/tags.component';
 import {HashtagService} from '../../../../../services/hashtag.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
 import {HttpClient, HttpEvent, HttpRequest, HttpResponse} from '@angular/common/http';
 import {PostService} from '../../../../../api/services/post.service';
@@ -28,7 +28,7 @@ export class ContentComponent implements OnInit {
   public tags: ITag[] = [];
   captionForm: FormGroup;
   context = '';
-  caption = 'this is the new text';
+  caption = '';
   account: Account;
   // this is for uploading image
   // this is for image uploading
@@ -55,6 +55,9 @@ export class ContentComponent implements OnInit {
 
   newPost: IPost;
 
+  addToMag = false;
+  caption2Form: FormGroup;
+  content = new FormControl('');
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
               public tagService: HashtagService,
@@ -86,6 +89,10 @@ export class ContentComponent implements OnInit {
         caption: ['', Validators.required]
       }
     );
+
+    this.caption2Form = this.formBuilder.group({
+      content: ['', Validators.required]
+    });
 
   }
 
@@ -128,13 +135,13 @@ export class ContentComponent implements OnInit {
     this.newPost = {
       userId: this.account.id,
       postedDate: moment().startOf('second'),
-      featuredImage: f != null ? f.slice(23,) : null,
+      featuredImage: f != null ? f.slice(23, ) : null,
       featuredImageContentType: 'image/jpeg',
       tags: this.tags,
-      content: this.captionForm.value.caption,
+      content: this.caption2Form.value.content,
+      title:  this.captionForm.value.caption,
       postMetaData: []
     };
-
     this.addMetaData('fontSize', 'fc' + this.fontClass.toString())
       .subscribe(result => {
         this.newPost.postMetaData.push(result);
@@ -151,7 +158,6 @@ export class ContentComponent implements OnInit {
               });
           });
       });
-
   }
 
   addPostMetaData(postId: number) {
@@ -207,6 +213,10 @@ export class ContentComponent implements OnInit {
   changeBackground(bgClass: string) {
 
     this.backGround = bgClass;
+  }
+
+  toggleAggToMag() {
+    this.addToMag = !this.addToMag;
   }
 
   getDate() {

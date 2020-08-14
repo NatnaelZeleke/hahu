@@ -11,6 +11,7 @@ import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
 import {PopoverModule} from 'ngx-bootstrap/popover';
 import {UiSwitchModule} from 'ngx-ui-switch';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
+import {TextareaAutosizeModule} from 'ngx-textarea-autosize';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
       uncheckedLabel: 'off'
     }),
     TypeaheadModule.forRoot(),
+    TextareaAutosizeModule
 
   ],
   exports: [
@@ -44,7 +46,8 @@ import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
     ProgressbarModule,
     PopoverModule,
     UiSwitchModule,
-    TypeaheadModule
+    TypeaheadModule,
+    TextareaAutosizeModule
   ],
   declarations: []
 })

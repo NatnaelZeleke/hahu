@@ -14,6 +14,25 @@
     height: 100%;
   }
   .c-c-h {
+    &.cch2{
+      //.i-c{
+      //  display: block;
+      //}
+      .l-d-c{
+        display: block;
+        clear: both;
+        @extend .clearfix;
+      }
+      .name{
+        width: 50%;
+        float: left;
+        padding-left: 15px;
+        &.active{
+          text-decoration: underline;
+          text-decoration-color:#8fe3ff ;
+        }
+      }
+    }
     @extend .clearfix;
     background-color: #181f4d;
     font-size: 20px;
@@ -76,6 +95,7 @@
   }
   .data-con {
     //image container
+    padding-top: 10px;
     .i-c {
       .im {
         min-height: 407px;
@@ -184,31 +204,35 @@
 }
 
 .fc0 {
+  font-size: 15px !important;
   p {
-    font-size: 15px !important;
+
     margin-bottom: 0;
   }
 }
 
 .fc1 {
+  font-size: 18px !important;
   p {
-    font-size: 18px !important;
+
     margin-bottom: 0;
 
   }
 }
 
 .fc2 {
+  font-size: 21px !important;
   p {
-    font-size: 21px !important;
+
     margin-bottom: 0;
 
   }
 }
 
 .fc3 {
+  font-size: 24px !important;
   p {
-    font-size: 24px !important;
+
     margin-bottom: 0;
 
   }
@@ -268,36 +292,64 @@
 .gg {
   background-color: #bababa;
   color: #fff;
+  textarea{
+    background-color: #bababa;
+    color: #fff;
+  }
 }
 
 .bb {
   background-color: #000;
   color: #fff;
+  textarea{
+    background-color: #000;
+    color: #fff;
+  }
 }
 
 .dg {
   background-color: #0fbf76;
   color: #fff;
+  textarea{
+    background-color: #0fbf76;
+    color: #fff;
+  }
 }
 
 .lb {
   background-color: #8fe3ff;
   //color: #fff;
+  textarea{
+    background-color: #8fe3ff;
+    //color: #fff;
+  }
 }
 
 .db {
   background-color: #62b4ff;
   color: #fff;
+  textarea{
+    background-color: #62b4ff;
+    color: #fff;
+  }
 }
 
 .dp {
   background-color: #a985cb;
   color: #fff;
+  textarea{
+    background-color: #a985cb;
+    color: #fff;
+  }
 }
 
 .grn {
   background-color: #87d55d;
   color: #fff;
+  textarea{
+    background-color: #87d55d;
+    color: #fff;
+  }
 }
 
 //&.yellow{
@@ -306,33 +358,58 @@
 .yy {
   background-color: #fff889;
   border: 1px solid #ccc66e;
+  textarea{
+    background-color: #fff889;
+    border: 1px solid #ccc66e;
+  }
 }
 
 .rr {
   background-color: #fe4646;
   color: #fff;
+  textarea{
+    background-color: #fe4646;
+    color: #fff;
+  }
 }
 
 .dr {
   background-color: #ba3040;
   color: #fff;
+  textarea{
+    background-color: #ba3040;
+    color: #fff;
+  }
 }
 
 .bb {
   background-color: #a78a6c;
+  textarea{
+    background-color: #a78a6c;
+  }
 }
 
 .pp {
   background-color: #fec3f5;
+  textarea{
+    background-color: #fec3f5;
+  }
 }
 
 .do {
   background-color: #e6ae05;
   color: #fff;
+  textarea{
+    background-color: #e6ae05;
+    color: #fff;
+  }
 }
 
 .oo {
   background-color: #ffd32d;
+  textarea{
+    background-color: #ffd32d;
+  }
 }
 
 .p-t-c {
