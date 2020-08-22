@@ -150,6 +150,7 @@
     }
   }
   .post {
+    background-color: #fff;
     &.dark {
       background-color: #353a50 !important;
       .p-con-c {
@@ -303,6 +304,7 @@ $ppw: 36px;
     position: relative;
     textarea {
       padding-right: 44px;
+      background-color: #fff !important;
     }
     .p-btn {
       position: absolute;
@@ -769,6 +771,10 @@ $ppw: 36px;
     width: 50px;
     height: 50px;
     font-size: 23px;
+  }
+  .n-p{
+    bottom: -26px;
+    left: 7px;
   }
 }
 

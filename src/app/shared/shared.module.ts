@@ -9,6 +9,9 @@ import {ngfModule} from 'angular-file';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartsModule} from 'ng2-charts';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+
+import {QuillModule} from 'ngx-quill';
 
 
 @NgModule({
@@ -20,7 +23,34 @@ import {ChartsModule} from 'ng2-charts';
     NgxModuleModule,
     ngfModule,
     NgxSpinnerModule,
-    ChartsModule
+    ChartsModule,
+    CKEditorModule,
+    QuillModule.forRoot({
+      modules: {
+        syntax: false,
+        toolbar: [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+
+                       // custom button values
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+          [{ 'direction': 'rtl' }],                         // text direction
+
+           // custom dropdown
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+          // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+
+          // ['clean'],                                         // remove formatting button
+
+          ['link', 'image', 'video']                         // link and image, video
+        ]
+      },
+    })
   ],
   declarations: [LoadingComponent, SpinnerComponent],
   exports: [NgxModuleModule,
@@ -30,7 +60,9 @@ import {ChartsModule} from 'ng2-charts';
     SpinnerComponent,
     ngfModule,
     NgxSpinnerModule,
-    ChartsModule
+    ChartsModule,
+    CKEditorModule,
+    QuillModule
   ]
 })
 export class SharedModule {

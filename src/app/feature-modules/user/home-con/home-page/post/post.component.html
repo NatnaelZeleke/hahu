@@ -1,7 +1,11 @@
-<div class="post" ngClass="{{post?.postMetaData[1].value}}">
+<div class="post" ngClass="{{post?.postMetaData[1]?.value}}">
 
-  <div class="cap-b" ngClass="{{post?.postMetaData[0].value}}"  *ngIf="post?.content != null" (click)="toggleTags()">
-    <p>{{post?.content}}</p>
+  <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"  *ngIf="post?.content != null" (click)="toggleTags()">
+    <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>
+    <div *ngIf="post?.contentType == 'HTML'">
+      <quill-view [content]="post?.content" format="html" theme="snow"></quill-view>
+    </div>
+
   </div>
 
   <div class="c-c" *ngIf="post?.featuredImage != null" (click)="toggleTags()">

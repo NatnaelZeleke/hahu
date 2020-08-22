@@ -9,6 +9,7 @@ import {AccService} from '../../../../services/acc.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {AppPostService} from '../../../../services/app-post.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
+import {MagComponent} from './mag/mag.component';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class HomePageComponent implements OnInit {
         this.loadPost();
       });
     this.tagService.getTags();
-    // this.createContent();
+    // this.createContent(2);
   }
 
   loadPost() {
@@ -51,16 +52,29 @@ export class HomePageComponent implements OnInit {
       });
   }
 
-  createContent() {
-    const initialState = {
-      title: 'create content',
-      message: '',
-    };
-    this.modalService.show(ContentComponent, {
-      initialState: initialState,
-      animated: false,
-      class: 'c-c-con',
-    });
+  createContent(num: number) {
+    if (num == 1) {
+      const initialState = {
+        title: 'create content',
+        message: '',
+      };
+      this.modalService.show(ContentComponent, {
+        initialState: initialState,
+        animated: false,
+        class: 'c-c-con',
+      });
+    } else {
+      const initialState = {
+        title: 'create mag',
+        message: '',
+      };
+      this.modalService.show(MagComponent, {
+        initialState: initialState,
+        animated: false,
+        class: 'c-c-con',
+      });
+    }
+
   }
 
   openModal(title: string, message: string, success: boolean, error: boolean) {

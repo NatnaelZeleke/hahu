@@ -13,6 +13,7 @@ import { CommentComponent } from './home-page/comment/comment.component';
 import { ContentComponent } from './home-page/content/content.component';
 import { TagsComponent } from './home-page/content/tags/tags.component';
 import {SharedPostModule} from '../../../shared/shared-post.module';
+import { MagComponent } from './home-page/mag/mag.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {SharedPostModule} from '../../../shared/shared-post.module';
       SchoolfeedComponent,
       SavesComponent,
       ContentComponent,
-      TagsComponent]
+      TagsComponent,
+      MagComponent]
 })
 export class HomeConModule {
 }

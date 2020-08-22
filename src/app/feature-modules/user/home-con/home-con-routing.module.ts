@@ -6,6 +6,7 @@ import {SchoolfeedComponent} from './schoolfeed/schoolfeed.component';
 import {SavesComponent} from './saves/saves.component';
 import {ContentComponent} from './home-page/content/content.component';
 import {TagsComponent} from './home-page/content/tags/tags.component';
+import {MagComponent} from './home-page/mag/mag.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  entryComponents: [ContentComponent, TagsComponent]
+  entryComponents: [ContentComponent, TagsComponent, MagComponent]
 })
 export class HomeConRoutingModule {
 }
