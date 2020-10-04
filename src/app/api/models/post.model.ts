@@ -8,6 +8,7 @@ import {IShares} from './shares.model';
 import {IPostMetaData} from './post-meta-data.model';
 import {ICategory} from './category.model';
 import {ITag} from './tag.model';
+import {IPreference} from './preference.model';
 
 export interface IPost {
   id?: number;
@@ -33,6 +34,7 @@ export interface IPost {
   categories?: ICategory[];
   tags?: ITag[];
   pageId?: number;
+  preferences?: IPreference[];
 }
 
 export class Post implements IPost {
@@ -59,6 +61,7 @@ export class Post implements IPost {
     public postMetaData?: IPostMetaData[],
     public categories?: ICategory[],
     public tags?: ITag[],
-    public pageId?: number
+    public pageId?: number,
+    public preferences?: IPreference[]
   ) {}
 }
