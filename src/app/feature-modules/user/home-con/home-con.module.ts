@@ -14,6 +14,7 @@ import { ContentComponent } from './home-page/content/content.component';
 import { TagsComponent } from './home-page/content/tags/tags.component';
 import {SharedPostModule} from '../../../shared/shared-post.module';
 import { MagComponent } from './home-page/mag/mag.component';
+import { PostAltComponent } from './post-alt/post-alt.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { MagComponent } from './home-page/mag/mag.component';
       SavesComponent,
       ContentComponent,
       TagsComponent,
-      MagComponent]
+      MagComponent,
+      PostAltComponent]
 })
 export class HomeConModule {
 }

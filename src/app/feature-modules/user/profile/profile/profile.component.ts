@@ -51,7 +51,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.tabController();
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
@@ -81,7 +80,6 @@ export class ProfileComponent implements OnInit {
       .subscribe(result => {
         this.account = result;
         if (this.userId > 0 && this.userId != this.account.id) {
-          // when the users visits profile
           this.visitingProfile = true;
           this.getUserProfile(this.userId);
           this.checkBlockedStatus(this.userId);

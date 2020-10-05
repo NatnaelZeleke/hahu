@@ -1,4 +1,71 @@
-<div class="post" ngClass="{{post?.postMetaData[1]?.value}}">
+<!--<div class="post post-t-2 dark">-->
+  <!--<div class="p-con-c">-->
+    <!--<div class="container ">-->
+      <!--<div class="row">-->
+        <!--<div class="col-8 p-l-8">-->
+          <!--<div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">-->
+
+          <!--</div>-->
+          <!--<div class="n-con">-->
+            <!--<p>Selam Abate</p>-->
+            <!--<p class="p-da">1 hour ago</p>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-4 t-a-r">-->
+          <!--<i class="fa fa-angle-down"></i>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="c-c">-->
+    <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+      <!--industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and-->
+      <!--scrambled it to make a type specimen book. </p>-->
+    <!--&lt;!&ndash;<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</div>-->
+  <!--<div class="p-con-c">-->
+
+    <!--<div class="container ">-->
+
+      <!--<div class="row">-->
+
+        <!--<div class="col-6 s-con">-->
+
+          <!--<i class="fa fa-share-alt"></i>-->
+        <!--</div>-->
+
+        <!--<div class="col-6">-->
+          <!--<div class="ic-c">-->
+            <!--<div class="a-con more">-->
+
+              <!--<i class="fa fa-ellipsis-v"></i>-->
+            <!--</div>-->
+            <!--<div class="a-con">-->
+              <!--<div class="value">34</div>-->
+              <!--<i class="fa fa-heart liked"></i>-->
+            <!--</div>-->
+            <!--<div class="a-con">-->
+              <!--<div class="value">123</div>-->
+              <!--<i class="fa fa-comment"></i>-->
+            <!--</div>-->
+
+
+          <!--</div>-->
+        <!--</div>-->
+
+      <!--</div>-->
+
+    <!--</div>-->
+
+  <!--</div>-->
+<!--</div>-->
+
+
+
+<!--poste used by home page -->
+<div class="post post-t-2 dark" ngClass="{{post?.postMetaData[1]?.value}}">
 
   <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"  *ngIf="post?.content != null" (click)="toggleTags()">
     <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>
@@ -39,13 +106,13 @@
 
         <div class="col-6">
           <div class="ic-c">
-            <div class="a-con more" [popover]="menuTemplate"
-                 [outsideClick]="true">
+            <!--<div class="a-con more" [popover]="menuTemplate"-->
+                 <!--[outsideClick]="true">-->
 
-              <i class="fa fa-ellipsis-v" ></i>
+              <!--<i class="fa fa-ellipsis-v" ></i>-->
 
 
-            </div>
+            <!--</div>-->
             <div class="a-con" (click)="like()">
               <div class="value">{{likeCount || ''}}</div>
               <i class="fa fa-heart" [ngClass]="{'liked': isLiked}"></i>
@@ -87,34 +154,12 @@
   </div>
 </div>
 
-<ng-template #menuTemplate >
-  <div class="e-m">
-    <p>Share</p>
-    <p (click)="savePost()">Save</p>
-    <p>Report</p>
-    <p>Notify me</p>
-  </div>
+<!--<ng-template #menuTemplate >-->
+  <!--<div class="e-m">-->
+    <!--<p>Share</p>-->
+    <!--<p (click)="savePost()">Save</p>-->
+    <!--<p>Report</p>-->
+    <!--<p>Notify me</p>-->
+  <!--</div>-->
 
-</ng-template>
-
-<!--<div class="container">-->
-<!--<div class="row">-->
-<!--<div class="com-con">-->
-<!--<div class="comen" *ngFor="let c of post?.comments; let i = index;">-->
-<!--<div class="com-p-c-c">-->
-<!--<div class="com-p-c bcimg">-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="com-t-c">-->
-<!--<div class="p-n-c">-->
-<!--<p class="name">Daniel Solomon</p>-->
-<!--<p class="more">1 hour ago</p>-->
-<!--</div>-->
-<!--<p>{{c.content}}</p>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+<!--</ng-template>-->

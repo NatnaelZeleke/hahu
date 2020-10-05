@@ -1,25 +1,29 @@
 <div class="saves-con">
   <div class="search-con">
-    <form class="">
+    <form class="" [formGroup]="searchForm" (submit)="searchSavedPosts()">
       <div class="form-group">
-        <input class="s-in form-control form-control-sm" placeholder="Look around your saves">
+        <input class="s-in form-control form-control-sm"
+               placeholder="Look around your saves"
+               formControlName="query"
+               (input)="searchSavedPosts()">
       </div>
     </form>
   </div>
 
-  <div class="s-m-con">
-    <div class="container">
-      <div class="row sm-menu">
-        <div class="col"></div>
-        <div class="col active"><p>Saves</p></div>
-        <div class="col"><p>Following</p></div>
-        <div class="col"></div>
-      </div>
-    </div>
-    <div class="h-div">
+  <!--<div class="s-m-con">-->
+    <!--<div class="container">-->
+      <!--<div class="row sm-menu">-->
+        <!--<div class="col"></div>-->
+        <!--<div class="col active"><p>Saves</p></div>-->
+        <!--<div class="col"><p>Following</p></div>-->
+        <!--<div class="col"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="h-div">-->
 
-    </div>
-  </div>
+    <!--</div>-->
+  <!--</div>-->
+
   <div class="tag-con">
     <span class="badge  badge-default ">private</span>
     <span class="badge  badge-primary">e-course</span>
@@ -30,219 +34,242 @@
     <span class="badge  badge-warning">Warning</span>
   </div>
 
-  <div class="p-status-con">
-    <div class="container">
-      <div class="row p-s-c-i">
-        <div class="col">
+  <!--<div class="p-status-con">-->
+    <!--<div class="container">-->
+      <!--<div class="row p-s-c-i">-->
+        <!--<div class="col">-->
 
-        </div>
-        <div class="col lbs">
-          <p>123</p>
-          <small>FOLLOWERS</small>
-        </div>
-        <div class="col lbs">
-          <p>23</p>
-          <small>FOLLOWING</small>
-        </div>
-        <div class="col">
-          <p>234</p>
-          <small>LIKES</small>
-        </div>
-        <div class="col">
+        <!--</div>-->
+        <!--<div class="col lbs">-->
+          <!--<p>123</p>-->
+          <!--<small>FOLLOWERS</small>-->
+        <!--</div>-->
+        <!--<div class="col lbs">-->
+          <!--<p>23</p>-->
+          <!--<small>FOLLOWING</small>-->
+        <!--</div>-->
+        <!--<div class="col">-->
+          <!--<p>234</p>-->
+          <!--<small>LIKES</small>-->
+        <!--</div>-->
+        <!--<div class="col">-->
 
-        </div>
-      </div>
-    </div>
-  </div>
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <div class="">
     <div class="t-l">
 
-      <div class="post post-t-2 dark">
-        <div class="p-con-c">
-          <div class="container ">
-            <div class="row">
-              <div class="col-8 p-l-8">
-                <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
+      <div *ngFor="let sp of savedPosts; let i = index;">
+        <app-post-alt [post]="sp" [account]="account"></app-post-alt>
 
-                </div>
-                <div class="n-con">
-                  <p>Selam Abate</p>
-                  <p class="p-da">1 hour ago</p>
-                </div>
-              </div>
-              <div class="col-4 t-a-r">
-                <i class="fa fa-angle-down"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-c">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. </p>
-          <!--<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">-->
+      </div>
+      <p *ngIf="savedPosts.length == 0 && preference != null" class="t-a-c  ">
+        No Saved Posts
+      </p>
+
+
+      <div class="spinner-con">
+        <ngx-spinner bdColor="rgb(0,0,0)"
+                     size="default"
+                     color="#dddddd"
+                     type="ball-fall"
+                     [fullScreen]="false"
+                     name="savedSpinner"></ngx-spinner>
+      </div>
+      <!--<div class="post post-t-2 dark">-->
+        <!--<div class="p-con-c">-->
+          <!--<div class="container ">-->
+            <!--<div class="row">-->
+              <!--<div class="col-8 p-l-8">-->
+                <!--<div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">-->
+
+                <!--</div>-->
+                <!--<div class="n-con">-->
+                  <!--<p>Selam Abate</p>-->
+                  <!--<p class="p-da">1 hour ago</p>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="col-4 t-a-r">-->
+                <!--<i class="fa fa-angle-down"></i>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="c-c">-->
+          <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+            <!--industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and-->
+            <!--scrambled it to make a type specimen book. </p>-->
+          <!--&lt;!&ndash;<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">&ndash;&gt;-->
+
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="p-con-c">-->
+
+          <!--<div class="container ">-->
+
+            <!--<div class="row">-->
+
+              <!--<div class="col-6 s-con">-->
+
+                <!--<i class="fa fa-share-alt"></i>-->
+              <!--</div>-->
+
+              <!--<div class="col-6">-->
+                <!--<div class="ic-c">-->
+                  <!--<div class="a-con more">-->
+
+                    <!--<i class="fa fa-ellipsis-v"></i>-->
+                  <!--</div>-->
+                  <!--<div class="a-con">-->
+                    <!--<div class="value">34</div>-->
+                    <!--<i class="fa fa-heart liked"></i>-->
+                  <!--</div>-->
+                  <!--<div class="a-con">-->
+                    <!--<div class="value">123</div>-->
+                    <!--<i class="fa fa-comment"></i>-->
+                  <!--</div>-->
+
+
+                <!--</div>-->
+              <!--</div>-->
+
+            <!--</div>-->
 
           <!--</div>-->
-        </div>
-        <div class="p-con-c">
-          <div class="container ">
-            <div class="row">
-              <div class="col-6 s-con">
 
-                <i class="fa fa-share-alt"></i>
-              </div>
+        <!--</div>-->
+      <!--</div>-->
 
-              <div class="col-6">
-                <div class="ic-c">
-                  <div class="a-con more">
+      <!--<div class="post-o-c f-o-p f-o-p-r">-->
+        <!--<div class="p-b-i bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
+        <!--</div>-->
+        <!--<div class="post post-t-2 w-bck">-->
 
-                    <i class="fa fa-ellipsis-v"></i>
-                  </div>
-                  <div class="a-con">
-                    <div class="value">34</div>
-                    <i class="fa fa-heart liked"></i>
-                  </div>
-                  <div class="a-con">
-                    <div class="value">123</div>
-                    <i class="fa fa-comment"></i>
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="post-o-c f-o-p f-o-p-r">
-        <div class="p-b-i bcimg" style="background-image: url('./assets/images/background2.jpg')">
-        </div>
-        <div class="post post-t-2 w-bck">
-
-          <div>
-            <div class="p-con-c">
-              <div class="container ">
-                <div class="row">
-                  <div class="col-8 p-l-8">
-                    <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
-                    </div>
-                    <div class="n-con">
-                      <p>Selam Abate</p>
-                      <p class="p-da">nov 8</p>
-                    </div>
-                  </div>
-                  <div class="col-4 t-a-r">
-                    <i class="fa fa-angle-down"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="c-c">
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's. </p>
-              <!--<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">-->
-
+          <!--<div>-->
+            <!--<div class="p-con-c">-->
+              <!--<div class="container ">-->
+                <!--<div class="row">-->
+                  <!--<div class="col-8 p-l-8">-->
+                    <!--<div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">-->
+                    <!--</div>-->
+                    <!--<div class="n-con">-->
+                      <!--<p>Selam Abate</p>-->
+                      <!--<p class="p-da">nov 8</p>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="col-4 t-a-r">-->
+                    <!--<i class="fa fa-angle-down"></i>-->
+                  <!--</div>-->
+                <!--</div>-->
               <!--</div>-->
-            </div>
-            <div class="p-con-c">
-              <div class="container ">
-                <div class="row">
-                  <div class="col-3 s-con">
+            <!--</div>-->
 
-                    <i class="fa fa-share-alt"></i>
-                  </div>
+            <!--<div class="c-c">-->
+              <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+                <!--industry's. </p>-->
+              <!--&lt;!&ndash;<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">&ndash;&gt;-->
 
-                  <div class="col-9">
-                    <div class="ic-c">
-                      <!--<div class="a-con more">-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="p-con-c">-->
+              <!--<div class="container ">-->
+                <!--<div class="row">-->
+                  <!--<div class="col-3 s-con">-->
 
-                      <!--<i class="fa fa-ellipsis-v"></i>-->
+                    <!--<i class="fa fa-share-alt"></i>-->
+                  <!--</div>-->
+
+                  <!--<div class="col-9">-->
+                    <!--<div class="ic-c">-->
+                      <!--&lt;!&ndash;<div class="a-con more">&ndash;&gt;-->
+
+                      <!--&lt;!&ndash;<i class="fa fa-ellipsis-v"></i>&ndash;&gt;-->
+                      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                      <!--<div class="a-con">-->
+                        <!--<div class="value">34</div>-->
+                        <!--<i class="fa fa-heart liked"></i>-->
                       <!--</div>-->
-                      <div class="a-con">
-                        <div class="value">34</div>
-                        <i class="fa fa-heart liked"></i>
-                      </div>
-                      <div class="a-con">
-                        <div class="value">123</div>
-                        <i class="fa fa-comment"></i>
-                      </div>
+                      <!--<div class="a-con">-->
+                        <!--<div class="value">123</div>-->
+                        <!--<i class="fa fa-comment"></i>-->
+                      <!--</div>-->
 
 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="post-o-c f-o-p f-o-p-l">
-        <div class="p-b-i bcimg" style="background-image: url('./assets/images/background2.jpg')">
-        </div>
-        <div class="post post-t-2 w-bck">
-
-          <div>
-            <div class="p-con-c">
-              <div class="container ">
-                <div class="row">
-                  <div class="col-8 p-l-8">
-                    <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
-                    </div>
-                    <div class="n-con">
-                      <p>Selam Abate</p>
-                      <p class="p-da">nov 8</p>
-                    </div>
-                  </div>
-                  <div class="col-4 t-a-r">
-                    <i class="fa fa-angle-down"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="c-c">
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's. </p>
-              <!--<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">-->
-
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
               <!--</div>-->
-            </div>
-            <div class="p-con-c">
-              <div class="container ">
-                <div class="row">
-                  <div class="col-3 s-con">
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
-                    <i class="fa fa-share-alt"></i>
-                  </div>
+      <!--<div class="post-o-c f-o-p f-o-p-l">-->
+        <!--<div class="p-b-i bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
+        <!--</div>-->
+        <!--<div class="post post-t-2 w-bck">-->
 
-                  <div class="col-9">
-                    <div class="ic-c">
-                      <!--<div class="a-con more">-->
+          <!--<div>-->
+            <!--<div class="p-con-c">-->
+              <!--<div class="container ">-->
+                <!--<div class="row">-->
+                  <!--<div class="col-8 p-l-8">-->
+                    <!--<div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">-->
+                    <!--</div>-->
+                    <!--<div class="n-con">-->
+                      <!--<p>Selam Abate</p>-->
+                      <!--<p class="p-da">nov 8</p>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="col-4 t-a-r">-->
+                    <!--<i class="fa fa-angle-down"></i>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
 
-                      <!--<i class="fa fa-ellipsis-v"></i>-->
+            <!--<div class="c-c">-->
+              <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+                <!--industry's. </p>-->
+              <!--&lt;!&ndash;<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">&ndash;&gt;-->
+
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="p-con-c">-->
+              <!--<div class="container ">-->
+                <!--<div class="row">-->
+                  <!--<div class="col-3 s-con">-->
+
+                    <!--<i class="fa fa-share-alt"></i>-->
+                  <!--</div>-->
+
+                  <!--<div class="col-9">-->
+                    <!--<div class="ic-c">-->
+                      <!--&lt;!&ndash;<div class="a-con more">&ndash;&gt;-->
+
+                      <!--&lt;!&ndash;<i class="fa fa-ellipsis-v"></i>&ndash;&gt;-->
+                      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                      <!--<div class="a-con">-->
+                        <!--<div class="value">34</div>-->
+                        <!--<i class="fa fa-heart liked"></i>-->
                       <!--</div>-->
-                      <div class="a-con">
-                        <div class="value">34</div>
-                        <i class="fa fa-heart liked"></i>
-                      </div>
-                      <div class="a-con">
-                        <div class="value">123</div>
-                        <i class="fa fa-comment"></i>
-                      </div>
+                      <!--<div class="a-con">-->
+                        <!--<div class="value">123</div>-->
+                        <!--<i class="fa fa-comment"></i>-->
+                      <!--</div>-->
 
 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
       <div class="loading row">
         <div class="col">

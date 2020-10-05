@@ -1,27 +1,25 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IPost} from '../../../../../api/models/post.model';
-import {ProfileService} from '../../../../../api/services/profile.service';
-import {IProfile} from '../../../../../api/models/profile.model';
-import {Account} from '../../../../../api/models/account.model';
-import {LikesService} from '../../../../../api/services/likes.service';
-import {ILikes} from '../../../../../api/models/likes.model';
-import {CommentService} from '../../../../../api/services/comment.service';
+import {IPost} from '../../../../api/models/post.model';
+import {Account} from '../../../../api/models/account.model';
+import {IProfile} from '../../../../api/models/profile.model';
+import {ILikes} from '../../../../api/models/likes.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Comment, IComment} from '../../../../../api/models/comment.model';
+import {Comment, IComment} from '../../../../api/models/comment.model';
+import {IUser} from '../../../../api/models/user.model';
+import {IPreference} from '../../../../api/models/preference.model';
+import {ProfileService} from '../../../../api/services/profile.service';
+import {LikesService} from '../../../../api/services/likes.service';
+import {CommentService} from '../../../../api/services/comment.service';
+import {UserService} from '../../../../api/services/user.service';
+import {PreferenceService} from '../../../../api/services/preference.service';
 import * as moment from 'moment';
-import {UserService} from '../../../../../api/services/user.service';
-import {IUser} from '../../../../../api/models/user.model';
-import {HashtagService} from '../../../../../services/hashtag.service';
-import {PreferenceService} from '../../../../../api/services/preference.service';
-import {IPreference} from '../../../../../api/models/preference.model';
-
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  selector: 'app-post-alt',
+  templateUrl: './post-alt.component.html',
+  styleUrls: ['./post-alt.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostAltComponent implements OnInit {
 
   @Input() post: IPost;
   @Input() account: Account;
