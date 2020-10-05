@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {PageNotFoundComponent} from './feature-modules/page-not-found/page-not-found.component';
@@ -14,6 +14,14 @@ import {ErrorInterceptor} from './interceptors/error.interceptor';
 import {LoaderInterceptorService} from './interceptors/loader-interceptor.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AccService} from './services/acc.service';
+import {DashboardSrService} from './services/dashboard-sr.service';
+import {SwingModule} from 'angular2-swing';
+
+export class MyHammerConfig extends HammerGestureConfig  {
+  overrides = <any>{
+    'swipe': {velocity: 0.4, threshold: 20} // override default settings
+  };
+}
 
 @NgModule({
   declarations: [
@@ -31,13 +39,14 @@ import {AccService} from './services/acc.service';
     AppRoutingModule,
     SharedModule,
 
-
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
-    AccService
+    { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig },
+    AccService,
+    DashboardSrService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent]

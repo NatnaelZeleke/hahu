@@ -19,6 +19,9 @@ const routes: Routes = [
       }, {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+      }, {
+        path: 'telegram',
+        loadChildren: () => import('./telegram/telegram.module').then(m => m.TelegramModule)
       },
       {
         path: '',

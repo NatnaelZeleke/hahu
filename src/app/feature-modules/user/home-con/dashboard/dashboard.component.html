@@ -1,14 +1,19 @@
-<div class="hd-menu">
-  <div class="t-m-c">
-    <div class="t-menu" routerLink="./home" (click)="changeMenu(1)" [ngClass]="{'active': isSelected(1)}">
-      FOR YOU
-    </div>
-    <div class="t-menu" routerLink="./schoolfeed" (click)="changeMenu(2)" [ngClass]="{'active': isSelected(2)}">
-      SCHOOL FEEDS
-    </div>
-    <div class="t-menu" routerLink="./saves" (click)="changeMenu(3)"   [ngClass]="{'active': isSelected(3)}">
-      SAVED
+<div class="wra" (swipeleft)="swipeCalled('swipeleft')" (swiperight)="swipeCalled('swiperight')"
+     (swipeup)="swipeCalled('swipeup')" (swipedown)="swipeCalled('swipedown')">
+  <div class="hd-menu">
+    <div class="t-m-c" #scrollContent>
+      <div class="t-menu" routerLink="./home" (click)="changeMenu(0)" [ngClass]="{'active': 0 == selected}">
+        FOR YOU
+      </div>
+      <div class="t-menu" routerLink="./schoolfeed" (click)="changeMenu(1)" [ngClass]="{'active': 1 == selected}">
+        SCHOOL FEEDS
+      </div>
+      <div class="t-menu" routerLink="./saves" (click)="changeMenu(2)" [ngClass]="{'active': 2 == selected}">
+        SAVED
+      </div>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+
+

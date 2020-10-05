@@ -2,8 +2,12 @@
 
   <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"  *ngIf="post?.content != null" (click)="toggleTags()">
     <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>
-    <div *ngIf="post?.contentType == 'HTML'">
+    <div class="c-html-con" *ngIf="post?.contentType == 'HTML'">
+      <div class="cHtml">
+
+      </div>
       <quill-view [content]="post?.content" format="html" theme="snow"></quill-view>
+
     </div>
 
   </div>

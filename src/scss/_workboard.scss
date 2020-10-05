@@ -232,8 +232,8 @@
 }
 
 .s-p-r-p{
-  .rh-c{
 
+  .rh-c{
     .rh{
       padding-left: 24px;
       font-size: 25px;
@@ -241,14 +241,15 @@
     }
   }
   .s-p-r-p-c{
-    .sm-c{
 
+    .sm-c{
       width: 44%;
       margin: 3%;
       background-color: #fff;
       &.sm-s-l{
         width: 94%;
         margin: 3%;
+        box-shadow: 0 0 3px #000;
         .sm-c-i{
           height: 218px;
         }

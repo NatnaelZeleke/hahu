@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {TagService} from '../../../../api/services/tag.service';
 import {ITag} from '../../../../api/models/tag.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -12,6 +12,15 @@ import {ViewsService} from '../../../../api/services/views.service';
 import {AccService} from '../../../../services/acc.service';
 import {Account} from '../../../../api/models/account.model';
 import {IViews} from '../../../../api/models/views.model';
+import {
+  StackConfig,
+  Stack,
+  Card,
+  ThrowEvent,
+  DragEvent,
+  SwingStackComponent,
+  SwingCardComponent, Direction
+} from 'angular2-swing';
 
 @Component({
   selector: 'app-search',
@@ -19,6 +28,12 @@ import {IViews} from '../../../../api/models/views.model';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
+  @ViewChild('myswing1', {static: false}) swingStack: SwingStackComponent;
+  @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
+
+  cards: Array<any>;
+  stackConfig: StackConfig;
 
   tags: ITag[];
   searchForm: FormGroup;
@@ -41,6 +56,24 @@ export class SearchComponent implements OnInit {
               public ngxSpinner: NgxSpinnerService,
               public viewService: ViewsService,
               public accService: AccService) {
+
+    this.stackConfig = {
+      // Default setting only allows UP, LEFT and RIGHT so you can override this as below
+      allowedDirections: [Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT],
+      // Now need to send offsetX and offsetY with element instead of just offset
+      throwOutConfidence: (offsetX, offsetY, element) => {
+        return Math.min(Math.max(Math.abs(offsetX) / (element.offsetWidth / 1.7), Math.abs(offsetY) / (element.offsetHeight / 2)), 1);
+      },
+      throwOutDistance: (d) => {
+        return 800;
+      }
+    };
+
+    this.cards = [
+      {name: 'clubs', symbol: '♣'},
+      {name: 'diamonds', symbol: '♦'},
+      {name: 'spades', symbol: '♠'}
+    ];
   }
 
   ngOnInit() {
@@ -226,6 +259,49 @@ export class SearchComponent implements OnInit {
       .subscribe(result => {
         this.recentlyOpenedPosts.push(result.body);
       });
+  }
+
+  ngAfterViewInit() {
+    // ViewChild & ViewChildren are only available
+    // in this function
+
+    // console.log(this.swingStack); // this is the stack
+    console.log(this.swingCards); // this is a list of cards
+
+    // we can get the underlying stack
+    // which has methods - createCard, destroyCard, getCard etc
+    // console.log(this.swingStack.stack);
+
+    // and the cards
+    // every card has methods - destroy, throwIn, throwOut etc
+    // this.swingCards.forEach((c) => console.log(c.getCard()));
+
+
+    // this is how you can manually hook up to the
+    // events instead of providing the event method in the template
+    // this.swingStack.throwoutleft.subscribe(
+    //   (event: ThrowEvent) => console.log('Manual hook: ', event)
+    // );
+
+    this.swingCards.changes
+      .subscribe(result => {
+        // console.log(result);
+        // console.log('length', this.swingCards.length);
+      });
+    // this.swingStack.dragstart.subscribe((event: DragEvent) => console.log(event));
+
+    // this.swingStack.dragmove.subscribe((event: DragEvent) => console.log(event));
+  }
+
+  removeCard(idx: number) {
+    this.cards.splice(idx, 1);
+  }
+
+  // This method is called by hooking up the event
+  // on the HTML element - see the template above
+  onThrowOut(event: any) {
+    const idx = +event.target.outerText[0];
+    this.cards.splice(idx, 1);
   }
 
 

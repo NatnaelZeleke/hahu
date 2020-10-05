@@ -10,6 +10,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {AppPostService} from '../../../../services/app-post.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {MagComponent} from './mag/mag.component';
+import {DashboardSrService} from '../../../../services/dashboard-sr.service';
 
 
 @Component({
@@ -27,10 +28,12 @@ export class HomePageComponent implements OnInit {
               public modalService: BsModalService,
               public tagService: HashtagService,
               private spinner: NgxSpinnerService,
-              public appPostService: AppPostService) {
+              public appPostService: AppPostService,
+              public dashBoardRS: DashboardSrService) {
   }
 
   ngOnInit() {
+    // this.dashBoardRS.changeSelected(0);
     this.appPostService.postsSubject
       .subscribe(result => {
         this.postList = result;

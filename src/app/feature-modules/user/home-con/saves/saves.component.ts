@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardSrService} from '../../../../services/dashboard-sr.service';
 
 @Component({
   selector: 'app-saves',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SavesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dashBoardRS: DashboardSrService) { }
 
   ngOnInit() {
+     // this.dashBoardRS.changeSelected(2);
   }
 
 }

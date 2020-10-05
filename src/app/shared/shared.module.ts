@@ -9,9 +9,9 @@ import {ngfModule} from 'angular-file';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartsModule} from 'ng2-charts';
-import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 
 import {QuillModule} from 'ngx-quill';
+import {SwingModule} from 'angular2-swing';
 
 
 @NgModule({
@@ -24,7 +24,6 @@ import {QuillModule} from 'ngx-quill';
     ngfModule,
     NgxSpinnerModule,
     ChartsModule,
-    CKEditorModule,
     QuillModule.forRoot({
       modules: {
         syntax: false,
@@ -50,7 +49,8 @@ import {QuillModule} from 'ngx-quill';
           ['link', 'image', 'video']                         // link and image, video
         ]
       },
-    })
+    }),
+    SwingModule
   ],
   declarations: [LoadingComponent, SpinnerComponent],
   exports: [NgxModuleModule,
@@ -61,8 +61,8 @@ import {QuillModule} from 'ngx-quill';
     ngfModule,
     NgxSpinnerModule,
     ChartsModule,
-    CKEditorModule,
-    QuillModule
+    QuillModule,
+    SwingModule
   ]
 })
 export class SharedModule {

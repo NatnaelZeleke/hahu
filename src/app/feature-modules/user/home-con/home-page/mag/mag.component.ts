@@ -15,7 +15,6 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {PostMetaDataService} from '../../../../../api/services/post-meta-data.service';
 import {TagsComponent} from '../content/tags/tags.component';
 import * as moment from 'moment';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import {EditorChangeContent} from 'ngx-quill';
 import {ContentType} from '../../../../../api/models/enumerations/content-type.model';
@@ -28,8 +27,7 @@ import {ContentType} from '../../../../../api/models/enumerations/content-type.m
 })
 export class MagComponent implements OnInit {
 
-
-  public Editor = ClassicEditor;
+  submitted = false;
   public tags: ITag[] = [];
   captionForm: FormGroup;
   context = '';
