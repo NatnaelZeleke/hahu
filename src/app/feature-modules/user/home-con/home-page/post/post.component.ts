@@ -14,6 +14,9 @@ import {IUser} from '../../../../../api/models/user.model';
 import {HashtagService} from '../../../../../services/hashtag.service';
 import {PreferenceService} from '../../../../../api/services/preference.service';
 import {IPreference} from '../../../../../api/models/preference.model';
+import {ModalComponent} from '../../../../../shared/component/modal/modal.component';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {SaveModalComponent} from '../save-modal/save-modal.component';
 
 
 @Component({
@@ -44,7 +47,8 @@ export class PostComponent implements OnInit {
               public commentService: CommentService,
               public formBuilder: FormBuilder,
               public userService: UserService,
-              public preferenceService: PreferenceService) {
+              public preferenceService: PreferenceService,
+              public modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -204,6 +208,7 @@ export class PostComponent implements OnInit {
     this.preferenceService.find(userId)
       .subscribe(result => {
         this.preference = result.body;
+        console.log(this.preference);
       });
   }
 
@@ -216,5 +221,16 @@ export class PostComponent implements OnInit {
         console.log('saved');
       });
   }
+
+  save() {
+    this.preference.savedPosts.push(this.post);
+    const initialState = {
+      title: 'Save Post',
+      message: '',
+      content: this.preference
+    };
+    this.modalService.show(SaveModalComponent, {initialState});
+  }
+
 
 }
