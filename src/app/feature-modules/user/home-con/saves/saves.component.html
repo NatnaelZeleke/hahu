@@ -25,13 +25,16 @@
   <!--</div>-->
 
   <div class="tag-con">
-    <span class="badge  badge-default ">private</span>
-    <span class="badge  badge-primary">e-course</span>
-    <span class="badge  badge-warning">news</span>
-    <span class="badge  badge-danger">tech</span>
-    <span class="badge  badge-success">Success</span>
-    <span class="badge  badge-danger">Danger</span>
-    <span class="badge  badge-warning">Warning</span>
+    <button class="badge btn ftags" *ngFor="let t of tags; let i = index;" (click)="filterWithTags(t.id)"
+            ngClass="sb{{i+1}}">{{t.name}}
+    </button>
+    <!--<span class="badge  badge-default ">private</span>-->
+    <!--<span class="badge  badge-primary">e-course</span>-->
+    <!--<span class="badge  badge-warning">news</span>-->
+    <!--<span class="badge  badge-danger">tech</span>-->
+    <!--<span class="badge  badge-success">Success</span>-->
+    <!--<span class="badge  badge-danger">Danger</span>-->
+    <!--<span class="badge  badge-warning">Warning</span>-->
   </div>
 
   <!--<div class="p-status-con">-->
@@ -272,7 +275,7 @@
       <!--</div>-->
 
       <div class="loading row">
-        <div class="col">
+        <div class="col" style="min-height: 442px;">
           <br>
           <br>
           <br>

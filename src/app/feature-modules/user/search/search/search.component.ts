@@ -209,8 +209,7 @@ export class SearchComponent implements OnInit {
 
   getTagPosts() {
     for (let i = 0; i < 3; i++) {
-      this.getPostByTag(this.tags[i].id)
-      ;
+      this.getPostByTag(this.tags[i].id);
     }
   }
 

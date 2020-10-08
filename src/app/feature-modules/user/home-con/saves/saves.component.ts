@@ -6,6 +6,8 @@ import {Account} from '../../../../api/models/account.model';
 import {IPost} from '../../../../api/models/post.model';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {TagService} from '../../../../api/services/tag.service';
+import {ITag} from '../../../../api/models/tag.model';
 
 @Component({
   selector: 'app-saves',
@@ -20,11 +22,13 @@ export class SavesComponent implements OnInit {
   loading = false;
   searchResult: IPost[] = [];
   searchForm: FormGroup;
+  tags: ITag[];
 
   constructor(public preferenceService: PreferenceService,
               public accountService: AccService,
               private spinner: NgxSpinnerService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              public tagService: TagService) {
   }
 
   ngOnInit() {
@@ -33,6 +37,7 @@ export class SavesComponent implements OnInit {
       {
         query: ['', Validators.required]
       });
+    this.getTags();
   }
 
   loadProfile() {
@@ -74,5 +79,28 @@ export class SavesComponent implements OnInit {
     this.savedPosts = this.searchResult;
     // console.log(this.searchResult);
   }
+
+  getTags() {
+    this.tagService.query()
+      .subscribe(result => {
+        this.tags = result.body;
+        // this.getTagPosts();
+      });
+  }
+
+  filterWithTags(id: number) {
+    console.log(id);
+    this.searchResult = [];
+    this.preference.savedPosts.filter((item: IPost) => {
+      item.tags.filter(t => {
+        if (t.id == id) {
+          this.searchResult.push(item);
+        }
+      });
+    });
+    this.savedPosts = this.searchResult;
+    console.log(this.searchResult);
+  }
+
 
 }
