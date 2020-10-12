@@ -137,27 +137,32 @@ export class MagComponent implements OnInit {
   }
 
   createPost(f: any) {
-    this.spinner.show('posting');
-    this.newPost = {
-      userId: this.account.id,
-      postedDate: moment().startOf('second'),
-      // featuredImage: f != null ? f.slice(23,) : null,
-      // featuredImageContentType: 'image/jpeg',
-      tags: this.tags,
-      content: this.htmlValue,
-      contentType: ContentType.HTML,
-      title: this.captionForm.value.caption,
-      postMetaData: []
-    };
 
-    this.postService.create(this.newPost)
-      .subscribe(result3 => {
-        this.appPostService.addPost(result3.body);
-        this.tagService.resetTags();
-        this.bsModalRef.hide();
-      }, () => {
-        this.spinner.hide('posting');
-      });
+    this.submitted = true;
+    if (this.captionForm.valid) {
+      this.spinner.show('posting');
+      this.newPost = {
+        userId: this.account.id,
+        postedDate: moment().startOf('second'),
+        // featuredImage: f != null ? f.slice(23,) : null,
+        // featuredImageContentType: 'image/jpeg',
+        tags: this.tags,
+        content: this.htmlValue,
+        contentType: ContentType.HTML,
+        title: this.captionForm.value.caption,
+        postMetaData: []
+      };
+
+      this.postService.create(this.newPost)
+        .subscribe(result3 => {
+          this.appPostService.addPost(result3.body);
+          this.tagService.resetTags();
+          this.bsModalRef.hide();
+        }, () => {
+          this.spinner.hide('posting');
+        });
+    }
+
   }
 
 

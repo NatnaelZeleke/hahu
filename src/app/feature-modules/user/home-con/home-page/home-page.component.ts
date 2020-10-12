@@ -74,7 +74,7 @@ export class HomePageComponent implements OnInit {
       this.modalService.show(MagComponent, {
         initialState: initialState,
         animated: false,
-        class: 'c-c-con',
+        class: 'c-c-con h-100',
       });
     }
 

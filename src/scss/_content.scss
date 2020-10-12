@@ -1,5 +1,9 @@
 @import "common";
 
+app-mag{
+  height: 100% !important;
+}
+
 .c-c-con {
   app-content {
     height: 100%;
@@ -109,7 +113,7 @@
   }
   .c-d-c-v {
     overflow-y: auto;
-    height: 78%;
+    height: 84%;
   }
 
   progressbar {
