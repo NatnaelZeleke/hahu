@@ -15,6 +15,7 @@ type CountResponseType = HttpResponse<number>;
 @Injectable({ providedIn: 'root' })
 export class PostService {
   public resourceUrl = SERVER_API_URL + 'api/posts/custom';
+  public resourceUrlRecommended = SERVER_API_URL + 'api/posts/recommended';
 
   constructor(protected http: HttpClient) {}
 
@@ -48,6 +49,18 @@ export class PostService {
     const options = createRequestOption(req);
     return this.http
       .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
+      .pipe();
+  }
+  queryRecommended(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<IPost[]>(this.resourceUrlRecommended, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+  queryRecommendedCount(req?: any): Observable<CountResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<number>(this.resourceUrlRecommended + '/count', { params: options, observe: 'response' })
       .pipe();
   }
 
