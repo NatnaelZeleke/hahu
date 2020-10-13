@@ -64,23 +64,33 @@
 
 
 
-  <div id="viewport">
+  <div id="viewport" *ngIf="showPads">
+
+    <ngx-spinner bdColor="rgba(152,61,61,0)"
+                 size="default"
+                 color="#dddddd"
+                 type="ball-fall"
+                 name="recommendationSpinner"
+                 [fullScreen]="false"></ngx-spinner>
     <ul class="stack" swing-stack [stackConfig]="stackConfig" #myswing1 (throwout)="onThrowOut($event)" >
-      <li swing-card #mycards1   *ngFor="let c of cards; let i = index;" >
+      <li swing-card #mycards1   *ngFor="let c of recommendations; let i = index;" >
         <!--{{ c.symbol }}-->
         <p class="hidden">{{i}}</p>
-        <div class="s-p-r-p">
+        <div class="s-p-r-p" >
           <div class="s-p-r-p-c">
             <div class="sm-c sm-s-l">
-              <div class="sm-c-i bcimg" style="background-image: url('./assets/images/profile3.jpg')">
+              <div class="sm-c-i bcimg"
+                   [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + c.featuredImage + ')'}">
               </div>
               <div class="desc-c tab">
-                <p class="b">{{c.name}}</p>
-                <p class="l">If You are offered a seat ...</p>
+                <p class="b">{{c.title}}</p>
+                <!--<p class="l">{{c.}}</p>-->
               </div>
             </div>
           </div>
         </div>
+
+
       </li>
     </ul>
   </div>
