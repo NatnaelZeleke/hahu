@@ -1,0 +1,133 @@
+<div  >
+
+
+  <button type="button" class="close pull-right cb" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="t-l">
+  <div class="post" ngClass="{{post?.postMetaData[1]?.value}}">
+
+
+    <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"  *ngIf="post?.content != null" (click)="toggleTags()">
+      <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>
+      <div class="c-html-con" *ngIf="post?.contentType == 'HTML'">
+        <div class="cHtml"></div>
+        <quill-view [content]="post?.content" format="html" theme="snow"></quill-view>
+      </div>
+    </div>
+
+    <div class="c-c" *ngIf="post?.featuredImage != null" (click)="toggleTags()">
+      <div class="p-c bcimg"
+           [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post?.featuredImage + ')' , 'height':'800px'}">
+      </div>
+      <!--[ngStyle]="{'background-image':'url( https://' + i.imgs[0] + ')'}"-->
+      <!--style="background-image: url('./assets/images/background2.jpg'); height: 800px"-->
+    </div>
+
+    <div class="p-t-c" *ngIf="showTags" (click)="toggleTags()">
+      <p *ngFor="let t of post?.tags">#{{t.name}}</p>
+    </div>
+
+    <div class="p-con-c">
+
+      <div class="container ">
+        <div class=" row">
+          <div class="col-6 p-l-8" routerLink="/user/user/profile" [queryParams]="{ userId: user?.id }">
+            <div class="u-p-p bcimg f-l"
+                 [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')'}">
+            </div>
+            <div class="n-con">
+              <p>{{user?.firstName}} {{user?.lastName}}</p>
+              <p class="u-n">@{{profile[0]?.userLogin}} </p>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="ic-c">
+              <div class="a-con more" [popover]="menuTemplate"
+                   [outsideClick]="true">
+
+                <i class="fa fa-ellipsis-v" ></i>
+
+
+              </div>
+              <div class="a-con" (click)="like()">
+                <div class="value">{{likeCount || ''}}</div>
+                <i class="fa fa-heart" [ngClass]="{'liked': isLiked}"></i>
+              </div>
+              <div class="a-con" (click)="toggleComment()">
+                <div class="value">{{commentCount || ''}}</div>
+                <i class="fa fa-comment"></i>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="isCommentShown">
+        <div class="row">
+          <div class="com-con">
+
+            <form class="comen-form" [formGroup]="commentForm" (submit)="postComment()">
+            <textarea class="form-control form-control-sm"
+                      placeholder="Add a comment ... "
+                      formControlName="comment"></textarea>
+              <button type="submit" [disabled]="commentForm.invalid"
+                      class="btn btn-sm btn-outline-success p-btn">post
+              </button>
+            </form>
+
+            <div *ngFor="let c of comments; let i = index;">
+            <app-comment [comment]="c"
+            [account]="account"
+            [idx]="i"
+            (removeComment)="removeComment($event)"></app-comment>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<ng-template #menuTemplate >
+  <div class="e-m">
+    <p>Share</p>
+    <p (click)="save()">Save</p>
+    <p>Report</p>
+    <p>Notify me</p>
+  </div>
+</ng-template>
+
+
+
+
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="com-con">-->
+<!--<div class="comen" *ngFor="let c of post?.comments; let i = index;">-->
+<!--<div class="com-p-c-c">-->
+<!--<div class="com-p-c bcimg">-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="com-t-c">-->
+<!--<div class="p-n-c">-->
+<!--<p class="name">Daniel Solomon</p>-->
+<!--<p class="more">1 hour ago</p>-->
+<!--</div>-->
+<!--<p>{{c.content}}</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<h1>working</h1>-->

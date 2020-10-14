@@ -1,33 +1,30 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IPost} from '../../../../../api/models/post.model';
-import {ProfileService} from '../../../../../api/services/profile.service';
-import {IProfile} from '../../../../../api/models/profile.model';
-import {Account} from '../../../../../api/models/account.model';
-import {LikesService} from '../../../../../api/services/likes.service';
-import {ILikes} from '../../../../../api/models/likes.model';
-import {CommentService} from '../../../../../api/services/comment.service';
+import {IPost} from '../../../../api/models/post.model';
+import {Account} from '../../../../api/models/account.model';
+import {IProfile} from '../../../../api/models/profile.model';
+import {ILikes} from '../../../../api/models/likes.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Comment, IComment} from '../../../../../api/models/comment.model';
+import {Comment, IComment} from '../../../../api/models/comment.model';
+import {IUser} from '../../../../api/models/user.model';
+import {IPreference} from '../../../../api/models/preference.model';
+import {ProfileService} from '../../../../api/services/profile.service';
+import {LikesService} from '../../../../api/services/likes.service';
+import {CommentService} from '../../../../api/services/comment.service';
+import {UserService} from '../../../../api/services/user.service';
+import {PreferenceService} from '../../../../api/services/preference.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
-import {UserService} from '../../../../../api/services/user.service';
-import {IUser} from '../../../../../api/models/user.model';
-import {HashtagService} from '../../../../../services/hashtag.service';
-import {PreferenceService} from '../../../../../api/services/preference.service';
-import {IPreference} from '../../../../../api/models/preference.model';
-import {ModalComponent} from '../../../../../shared/component/modal/modal.component';
-import {BsModalService} from 'ngx-bootstrap/modal';
-import {SaveModalComponent} from '../save-modal/save-modal.component';
-
+import {SaveModalComponent} from '../../home-con/home-page/save-modal/save-modal.component';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.css']
 })
-export class PostComponent implements OnInit {
+export class DetailComponent implements OnInit {
 
-  @Input() post: IPost;
-  @Input() account: Account;
+  post: IPost;
+  account: Account;
   profile: IProfile[] = [];
   isLiked = false;
   likeObject: ILikes;
@@ -48,7 +45,8 @@ export class PostComponent implements OnInit {
               public formBuilder: FormBuilder,
               public userService: UserService,
               public preferenceService: PreferenceService,
-              public modalService: BsModalService) {
+              public modalService: BsModalService,
+              public bsModalRef: BsModalRef) {
   }
 
   ngOnInit() {
@@ -228,6 +226,5 @@ export class PostComponent implements OnInit {
     };
     this.modalService.show(SaveModalComponent, {initialState});
   }
-
 
 }

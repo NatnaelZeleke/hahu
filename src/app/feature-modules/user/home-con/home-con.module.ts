@@ -9,7 +9,6 @@ import {SchoolfeedComponent} from './schoolfeed/schoolfeed.component';
 import {SavesComponent} from './saves/saves.component';
 import {PostComponent} from './home-page/post/post.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
-import {CommentComponent} from './home-page/comment/comment.component';
 import {ContentComponent} from './home-page/content/content.component';
 import {TagsComponent} from './home-page/content/tags/tags.component';
 import {SharedPostModule} from '../../../shared/shared-post.module';

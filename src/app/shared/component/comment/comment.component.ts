@@ -1,9 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {IComment} from '../../../../../api/models/comment.model';
-import {ProfileService} from '../../../../../api/services/profile.service';
-import {IProfile} from '../../../../../api/models/profile.model';
-import {Account} from '../../../../../api/models/account.model';
-import {CommentService} from '../../../../../api/services/comment.service';
+import {IComment} from '../../../api/models/comment.model';
+import {IProfile} from '../../../api/models/profile.model';
+import {ProfileService} from '../../../api/services/profile.service';
+import {CommentService} from '../../../api/services/comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -45,7 +44,7 @@ export class CommentComponent implements OnInit {
   }
 
   shouldShowMoreButton() {
-    if (this.comment.userId == this.account.id) {
+    if (this.comment.userId == +this.account.id) {
       this.showMoreButton = true;
     }
   }

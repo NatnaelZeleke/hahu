@@ -21,6 +21,8 @@ import {
   SwingStackComponent,
   SwingCardComponent, Direction
 } from 'angular2-swing';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {DetailComponent} from '../detail/detail.component';
 
 @Component({
   selector: 'app-search',
@@ -57,7 +59,8 @@ export class SearchComponent implements OnInit {
               public postService: PostService,
               public ngxSpinner: NgxSpinnerService,
               public viewService: ViewsService,
-              public accService: AccService) {
+              public accService: AccService,
+              public modalService: BsModalService) {
 
     this.stackConfig = {
       // Default setting only allows UP, LEFT and RIGHT so you can override this as below
@@ -324,6 +327,18 @@ export class SearchComponent implements OnInit {
     if (this.recommendations.length == 0) {
       this.showPads = false;
     }
+  }
+
+
+  openDetail(post: IPost) {
+
+    const initialState = {
+      title: '',
+      message: '',
+      post: post,
+      account: this.account
+    };
+    this.modalService.show(DetailComponent, {initialState});
   }
 
 

@@ -73,7 +73,7 @@
                  name="recommendationSpinner"
                  [fullScreen]="false"></ngx-spinner>
     <ul class="stack" swing-stack [stackConfig]="stackConfig" #myswing1 (throwout)="onThrowOut($event)" >
-      <li swing-card #mycards1   *ngFor="let c of recommendations; let i = index;" >
+      <li swing-card #mycards1   *ngFor="let c of recommendations; let i = index;" (click)="openDetail(c)">
         <!--{{ c.symbol }}-->
         <p class="hidden">{{i}}</p>
         <div class="s-p-r-p" >
@@ -118,7 +118,7 @@
             <p class="sm-h"></p>
           </div>
           <div class="r-com-con h-scroll">
-            <div class="sm-c" *ngFor="let sr of searchResult; let i = index;">
+            <div class="sm-c" *ngFor="let sr of searchResult; let i = index;" (click)="openDetail(sr)">
               <div class="sm-c-i bcimg"
                    [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + sr.featuredImage + ')'}">
               </div>
@@ -147,7 +147,7 @@
 
           <div class="r-com-con h-scroll">
 
-            <div class="sm-c" *ngFor="let ro of recentlyOpenedPosts; let i = index;">
+            <div class="sm-c" *ngFor="let ro of recentlyOpenedPosts; let i = index;" (click)="openDetail(ro)">
               <div class="sm-c-i bcimg"
                    [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + ro.featuredImage + ')'}">
               </div>
@@ -177,7 +177,7 @@
 
           <div class="r-com-con h-scroll">
 
-            <div class="sm-c" *ngFor="let t of trendingPosts; let i = index;">
+            <div class="sm-c" *ngFor="let t of trendingPosts; let i = index;" (click)="openDetail(t)">
               <div class="sm-c-i bcimg"
                    [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + t.featuredImage + ')'}">
               </div>
@@ -204,7 +204,7 @@
 
           <div class="r-com-con h-scroll">
 
-            <div class="sm-c" *ngFor="let p of po; let x = index;">
+            <div class="sm-c" *ngFor="let p of po; let x = index;" (click)="openDetail(p)">
               <div class="sm-c-i bcimg"
                    [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + p.featuredImage + ')'}">
               </div>
@@ -230,7 +230,7 @@
           </div>
           <div class="r-com-con h-scroll">
 
-            <div class="sm-c" *ngFor="let sp of stp; let x = index;">
+            <div class="sm-c" *ngFor="let sp of stp; let x = index;" (click)="openDetail(sp)">
               <div class="sm-c-i bcimg"
                    [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + sp.featuredImage + ')'}">
               </div>

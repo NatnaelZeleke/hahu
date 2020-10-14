@@ -1,0 +1,22 @@
+.post .p-c {
+  width: 100%;
+  max-height: 450px;
+}
+
+.cb{
+  position: absolute;
+  right: 6px;
+  top: 5px;
+  background-color: #fff;
+  padding: 6px;
+  opacity: 1;
+  border-radius: 20px;
+  z-index: 999;
+}
+.modal-header{
+  padding: 0 !important;
+}
+.post{
+  border-radius: 5px;
+  overflow: hidden;
+}
