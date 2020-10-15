@@ -15,6 +15,7 @@ import {SharedPostModule} from '../../../shared/shared-post.module';
 import {MagComponent} from './home-page/mag/mag.component';
 import {PostAltComponent} from './post-alt/post-alt.component';
 import {SaveModalComponent} from './home-page/save-modal/save-modal.component';
+import { StoryComponent } from './story/story.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import {SaveModalComponent} from './home-page/save-modal/save-modal.component';
     TagsComponent,
     MagComponent,
     PostAltComponent,
-    SaveModalComponent],
+    SaveModalComponent,
+    StoryComponent],
   entryComponents: [SaveModalComponent]
 })
 export class HomeConModule {

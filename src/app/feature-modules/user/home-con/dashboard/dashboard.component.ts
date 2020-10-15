@@ -1,6 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DashboardSrService} from '../../../../services/dashboard-sr.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ModalComponent} from '../../../../shared/component/modal/modal.component';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {StoryComponent} from '../story/story.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +19,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(public dashBoardRS: DashboardSrService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              public modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -61,6 +65,7 @@ export class DashboardComponent implements OnInit {
     if (action === this.SWIPE_ACTION.RIGHT) {
       if (this.currentIndex == 0) {
         console.log('do nothing return');
+        this.openStory();
         return;
       } else {
         this.currentIndex = this.currentIndex - 1;
@@ -84,7 +89,6 @@ export class DashboardComponent implements OnInit {
   }
 
   routeToComponent() {
-
     if (this.currentIndex == 0) {
       this.dashBoardRS.changeSelected(0);
       this.router.navigate(['/user/user/homecon/dashboard/home'], {relativeTo: this.activatedRoute});
@@ -97,5 +101,16 @@ export class DashboardComponent implements OnInit {
       this.dashBoardRS.changeSelected(2);
       this.router.navigate(['/user/user/homecon/dashboard/saves'], {relativeTo: this.activatedRoute});
     }
+  }
+
+  openStory() {
+    const initialState = {
+      title: '',
+      message: '',
+    };
+    this.modalService.show(StoryComponent, {
+      initialState: initialState,
+      class: 'st-modal'
+    });
   }
 }
