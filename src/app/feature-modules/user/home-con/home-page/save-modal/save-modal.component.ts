@@ -32,9 +32,9 @@ export class SaveModalComponent implements OnInit {
       .subscribe(result => {
         this.spinner.hide('savingPostSpinner');
         console.log('saved');
-
+        this.bsModalRef.hide();
       });
-    this.bsModalRef.hide();
+
   }
 
 }

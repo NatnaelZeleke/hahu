@@ -217,7 +217,6 @@ export class ContentComponent implements OnInit {
   }
 
   changeBackground(bgClass: string) {
-
     this.backGround = bgClass;
   }
 

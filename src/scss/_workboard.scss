@@ -401,6 +401,9 @@
   .st-p-o-con{
     float: left;
     .st-pr{
+      &.read{
+        border: 1px solid rgba(255, 255, 255, 0);
+      }
       width: 46px;
       height: 46px;
       margin: 10px 14px 5px;
