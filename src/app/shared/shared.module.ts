@@ -12,6 +12,7 @@ import {ChartsModule} from 'ng2-charts';
 
 import {QuillModule} from 'ngx-quill';
 import {SwingModule} from 'angular2-swing';
+import {CommentComponent} from './component/comment/comment.component';
 
 
 @NgModule({
@@ -52,12 +53,13 @@ import {SwingModule} from 'angular2-swing';
     }),
     SwingModule
   ],
-  declarations: [LoadingComponent, SpinnerComponent],
+  declarations: [LoadingComponent, SpinnerComponent, CommentComponent],
   exports: [NgxModuleModule,
     FormsModule,
     ReactiveFormsModule,
     LoadingComponent,
     SpinnerComponent,
+    CommentComponent,
     ngfModule,
     NgxSpinnerModule,
     ChartsModule,

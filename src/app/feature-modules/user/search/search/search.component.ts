@@ -21,6 +21,8 @@ import {
   SwingStackComponent,
   SwingCardComponent, Direction
 } from 'angular2-swing';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {DetailComponent} from '../detail/detail.component';
 
 @Component({
   selector: 'app-search',
@@ -32,7 +34,7 @@ export class SearchComponent implements OnInit {
   @ViewChild('myswing1', {static: false}) swingStack: SwingStackComponent;
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
 
-  cards: Array<any>;
+  cards: Array<any> = [];
   stackConfig: StackConfig;
 
   tags: ITag[];
@@ -48,14 +50,17 @@ export class SearchComponent implements OnInit {
   roViews: IViews[] = [];
   similarTags: ITag[] = [];
   queryText = '';
+  recommendations: IPost[] = [];
   account: Account;
+  showPads = true;
 
   constructor(public tagService: TagService,
               private formBuilder: FormBuilder,
               public postService: PostService,
               public ngxSpinner: NgxSpinnerService,
               public viewService: ViewsService,
-              public accService: AccService) {
+              public accService: AccService,
+              public modalService: BsModalService) {
 
     this.stackConfig = {
       // Default setting only allows UP, LEFT and RIGHT so you can override this as below
@@ -69,11 +74,7 @@ export class SearchComponent implements OnInit {
       }
     };
 
-    this.cards = [
-      {name: 'clubs', symbol: '♣'},
-      {name: 'diamonds', symbol: '♦'},
-      {name: 'spades', symbol: '♠'}
-    ];
+    this.cards = [];
   }
 
   ngOnInit() {
@@ -95,6 +96,7 @@ export class SearchComponent implements OnInit {
         this.account = result;
         this.getRecentlyOpenedPosts(this.account.id);
       });
+    this.getRecommendations();
   }
 
   getTags() {
@@ -107,6 +109,19 @@ export class SearchComponent implements OnInit {
 
   get f() {
     return this.searchForm.controls;
+  }
+
+  getRecommendations() {
+    this.ngxSpinner.show('recommendationSpinner');
+    this.postService.queryRecommended({})
+      .subscribe(result => {
+        this.ngxSpinner.hide('recommendationSpinner');
+        this.recommendations = result.body.filter(post => {
+          if (post.featuredImage != null) {
+            return post;
+          }
+        });
+      });
   }
 
   searchPosts(queryString?: string): Observable<IPost[]> {
@@ -217,7 +232,11 @@ export class SearchComponent implements OnInit {
     this.postService.query({
       'tagId.equals': tagId
     }).subscribe(result => {
-      this.tagPosts.push(result.body);
+      this.tagPosts.push(result.body.filter(post => {
+        if (post.featuredImage != null) {
+          return post;
+        }
+      }));
     });
   }
 
@@ -236,7 +255,11 @@ export class SearchComponent implements OnInit {
       sort: ['trendingIndex,desc']
     })
       .subscribe(result => {
-        this.trendingPosts = result.body;
+        this.trendingPosts = result.body.filter(post => {
+          if (post.featuredImage != null) {
+            return post;
+          }
+        });
       });
   }
 
@@ -300,7 +323,22 @@ export class SearchComponent implements OnInit {
   // on the HTML element - see the template above
   onThrowOut(event: any) {
     const idx = +event.target.outerText[0];
-    this.cards.splice(idx, 1);
+    this.recommendations.splice(idx, 1);
+    if (this.recommendations.length == 0) {
+      this.showPads = false;
+    }
+  }
+
+
+  openDetail(post: IPost) {
+
+    const initialState = {
+      title: '',
+      message: '',
+      post: post,
+      account: this.account
+    };
+    this.modalService.show(DetailComponent, {initialState});
   }
 
 

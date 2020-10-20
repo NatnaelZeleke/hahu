@@ -58,6 +58,7 @@ export class ContentComponent implements OnInit {
   addToMag = false;
   caption2Form: FormGroup;
   content = new FormControl('');
+
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
               public tagService: HashtagService,
@@ -131,33 +132,38 @@ export class ContentComponent implements OnInit {
   }
 
   createPost(f: any) {
-    this.spinner.show('posting');
-    this.newPost = {
-      userId: this.account.id,
-      postedDate: moment().startOf('second'),
-      featuredImage: f != null ? f.slice(23, ) : null,
-      featuredImageContentType: 'image/jpeg',
-      tags: this.tags,
-      content: this.caption2Form.value.content,
-      title:  this.captionForm.value.caption,
-      postMetaData: []
-    };
-    this.addMetaData('fontSize', 'fc' + this.fontClass.toString())
-      .subscribe(result => {
-        this.newPost.postMetaData.push(result);
-        this.addMetaData('backGround', this.backGround)
-          .subscribe(result2 => {
-            this.newPost.postMetaData.push(result2);
-            this.postService.create(this.newPost)
-              .subscribe(result3 => {
-                this.appPostService.addPost(result3.body);
-                this.tagService.resetTags();
-                this.bsModalRef.hide();
-              }, () => {
-                this.spinner.hide('posting');
-              });
-          });
-      });
+
+    if ((this.captionForm.value.caption != '') || (this.caption2Form.value.content != '')) {
+      this.spinner.show('posting');
+      this.newPost = {
+        userId: this.account.id,
+        postedDate: moment().startOf('second'),
+        featuredImage: f != null ? f.slice(23,) : null,
+        featuredImageContentType: 'image/jpeg',
+        tags: this.tags,
+        content: this.caption2Form.value.content,
+        title: this.captionForm.value.caption,
+        postMetaData: []
+      };
+      this.addMetaData('fontSize', 'fc' + this.fontClass.toString())
+        .subscribe(result => {
+          this.newPost.postMetaData.push(result);
+          this.addMetaData('backGround', this.backGround)
+            .subscribe(result2 => {
+              this.newPost.postMetaData.push(result2);
+              this.postService.create(this.newPost)
+                .subscribe(result3 => {
+                  this.appPostService.addPost(result3.body);
+                  this.tagService.resetTags();
+                  this.bsModalRef.hide();
+                }, () => {
+                  this.spinner.hide('posting');
+                });
+            });
+        });
+    }
+
+
   }
 
   addPostMetaData(postId: number) {
