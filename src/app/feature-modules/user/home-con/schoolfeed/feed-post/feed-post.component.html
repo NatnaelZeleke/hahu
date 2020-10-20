@@ -1,0 +1,86 @@
+
+<div class="p-b-i bcimg" [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post?.featuredImage + ')'}">
+</div>
+<div class="post post-t-2 w-bck">
+
+  <div>
+    <div class="p-con-c">
+      <div class="container ">
+        <div class="row">
+          <div class="col-8 p-l-8">
+            <div class="u-p-p bcimg f-l" [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')'}">
+            </div>
+            <div class="n-con">
+              <p>{{user?.firstName}} {{user?.lastName}}</p>
+              <p class="p-da">{{post?.postedDate | date:'MMM d, y'}}</p>
+            </div>
+          </div>
+          <div class="col-4 t-a-r">
+            <!--<i class="fa fa-angle-down"></i>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-c">
+      <p>{{post?.content}} </p>
+      <!--<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">-->
+
+
+      <!--</div>-->
+    </div>
+    <br>
+    <!--<div class="p-con-c">-->
+      <!--<div class="container ">-->
+        <!--<div class="row">-->
+          <!--<div class="col-6 s-con">-->
+
+            <!--<i class="fa fa-share-alt"></i>-->
+          <!--</div>-->
+
+          <!--<div class="col-6">-->
+            <!--<div class="ic-c">-->
+              <!--&lt;!&ndash;<div class="a-con more">&ndash;&gt;-->
+
+              <!--&lt;!&ndash;<i class="fa fa-ellipsis-v"></i>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--<div class="a-con" (click)="like()">-->
+                <!--<div class="value">{{likeCount || ''}}</div>-->
+                <!--<i class="fa fa-heart" [ngClass]="{'liked': isLiked}"></i>-->
+              <!--</div>-->
+              <!--<div class="a-con" (click)="toggleComment()">-->
+                <!--<div class="value">{{commentCount || ''}}</div>-->
+                <!--<i class="fa fa-comment"></i>-->
+              <!--</div>-->
+
+
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>
+
+
+
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="com-con">-->
+<!--<div class="comen" *ngFor="let c of post?.comments; let i = index;">-->
+<!--<div class="com-p-c-c">-->
+<!--<div class="com-p-c bcimg">-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="com-t-c">-->
+<!--<div class="p-n-c">-->
+<!--<p class="name">Daniel Solomon</p>-->
+<!--<p class="more">1 hour ago</p>-->
+<!--</div>-->
+<!--<p>{{c.content}}</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

@@ -16,6 +16,7 @@ import {MagComponent} from './home-page/mag/mag.component';
 import {PostAltComponent} from './post-alt/post-alt.component';
 import {SaveModalComponent} from './home-page/save-modal/save-modal.component';
 import { StoryComponent } from './story/story.component';
+import { FeedPostComponent } from './schoolfeed/feed-post/feed-post.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { StoryComponent } from './story/story.component';
     MagComponent,
     PostAltComponent,
     SaveModalComponent,
-    StoryComponent],
+    StoryComponent,
+    FeedPostComponent],
   entryComponents: [SaveModalComponent]
 })
 export class HomeConModule {

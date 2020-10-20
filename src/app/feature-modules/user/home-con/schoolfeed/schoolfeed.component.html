@@ -1,176 +1,125 @@
 <div class="school-feed-con">
   <div class="t-l">
 
-    <div class="post-o-c f-o-p">
-      <div class="p-b-i bcimg" style="background-image: url('./assets/images/background2.jpg')">
-      </div>
-      <div class="post post-t-2 w-bck">
+    <div class="post-o-c f-o-p" *ngFor="let p of schoolFeed">
+      <app-feed-post [post]="p" [account]="account"></app-feed-post>
+    </div>
 
-        <div>
-          <div class="p-con-c">
-            <div class="container ">
-              <div class="row">
-                <div class="col-8 p-l-8">
-                  <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
-                  </div>
-                  <div class="n-con">
-                    <p>Selam Abate</p>
-                    <p class="p-da">nov 8</p>
-                  </div>
-                </div>
-                <div class="col-4 t-a-r">
-                  <i class="fa fa-angle-down"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="spinner-con">
+      <ngx-spinner bdColor="rgba(152,61,61,0)"
+                   size="default"
+                   color="#dddddd"
+                   type="ball-fall"
+                   [fullScreen]="false"
+                   name="schoolFeedSpinner"></ngx-spinner>
+    </div>
 
-          <div class="c-c">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-              industry's. </p>
-            <!--<div class="p-c bcimg" style="background-image: url('./assets/images/background4.jpg');height: 600px">-->
+    <!--<div class="post">-->
+      <!--<div class="container news-con rev">-->
+        <!--<div class="news-content col-10 mid-n">-->
+          <!--<div class="news-con-in">-->
+            <!--<small>May 1</small>-->
+            <!--<p class="head">Bernald Nolan</p>-->
+            <!--<p class="desc">The content of the news snippet will be seen here. </p>-->
+          <!--</div>-->
+          <!--<div class="n-i-con bcimg" style="background-image: url('./assets/images/background.jpg')">-->
 
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="post">-->
+      <!--<div class="container news-con">-->
+
+        <!--<div class="news-content col-10 mid-n">-->
+          <!--<div class="news-con-in">-->
+            <!--<small>May 1</small>-->
+            <!--<p class="head">Bernald Nolan</p>-->
+            <!--<p class="desc">The content of the news snippet will be seen here. </p>-->
+          <!--</div>-->
+          <!--<div class="n-i-con bcimg" style="background-image: url('./assets/images/background.jpg')">-->
+
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="news-content col-10 sm-n">-->
+          <!--<div class="news-con-in">-->
+            <!--<small>May 1</small>-->
+            <!--<p class="head">Bernald Nolan</p>-->
+            <!--<p class="desc">The content of the news snippet will be seen here. </p>-->
+          <!--</div>-->
+          <!--<div class="n-i-con bcimg" style="background-image: url('./assets/images/background3.jpg')">-->
+
+          <!--</div>-->
+        <!--</div>-->
+
+      <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="post post-t-2">-->
+      <!--<div class="p-con-c">-->
+        <!--<div class="container ">-->
+          <!--<div class="row">-->
+            <!--<div class="col-8 p-l-8">-->
+              <!--<div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">-->
+              <!--</div>-->
+              <!--<div class="n-con">-->
+                <!--<p>Selam Abate</p>-->
+                <!--<p class="p-da">nov 8</p>-->
+              <!--</div>-->
             <!--</div>-->
-          </div>
-          <div class="p-con-c">
-            <div class="container ">
-              <div class="row">
-                <div class="col-6 s-con">
+            <!--<div class="col-4 t-a-r">-->
+              <!--<i class="fa fa-angle-down"></i>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="c-c">-->
+        <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+          <!--industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and-->
+          <!--scrambled it to make a type specimen book. </p>-->
+        <!--<div class="p-c bcimg" style="background-image: url('./assets/images/background.jpg');height: 600px">-->
 
-                  <i class="fa fa-share-alt"></i>
-                </div>
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="p-con-c">-->
+        <!--<div class="container ">-->
+          <!--<div class="row">-->
+            <!--<div class="col-6 s-con">-->
 
-                <div class="col-6">
-                  <div class="ic-c">
-                    <!--<div class="a-con more">-->
+              <!--<i class="fa fa-share-alt"></i>-->
+            <!--</div>-->
 
-                    <!--<i class="fa fa-ellipsis-v"></i>-->
-                    <!--</div>-->
-                    <div class="a-con">
-                      <div class="value">34</div>
-                      <i class="fa fa-heart liked"></i>
-                    </div>
-                    <div class="a-con">
-                      <div class="value">123</div>
-                      <i class="fa fa-comment"></i>
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="container news-con rev">
-        <div class="news-content col-10 mid-n">
-          <div class="news-con-in">
-            <small>May 1</small>
-            <p class="head">Bernald Nolan</p>
-            <p class="desc">The content of the news snippet will be seen here. </p>
-          </div>
-          <div class="n-i-con bcimg" style="background-image: url('./assets/images/background.jpg')">
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="container news-con">
-
-        <div class="news-content col-10 mid-n">
-          <div class="news-con-in">
-            <small>May 1</small>
-            <p class="head">Bernald Nolan</p>
-            <p class="desc">The content of the news snippet will be seen here. </p>
-          </div>
-          <div class="n-i-con bcimg" style="background-image: url('./assets/images/background.jpg')">
-
-          </div>
-        </div>
-        <div class="news-content col-10 sm-n">
-          <div class="news-con-in">
-            <small>May 1</small>
-            <p class="head">Bernald Nolan</p>
-            <p class="desc">The content of the news snippet will be seen here. </p>
-          </div>
-          <div class="n-i-con bcimg" style="background-image: url('./assets/images/background3.jpg')">
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="post post-t-2">
-      <div class="p-con-c">
-        <div class="container ">
-          <div class="row">
-            <div class="col-8 p-l-8">
-              <div class="u-p-p bcimg f-l" style="background-image: url('./assets/images/download.jpg')">
-              </div>
-              <div class="n-con">
-                <p>Selam Abate</p>
-                <p class="p-da">nov 8</p>
-              </div>
-            </div>
-            <div class="col-4 t-a-r">
-              <i class="fa fa-angle-down"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="c-c">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. </p>
-        <div class="p-c bcimg" style="background-image: url('./assets/images/background.jpg');height: 600px">
-
-        </div>
-      </div>
-      <div class="p-con-c">
-        <div class="container ">
-          <div class="row">
-            <div class="col-6 s-con">
-
-              <i class="fa fa-share-alt"></i>
-            </div>
-
-            <div class="col-6">
-              <div class="ic-c">
-                <!--<div class="a-con more">-->
-                <!--<i class="fa fa-ellipsis-v"></i>-->
+            <!--<div class="col-6">-->
+              <!--<div class="ic-c">-->
+                <!--&lt;!&ndash;<div class="a-con more">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="fa fa-ellipsis-v"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--<div class="a-con">-->
+                  <!--<div class="value">34</div>-->
+                  <!--<i class="fa fa-heart liked"></i>-->
                 <!--</div>-->
-                <div class="a-con">
-                  <div class="value">34</div>
-                  <i class="fa fa-heart liked"></i>
-                </div>
-                <div class="a-con">
-                  <div class="value">123</div>
-                  <i class="fa fa-comment"></i>
-                </div>
+                <!--<div class="a-con">-->
+                  <!--<div class="value">123</div>-->
+                  <!--<i class="fa fa-comment"></i>-->
+                <!--</div>-->
 
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <div class="loading row">
-      <div class="col">
-        <br>
-        <br>
-        <br>
-      </div>
-    </div>
+    <!--<div class="loading row">-->
+      <!--<div class="col">-->
+        <!--<br>-->
+        <!--<br>-->
+        <!--<br>-->
+      <!--</div>-->
+    <!--</div>-->
 
   </div>
 </div>
