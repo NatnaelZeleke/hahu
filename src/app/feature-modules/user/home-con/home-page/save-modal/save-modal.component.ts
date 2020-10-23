@@ -12,6 +12,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class SaveModalComponent implements OnInit {
 
   content: IPreference;
+  title = '';
 
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
