@@ -2,8 +2,8 @@
 
   <div class="c-c-h" *ngIf="!addToMag">
     <div class="i-c" (click)="bsModalRef.hide()"><i class="fa fa-angle-left"></i></div>
-    <div class="name" (click)="toggleAggToMag()">add to mag</div>
-    <div class="p" (click)="createPost(file)">Post</div>
+    <div class="name" (click)="addToExisting()">Existing</div>
+    <div class="p" (click)="createPost(file)">New Mag</div>
   </div>
 
   <div class="c-c-h cch2" *ngIf="addToMag">
@@ -14,13 +14,12 @@
       <div class="name">add to existing</div>
     </div>
   </div>
+
   <div class="p-bar-con">
-    <progressbar class="pbar" *ngIf="file != null" max="100" [value]="progress" [striped]="true"
-                 [animate]="true"></progressbar>
+    <progressbar class="pbar" *ngIf="file != null" max="100" [value]="progress" [striped]="true" [animate]="true"></progressbar>
   </div>
 
   <div class="c-c-i">
-
     <form [formGroup]="captionForm">
       <input type="text" class="form-control"
              [(ngModel)]="caption" formControlName="caption" placeholder="Title field manadatory">
@@ -39,7 +38,7 @@
 
   <div class="c-d-c-v dcc" [ngClass]="backGround">
 
-    <quill-editor  (onContentChanged)="changedEditor($event)"></quill-editor>
+    <quill-editor (onContentChanged)="changedEditor($event)"></quill-editor>
 
     <div class="hashtags-con">
       <div class="hashtags" *ngFor="let t of tags; let i = index;">#{{t?.name}}</div>

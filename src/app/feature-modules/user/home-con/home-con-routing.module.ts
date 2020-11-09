@@ -8,6 +8,8 @@ import {ContentComponent} from './home-page/content/content.component';
 import {TagsComponent} from './home-page/content/tags/tags.component';
 import {MagComponent} from './home-page/mag/mag.component';
 import {StoryComponent} from './story/story.component';
+import {AddToExistingComponent} from './home-page/mag/add-to-existing/add-to-existing.component';
+import {ChooseMagComponent} from './home-page/mag/choose-mag/choose-mag.component';
 
 const routes: Routes = [
   {
@@ -43,7 +45,14 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  entryComponents: [ContentComponent, TagsComponent, MagComponent, StoryComponent]
+  entryComponents: [
+    ContentComponent,
+    TagsComponent,
+    MagComponent,
+    StoryComponent,
+    AddToExistingComponent,
+    ChooseMagComponent
+  ]
 })
 export class HomeConRoutingModule {
 }

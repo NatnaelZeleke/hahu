@@ -40,6 +40,7 @@
               <del *ngIf="ts.markAsDone">{{ts.title}}</del>
               <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
+            <span class="badge badge-dark rb" (click)="removeTask(ts.id)"><i class="fa fa-times"></i></span>
           </div>
 
         </div>
@@ -60,11 +61,13 @@
                        [fullScreen]="false"
                        name="tomorrowSchedule"></ngx-spinner>
           <div class="custom-control custom-checkbox" *ngFor="let ts of tomorrowSchedule;let i = index;">
-            <input type="checkbox" class="custom-control-input" (change)="toggleTask(i,2)">
-            <label class="custom-control-label">
+            <input type="checkbox" class="custom-control-input" id="tts{{i}}" (change)="toggleTask(i,2)">
+            <label class="custom-control-label" for="tts{{i}}">
               <del *ngIf="ts.markAsDone">{{ts.title}}</del>
               <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
+            <span class="badge badge-dark rb" (click)="removeTask(ts.id)"><i class="fa fa-times"></i></span>
+
           </div>
 
 
@@ -86,11 +89,12 @@
                        [fullScreen]="false"
                        name="soonSchedule"></ngx-spinner>
           <div class="custom-control custom-checkbox" *ngFor="let ts of soonSchedules;let i = index;">
-            <input type="checkbox" class="custom-control-input" (change)="toggleTask(i,3)">
-            <label class="custom-control-label">
+            <input type="checkbox" class="custom-control-input" id="sts{{i}}"  (change)="toggleTask(i,3)">
+            <label class="custom-control-label" for="sts{{i}}">
               <del *ngIf="ts.markAsDone">{{ts.title}}</del>
               <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
+            <span class="badge badge-dark rb" (click)="removeTask(ts.id)"><i class="fa fa-times"></i></span>
           </div>
 
         </div>

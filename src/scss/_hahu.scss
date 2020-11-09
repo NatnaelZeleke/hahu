@@ -150,6 +150,7 @@
     }
   }
   .post {
+    margin-bottom: 9px;
     background-color: #fff;
     &.dark {
       background-color: #353a50 !important;
@@ -384,10 +385,10 @@ $ppw: 36px;
   white-space: nowrap;
   width: 700px;
 
-  &.sresc{
+  &.sresc {
     width: 100%;
     overflow: auto;
-    .sm-c{
+    .sm-c {
       width: 50%;
       margin: 0 auto;
     }
@@ -773,7 +774,7 @@ $ppw: 36px;
     height: 50px;
     font-size: 23px;
   }
-  .n-p{
+  .n-p {
     bottom: -26px;
     left: 7px;
   }
@@ -785,3 +786,26 @@ $ppw: 36px;
   height: 100%;
   top: 35%;
 }
+
+.mag-img-con {
+  p{
+    position: absolute;
+    bottom: 24px;
+    text-align: center;
+    width: 89%;
+  }
+  position: relative;
+  min-height: 250px;
+  .mag-img {
+    width: 109px;
+    height: 174px;
+    border-radius: 10px;
+    margin: 0 auto;
+    position: absolute;
+    left: 25%;
+  }
+  .mag-img:nth-child(1) {
+    transform: rotate(6deg);
+  }
+}
+

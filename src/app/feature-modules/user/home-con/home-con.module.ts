@@ -17,6 +17,8 @@ import {PostAltComponent} from './post-alt/post-alt.component';
 import {SaveModalComponent} from './home-page/save-modal/save-modal.component';
 import { StoryComponent } from './story/story.component';
 import { FeedPostComponent } from './schoolfeed/feed-post/feed-post.component';
+import {AddToExistingComponent} from './home-page/mag/add-to-existing/add-to-existing.component';
+import { ChooseMagComponent } from './home-page/mag/choose-mag/choose-mag.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { FeedPostComponent } from './schoolfeed/feed-post/feed-post.component';
     PostAltComponent,
     SaveModalComponent,
     StoryComponent,
-    FeedPostComponent],
+    FeedPostComponent,
+    AddToExistingComponent,
+    ChooseMagComponent],
   entryComponents: [SaveModalComponent]
 })
 export class HomeConModule {

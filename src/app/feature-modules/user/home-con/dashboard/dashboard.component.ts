@@ -111,7 +111,8 @@ export class DashboardComponent implements OnInit {
     };
     this.modalService.show(StoryComponent, {
       initialState: initialState,
-      class: 'st-modal'
+      class: 'st-modal',
+      animated: false
     });
   }
 }

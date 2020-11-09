@@ -18,6 +18,7 @@ import * as moment from 'moment';
 
 import {EditorChangeContent} from 'ngx-quill';
 import {ContentType} from '../../../../../api/models/enumerations/content-type.model';
+import {AddToExistingComponent} from './add-to-existing/add-to-existing.component';
 
 
 @Component({
@@ -99,6 +100,9 @@ export class MagComponent implements OnInit {
     this.caption2Form = this.formBuilder.group({
       content: ['', Validators.required]
     });
+
+
+    this.addToExisting();
 
   }
 
@@ -182,5 +186,17 @@ export class MagComponent implements OnInit {
 
   changedEditor(event: EditorChangeContent) {
     this.htmlValue = event.html;
+  }
+
+  addToExisting() {
+    const initialState = {
+      title: 'add to existing',
+      message: '',
+    };
+    this.modalService.show(AddToExistingComponent, {
+      initialState: initialState,
+      animated: false,
+      class: 'c-c-con',
+    });
   }
 }
