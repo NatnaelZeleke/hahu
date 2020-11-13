@@ -9,7 +9,7 @@
   <div>
     <div class="save-list">
       <div class="s-i-l d-b" (click)="savePost()">
-        <p>Your Mag will be added to <i><b>Chemistry Magizine</b></i> </p>
+        <p>Your Mag will be added to <i><b>{{magContainer.title}}</b></i></p>
         <div class="tag-l-c">
           <ngx-spinner bdColor="rgba(152,61,61,0)"
                        size="small"
@@ -26,6 +26,6 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button type="submit" class="btn btn-sm btn-light" (click)="registerNewsPaper()">Confirm</button>
+  <button type="submit" class="btn btn-sm btn-light" (click)="addToMag()">Confirm</button>
   <button type="button" class="btn btn-sm btn-outline-light" (click)="bsModalRef.hide()">Cancel</button>
 </div>

@@ -9,7 +9,8 @@
   <div class="post" ngClass="{{post?.postMetaData[1]?.value}}">
 
 
-    <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"  *ngIf="post?.content != null" (click)="toggleTags()">
+    <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"   (click)="toggleTags()">
+      <p *ngIf="post?.postType == 'PAGE'">{{post?.title}}</p>
       <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>
       <div class="c-html-con" *ngIf="post?.contentType == 'HTML'">
         <div class="cHtml"></div>

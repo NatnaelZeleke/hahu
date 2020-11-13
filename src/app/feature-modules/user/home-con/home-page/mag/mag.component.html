@@ -2,8 +2,8 @@
 
   <div class="c-c-h" *ngIf="!addToMag">
     <div class="i-c" (click)="bsModalRef.hide()"><i class="fa fa-angle-left"></i></div>
-    <div class="name" (click)="addToExisting()">Existing</div>
-    <div class="p" (click)="createPost(file)">New Mag</div>
+    <div class="name" (click)="createPost(file, false)">Existing</div>
+    <div class="p" (click)="createPost(file, true)">New Mag</div>
   </div>
 
   <div class="c-c-h cch2" *ngIf="addToMag">
@@ -22,7 +22,7 @@
   <div class="c-c-i">
     <form [formGroup]="captionForm">
       <input type="text" class="form-control"
-             [(ngModel)]="caption" formControlName="caption" placeholder="Title field manadatory">
+             [(ngModel)]="caption" formControlName="caption" placeholder="Title field mandatory">
       <div *ngIf="submitted || (f.caption.invalid && (f.caption.dirty || f.caption.touched))">
         <div *ngIf="captionForm.hasError('required',['caption'])">
           <small class="text-danger">
@@ -46,14 +46,11 @@
       <br>
       <br>
     </div>
-
   </div>
 
 
   <div class="c-f-c">
     <div class="container t-a-c">
-
-
     </div>
   </div>
 

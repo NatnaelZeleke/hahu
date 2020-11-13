@@ -44,7 +44,7 @@ export class HomePageComponent implements OnInit {
         this.loadPost();
       });
     this.tagService.getTags();
-    this.createContent(2);
+    // this.createContent(2);
   }
 
   loadPost() {

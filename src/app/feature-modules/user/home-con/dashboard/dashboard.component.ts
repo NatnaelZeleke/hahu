@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
         this.currentIndex = result;
       });
 
+    // this.openStory();
   }
 
   changeMenu(id: number) {

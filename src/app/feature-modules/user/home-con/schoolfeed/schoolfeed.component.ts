@@ -18,7 +18,7 @@ export class SchoolfeedComponent implements OnInit {
   constructor(public dashBoardRS: DashboardSrService,
               public schoolFeedS: SchoolFeedService,
               private spinner: NgxSpinnerService,
-              protected accService: AccService,) {
+              protected accService: AccService) {
   }
 
   ngOnInit() {

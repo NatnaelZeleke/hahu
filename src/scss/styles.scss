@@ -129,3 +129,13 @@ div:focus{
 
 
 
+.mag-con-v{
+  margin: 0;
+  .modal-content{
+    border-radius: 0;
+  }
+  .p-con-c{
+    display: none;
+  }
+}
+

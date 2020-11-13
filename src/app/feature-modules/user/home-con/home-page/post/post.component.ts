@@ -11,12 +11,12 @@ import {Comment, IComment} from '../../../../../api/models/comment.model';
 import * as moment from 'moment';
 import {UserService} from '../../../../../api/services/user.service';
 import {IUser} from '../../../../../api/models/user.model';
-import {HashtagService} from '../../../../../services/hashtag.service';
 import {PreferenceService} from '../../../../../api/services/preference.service';
 import {IPreference} from '../../../../../api/models/preference.model';
-import {ModalComponent} from '../../../../../shared/component/modal/modal.component';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {SaveModalComponent} from '../save-modal/save-modal.component';
+import {MagContainerComponent} from '../mag-container/mag-container.component';
+import {PostType} from '../../../../../api/models/enumerations/post-type.model';
 
 
 @Component({
@@ -201,6 +201,15 @@ export class PostComponent implements OnInit {
 
   toggleTags() {
     this.showTags = !this.showTags;
+    // if page id is null it means it is a magazine
+    if (this.post.postType === PostType.PAGE) {
+      const initialState = {
+        message: '',
+        mag: this.post,
+        account: this.account
+      };
+      this.modalService.show(MagContainerComponent, {class: 'mag-con-v', initialState: initialState});
+    }
   }
 
   getPreference(userId: number) {

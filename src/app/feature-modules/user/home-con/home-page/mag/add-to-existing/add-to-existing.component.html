@@ -21,50 +21,46 @@
 
   <div class="data-con">
 
+  </div>
+  <div class="row st1">
+
+    <div class="col-6 mag-img-con" *ngFor="let pa of pagesList; let i = index;">
+      <div>
+        <div class="mag-img bcimg"
+             [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + pa?.featuredImage + ')' }"
+             (click)="confirmMagSelection(i)">
+        </div>
+        <!--<div class="mag-img bcimg"-->
+        <!--[ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + pa?.featuredImage + ')' }">-->
+        <!--</div>-->
+        <!--<div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/profile3.jpg')">-->
+        <!--</div>-->
+      </div>
+
+      <p>{{pa.title}}</p>
+      <small>
+        <!--<span class="badge badge-dark">-->
+          <!--<i class="fa fa-edit"></i>-->
+        <!--</span>-->
+        <span class="badge badge-dark" (click)="showDetail(i)">
+          <i class="fa fa-eye"></i>
+        </span>
+      </small>
+    </div>
+
 
   </div>
   <div class="row">
-
-    <div class="col-6 mag-img-con">
-      <div (click)="confirmMagSelection()">
-        <div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/background3.jpg')">
-        </div>
-        <div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/profile3.jpg')">
-        </div>
+    <div class="col-12">
+      <div class="spinner-con">
+        <ngx-spinner bdColor="rgba(152,61,61,0)"
+                     size="default"
+                     color="#656565"
+                     type="ball-fall"
+                     [fullScreen]="false"
+                     name="chooseMagSpinner"></ngx-spinner>
       </div>
-
-      <p>Magazine title
-        <span class="badge badge-dark">
-          <i class="fa fa-edit"></i>
-        </span>
-        <span class="badge badge-dark">
-          <i class="fa fa-eye"></i>
-        </span>
-      </p>
     </div>
-    <div class="col-6 mag-img-con">
-      <div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/profile3.jpg')">
-      </div>
-      <div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/background3.jpg')">
-      </div>
-      <p>Chemistry Lessons
-        <span class="badge badge-dark">
-          <i class="fa fa-edit"></i>
-        </span>
-        <span class="badge badge-dark">
-          <i class="fa fa-eye"></i>
-        </span>
-      </p>
-    </div>
-    <div class="col-6 mag-img-con">
-      <div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/background3.jpg')">
-      </div>
-      <div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/profile3.jpg')">
-      </div>
-      <p>agazine title</p>
-    </div>
-    <div class="col-6 mag-img-con"></div>
-
   </div>
 
 
