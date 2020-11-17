@@ -65,7 +65,7 @@
 
 
 <!--poste used by home page -->
-<div class="post post-t-2 dark" ngClass="{{post?.postMetaData[1]?.value}}">
+<div class="post post-t-2 dark p-alt" ngClass="{{post?.postMetaData[1]?.value}}">
 
   <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"  *ngIf="post?.content != null" (click)="toggleTags()">
     <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>

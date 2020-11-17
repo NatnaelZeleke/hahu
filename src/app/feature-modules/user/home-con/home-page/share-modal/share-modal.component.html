@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div>
+    <div class="save-list">
+      <div class="s-i-l d-b" (click)="sharePost()">
+        <p>Share</p>
+        <div class="tag-l-c">
+          <ngx-spinner bdColor="rgba(152,61,61,0)"
+                       size="small"
+                       color="#6495ff"
+                       type="ball-fall"
+                       name="shareSpinner"
+                       [fullScreen]="false"></ngx-spinner>
+        </div>
+      </div>
+      <div class="s-i-l" (click)="bsModalRef.hide()">
+        <p>Cancel</p>
+      </div>
+    </div>
+  </div>
+</div>

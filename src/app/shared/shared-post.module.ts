@@ -4,22 +4,29 @@ import {PostComponent} from '../feature-modules/user/home-con/home-page/post/pos
 import {SharedModule} from './shared.module';
 import {SharedPostRoutingModule} from './shared-post-routing.module';
 import {MagContainerComponent} from '../feature-modules/user/home-con/home-page/mag-container/mag-container.component';
+import {SaveModalComponent} from '../feature-modules/user/home-con/home-page/save-modal/save-modal.component';
+import {ShareModalComponent} from '../feature-modules/user/home-con/home-page/share-modal/share-modal.component';
 
 
 @NgModule({
   declarations: [
     PostComponent,
-    MagContainerComponent],
+    MagContainerComponent,
+    SaveModalComponent,
+    ShareModalComponent],
   imports: [
     CommonModule,
     SharedModule,
     SharedPostRoutingModule
   ], exports: [
     PostComponent,
-    MagContainerComponent
-  ], entryComponents: [
-
     MagContainerComponent,
+    SaveModalComponent,
+    ShareModalComponent
+  ], entryComponents: [
+    MagContainerComponent,
+    SaveModalComponent,
+    ShareModalComponent
   ]
 })
 export class SharedPostModule {

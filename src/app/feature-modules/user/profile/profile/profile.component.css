@@ -1,0 +1,12 @@
+.e-b{
+  border-radius: 20px !important;
+  background-color: #fff;
+  border: #000;
+  width: 26px;
+  height: 26px;
+  line-height: 19px;
+  color: #4d35a1;
+  position: absolute;
+  right: 0;
+  top: 5px;
+}

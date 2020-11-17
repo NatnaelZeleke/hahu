@@ -25,12 +25,15 @@
     <div class="p-p bcimg"
 
          [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
+
       <ngx-spinner bdColor="rgba(152,61,61,0)"
                    size="small"
                    color="#000"
                    type="ball-fall"
                    [fullScreen]="false"
                    name="loadingProfilePic"></ngx-spinner>
+      <div *ngIf="!visitingProfile" routerLink="../editprofile" class="e-b btn btn-light btn-sm"><i
+        class="fa fa-camera"></i></div>
     </div>
     <br>
 
@@ -85,8 +88,10 @@
           <div class="btn btn-sm btn-secondary " dropdownToggle><i class="fa fa-ellipsis-v"></i></div>
           <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
               role="menu" aria-labelledby="button-basic">
-            <li role="menuitem" (click)="blockUser()" *ngIf="!isUserBlocked"><a class="dropdown-item" ><i class="fa fa-ban"></i> Block</a></li>
-            <li role="menuitem" (click)="unblockUser()" *ngIf="isUserBlocked"><a class="dropdown-item" > Un Block</a></li>
+            <li role="menuitem" (click)="blockUser()" *ngIf="!isUserBlocked"><a class="dropdown-item"><i
+              class="fa fa-ban"></i> Block</a></li>
+            <li role="menuitem" (click)="unblockUser()" *ngIf="isUserBlocked"><a class="dropdown-item"> Un Block</a>
+            </li>
             <!--<li role="menuitem"><a class="dropdown-item" href="#">Report</a></li>-->
             <!--<li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>-->
             <!--<li class="divider dropdown-divider"></li>-->
@@ -130,7 +135,11 @@
 
   </div>
 </div>
-<div class="profile-c-c">
+<div class="profile-c-c"
+     (swipeleft)="swipeCalled('swipeleft')"
+     (swiperight)="swipeCalled('swiperight')"
+     (swipeup)="swipeCalled('swipeup')"
+     (swipedown)="swipeCalled('swipedown')">
   <div class="p-c-c-h">
 
     <div class="pm" [ngClass]="{'active': isActive(1)}"
@@ -139,11 +148,15 @@
          [queryParams]="{userId: userId}">
       Posts
     </div>
-    <div class="pm" [ngClass]="{'active': isActive(2)}" (click)="changeTab(2)" routerLink="./likes"
+    <div class="pm" [ngClass]="{'active': isActive(2)}"
+         (click)="changeTab(2)"
+         routerLink="./likes"
          [queryParams]="{userId: userId}">
       Likes
     </div>
-    <div class="pm" [ngClass]="{'active': isActive(3)}" (click)="changeTab(3)" routerLink="./following"
+    <div class="pm" [ngClass]="{'active': isActive(3)}"
+         (click)="changeTab(3)"
+         routerLink="./following"
          [queryParams]="{userId: userId}">
       Following
     </div>

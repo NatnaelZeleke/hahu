@@ -17,6 +17,7 @@ import {BsModalService} from 'ngx-bootstrap/modal';
 import {SaveModalComponent} from '../save-modal/save-modal.component';
 import {MagContainerComponent} from '../mag-container/mag-container.component';
 import {PostType} from '../../../../../api/models/enumerations/post-type.model';
+import {ShareModalComponent} from '../share-modal/share-modal.component';
 
 
 @Component({
@@ -238,5 +239,14 @@ export class PostComponent implements OnInit {
     this.modalService.show(SaveModalComponent, {initialState});
   }
 
+  share() {
+    const initialState = {
+      title: 'Share Post',
+      message: '',
+      post: this.post,
+      userId: this.account.id
+    };
+    this.modalService.show(ShareModalComponent, {initialState});
+  }
 
 }

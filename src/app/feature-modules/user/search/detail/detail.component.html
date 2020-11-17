@@ -1,4 +1,4 @@
-<div  >
+<div>
 
 
   <button type="button" class="close pull-right cb" aria-label="Close" (click)="bsModalRef.hide()">
@@ -9,7 +9,7 @@
   <div class="post" ngClass="{{post?.postMetaData[1]?.value}}">
 
 
-    <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"   (click)="toggleTags()">
+    <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}" (click)="toggleTags()">
       <p *ngIf="post?.postType == 'PAGE'">{{post?.title}}</p>
       <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>
       <div class="c-html-con" *ngIf="post?.contentType == 'HTML'">
@@ -43,15 +43,11 @@
               <p class="u-n">@{{profile[0]?.userLogin}} </p>
             </div>
           </div>
-
           <div class="col-6">
             <div class="ic-c">
               <div class="a-con more" [popover]="menuTemplate"
                    [outsideClick]="true">
-
-                <i class="fa fa-ellipsis-v" ></i>
-
-
+                <i class="fa fa-ellipsis-v"></i>
               </div>
               <div class="a-con" (click)="like()">
                 <div class="value">{{likeCount || ''}}</div>
@@ -81,14 +77,13 @@
             </form>
 
             <div *ngFor="let c of comments; let i = index;">
-            <app-comment [comment]="c"
-            [account]="account"
-            [idx]="i"
-            (removeComment)="removeComment($event)"></app-comment>
+              <app-comment [comment]="c"
+                           [account]="account"
+                           [idx]="i"
+                           (removeComment)="removeComment($event)"></app-comment>
             </div>
 
           </div>
-
         </div>
       </div>
 
@@ -97,9 +92,7 @@
 </div>
 
 
-
-
-<ng-template #menuTemplate >
+<ng-template #menuTemplate>
   <div class="e-m">
     <p>Share</p>
     <p (click)="save()">Save</p>
@@ -107,8 +100,6 @@
     <p>Notify me</p>
   </div>
 </ng-template>
-
-
 
 
 <!--<div class="container">-->

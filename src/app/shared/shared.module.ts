@@ -7,9 +7,7 @@ import {LoadingComponent} from './component/loading/loading.component';
 import {SpinnerComponent} from './component/spinner/spinner.component';
 import {ngfModule} from 'angular-file';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartsModule} from 'ng2-charts';
-
 import {QuillModule} from 'ngx-quill';
 import {SwingModule} from 'angular2-swing';
 import {CommentComponent} from './component/comment/comment.component';
