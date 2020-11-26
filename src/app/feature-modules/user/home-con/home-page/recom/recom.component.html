@@ -1,0 +1,43 @@
+<div class="recom" *ngIf="post?.featuredImage">
+  <div class="">
+    <div class="pic-c bcimg"
+         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + post?.featuredImage + ')'}">
+      <!--style="background-image: url('./assets/images/background2.jpg')">-->
+
+      <div class="r-o-c">
+        <div class="t-t-c">
+          <p>{{post?.title}}</p>
+          <!--<p class="sm"><i class="fa fa-share-square"></i> funky</p>-->
+        </div>
+        <div *ngIf="!isUserFollowing" class="btn btn-block btn-success bcp b1 pr" (click)="follow(true)">follow
+          <ngx-spinner bdColor="rgba(152,61,61,0)"
+                       size="small"
+                       color="#fff"
+                       type="ball-fall"
+                       [fullScreen]="false"
+                       [name]="name"
+                       class="spin"></ngx-spinner>
+        </div>
+
+        <div *ngIf="isUserFollowing" class="btn btn-block btn-success bcp b1 pr" (click)="follow(false)">Following
+          <ngx-spinner bdColor="rgba(152,61,61,0)"
+                       size="small"
+                       color="#fff"
+                       type="ball-fall"
+                       [fullScreen]="false"
+                       [name]="name"
+                       class="spin"></ngx-spinner>
+        </div>
+        <div class="r-o-t-c">
+          <p>{{user?.firstName}} {{user?.lastName}}</p>
+          <p class="sm">{{user?.login}}</p>
+        </div>
+      </div>
+      <div class="r-o-c-b">
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

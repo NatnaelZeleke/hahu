@@ -7,6 +7,34 @@
 
       <div *ngFor="let p of postList;let i = index;">
         <app-post [post]="p" [account]="account"></app-post>
+        <div *ngIf="showRecom(i)">
+          <div class="post">
+
+            <div class="container">
+              <div class="row recom-con">
+
+                <div class="col-12 p-0">
+                  <div class="r-h-c">
+                    <p> Recommendation</p>
+                  </div>
+                </div>
+
+                <div class="r-com-con">
+
+                  <!--<div class="orc" *ngFor="let r of recommendation; let i = index;">-->
+                  <app-recom *ngFor="let r of recommendation; let i = index;"
+                             [post]="r"
+                             [account]="account"
+                             [count]="i"></app-recom>
+                  <!--</div>-->
+
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
 
       <div class="spinner-con">
@@ -15,164 +43,9 @@
                      color="#dddddd"
                      type="ball-fall"
                      [fullScreen]="false"
-                      name="postSpinner"></ngx-spinner>
+                     name="postSpinner"></ngx-spinner>
       </div>
 
-
-      <!--<div class="post">-->
-      <!--<div class="container">-->
-      <!--<div class="row recom-con">-->
-      <!--<div class="col-12 p-0">-->
-      <!--<div class="r-h-c">-->
-      <!--&lt;!&ndash;<div class="badge badge-secondary f-l m-r-5"><i class="fa fa-bookmark"></i></div>&ndash;&gt;-->
-      <!--<p> Recommendation</p>-->
-      <!--</div>-->
-      <!--&lt;!&ndash;<hr class="hr-r">&ndash;&gt;-->
-      <!--</div>-->
-      <!--<div class="r-com-con">-->
-      <!--<div class="recom">-->
-      <!--<div class="">-->
-      <!--<div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
-
-      <!--<div class="r-o-c">-->
-      <!--<div class="t-t-c">-->
-      <!--<p>some stuff about planes</p>-->
-      <!--<p class="sm"><i class="fa fa-share-square"></i> funky</p>-->
-      <!--</div>-->
-      <!--<div class="btn btn-block btn-success bcp b1">follow</div>-->
-      <!--<div class="r-o-t-c">-->
-      <!--<p>Wild West</p>-->
-      <!--<p class="sm">Robin Dark</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="r-o-c-b">-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="recom">-->
-      <!--<div class="">-->
-      <!--<div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">-->
-
-      <!--<div class="r-o-c">-->
-      <!--<div class="t-t-c">-->
-      <!--<p>some stuff about planes</p>-->
-      <!--<p class="sm"><i class="fa fa-share-square"></i> funky</p>-->
-      <!--</div>-->
-      <!--<div class="btn btn-block btn-success bcp b2">follow</div>-->
-      <!--<div class="r-o-t-c">-->
-      <!--<p>Wild West</p>-->
-      <!--<p class="sm">Robin Dark</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="r-o-c-b">-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="recom">-->
-      <!--<div class="">-->
-      <!--<div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
-
-      <!--<div class="r-o-c">-->
-      <!--<div class="t-t-c">-->
-      <!--<p>some stuff about planes</p>-->
-      <!--<p class="sm"><i class="fa fa-share-square"></i> funky</p>-->
-      <!--</div>-->
-      <!--<div class="btn btn-block btn-success bcp b1">follow</div>-->
-      <!--<div class="r-o-t-c">-->
-      <!--<p>Wild West</p>-->
-      <!--<p class="sm">Robin Dark</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="r-o-c-b">-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="recom">-->
-      <!--<div class="">-->
-      <!--<div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">-->
-
-      <!--<div class="r-o-c">-->
-      <!--<div class="t-t-c">-->
-      <!--<p>some stuff about planes</p>-->
-      <!--<p class="sm"><i class="fa fa-share-square"></i> funky</p>-->
-      <!--</div>-->
-      <!--<div class="btn btn-block btn-success bcp b2">follow</div>-->
-      <!--<div class="r-o-t-c">-->
-      <!--<p>Wild West</p>-->
-      <!--<p class="sm">Robin Dark</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="r-o-c-b">-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="recom">-->
-      <!--<div class="">-->
-      <!--<div class="pic-c bcimg" style="background-image: url('./assets/images/background2.jpg')">-->
-
-      <!--<div class="r-o-c">-->
-      <!--<div class="t-t-c">-->
-      <!--<p>some stuff about planes</p>-->
-      <!--<p class="sm"><i class="fa fa-share-square"></i> funky</p>-->
-      <!--</div>-->
-      <!--<div class="btn btn-block btn-success bcp b1">follow</div>-->
-      <!--<div class="r-o-t-c">-->
-      <!--<p>Wild West</p>-->
-      <!--<p class="sm">Robin Dark</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="r-o-c-b">-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="recom">-->
-      <!--<div class="">-->
-      <!--<div class="pic-c bcimg" style="background-image: url('./assets/images/background.jpg')">-->
-
-      <!--<div class="r-o-c">-->
-      <!--<div class="t-t-c">-->
-      <!--<p>some stuff about planes</p>-->
-      <!--<p class="sm"><i class="fa fa-share-square"></i> funky</p>-->
-      <!--</div>-->
-      <!--<div class="btn btn-block btn-success bcp b2">follow</div>-->
-      <!--<div class="r-o-t-c">-->
-      <!--<p>Wild West</p>-->
-      <!--<p class="sm">Robin Dark</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="r-o-c-b">-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-
-      <!--</div>-->
-      <!--</div>-->
-
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
 
       <!--<div class="post">-->
       <!--<div class="container news-con">-->
@@ -181,9 +54,7 @@
       <!--<div class="n-h-c">-->
       <!--<p> News</p>-->
       <!--</div>-->
-
       <!--</div>-->
-
       <!--</div>-->
       <!--<div class="news-content col-8">-->
       <!--<div class="news-con-in">-->

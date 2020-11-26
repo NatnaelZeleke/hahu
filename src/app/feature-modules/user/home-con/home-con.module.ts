@@ -17,6 +17,7 @@ import {FeedPostComponent} from './schoolfeed/feed-post/feed-post.component';
 import {AddToExistingComponent} from './home-page/mag/add-to-existing/add-to-existing.component';
 import {ChooseMagComponent} from './home-page/mag/choose-mag/choose-mag.component';
 import {CreateMagComponent} from './home-page/mag/create-mag/create-mag.component';
+import { RecomComponent } from './home-page/recom/recom.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import {CreateMagComponent} from './home-page/mag/create-mag/create-mag.componen
     FeedPostComponent,
     AddToExistingComponent,
     ChooseMagComponent,
-    CreateMagComponent],
+    CreateMagComponent,
+    RecomComponent],
   entryComponents: []
 })
 export class HomeConModule {

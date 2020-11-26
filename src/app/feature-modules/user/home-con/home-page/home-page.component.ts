@@ -22,6 +22,7 @@ export class HomePageComponent implements OnInit {
 
   postList: IPost[] = [];
   account: Account;
+  recommendation: IPost[] = [];
 
   constructor(protected postService: PostService,
               protected accService: AccService,
@@ -44,6 +45,7 @@ export class HomePageComponent implements OnInit {
         this.loadPost();
       });
     this.tagService.getTags();
+    this.getRecommendation();
     // this.createContent(2);
   }
 
@@ -88,6 +90,23 @@ export class HomePageComponent implements OnInit {
       error: error
     };
     this.modalService.show(ModalComponent, {initialState});
+  }
+
+  showRecom(i: number) {
+    if (i > 0) {
+      if ((i % 5) === 0) {
+        return true;
+      }
+    }
+
+  }
+
+
+  getRecommendation() {
+    this.postService.queryRecommended({})
+      .subscribe(result => {
+        this.recommendation = result.body;
+      });
   }
 
 }

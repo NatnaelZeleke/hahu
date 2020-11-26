@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
               public preferenceService: PreferenceService,
               public profileRS: ProfileRSService,
               private router: Router,
-              private activatedRoute: ActivatedRoute,) {
+              private activatedRoute: ActivatedRoute) {
 
   }
 
