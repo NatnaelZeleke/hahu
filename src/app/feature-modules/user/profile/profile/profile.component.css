@@ -13,7 +13,14 @@
 
 .wra {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   /*overflow-y: auto;*/
   touch-action: pan-y !important;
 }
+
+.hf{
+  height: 100%;
+  overflow-y: auto;
+}
+
+

@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   profile: IProfile;
   user: IUser;
   album: IAlbum[] = [];
-  currentClass = 1;
+  currentClass = 0;
   userId = 0;
   visitingProfile = false;
   isUserFollowing = false;
@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tabController();
+    // this.tabController();
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
       if (params['reload'] != null) {
@@ -69,16 +69,16 @@ export class ProfileComponent implements OnInit {
     this.loadProfile();
   }
 
-  tabController() {
-    this.pTabService.selectedSubject
-      .subscribe(result => {
-        if (result != 0) {
-          this.currentClass = result;
-        } else {
-          this.currentClass = 1;
-        }
-      });
-  }
+  // tabController() {
+  //   this.pTabService.selectedSubject
+  //     .subscribe(result => {
+  //       if (result != 0) {
+  //         this.currentClass = result;
+  //       } else {
+  //         this.currentClass = 1;
+  //       }
+  //     });
+  // }
 
   loadProfile() {
     this.resetProfile();
@@ -179,7 +179,7 @@ export class ProfileComponent implements OnInit {
   resetProfile() {
     this.profile = null;
     this.user = null;
-    this.currentClass = 1;
+    this.currentClass = 0;
     this.visitingProfile = false;
     this.isUserFollowing = false;
     this.loaded = false;
@@ -237,35 +237,35 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-
-
   routeToComponent() {
     if (this.currentIndex == 0) {
-      // this.currentClass = 0;
+      this.currentClass = 0;
       // this.profileRS.changeSelected(0);
       this.router.navigate(['/user/user/profile/profile/posts'], {relativeTo: this.activatedRoute});
 
     } else if (this.currentIndex == 1) {
-      // this.currentClass = 1;
+      this.currentClass = 1;
       // this.profileRS.changeSelected(1);
       this.router.navigate(['/user/user/profile/profile/likes'], {relativeTo: this.activatedRoute});
 
     } else if (this.currentIndex == 2) {
-      // this.currentClass = 2;
+      this.currentClass = 2;
       // this.profileRS.changeSelected(2);
       this.router.navigate(['/user/user/profile/profile/following'], {relativeTo: this.activatedRoute});
     }
   }
 
   swipeCalled(action: string) {
-
     if (action === this.SWIPE_ACTION.RIGHT) {
       if (this.currentIndex == 0) {
         console.log('do nothing return');
         return;
       } else {
+
         this.currentIndex = this.currentIndex - 1;
+
         this.routeToComponent();
+
         console.log('right swipe');
       }
     } else if (action === this.SWIPE_ACTION.LEFT) {
@@ -273,7 +273,9 @@ export class ProfileComponent implements OnInit {
         console.log('do nothing left swipe');
         return;
       } else {
+
         this.currentIndex = this.currentIndex + 1;
+
         this.routeToComponent();
         console.log('left swipe');
       }

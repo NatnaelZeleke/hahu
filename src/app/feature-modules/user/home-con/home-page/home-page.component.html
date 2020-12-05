@@ -5,6 +5,9 @@
   <div class="">
     <div class="t-l">
 
+
+
+
       <div *ngFor="let p of postList;let i = index;">
         <app-post [post]="p" [account]="account"></app-post>
         <div *ngIf="showRecom(i)">

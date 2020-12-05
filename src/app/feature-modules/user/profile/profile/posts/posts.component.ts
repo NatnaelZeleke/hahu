@@ -29,7 +29,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pTabService.changeTab(1);
+    // this.pTabService.changeTab(1);
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
       if (params['reload'] != null) {

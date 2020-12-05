@@ -148,3 +148,35 @@ div:focus{
     }
   }
 }
+
+//select{
+//  -webkit-appearance: none;
+//}
+
+.sc-b-c{
+  .btn-group{
+    width: 100%;
+  }
+  .btn{
+    background: #fff;
+    border-radius: 0;
+    width: 100% !important;
+  }
+  .dropdown-menu{
+    z-index: 999;
+  }
+  .f {
+    border-bottom: 3px solid #665eff;;
+  }
+  .s {
+    border-bottom: 3px solid #5773ff;
+  }
+  .l {
+    border-bottom: 3px solid #3acce1;
+  }
+}
+
+.hf{
+  height: 100%;
+  overflow-y: auto;
+}

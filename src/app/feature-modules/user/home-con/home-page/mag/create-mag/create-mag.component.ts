@@ -45,6 +45,7 @@ export class CreateMagComponent implements OnInit {
   public onClose: Subject<boolean>;
 
   newPost: IPost;
+  title = '';
 
   constructor(public bsModalRef: BsModalRef,
               public formBuilder: FormBuilder,

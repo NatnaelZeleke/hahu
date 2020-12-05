@@ -39,6 +39,7 @@ export class ProfileSettingComponent implements OnInit {
         // this.ngxSpinner.hide('loadingProfilePic');
       });
   }
+
   getUserAccount(userLogin: string) {
     this.userService.find(userLogin)
       .subscribe(result => {

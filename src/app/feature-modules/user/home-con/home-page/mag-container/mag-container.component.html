@@ -17,9 +17,28 @@
   <hr>
 </div>
 
-<div *ngFor="let p of magPosts;let i = index;">
-  <app-post [post]="p" [account]="account"></app-post>
+<!--<div class="scrollmenu m-p-h">-->
+ <!--<div class="post">now</div>-->
+ <!--<div class="post">now</div>-->
+ <!--<div class="post">now</div>-->
+ <!--<div class="post">now</div>-->
+ <!--<div class="post">now</div>-->
+ <!--<div class="post">now</div>-->
+ <!--<div class="post">now</div>-->
+<!--</div>-->
+
+<div class="m-p-h">
+  <div class="recom-con">
+    <div class="r-com-con ">
+
+      <app-post [post]="p" [account]="account" *ngFor="let p of magPosts;let i = index;" ></app-post>
+
+    </div>
+
+  </div>
 </div>
+
+
 
 <div class="row">
   <div class="col-12">

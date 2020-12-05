@@ -108,11 +108,12 @@
     <div class="row" [ngClass]="showIcons ? '': 't-i'">
       <div class="col"><label for="imageimput"><i class="fa fa-photo"></i></label></div>
       <div class="col" (click)="changeClass()"><p>አa</p></div>
-      <div class="col"><p>GIF</p></div>
+      <div class="col"><label for="gifInput"><p>GIF</p></label></div>
       <div class="col"><i class="fa fa-link"></i></div>
       <div class="col" [popover]="popTemplate"
-           [outsideClick]="true"><p>Bg</p></div>
-      <div class="col"><i class="fa fa-paint-brush"></i></div>
+           [outsideClick]="true"><p>Bg</p>
+      </div>
+      <!--<div class="col"><i class="fa fa-paint-brush"></i></div>-->
       <div class="col">
         <i class="fa fa-eye-slash" (click)="toggleIcons()"></i>
         <i class="fa fa-eye" *ngIf="!showIcons" (click)="toggleIcons()"></i>
@@ -131,6 +132,18 @@
     type="file"
     [(lastBaseUrl)]="file"
     accept="image/*"
+    (filesChange)="lastFileAt=getDate()"/>
+</div>
+
+<div>
+  <input
+    hidden
+    id="gifInput"
+    ngfSelect
+    multiple
+    type="file"
+    [(lastBaseUrl)]="file"
+    accept="image/gif"
     (filesChange)="lastFileAt=getDate()"/>
 </div>
 

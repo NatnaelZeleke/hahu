@@ -32,7 +32,7 @@ export class LikesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pTabService.changeTab(2);
+    // this.pTabService.changeTab(2);
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
     });

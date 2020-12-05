@@ -16,6 +16,7 @@ export class ShareModalComponent implements OnInit {
   share: IShares;
   post: IPost;
   userId: number;
+  title  = '';
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
               public shareService: SharesService,
