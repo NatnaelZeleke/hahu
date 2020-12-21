@@ -1,0 +1,36 @@
+.frt {
+  float: right !important;
+  display: inline-block;
+  text-decoration: underline solid #59d6e1;
+  text-align: right;
+  margin-right: 20px;
+}
+
+hr {
+  margin: 0 0 10px;
+}
+
+h3 {
+  margin-bottom: 1px;
+}
+
+small{
+  position: absolute;
+  bottom: 24px;
+  text-align: center;
+  width: 89%;
+}
+
+
+span {
+  margin-right: 2px;
+}
+
+.badge-dark {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.st1 {
+  z-index: 999;
+  position: relative;
+}

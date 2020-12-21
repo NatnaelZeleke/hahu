@@ -70,9 +70,15 @@ export class AppScheduleService {
 
   markAsRead(schedule: ISchedule): Observable<ISchedule> {
     return this.scheduleService.update(schedule)
-        .pipe(map(result => {
-          return result.body;
-        }));
+      .pipe(map(result => {
+        return result.body;
+      }));
   }
 
+  removeSchedule(scId: number): Observable<{}> {
+    return this.scheduleService.delete(scId)
+      .pipe(map(result => {
+        return result;
+      }));
+  }
 }

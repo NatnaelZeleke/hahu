@@ -94,18 +94,27 @@ export class ScheduleComponent implements OnInit {
       console.log(this.todaySchedule[i]);
       this.appScheduleService.markAsRead(this.todaySchedule[i])
         .subscribe(result => {
-
+          this.getSchedules();
         });
+    } else if (type == 2) {
+      this.tomorrowSchedule[i].markAsDone = this.tomorrowSchedule[i].markAsDone ? false : true;
+      this.appScheduleService.markAsRead(this.tomorrowSchedule[i]).subscribe(result => {
+        this.getSchedules();
+      });
+    } else if (type == 3) {
+      this.soonSchedules[i].markAsDone = this.soonSchedules[i].markAsDone ? false : true;
+      this.appScheduleService.markAsRead(this.soonSchedules[i]).subscribe(result => {
+        this.getSchedules();
+      });
     }
-    // else if (type == 2) {
-    //   this.tomorrowSchedule[i].markAsDone = !this.tomorrowSchedule[i].markAsDone;
-    //   // this.appScheduleService.markAsRead(this.tomorrowSchedule[i]);
-    // }
-    // else if (type == 3) {
-    //   this.soonSchedules[i].markAsDone = !this.soonSchedules[i].markAsDone;
-    //   // this.appScheduleService.markAsRead(this.soonSchedules[i]);
-    // }
 
+  }
+
+  removeTask(id: number) {
+    this.appScheduleService.removeSchedule(id)
+      .subscribe(result => {
+        this.getSchedules();
+      });
   }
 
 

@@ -8,7 +8,7 @@ import {IUser} from '../../../../api/models/user.model';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {AlbumService} from '../../../../api/services/album.service';
 import {IAlbum} from '../../../../api/models/album.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UsersConnectionService} from '../../../../api/services/users-connection.service';
 import {IUsersConnection} from '../../../../api/models/users-connection.model';
 import * as moment from 'moment';
@@ -16,6 +16,7 @@ import {PTabService} from '../../../../services/p-tab.service';
 import {PreferenceService} from '../../../../api/services/preference.service';
 import {IPreference} from '../../../../api/models/preference.model';
 import {Observable} from 'rxjs';
+import {ProfileRSService} from '../../../../services/profile-rs.service';
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +29,7 @@ export class ProfileComponent implements OnInit {
   profile: IProfile;
   user: IUser;
   album: IAlbum[] = [];
-  currentClass = 1;
+  currentClass = 0;
   userId = 0;
   visitingProfile = false;
   isUserFollowing = false;
@@ -39,6 +40,10 @@ export class ProfileComponent implements OnInit {
   preference: IPreference;
   isUserBlocked = false;
 
+
+  SWIPE_ACTION = {LEFT: 'swipeleft', RIGHT: 'swiperight', UP: 'swipeup', DOWN: 'swipedown'};
+  currentIndex = 0;
+
   constructor(public profileService: ProfileService,
               public accountService: AccService,
               public userService: UserService,
@@ -46,12 +51,15 @@ export class ProfileComponent implements OnInit {
               private route: ActivatedRoute,
               private userConnection: UsersConnectionService,
               public pTabService: PTabService,
-              public preferenceService: PreferenceService) {
+              public preferenceService: PreferenceService,
+              public profileRS: ProfileRSService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.tabController();
+    // this.tabController();
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
       if (params['reload'] != null) {
@@ -61,17 +69,16 @@ export class ProfileComponent implements OnInit {
     this.loadProfile();
   }
 
-  tabController() {
-    this.pTabService.selectedSubject
-      .subscribe(result => {
-        if (result != 0) {
-          this.currentClass = result;
-        } else {
-          this.currentClass = 1;
-        }
-      });
-  }
-
+  // tabController() {
+  //   this.pTabService.selectedSubject
+  //     .subscribe(result => {
+  //       if (result != 0) {
+  //         this.currentClass = result;
+  //       } else {
+  //         this.currentClass = 1;
+  //       }
+  //     });
+  // }
 
   loadProfile() {
     this.resetProfile();
@@ -172,7 +179,7 @@ export class ProfileComponent implements OnInit {
   resetProfile() {
     this.profile = null;
     this.user = null;
-    this.currentClass = 1;
+    this.currentClass = 0;
     this.visitingProfile = false;
     this.isUserFollowing = false;
     this.loaded = false;
@@ -222,12 +229,60 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-
   getBlockedUserIndex(blockedUserId: number): number {
     for (let i = 0; i < this.preference.blockedUsers.length; i++) {
       if (blockedUserId == this.preference.blockedUsers[i].id) {
         return i;
       }
+    }
+  }
+
+  routeToComponent() {
+    if (this.currentIndex == 0) {
+      this.currentClass = 0;
+      // this.profileRS.changeSelected(0);
+      this.router.navigate(['/user/user/profile/profile/posts'], {relativeTo: this.activatedRoute});
+
+    } else if (this.currentIndex == 1) {
+      this.currentClass = 1;
+      // this.profileRS.changeSelected(1);
+      this.router.navigate(['/user/user/profile/profile/likes'], {relativeTo: this.activatedRoute});
+
+    } else if (this.currentIndex == 2) {
+      this.currentClass = 2;
+      // this.profileRS.changeSelected(2);
+      this.router.navigate(['/user/user/profile/profile/following'], {relativeTo: this.activatedRoute});
+    }
+  }
+
+  swipeCalled(action: string) {
+    if (action === this.SWIPE_ACTION.RIGHT) {
+      if (this.currentIndex == 0) {
+        console.log('do nothing return');
+        return;
+      } else {
+
+        this.currentIndex = this.currentIndex - 1;
+
+        this.routeToComponent();
+
+        console.log('right swipe');
+      }
+    } else if (action === this.SWIPE_ACTION.LEFT) {
+      if (this.currentIndex == 2) {
+        console.log('do nothing left swipe');
+        return;
+      } else {
+
+        this.currentIndex = this.currentIndex + 1;
+
+        this.routeToComponent();
+        console.log('left swipe');
+      }
+    } else if (action === this.SWIPE_ACTION.UP) {
+      return;
+    } else if (action === this.SWIPE_ACTION.DOWN) {
+      return;
     }
   }
 }

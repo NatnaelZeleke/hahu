@@ -350,10 +350,12 @@
 .st-con{
   width: 150px;
   display: inline-block;
-  background-color: #ffffffe0;
-  border-radius: 10px;
-  height: 300px;
+  //background-color: #ffffff;
+  /* border-radius: 10px; */
+  min-height: 300px;
   overflow: hidden;
+  overflow-y: auto;
+  height: 99%;
 
 
   .hdr{
@@ -388,12 +390,16 @@
 }
 
 .st-modal{
+  margin: 0;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0) !important;
   .modal-content{
+    height: 100%;
     width: 150px;
     display: inline-block;
-    background-color: rgba(0, 0, 0, 0) !important;
+    background-color: #fff;
     box-shadow: none;
+    border-radius: 0;
   }
 }
 

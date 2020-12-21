@@ -1,160 +1,177 @@
-<div class="pro">
-  <div class="n-c  pro-h-con">
 
-    <div class="n-c-h ">
-      <div class="a-c">
+<div class="hf">
+  <div class="pro">
+    <div class="n-c  pro-h-con">
+
+      <div class="n-c-h ">
+        <div class="a-c">
         <span routerLink="../../../user">
           <i class="fa fa-angle-left"></i>
         <span class="pro-h">Profile</span>
         </span>
-        <!--<i class="fa fa-search float-right srch"></i>-->
-        <div class="p-b-con">
-          <i class="fa fa-bell"></i>
-          <i class="fa fa-inbox" routerLink="../profilesetting"></i>
-        </div>
-      </div>
-      <!--<p class="nh">Progress</p>-->
-    </div>
-
-  </div>
-
-</div>
-<div class="p-cont-con">
-  <div class="p-i-con">
-
-    <div class="p-p bcimg"
-
-         [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
-      <ngx-spinner bdColor="rgba(152,61,61,0)"
-                   size="small"
-                   color="#000"
-                   type="ball-fall"
-                   [fullScreen]="false"
-                   name="loadingProfilePic"></ngx-spinner>
-    </div>
-    <br>
-
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-3 f-b-c">
-        <div *ngIf="loaded">
-
-          <div class="btn btn-sm btn-info" *ngIf="!visitingProfile">Hahu-Cash</div>
-
-          <div class="btn btn-sm btn-info" [ngClass]="{'disabled' : loadingFollowingStatus}"
-               *ngIf="visitingProfile && !isUserBlocked"
-               (click)="followUser()">
-            <span *ngIf="isUserFollowing">Following</span>
-
-            <span *ngIf="!isUserFollowing">Follow</span>
-
-            <div class="f-l-b-c">
-              <ngx-spinner bdColor="rgba(152,61,61,0)"
-                           size="small"
-                           color="#fff"
-                           type="ball-fall"
-                           [fullScreen]="false"
-                           name="followSpinner"></ngx-spinner>
-            </div>
+          <!--<i class="fa fa-search float-right srch"></i>-->
+          <div class="p-b-con">
+            <i class="fa fa-bell"></i>
+            <i class="fa fa-inbox" routerLink="../profilesetting"></i>
           </div>
+        </div>
+        <!--<p class="nh">Progress</p>-->
+      </div>
 
-          <div class="btn btn-sm btn-info" [ngClass]="{'disabled' : loadingBlockedStatus}"
-               *ngIf="visitingProfile && isUserBlocked"
-               (click)="unblockUser()">
-            <span>Blocked</span>
+    </div>
 
+  </div>
+  <div class="p-cont-con">
+    <div class="p-i-con">
 
-            <div class="f-l-b-c">
-              <ngx-spinner bdColor="rgba(152,61,61,0)"
-                           size="small"
-                           color="#fff"
-                           type="ball-fall"
-                           [fullScreen]="false"
-                           name="blockSpinner"></ngx-spinner>
+      <div class="p-p bcimg"
+
+           [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
+
+        <ngx-spinner bdColor="rgba(152,61,61,0)"
+                     size="small"
+                     color="#000"
+                     type="ball-fall"
+                     [fullScreen]="false"
+                     name="loadingProfilePic"></ngx-spinner>
+        <div *ngIf="!visitingProfile" routerLink="../editprofile" class="e-b btn btn-light btn-sm"><i
+          class="fa fa-camera"></i></div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-3 f-b-c">
+          <div *ngIf="loaded">
+
+            <div class="btn btn-sm btn-info" *ngIf="!visitingProfile">Hahu-Cash</div>
+
+            <div class="btn btn-sm btn-info" [ngClass]="{'disabled' : loadingFollowingStatus}"
+                 *ngIf="visitingProfile && !isUserBlocked"
+                 (click)="followUser()">
+              <span *ngIf="isUserFollowing">Following</span>
+
+              <span *ngIf="!isUserFollowing">Follow</span>
+
+              <div class="f-l-b-c">
+                <ngx-spinner bdColor="rgba(152,61,61,0)"
+                             size="small"
+                             color="#fff"
+                             type="ball-fall"
+                             [fullScreen]="false"
+                             name="followSpinner"></ngx-spinner>
+              </div>
             </div>
+
+            <div class="btn btn-sm btn-info" [ngClass]="{'disabled' : loadingBlockedStatus}"
+                 *ngIf="visitingProfile && isUserBlocked"
+                 (click)="unblockUser()">
+              <span>Blocked</span>
+
+
+              <div class="f-l-b-c">
+                <ngx-spinner bdColor="rgba(152,61,61,0)"
+                             size="small"
+                             color="#fff"
+                             type="ball-fall"
+                             [fullScreen]="false"
+                             name="blockSpinner"></ngx-spinner>
+              </div>
+            </div>
+
+
           </div>
+        </div>
+        <div class="col-5">
+          <div class="btn btn-sm btn-default f-l">Telechat</div>
 
+          <div class="btn-group" dropdown placement="bottom right" *ngIf="visitingProfile">
+
+            <div class="btn btn-sm btn-secondary " dropdownToggle><i class="fa fa-ellipsis-v"></i></div>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem" (click)="blockUser()" *ngIf="!isUserBlocked"><a class="dropdown-item"><i
+                class="fa fa-ban"></i> Block</a></li>
+              <li role="menuitem" (click)="unblockUser()" *ngIf="isUserBlocked"><a class="dropdown-item"> Un Block</a>
+              </li>
+              <!--<li role="menuitem"><a class="dropdown-item" href="#">Report</a></li>-->
+              <!--<li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>-->
+              <!--<li class="divider dropdown-divider"></li>-->
+              <!--<li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+        <div class="col-1"></div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col d-c">
+
+          <p class="p-n">{{user?.firstName}} {{user?.lastName}}, {{profile?.age}}</p>
+          <p class="p-l">{{profile?.location}}</p>
+          <hr>
+          <p class="p-desc">{{profile?.bio}}</p>
+          <!--<div class="s-m">show more</div>-->
 
         </div>
       </div>
-      <div class="col-5">
-        <div class="btn btn-sm btn-default f-l">Telechat</div>
+      <!--<div class="s-p-r-p">-->
+      <!--<div class="container">-->
+      <!--<div class="row">-->
+      <!--<div class="col al-h-c al-h-p">-->
+      <!--<p class="float-left l">Album</p>-->
+      <!--<p class="float-right r">View All</p>-->
+      <!--</div>-->
+      <!--</div>-->
 
-        <div class="btn-group" dropdown placement="bottom right" *ngIf="visitingProfile">
+      <!--</div>-->
+      <!--<div class="">-->
+      <!--<div class="al-c w-100">-->
+      <!--&lt;!&ndash;<div class="im bcimg" *ngFor="let a of album"&ndash;&gt;-->
+      <!--&lt;!&ndash;[ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + a?. + ')'}">&ndash;&gt;-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
 
-          <div class="btn btn-sm btn-secondary " dropdownToggle><i class="fa fa-ellipsis-v"></i></div>
-          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
-              role="menu" aria-labelledby="button-basic">
-            <li role="menuitem" (click)="blockUser()" *ngIf="!isUserBlocked"><a class="dropdown-item" ><i class="fa fa-ban"></i> Block</a></li>
-            <li role="menuitem" (click)="unblockUser()" *ngIf="isUserBlocked"><a class="dropdown-item" > Un Block</a></li>
-            <!--<li role="menuitem"><a class="dropdown-item" href="#">Report</a></li>-->
-            <!--<li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>-->
-            <!--<li class="divider dropdown-divider"></li>-->
-            <!--<li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>-->
-            <!--</li>-->
-          </ul>
-        </div>
+    </div>
+  </div>
+  <div class="profile-c-c wra"
+       (swipeleft)="swipeCalled('swipeleft')"
+       (swiperight)="swipeCalled('swiperight')"
+       (swipeup)="swipeCalled('swipeup')"
+       (swipedown)="swipeCalled('swipedown')">
+    <div class="p-c-c-h">
+
+      <div class="pm" [ngClass]="{'active': isActive(0)}"
+           (click)="changeTab(0)"
+           routerLink="./posts"
+           [queryParams]="{userId: userId}">
+        Posts
       </div>
-      <div class="col-1"></div>
-    </div>
-
-    <br>
-    <div class="row">
-      <div class="col d-c">
-
-        <p class="p-n">{{user?.firstName}} {{user?.lastName}}, {{profile?.age}}</p>
-        <p class="p-l">{{profile?.location}}</p>
-        <hr>
-        <p class="p-desc">{{profile?.bio}}</p>
-        <!--<div class="s-m">show more</div>-->
-
+      <div class="pm" [ngClass]="{'active': isActive(1)}"
+           (click)="changeTab(1)"
+           routerLink="./likes"
+           [queryParams]="{userId: userId}">
+        Likes
       </div>
+      <div class="pm" [ngClass]="{'active': isActive(2)}"
+           (click)="changeTab(2)"
+           routerLink="./following"
+           [queryParams]="{userId: userId}">
+        Following
+      </div>
+
     </div>
-    <!--<div class="s-p-r-p">-->
-    <!--<div class="container">-->
-    <!--<div class="row">-->
-    <!--<div class="col al-h-c al-h-p">-->
-    <!--<p class="float-left l">Album</p>-->
-    <!--<p class="float-right r">View All</p>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--</div>-->
-    <!--<div class="">-->
-    <!--<div class="al-c w-100">-->
-    <!--&lt;!&ndash;<div class="im bcimg" *ngFor="let a of album"&ndash;&gt;-->
-    <!--&lt;!&ndash;[ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + a?. + ')'}">&ndash;&gt;-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
+    <div class="profile-dc">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+  <br>
+
 </div>
-<div class="profile-c-c">
-  <div class="p-c-c-h">
 
-    <div class="pm" [ngClass]="{'active': isActive(1)}"
-         (click)="changeTab(1)"
-         routerLink="./posts"
-         [queryParams]="{userId: userId}">
-      Posts
-    </div>
-    <div class="pm" [ngClass]="{'active': isActive(2)}" (click)="changeTab(2)" routerLink="./likes"
-         [queryParams]="{userId: userId}">
-      Likes
-    </div>
-    <div class="pm" [ngClass]="{'active': isActive(3)}" (click)="changeTab(3)" routerLink="./following"
-         [queryParams]="{userId: userId}">
-      Following
-    </div>
-  </div>
-  <div class="profile-dc">
-    <router-outlet></router-outlet>
-  </div>
-</div>
-<br>
-<br>
-<br>
 
 
 

@@ -15,7 +15,9 @@ import {PreferenceService} from '../../../../../api/services/preference.service'
 import {BsModalService} from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
 import {SaveModalComponent} from '../../home-page/save-modal/save-modal.component';
-import {ISchoolFeed} from '../../../../../api/models/school-feed.model';
+import {ISchoolFeed, SchoolFeed} from '../../../../../api/models/school-feed.model';
+import {FeedCommentService} from '../../../../../api/services/feed-comment.service';
+import {IFeedComment} from '../../../../../api/models/feed-comment.model';
 
 @Component({
   selector: 'app-feed-post',
@@ -42,7 +44,7 @@ export class FeedPostComponent implements OnInit {
 
   constructor(public postService: ProfileService,
               public likeService: LikesService,
-              public commentService: CommentService,
+              public commentService: FeedCommentService,
               public formBuilder: FormBuilder,
               public userService: UserService,
               public preferenceService: PreferenceService,
@@ -53,7 +55,7 @@ export class FeedPostComponent implements OnInit {
     this.getCommentCount();
     this.isPostLiked();
     this.loadProfilePicture();
-    this.getLikeCount();
+    // this.getLikeCount();
     this.commentForm = this.formBuilder.group(
       {
         comment: ['', Validators.required]
@@ -133,7 +135,7 @@ export class FeedPostComponent implements OnInit {
     this.commentService.queryCount({
       page: 0,
       size: 1,
-      'postId.equals': this.post.id
+      'schoolFeedId.equals': this.post.id
 
     }).subscribe(result => {
       this.commentCount = result.body;
@@ -150,9 +152,9 @@ export class FeedPostComponent implements OnInit {
 
   postComment() {
     if (this.commentForm.valid) {
-      const com: Comment = {
+      const com: IFeedComment = {
         content: this.commentForm.value.comment,
-        postId: this.post.id,
+        schoolFeedId: this.post.id,
         userLogin: this.account.login,
         postedDate: moment().startOf('second'),
         userId: this.account.id
@@ -172,7 +174,7 @@ export class FeedPostComponent implements OnInit {
   getCommentList() {
     this.commentService.query({
       page: 0,
-      'postId.equals': this.post.id,
+      'schoolFeedId.equals': this.post.id,
       'sort': ['postedDate,desc']
     }).subscribe(result => {
       this.comments = result.body;

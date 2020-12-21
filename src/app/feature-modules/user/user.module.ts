@@ -6,9 +6,6 @@ import { UserComponent } from './user/user.component';
 import { SchoolFeedComponent } from './school-feed/school-feed.component';
 import { SavedComponent } from './saved/saved.component';
 import {SharedModule} from '../../shared/shared.module';
-import { PostComponent } from './post/post/post.component';
-import { CommentComponent } from './post/comment/comment.component';
-import { PostModalComponent } from './post/post-modal/post-modal.component';
 import {AccService} from '../../services/acc.service';
 
 @NgModule({
@@ -17,7 +14,7 @@ import {AccService} from '../../services/acc.service';
     UserRoutingModule,
     SharedModule
   ],
-  declarations: [UserComponent, SchoolFeedComponent, SavedComponent, PostComponent, CommentComponent, PostModalComponent],
+  declarations: [UserComponent, SchoolFeedComponent, SavedComponent],
 
 })
 export class UserModule { }

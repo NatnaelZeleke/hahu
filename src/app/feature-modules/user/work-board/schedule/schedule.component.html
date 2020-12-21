@@ -1,4 +1,4 @@
-<div class="n-c">
+<div class="n-c hf">
 
   <div class="n-c-h">
     <div class="a-c">
@@ -35,11 +35,12 @@
                        name="todaySchedule"></ngx-spinner>
 
           <div class="custom-control custom-checkbox" *ngFor="let ts of todaySchedule; let i = index;">
-            <input type="checkbox" class="custom-control-input" id="ts{{i}}" (change)="toggleTask(i,1)" >
+            <input type="checkbox" class="custom-control-input"  [checked]="ts.markAsDone" id="ts{{i}}" (change)="toggleTask(i,1)" >
             <label class="custom-control-label" for="ts{{i}}">
               <del *ngIf="ts.markAsDone">{{ts.title}}</del>
               <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
+            <span class="badge badge-dark rb" (click)="removeTask(ts.id)"><i class="fa fa-times"></i></span>
           </div>
 
         </div>
@@ -60,11 +61,17 @@
                        [fullScreen]="false"
                        name="tomorrowSchedule"></ngx-spinner>
           <div class="custom-control custom-checkbox" *ngFor="let ts of tomorrowSchedule;let i = index;">
-            <input type="checkbox" class="custom-control-input" (change)="toggleTask(i,2)">
-            <label class="custom-control-label">
+            <input type="checkbox"
+                   class="custom-control-input"
+                   id="tts{{i}}"
+                   [checked]="ts.markAsDone"
+                   (change)="toggleTask(i,2)">
+            <label class="custom-control-label" for="tts{{i}}">
               <del *ngIf="ts.markAsDone">{{ts.title}}</del>
               <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
+            <span class="badge badge-dark rb" (click)="removeTask(ts.id)"><i class="fa fa-times"></i></span>
+
           </div>
 
 
@@ -86,11 +93,16 @@
                        [fullScreen]="false"
                        name="soonSchedule"></ngx-spinner>
           <div class="custom-control custom-checkbox" *ngFor="let ts of soonSchedules;let i = index;">
-            <input type="checkbox" class="custom-control-input" (change)="toggleTask(i,3)">
-            <label class="custom-control-label">
+            <input type="checkbox"
+                   class="custom-control-input"
+                   id="sts{{i}}"
+                   [checked]="ts.markAsDone"
+                   (change)="toggleTask(i,3)">
+            <label class="custom-control-label" for="sts{{i}}">
               <del *ngIf="ts.markAsDone">{{ts.title}}</del>
               <span *ngIf="!ts.markAsDone">{{ts.title}}</span>
             </label>
+            <span class="badge badge-dark rb" (click)="removeTask(ts.id)"><i class="fa fa-times"></i></span>
           </div>
 
         </div>

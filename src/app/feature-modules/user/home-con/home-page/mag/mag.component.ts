@@ -18,6 +18,9 @@ import * as moment from 'moment';
 
 import {EditorChangeContent} from 'ngx-quill';
 import {ContentType} from '../../../../../api/models/enumerations/content-type.model';
+import {AddToExistingComponent} from './add-to-existing/add-to-existing.component';
+import {CloseModalsService} from '../../../../../services/close-modals.service';
+import {CreateMagComponent} from './create-mag/create-mag.component';
 
 
 @Component({
@@ -55,14 +58,16 @@ export class MagComponent implements OnInit {
   fontClass = 0;
   backGround = 'ww';
   showIcons = true;
-
   newPost: IPost;
-
   addToMag = false;
   caption2Form: FormGroup;
   content = new FormControl('');
-
   htmlValue: any;
+  ref: BsModalRef;
+
+  newMafRef: BsModalRef;
+
+
 
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,
@@ -73,11 +78,17 @@ export class MagComponent implements OnInit {
               public accService: AccService,
               public appPostService: AppPostService,
               private spinner: NgxSpinnerService,
-              public metaDataService: PostMetaDataService) {
+              public metaDataService: PostMetaDataService,
+              public closeModals: CloseModalsService) {
   }
 
   ngOnInit() {
-
+    // this.createNewMag();
+    this.closeModals.closeLastSubject.subscribe(result => {
+      if (result == true) {
+        this.bsModalRef.hide();
+      }
+    });
     this.contentForm = this.formBuilder.group({
       newFile: ['', Validators.required]
     });
@@ -95,11 +106,9 @@ export class MagComponent implements OnInit {
         caption: ['', Validators.required]
       }
     );
-
     this.caption2Form = this.formBuilder.group({
       content: ['', Validators.required]
     });
-
   }
 
   addTags() {
@@ -136,11 +145,12 @@ export class MagComponent implements OnInit {
       );
   }
 
-  createPost(f: any) {
+  createPost(f: any, isNew: boolean) {
 
     this.submitted = true;
     if (this.captionForm.valid) {
-      this.spinner.show('posting');
+
+      // this.spinner.show('posting');
       this.newPost = {
         userId: this.account.id,
         postedDate: moment().startOf('second'),
@@ -150,21 +160,66 @@ export class MagComponent implements OnInit {
         content: this.htmlValue,
         contentType: ContentType.HTML,
         title: this.captionForm.value.caption,
-        postMetaData: []
-      };
+        postMetaData: [],
+        pageId: 0,
 
-      this.postService.create(this.newPost)
-        .subscribe(result3 => {
-          this.appPostService.addPost(result3.body);
-          this.tagService.resetTags();
-          this.bsModalRef.hide();
-        }, () => {
-          this.spinner.hide('posting');
-        });
+      };
+      console.log(this.newPost);
+
+      if (isNew) {
+        this.createNewMag(this.newPost);
+      } else {
+        this.addToExisting(this.newPost);
+      }
+
+
+      // this.postService.create(this.newPost)
+      //   .subscribe(result3 => {
+      //     this.appPostService.addPost(result3.body);
+      //     this.tagService.resetTags();
+      //     this.bsModalRef.hide();
+      //   }, () => {
+      //     this.spinner.hide('posting');
+      //   });
+
     }
 
   }
 
+  addToExisting(post: IPost) {
+    const initialState = {
+      title: 'add to existing',
+      message: '',
+      mag: post,
+      account: this.account
+    };
+    this.ref = this.modalService.show(AddToExistingComponent, {
+      initialState: initialState,
+      animated: false,
+      class: 'c-c-con',
+      ignoreBackdropClick: true
+    });
+  }
+
+  createNewMag(post: IPost) {
+    const initialState = {
+      title: '',
+      message: '',
+      mag: post
+    };
+    this.newMafRef = this.modalService.show(CreateMagComponent, {
+      initialState: initialState,
+      animated: false,
+      ignoreBackdropClick: true
+    });
+
+    this.newMafRef.content.onClose
+      .subscribe(result => {
+        if (result) {
+          this.bsModalRef.hide();
+        }
+      });
+  }
 
   toggleAggToMag() {
     this.addToMag = !this.addToMag;
@@ -174,13 +229,13 @@ export class MagComponent implements OnInit {
     return new Date();
   }
 
-
   get f() {
     return this.captionForm.controls;
   }
 
-
   changedEditor(event: EditorChangeContent) {
     this.htmlValue = event.html;
   }
+
+
 }

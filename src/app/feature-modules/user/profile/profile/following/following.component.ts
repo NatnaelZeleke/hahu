@@ -38,7 +38,7 @@ export class FollowingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pTabService.changeTab(3);
+    // this.pTabService.changeTab(3);
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
     });

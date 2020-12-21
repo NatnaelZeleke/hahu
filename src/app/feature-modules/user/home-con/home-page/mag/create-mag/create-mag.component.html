@@ -1,0 +1,74 @@
+<div class="modal-header ">
+
+  <button type="button" class="close pull-left" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+  </button>
+  <p class="modal-title pull-right">Create New Mag <i class="fa fa-newspaper-o"></i></p>
+
+
+</div>
+<div class="modal-body">
+  <div class="c-c-i">
+
+    <form [formGroup]="magContentForm">
+      <input type="text" class="form-control"
+             [(ngModel)]="title" formControlName="title" placeholder="Add new Mag title">
+      <div *ngIf="submitted || (f.title.invalid && (f.title.dirty || f.title.touched))">
+        <div *ngIf="magContentForm.hasError('required',['title'])">
+          <small class="text-danger">
+            This field is required
+          </small>
+        </div>
+      </div>
+    </form>
+
+    <br>
+    <small>ADD HEADER IMAGE FOR MAG</small>
+    <label for="magImageInput" class="ic">
+
+      <label for="magImageInput" class="i-c-fm">
+        <i class="fa fa-camera-retro"></i>
+      </label>
+      <div *ngIf="file != null">
+        <div class="im bcimg" [ngStyle]="{'background-image':'url(' + file + ')'}">
+        </div>
+
+      </div>
+
+    </label>
+    <div *ngIf="submitted">
+      <div *ngIf="file == null">
+        <small class="text-danger">
+          upload header image for mag
+        </small>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="createNewMag()">Create MAG</button>
+</div>
+
+<div>
+  <input
+    hidden
+    id="magImageInput"
+    ngfSelect
+    multiple
+    type="file"
+    [(lastBaseUrl)]="file"
+    accept="image/*"
+    (filesChange)="lastFileAt=getDate()"/>
+</div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)"
+             size="default"
+             color="#bcc6f3"
+             type="ball-fall"
+             name="creatingNewMag"
+             [fullScreen]="true"></ngx-spinner>
+
+
+

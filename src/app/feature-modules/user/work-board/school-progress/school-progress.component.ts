@@ -24,6 +24,8 @@ export class SchoolProgressComponent implements OnInit {
   progressFormGroup: FormGroup;
   acr = 0;
   showResult = false;
+  currentAssessment: IAssesmentType = null;
+  currentSemester: string = Semester.SEMESTER_I;
 
   constructor(public schoolProgress: SchoolProgressService,
               public accountService: AccService,
@@ -55,13 +57,13 @@ export class SchoolProgressComponent implements OnInit {
   }];
 
   ngOnInit() {
-    this.progressFormGroup = this.formBuilder.group(
-      {
-        assesment: ['', Validators.required],
-        semester: [this.semesters.SEMESTER_I, Validators.required],
-        year: [this.currentYear, Validators.required],
-      }
-    );
+    // this.progressFormGroup = this.formBuilder.group(
+    //   {
+    //     assesment: ['', Validators.required],
+    //     semester: [this.semesters.SEMESTER_I, Validators.required],
+    //     year: [this.currentYear, Validators.required],
+    //   }
+    // );
     this.ngxSpinner.show('barChart');
     this.accountService.getUserAcc()
       .subscribe(result => {
@@ -72,17 +74,17 @@ export class SchoolProgressComponent implements OnInit {
 
   updateData() {
     this.ngxSpinner.show('barChart');
-    if (this.progressFormGroup.valid) {
+    // if (this.progressFormGroup.valid) {
       this.schoolProgress.query({
         'userId.equals': this.account.id,
-        'assesmentTypeId.equals': this.progressFormGroup.value.assesment,
-        'semester.equals': this.progressFormGroup.value.semester,
-        'year.equals': this.progressFormGroup.value.year
+        'assesmentTypeId.equals': this.currentAssessment.id,
+        'semester.equals': this.currentSemester,
+        'year.equals': this.currentYear
       }).subscribe(result => {
         this.filterResult(result.body);
         this.ngxSpinner.hide('barChart');
       });
-    }
+    // }
   }
 
 
@@ -104,7 +106,8 @@ export class SchoolProgressComponent implements OnInit {
     this.assesmentService.query()
       .subscribe(result => {
         this.assesments = result.body;
-        this.progressFormGroup.patchValue({assesment: this.assesments[0].id});
+        this.currentAssessment = this.assesments[0];
+        // this.progressFormGroup.patchValue({assesment: this.assesments[0].id});
         // console.log(this.progressFormGroup.value.assesment);
         this.updateData();
       });
@@ -123,4 +126,19 @@ export class SchoolProgressComponent implements OnInit {
   }
 
 
+  changeAssessment(assessment: IAssesmentType) {
+    this.currentAssessment = assessment;
+    this.updateData();
+  }
+
+  changeSemester(semester: any) {
+    // console.log(semester);
+    this.currentSemester = semester.value;
+    this.updateData();
+  }
+
+  changeYear(year: number) {
+    this.currentYear = year.toString();
+    this.updateData();
+  }
 }

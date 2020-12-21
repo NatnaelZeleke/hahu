@@ -47,17 +47,15 @@ export class ContentComponent implements OnInit {
   contentForm: FormGroup;
   image: any;
   base6dData: string;
-
   // current font class
   fontClass = 0;
   backGround = 'ww';
   showIcons = true;
-
   newPost: IPost;
-
   addToMag = false;
   caption2Form: FormGroup;
   content = new FormControl('');
+
 
   constructor(public bsModalRef: BsModalRef,
               public modalService: BsModalService,

@@ -3,6 +3,7 @@ import {IComment} from '../../../api/models/comment.model';
 import {IProfile} from '../../../api/models/profile.model';
 import {ProfileService} from '../../../api/services/profile.service';
 import {CommentService} from '../../../api/services/comment.service';
+import {FeedCommentService} from '../../../api/services/feed-comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -17,9 +18,11 @@ export class CommentComponent implements OnInit {
   @Input() account: Account;
   showMoreButton = false;
   @Output('removeComment') removeComment = new EventEmitter<any>();
+  @Input() isSchoolFeed = false;
 
   constructor(public profileService: ProfileService,
-              public commentService: CommentService) {
+              public commentService: CommentService,
+              public feedCommentService: FeedCommentService) {
   }
 
   ngOnInit() {
@@ -51,10 +54,18 @@ export class CommentComponent implements OnInit {
 
 
   delete() {
-    this.commentService.delete(this.comment.id)
-      .subscribe(result => {
 
-      });
+    if (this.isSchoolFeed) {
+      this.feedCommentService.delete(this.comment.id)
+        .subscribe(result => {
+        });
+    } else {
+      this.commentService.delete(this.comment.id)
+        .subscribe(result => {
+
+        });
+    }
+
     this.removeComment.emit(this.idx);
   }
 

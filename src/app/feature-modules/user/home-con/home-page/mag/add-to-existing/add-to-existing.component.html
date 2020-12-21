@@ -1,0 +1,74 @@
+<!--<div class="c-c-h" *ngIf="!addToMag">-->
+<!--<div class="i-c" (click)="bsModalRef.hide()"><i class="fa fa-angle-left"></i></div>-->
+<!--&lt;!&ndash;<div class="name" (click)="toggleAggToMag()">add to mag</div>&ndash;&gt;-->
+<!--<div class="p" (click)="createPost(file)">Post</div>-->
+<!--</div>-->
+
+<div class="c-c-h cch2">
+  <div class="i-c" (click)="bsModalRef.hide()"><i class="fa fa-angle-left"></i></div>
+  <div class="f-r">Add to existing</div>
+</div>
+
+
+<div class="c-c-i">
+  <h3>Select existing magazine.</h3>
+  <small>Select existing magazine to add more content.</small>
+  <hr>
+</div>
+
+<div class="c-d-c-v dcc">
+
+
+  <div class="data-con">
+
+  </div>
+  <div class="row st1">
+
+    <div class="col-6 mag-img-con" *ngFor="let pa of pagesList; let i = index;">
+      <div>
+        <div class="mag-img bcimg"
+             [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + pa?.featuredImage + ')' }"
+             (click)="confirmMagSelection(i)">
+        </div>
+        <!--<div class="mag-img bcimg"-->
+        <!--[ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + pa?.featuredImage + ')' }">-->
+        <!--</div>-->
+        <!--<div class="mag-img bcimg" style="background-image: url('../../../../../../../assets/images/profile3.jpg')">-->
+        <!--</div>-->
+      </div>
+
+      <p>{{pa.title}}</p>
+      <small>
+        <!--<span class="badge badge-dark">-->
+          <!--<i class="fa fa-edit"></i>-->
+        <!--</span>-->
+        <span class="badge badge-dark" (click)="showDetail(i)">
+          <i class="fa fa-eye"></i>
+        </span>
+      </small>
+    </div>
+
+
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="spinner-con">
+        <ngx-spinner bdColor="rgba(152,61,61,0)"
+                     size="default"
+                     color="#656565"
+                     type="ball-fall"
+                     [fullScreen]="false"
+                     name="chooseMagSpinner"></ngx-spinner>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
