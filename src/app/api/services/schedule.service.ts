@@ -10,7 +10,6 @@ import {createRequestOption} from '../util/request-util';
 
 type EntityResponseType = HttpResponse<ISchedule>;
 type EntityArrayResponseType = HttpResponse<ISchedule[]>;
-type CountResponseType = HttpResponse<number>;
 
 @Injectable({ providedIn: 'root' })
 export class ScheduleService {
@@ -56,11 +55,23 @@ export class ScheduleService {
       .get<ISchedule[]>(this.resourceUrl + '/soon', { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
-  queryCount(req?: any): Observable<CountResponseType> {
+  queryExpiredAndNoteDone(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
-      .get<number>(this.resourceUrl + '/count', { params: options, observe: 'response' })
-      .pipe();
+      .get<ISchedule[]>(this.resourceUrl + '/expiredAndNotDone', { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  /**
+   *
+   * @param req put startTime.equals for start time of schedule filtering
+   * and endTime.equals for end time of schedule filtering parameter to get all schedules between those time
+   */
+  queryByStartAndEndTime(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<ISchedule[]>(this.resourceUrl + '/filterByStartAndEndTime', { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
