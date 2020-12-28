@@ -18,6 +18,7 @@ import {SaveModalComponent} from '../save-modal/save-modal.component';
 import {MagContainerComponent} from '../mag-container/mag-container.component';
 import {PostType} from '../../../../../api/models/enumerations/post-type.model';
 import {ShareModalComponent} from '../share-modal/share-modal.component';
+import {PostService} from '../../../../../api/services/post.service';
 
 
 @Component({
@@ -42,6 +43,7 @@ export class PostComponent implements OnInit {
   user: IUser;
   showTags = false;
   preference: IPreference;
+  isPostShared = false;
 
   constructor(public postService: ProfileService,
               public likeService: LikesService,
@@ -49,7 +51,8 @@ export class PostComponent implements OnInit {
               public formBuilder: FormBuilder,
               public userService: UserService,
               public preferenceService: PreferenceService,
-              public modalService: BsModalService) {
+              public modalService: BsModalService,
+              public pService: PostService) {
   }
 
   ngOnInit() {
@@ -63,7 +66,18 @@ export class PostComponent implements OnInit {
       }
     );
     this.getPreference(this.account.id);
+    this.isPostSharedFunction();
+  }
 
+  isPostSharedFunction() {
+    this.pService.queryRecommended({
+      'postId.equals': this.post.id,
+      'userId.equals': this.post.userId,
+    }).subscribe(result => {
+      if (result.body.length > 0) {
+        this.isPostShared = true;
+      }
+    });
   }
 
   loadProfilePicture() {

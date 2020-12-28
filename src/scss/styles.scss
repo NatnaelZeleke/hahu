@@ -180,3 +180,30 @@ div:focus{
   height: 100%;
   overflow-y: auto;
 }
+
+.sharedby{
+  color: #9d9d9d !important;
+}
+
+.magby{
+  color: #949494 !important;
+}
+
+
+.font-m{
+  width: 167px;
+  margin: 100px auto 0;
+  text-align: center;
+
+  .f-l-c{
+    p{
+      font-size: 20px;
+      border-bottom: 1px solid #d8d8d8;
+      line-height: 55px;
+      margin-bottom: 0;
+    }
+    p:last-child{
+      border-bottom: none;
+    }
+  }
+}

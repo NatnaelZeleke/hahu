@@ -11,6 +11,7 @@ import {StoryComponent} from './story/story.component';
 import {AddToExistingComponent} from './home-page/mag/add-to-existing/add-to-existing.component';
 import {ChooseMagComponent} from './home-page/mag/choose-mag/choose-mag.component';
 import {CreateMagComponent} from './home-page/mag/create-mag/create-mag.component';
+import {ChooseFontComponent} from './home-page/content/choose-font/choose-font.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,8 @@ const routes: Routes = [
     StoryComponent,
     AddToExistingComponent,
     ChooseMagComponent,
-    CreateMagComponent
+    CreateMagComponent,
+    ChooseFontComponent
   ]
 })
 export class HomeConRoutingModule {

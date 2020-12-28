@@ -3,7 +3,7 @@
 
   <div class="cap-b" ngClass="{{post?.postMetaData[0]?.value}}"  (click)="toggleTags()">
     <p *ngIf="post?.postType == 'PAGE'">{{post?.title}}</p>
-    <p *ngIf="post?.contentType != 'HTML'">{{post?.content}}</p>
+    <p *ngIf="post?.contentType != 'HTML'" ngClass="{{post?.postMetaData[2]?.value}}" >{{post?.content}}</p>
 
     <div class="c-html-con" *ngIf="post?.contentType == 'HTML'">
       <div class="cHtml">
@@ -35,8 +35,9 @@
                [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile[0]?.curentProfilePic + ')'}">
           </div>
           <div class="n-con">
-            <p>{{user?.firstName}} {{user?.lastName}}</p>
-            <p class="u-n">@{{profile[0]?.userLogin}} </p>
+            <p *ngIf="!isPostShared">{{user?.firstName}} {{user?.lastName}}</p>
+            <p class="sharedby" *ngIf="isPostShared">Shared By</p>
+            <p class="u-n"><span class="magby" *ngIf="post?.postType == 'PAGE'"><i class="fa fa-newspaper-o">  </i> Mag by </span> @{{profile[0]?.userLogin}} </p>
           </div>
         </div>
 

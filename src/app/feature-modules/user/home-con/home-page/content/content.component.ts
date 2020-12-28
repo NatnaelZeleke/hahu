@@ -17,6 +17,8 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {PostMetaDataService} from '../../../../../api/services/post-meta-data.service';
 import {IPostMetaData} from '../../../../../api/models/post-meta-data.model';
 import {map} from 'rxjs/operators';
+import {FontService} from '../../../../../services/font.service';
+import {ChooseFontComponent} from './choose-font/choose-font.component';
 
 @Component({
   selector: 'app-content',
@@ -50,6 +52,7 @@ export class ContentComponent implements OnInit {
   // current font class
   fontClass = 0;
   backGround = 'ww';
+  font = 'fo-ss';
   showIcons = true;
   newPost: IPost;
   addToMag = false;
@@ -66,7 +69,8 @@ export class ContentComponent implements OnInit {
               public accService: AccService,
               public appPostService: AppPostService,
               private spinner: NgxSpinnerService,
-              public metaDataService: PostMetaDataService) {
+              public metaDataService: PostMetaDataService,
+              public fontService: FontService) {
   }
 
   ngOnInit() {
@@ -93,6 +97,10 @@ export class ContentComponent implements OnInit {
       content: ['', Validators.required]
     });
 
+    this.fontService.currentFontSubject
+      .subscribe(result => {
+        this.font = result;
+      });
   }
 
   addTags() {
@@ -149,13 +157,17 @@ export class ContentComponent implements OnInit {
           this.addMetaData('backGround', this.backGround)
             .subscribe(result2 => {
               this.newPost.postMetaData.push(result2);
-              this.postService.create(this.newPost)
+              this.addMetaData('font', this.font)
                 .subscribe(result3 => {
-                  this.appPostService.addPost(result3.body);
-                  this.tagService.resetTags();
-                  this.bsModalRef.hide();
-                }, () => {
-                  this.spinner.hide('posting');
+                  this.newPost.postMetaData.push(result3);
+                  this.postService.create(this.newPost)
+                    .subscribe(result4 => {
+                      this.appPostService.addPost(result4.body);
+                      this.tagService.resetTags();
+                      this.bsModalRef.hide();
+                    }, () => {
+                      this.spinner.hide('posting');
+                    });
                 });
             });
         });
@@ -169,13 +181,15 @@ export class ContentComponent implements OnInit {
       .subscribe(result => {
         this.addMetaData('backGround', this.backGround)
           .subscribe(result2 => {
-            this.spinner.hide('posting');
-            this.tagService.resetTags();
-            this.bsModalRef.hide();
+            this.addMetaData('font', this.font)
+              .subscribe(result3 => {
+                this.spinner.hide('posting');
+                this.tagService.resetTags();
+                this.bsModalRef.hide();
+              });
           });
       });
   }
-
 
   addMetaData(name: string, value: string): Observable<IPostMetaData> {
     const body: IPostMetaData = {
@@ -222,6 +236,7 @@ export class ContentComponent implements OnInit {
     this.addToMag = !this.addToMag;
   }
 
+
   getDate() {
     return new Date();
   }
@@ -229,4 +244,18 @@ export class ContentComponent implements OnInit {
   toggleIcons() {
     this.showIcons = !this.showIcons;
   }
+
+  onLongPress() {
+    const initialState = {
+      title: 'Choose Font',
+      backdrop: true,
+      message: '',
+    };
+    this.modalService.show(ChooseFontComponent, {
+      initialState: initialState,
+      animated: false,
+      class: 'font-m',
+    });
+  }
+
 }

@@ -18,6 +18,8 @@ import {AddToExistingComponent} from './home-page/mag/add-to-existing/add-to-exi
 import {ChooseMagComponent} from './home-page/mag/choose-mag/choose-mag.component';
 import {CreateMagComponent} from './home-page/mag/create-mag/create-mag.component';
 import { RecomComponent } from './home-page/recom/recom.component';
+import {NgxLongPress2Module} from 'ngx-long-press2';
+import { ChooseFontComponent } from './home-page/content/choose-font/choose-font.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { RecomComponent } from './home-page/recom/recom.component';
     HomeConRoutingModule,
     SharedModule,
     InfiniteScrollModule,
-    SharedPostModule
+    SharedPostModule,
+    NgxLongPress2Module
   ],
   declarations: [
     HomePageComponent,
@@ -41,7 +44,8 @@ import { RecomComponent } from './home-page/recom/recom.component';
     AddToExistingComponent,
     ChooseMagComponent,
     CreateMagComponent,
-    RecomComponent],
+    RecomComponent,
+    ChooseFontComponent],
   entryComponents: []
 })
 export class HomeConModule {
