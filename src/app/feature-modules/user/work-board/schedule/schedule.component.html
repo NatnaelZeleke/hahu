@@ -12,7 +12,29 @@
       <div class="td-c">
         <p class=""> Today : {{bsInlineValue | date:'EEEE , MMMM dd'}}</p>
       </div>
+
       <div class="exp-con">
+        <div class="exp-btn" (click)="toggleExpiredTasks()" *ngIf="expiredSchedule?.length">
+          <span class="badge rounded-pill bg-danger"> {{expiredSchedule?.length}} Expired Tasks <i class="fa fa-angle-down"></i></span>
+        </div>
+        <div class="exp-con-in" *ngIf="showExpired">
+          <div class="exp-h">
+            <p>Expired Tasks</p>
+          </div>
+          <div class="  " *ngFor="let ts of expiredSchedule;let i = index;">
+            <!--<input type="checkbox"-->
+                   <!--class="custom-control-input"-->
+                   <!--id="tts{{i}}"-->
+                   <!--[checked]="ts.markAsDone"-->
+                   <!--(change)="toggleTask(i,2)">-->
+            <label class=" ">
+               {{ts.title}}
+
+            </label>
+            <span class="badge badge-dark rb" (click)="removeTask(ts.id)"><i class="fa fa-times"></i></span>
+          </div>
+        </div>
+        <br>
 
       </div>
     </div>

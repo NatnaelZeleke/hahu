@@ -22,6 +22,8 @@ export class ScheduleComponent implements OnInit {
   todaySchedule: ISchedule[];
   tomorrowSchedule: ISchedule[];
   soonSchedules: ISchedule[];
+  expiredSchedule: ISchedule[];
+  showExpired = false;
 
   constructor(public scheduleService: ScheduleService,
               public accountService: AccService,
@@ -62,11 +64,21 @@ export class ScheduleComponent implements OnInit {
         this.spinner.hide('soonSchedule');
         this.soonSchedules = result;
       });
+    this.appScheduleService.expiredScheduleSubject
+      .subscribe(result => {
+        this.expiredSchedule = result;
+      });
 
     this.appScheduleService.getTodaySchedule(this.account.id);
     this.appScheduleService.getTomorrowSchedule(this.account.id);
     this.appScheduleService.getSoonSchedule(this.account.id);
+    this.appScheduleService.getExpiredSchedule(this.account.id);
 
+  }
+
+
+  toggleExpiredTasks() {
+    this.showExpired = !this.showExpired;
   }
 
 
@@ -116,6 +128,8 @@ export class ScheduleComponent implements OnInit {
         this.getSchedules();
       });
   }
+
+
 
 
 }

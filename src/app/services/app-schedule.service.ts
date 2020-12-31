@@ -15,6 +15,8 @@ export class AppScheduleService {
   tomorrowScheduleSubject = new Subject<ISchedule[]>();
   soonSchedule: ISchedule[];
   soonScheduleSubject = new Subject<ISchedule[]>();
+  expiredSchedule: ISchedule[];
+  expiredScheduleSubject = new Subject<ISchedule[]>();
 
   constructor(public scheduleService: ScheduleService) {
   }
@@ -65,6 +67,18 @@ export class AppScheduleService {
     this.getTodaySchedule(id);
     this.getSoonSchedule(id);
     this.getTomorrowSchedule(id);
+  }
+
+
+  getExpiredSchedule(userId: number) {
+    this.scheduleService.queryExpiredAndNoteDone(
+      {'userId.equals': userId})
+      .subscribe(result => {
+        if (result.body != null) {
+          this.expiredSchedule = result.body;
+          this.expiredScheduleSubject.next(this.expiredSchedule);
+        }
+      });
   }
 
 

@@ -1,10 +1,42 @@
-.rb{
+.rb {
   text-align: revert;
   float: right;
   padding: 6px;
   background-color: rgba(0, 0, 0, 0.16);
 }
 
-.exp-con{
+.td-c {
+  width: 100%;
+}
 
+.exp-con {
+  padding: 0 55px 0 30px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.exp-con-in {
+  padding: 20px;
+  background-color: #ff3533;
+  border-radius: 20px;
+
+}
+
+.exp-h {
+  color: #fff;
+}
+
+.exp-con-in label {
+  color: #fff;
+}
+
+.exp-btn {
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+.bg-danger{
+  background-color: #ff3533 !important;
 }
