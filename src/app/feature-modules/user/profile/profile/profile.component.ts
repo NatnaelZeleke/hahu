@@ -17,6 +17,8 @@ import {PreferenceService} from '../../../../api/services/preference.service';
 import {IPreference} from '../../../../api/models/preference.model';
 import {Observable} from 'rxjs';
 import {ProfileRSService} from '../../../../services/profile-rs.service';
+import {ImageService} from '../../../../api/services/background-image.service';
+import {IImage} from '../../../../api/models/image.model';
 
 @Component({
   selector: 'app-profile',
@@ -39,7 +41,12 @@ export class ProfileComponent implements OnInit {
   connection: IUsersConnection;
   preference: IPreference;
   isUserBlocked = false;
-
+  backgroundImage: IImage  = new class implements IImage {
+    albumId: number;
+    id: number;
+    image: any;
+    imageContentType: string;
+  };
 
   SWIPE_ACTION = {LEFT: 'swipeleft', RIGHT: 'swiperight', UP: 'swipeup', DOWN: 'swipedown'};
   currentIndex = 0;
@@ -54,7 +61,8 @@ export class ProfileComponent implements OnInit {
               public preferenceService: PreferenceService,
               public profileRS: ProfileRSService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private imageService: ImageService) {
 
   }
 
@@ -67,6 +75,7 @@ export class ProfileComponent implements OnInit {
       }
     });
     this.loadProfile();
+    // this.getCurrentBackgroundImage();
   }
 
   // tabController() {
@@ -144,7 +153,6 @@ export class ProfileComponent implements OnInit {
           this.ngxSpinner.hide('followSpinner');
           this.loadingFollowingStatus = false;
         }, () => {
-
         });
     } else {
       this.userConnection.delete(this.connection.id)
@@ -152,7 +160,6 @@ export class ProfileComponent implements OnInit {
           this.ngxSpinner.hide('followSpinner');
           this.loadingFollowingStatus = false;
           this.isUserFollowing = false;
-
         }, () => {
           this.ngxSpinner.hide('followSpinner');
           this.loadingFollowingStatus = false;
@@ -242,12 +249,10 @@ export class ProfileComponent implements OnInit {
       this.currentClass = 0;
       // this.profileRS.changeSelected(0);
       this.router.navigate(['/user/user/profile/profile/posts'], {relativeTo: this.activatedRoute});
-
     } else if (this.currentIndex == 1) {
       this.currentClass = 1;
       // this.profileRS.changeSelected(1);
       this.router.navigate(['/user/user/profile/profile/likes'], {relativeTo: this.activatedRoute});
-
     } else if (this.currentIndex == 2) {
       this.currentClass = 2;
       // this.profileRS.changeSelected(2);
@@ -261,11 +266,8 @@ export class ProfileComponent implements OnInit {
         console.log('do nothing return');
         return;
       } else {
-
         this.currentIndex = this.currentIndex - 1;
-
         this.routeToComponent();
-
         console.log('right swipe');
       }
     } else if (action === this.SWIPE_ACTION.LEFT) {
@@ -273,9 +275,7 @@ export class ProfileComponent implements OnInit {
         console.log('do nothing left swipe');
         return;
       } else {
-
         this.currentIndex = this.currentIndex + 1;
-
         this.routeToComponent();
         console.log('left swipe');
       }
@@ -285,4 +285,23 @@ export class ProfileComponent implements OnInit {
       return;
     }
   }
+
+  onFileInputChange(event: Event) {
+    const eventTarget: HTMLInputElement = event.target as HTMLInputElement;
+    const file: File = eventTarget.files[0];
+    const fileReader: FileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      this.backgroundImage.image = (fileReader.result as string).substr((fileReader.result as string).indexOf('base64,') + 'base64,'.length);
+    };
+  }
+
+  // getCurrentBackgroundImage() {
+  //   this.imageService.find()
+  //     .subscribe(result => {
+  //       this.backgroundImage = result.body;
+  //     });
+  // }
+
+
 }

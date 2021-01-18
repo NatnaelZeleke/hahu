@@ -1,6 +1,7 @@
 <div class="hf">
 
-  <div class="pro">
+
+  <div class="pro bcimg" [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + backgroundImage?.image + ')'}">
     <div class="n-c  pro-h-con">
 
       <div class="n-c-h ">
@@ -10,13 +11,17 @@
         <span class="pro-h">Profile</span>
         </span>
           <!--<i class="fa fa-search float-right srch"></i>-->
+
           <div class="p-b-con">
-            <i class="fa fa-bell"></i>
-            <i class="fa fa-inbox" routerLink="../profilesetting"></i>
+            <label  class="fa fa-bell"></label>
+
+            <label  class="fa fa-inbox" routerLink="../profilesetting"></label>
+            <label *ngIf="!visitingProfile" for="backImage"  class="fa fa-image"></label>
           </div>
         </div>
         <!--<p class="nh">Progress</p>-->
       </div>
+
     </div>
   </div>
 
@@ -167,6 +172,16 @@
   </div>
   <br>
 
+</div>
+
+<div>
+  <input
+    hidden
+    id="backImage"
+    multiple
+    type="file"
+    accept="image/*"
+    (change)="onFileInputChange($event)"/>
 </div>
 
 
