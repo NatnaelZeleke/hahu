@@ -39,6 +39,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.profileForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -50,7 +51,6 @@ export class EditProfileComponent implements OnInit {
     });
 
     this.ngxSpinner.show('loadingProfilePic');
-
     this.accountService.getUserAcc()
       .subscribe(result => {
         this.account = result;
@@ -59,7 +59,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   getUserProfile(userId: number) {
-
     this.profileService.query({'userId.equals': userId})
       .subscribe(result => {
         this.profile = result.body[0];

@@ -1,5 +1,5 @@
-
 <div class="hf">
+
   <div class="pro">
     <div class="n-c  pro-h-con">
 
@@ -17,16 +17,13 @@
         </div>
         <!--<p class="nh">Progress</p>-->
       </div>
-
     </div>
-
   </div>
+
   <div class="p-cont-con">
     <div class="p-i-con">
 
-      <div class="p-p bcimg"
-
-           [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
+      <div class="p-p bcimg" [ngStyle]="{'background-image':'url( data:image/jpeg;base64,' + profile?.curentProfilePic + ')'}">
 
         <ngx-spinner bdColor="rgba(152,61,61,0)"
                      size="small"
@@ -34,8 +31,9 @@
                      type="ball-fall"
                      [fullScreen]="false"
                      name="loadingProfilePic"></ngx-spinner>
-        <div *ngIf="!visitingProfile" routerLink="../editprofile" class="e-b btn btn-light btn-sm"><i
-          class="fa fa-camera"></i></div>
+        <div *ngIf="!visitingProfile" routerLink="../editprofile" class="e-b btn btn-light btn-sm">
+          <i class="fa fa-camera"></i>
+        </div>
       </div>
       <br>
 
@@ -78,7 +76,6 @@
                              name="blockSpinner"></ngx-spinner>
               </div>
             </div>
-
 
           </div>
         </div>
