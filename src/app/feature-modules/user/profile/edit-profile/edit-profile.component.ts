@@ -144,4 +144,6 @@ export class EditProfileComponent implements OnInit {
       this.profile.curentProfilePic = (fileReader.result as string).substr((fileReader.result as string).indexOf('base64,') + 'base64,'.length);
     };
   }
+
+
 }

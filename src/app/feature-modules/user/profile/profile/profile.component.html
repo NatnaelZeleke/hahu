@@ -13,9 +13,9 @@
           <!--<i class="fa fa-search float-right srch"></i>-->
 
           <div class="p-b-con">
-            <label  class="fa fa-bell"></label>
+            <label *ngIf="!visitingProfile"  class="fa fa-bell"></label>
 
-            <label  class="fa fa-inbox" routerLink="../profilesetting"></label>
+            <label *ngIf="!visitingProfile"  class="fa fa-inbox" routerLink="../profilesetting"></label>
             <label *ngIf="!visitingProfile" for="backImage"  class="fa fa-image"></label>
           </div>
         </div>
