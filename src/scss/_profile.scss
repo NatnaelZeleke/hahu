@@ -1,6 +1,7 @@
 @import "common";
 
 .pro {
+  position: relative;
   padding-top: 30px;
   background-color: #4d35a1;
   height: 365px;
@@ -23,11 +24,14 @@
     label{
       font-size: 18px;
       margin: 10px;
+      color: #fff;
     }
   }
 }
 
 .p-cont-con {
+  z-index: 999;
+  position: relative;
   &.p-c-n {
     margin-top: 93px;
   }
@@ -35,7 +39,7 @@
   //height: 200px;
   background-color: #fff;
   padding: 10px;
-  margin: -200px 10px 10px;
+  margin: -146px 10px 10px;
   .p-i-con {
     .p-p {
       width: 116px;

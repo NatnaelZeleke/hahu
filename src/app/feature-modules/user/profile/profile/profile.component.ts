@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
   connection: IUsersConnection;
   preference: IPreference;
   isUserBlocked = false;
-  backgroundImage: IImage  = new class implements IImage {
+  backgroundImage: IImage = new class implements IImage {
     albumId: number;
     id: number;
     image: any;
@@ -100,9 +100,11 @@ export class ProfileComponent implements OnInit {
           this.getUserProfile(this.userId);
           this.checkBlockedStatus(this.userId);
           this.getPreference(this.account.id);
+          this.getCurrentBackgroundImage(this.account.id);
           this.isFollowing();
         } else {
           this.getUserProfile(this.account.id);
+          this.getCurrentBackgroundImage(this.account.id);
           this.loaded = true;
         }
       });
@@ -293,15 +295,38 @@ export class ProfileComponent implements OnInit {
     fileReader.readAsDataURL(file);
     fileReader.onload = () => {
       this.backgroundImage.image = (fileReader.result as string).substr((fileReader.result as string).indexOf('base64,') + 'base64,'.length);
+      this.uploadBackgroundImage();
     };
   }
 
-  // getCurrentBackgroundImage() {
-  //   this.imageService.find()
-  //     .subscribe(result => {
-  //       this.backgroundImage = result.body;
-  //     });
-  // }
+  getCurrentBackgroundImage(userId: number) {
+    this.ngxSpinner.show('loadingBcgImg');
+    this.imageService.find(userId)
+      .subscribe(result => {
+        this.backgroundImage = result.body;
+        this.ngxSpinner.hide('loadingBcgImg');
+        if (this.backgroundImage == null) {
+          this.backgroundImage = new class implements IImage {
+            albumId: number;
+            id: number;
+            image: any;
+            imageContentType: string;
+          };
+        }
+      });
+  }
+
+
+  uploadBackgroundImage() {
+    this.ngxSpinner.show('loadingBcgImg');
+    const bckImg: IImage = {
+      image: this.backgroundImage.image
+    };
+    this.imageService.create(bckImg)
+      .subscribe(result => {
+        this.ngxSpinner.hide('loadingBcgImg');
+      });
+  }
 
 
 }

@@ -1,4 +1,4 @@
-.e-b{
+.e-b {
   border-radius: 20px !important;
   background-color: #fff;
   border: #000;
@@ -18,9 +18,24 @@
   touch-action: pan-y !important;
 }
 
-.hf{
+.hf {
   height: 100%;
   overflow-y: auto;
 }
-
-
+.n-c{
+  position: relative;
+  z-index: 999;
+}
+.bcg-o {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  top: 0;
+  z-index: 1;
+  background-image: linear-gradient(to top, rgba(200, 0, 0, 0), rgb(58 58 58));
+}
+.bcg-spin-c{
+  float: right;
+  position: relative;
+  margin: 28px 46px 28px 28px;
+}
