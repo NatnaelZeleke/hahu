@@ -21,8 +21,8 @@ export class ImageService {
     return this.http.put<IImage>(this.resourceUrl, image, { observe: 'response' });
   }
 
-  find(): Observable<EntityResponseType> {
-    return this.http.get<IImage>(`${this.resourceUrl}`, { observe: 'response' });
+  find(userId: number): Observable<EntityResponseType> {
+    return this.http.get<IImage>(`${this.resourceUrl}/${userId}`, { observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
