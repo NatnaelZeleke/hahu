@@ -46,7 +46,8 @@
 
     <form [formGroup]="caption2Form" class="{{font}}">
 
-      <textarea autosize class="textarea" [ngClass]="'fc' + fontClass"  role="textbox" contenteditable formControlName="content"
+      <textarea autosize class="textarea" [ngClass]="'fc' + fontClass" role="textbox" contenteditable
+                formControlName="content"
                 placeholder="Add something ..."></textarea>
 
     </form>
@@ -84,22 +85,25 @@
     <ng-template #popTemplate>
       <div class="container">
         <div class="row pu-c dcc">
-          <div class="bc-c ww wb" (click)="changeBackground('ww')"></div>
-          <div class="bc-c gg" (click)="changeBackground('gg')"></div>
-          <div class="bc-c bb" (click)="changeBackground('bb')"></div>
           <div class="bc-c grn" (click)="changeBackground('grn')"></div>
           <div class="bc-c dg" (click)="changeBackground('dg')"></div>
-          <div class="bc-c lb" (click)="changeBackground('lb')"></div>
-          <div class="bc-c db" (click)="changeBackground('db')"></div>
-        </div>
-        <div class="row pu-c dcc">
-          <div class="bc-c pp" (click)="changeBackground('pp')"></div>
-          <div class="bc-c dp" (click)="changeBackground('dp')"></div>
-          <div class="bc-c rr" (click)="changeBackground('rr')"></div>
-          <div class="bc-c dr" (click)="changeBackground('dr')"></div>
-          <div class="bc-c bb" (click)="changeBackground('bb')"></div>
+          <div class="bc-c gg" (click)="changeBackground('gg')"></div>
+
           <div class="bc-c do" (click)="changeBackground('do')"></div>
           <div class="bc-c oo" (click)="changeBackground('oo')"></div>
+          <div class="bc-c pp" (click)="changeBackground('pp')"></div>
+          <div class="bc-c dp" (click)="changeBackground('dp')"></div>
+        </div>
+        <div class="row pu-c dcc">
+
+          <div class="bc-c rr" (click)="changeBackground('rr')"></div>
+          <div class="bc-c bb" (click)="changeBackground('bb')"></div>
+          <div class="bc-c ww wb" (click)="changeBackground('ww')"></div>
+          <div class="bc-c db" (click)="changeBackground('db')"></div>
+          <div class="bc-c dr" (click)="changeBackground('dr')"></div>
+          <div class="bc-c lb" (click)="changeBackground('lb')"></div>
+          <div class="bc-c ggg" (click)="changeBackground('ggg')"></div>
+
         </div>
       </div>
     </ng-template>
