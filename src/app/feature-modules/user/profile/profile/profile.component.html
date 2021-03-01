@@ -13,10 +13,10 @@
           <!--<i class="fa fa-search float-right srch"></i>-->
 
           <div class="p-b-con">
-            <label *ngIf="!visitingProfile"  class="fa fa-bell"></label>
-
-            <label *ngIf="!visitingProfile"  class="fa fa-inbox" routerLink="../profilesetting"></label>
+            <!--<label *ngIf="!visitingProfile"  class="fa fa-bell"></label>-->
             <label *ngIf="!visitingProfile" for="backImage"  class="fa fa-image"></label>
+            <label *ngIf="!visitingProfile"  class="fa fa-cog" routerLink="../profilesetting"></label>
+
           </div>
         </div>
         <!--<p class="nh">Progress</p>-->
@@ -67,7 +67,7 @@
         <div class="col-3 f-b-c">
           <div *ngIf="loaded">
 
-            <div class="btn btn-sm btn-info" *ngIf="!visitingProfile">Hahu-Cash</div>
+            <!--<div class="btn btn-sm btn-info" *ngIf="!visitingProfile">Hahu-Cash</div>-->
 
             <div class="btn btn-sm btn-info" [ngClass]="{'disabled' : loadingFollowingStatus}"
                  *ngIf="visitingProfile && !isUserBlocked"
@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="col-5">
-          <div class="btn btn-sm btn-default f-l">Telechat</div>
+          <a class="btn btn-sm btn-default f-l" *ngIf="visitingProfile" href="{{'https://t.me/' + profile?.location}}">Telechat</a>
 
           <div class="btn-group" dropdown placement="bottom right" *ngIf="visitingProfile">
 
@@ -132,7 +132,7 @@
         <div class="col d-c">
 
           <p class="p-n">{{user?.firstName}} {{user?.lastName}}, {{profile?.age}}</p>
-          <p class="p-l">{{profile?.location}}</p>
+          <!--<p class="p-l">{{profile?.location}}</p>-->
           <hr>
           <p class="p-desc">{{profile?.bio}}</p>
           <!--<div class="s-m">show more</div>-->

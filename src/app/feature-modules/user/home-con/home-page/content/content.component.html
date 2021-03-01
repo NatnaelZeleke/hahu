@@ -76,9 +76,9 @@
   <div class="container t-a-c">
 
     <div class="big-c-c">
-      <div class="c">
+      <label for="imageimput" class="c">
         <i class="fa fa-camera"></i>
-      </div>
+      </label>
     </div>
 
 
@@ -110,12 +110,14 @@
 
 
     <div class="row" [ngClass]="showIcons ? '': 't-i'">
-      <div class="col"><label for="imageimput"><i class="fa fa-photo"></i></label></div>
+      <div class="col">
+        <label for="imageimput"><i class="fa fa-photo"></i></label>
+      </div>
       <div class="col" (click)="changeClass()"
-           ngxLongPress2
-           (onLongPress)="onLongPress()"><p>አa</p></div>
-      <div class="col"><label for="gifInput"><p>GIF</p></label></div>
-      <div class="col"><i class="fa fa-link"></i></div>
+           ngxLongPress2 (onLongPress)="onLongPress()"><p>አa</p>
+      </div>
+      <!--<div class="col"><label for="gifInput"><p>GIF</p></label></div>-->
+      <!--<div class="col"><i class="fa fa-link"></i></div>-->
       <div class="col" [popover]="popTemplate"
            [outsideClick]="true"><p>Bg</p>
       </div>

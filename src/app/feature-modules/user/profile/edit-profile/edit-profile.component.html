@@ -124,23 +124,53 @@
               </div>
             </div>
 
+
+
+
+
+
             <div class="col">
-              <input type="text"
-                     placeholder="city"
-                     formControlName="city"
-                     class="form-control form-control-sm ri">
-              <div class="t-a-c">
-                <div *ngIf="submitted || (f.city.invalid && (f.city.dirty || f.city.touched))">
-                  <div *ngIf="profileForm.hasError('required',['city'])">
-                    <small class="text-danger">
-                      This field is required
-                    </small>
-                  </div>
+              <!--<input type="text"-->
+                     <!--placeholder="telegram user name"-->
+                     <!--formControlName="city"-->
+                     <!--class="form-control form-control-sm ri">-->
+
+              <div class="input-group input-group-sm ri">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon2"><i class="fa fa-telegram" style="color: #03a9f4;"></i></span>
                 </div>
+                <input type="text"
+                       placeholder="telegram user name"
+                       formControlName="city"
+                       class="form-control">
+
               </div>
+
+
+              <!--<div class="t-a-c">-->
+                <!--<div *ngIf="submitted || (f.city.invalid && (f.city.dirty || f.city.touched))">-->
+                  <!--<div *ngIf="profileForm.hasError('required',['city'])">-->
+                    <!--<small class="text-danger">-->
+                      <!--This field is required-->
+                    <!--</small>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
             </div>
 
+
+
+
+
+
+
+
           </div>
+
+
+
+
+
 
           <div class="row m-t-10">
             <div class="col">

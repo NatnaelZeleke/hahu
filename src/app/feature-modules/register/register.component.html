@@ -14,26 +14,38 @@
         <div class="card-body">
           <div class="row">
             <div class="col t-a-c">
-              <p>Sign up with</p>
+              <p (click)="check()">Sign up </p>
             </div>
           </div>
-          <div class="row">
-            <div class="col t-a-c">
-              <div class="btn btn-neutral btn-icon">
+          <!--<div class="row">-->
+            <!--&lt;!&ndash;<div class="col t-a-c">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="btn btn-neutral btn-icon">&ndash;&gt;-->
 
-                <span class="btn-inner--icon"><i class="fa fa-facebook"></i></span>
-                <span class="btn-inner--text">Facebook</span>
-              </div>
-            </div>
-            <div class="col t-a-c">
+                <!--&lt;!&ndash;<span class="btn-inner&#45;&#45;icon"><i class="fa fa-facebook"></i></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="btn-inner&#45;&#45;text">Facebook</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col t-a-c">&ndash;&gt;-->
 
-              <div class="btn btn-neutral btn-icon">
+              <!--&lt;!&ndash;<div class="btn btn-neutral btn-icon">&ndash;&gt;-->
 
-                <span class="btn-inner--icon"><i class="fa fa-google"></i></span>
-                <span class="btn-inner--text">Google</span>
-              </div>
-            </div>
+                <!--&lt;!&ndash;<span class="btn-inner&#45;&#45;icon"><i class="fa fa-google"></i></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="btn-inner&#45;&#45;text">Google</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
+          <!--</div>-->
+
+          <div class="alert alert-danger" *ngIf="error">
+            <strong>Registration failed!</strong> Please try again later.
+          </div>
+
+          <div class="alert alert-danger" *ngIf="errorUserExists">
+            <strong>Login name already registered!</strong> Please choose another one.
+          </div>
+
+          <div class="alert alert-danger" *ngIf="errorEmailExists">
+            <strong>Email is already in use!</strong> Please choose another one.
           </div>
           <div class="row">
             <div class="col">
@@ -84,6 +96,11 @@
                       <div *ngIf="registerForm.hasError('required',['email'])">
                         <small class="text-danger">
                           this field is required
+                        </small>
+                      </div>
+                      <div *ngIf="registerForm.controls.email.errors?.email">
+                        <small id="emailHelp" class="text-danger">
+                          Not valid email
                         </small>
                       </div>
                     </div>

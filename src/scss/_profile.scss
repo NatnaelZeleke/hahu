@@ -247,10 +247,10 @@
 
 .n-c-f {
   @extend .clearfix;
-  text-align: center;
+  //text-align: center;
   input {
     float: left;
-    text-align: center;
+    //text-align: center;
     color: #2b2e3f;
   }
   .lab {
@@ -275,7 +275,7 @@
 
 .l-f-c {
   input, textarea {
-    text-align: center;
+    //text-align: center;
     color: #2b2e3f;
   }
 

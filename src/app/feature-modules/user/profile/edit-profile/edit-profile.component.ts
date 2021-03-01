@@ -44,7 +44,7 @@ export class EditProfileComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       age: ['', Validators.required],
-      city: ['', Validators.required],
+      city: [''],
       bio: ['', Validators.required],
       userName: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern(this.patternService.phonePattern)]],

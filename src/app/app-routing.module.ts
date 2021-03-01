@@ -4,6 +4,7 @@ import {NotAuthorizedComponent} from './feature-modules/not-authorized/not-autho
 import {PageNotFoundComponent} from './feature-modules/page-not-found/page-not-found.component';
 import {HomeComponent} from './feature-modules/home/home.component';
 import {RegisterComponent} from './feature-modules/register/register.component';
+import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    loadChildren: () => import('./feature-modules/user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./feature-modules/user/user.module').then(m => m.UserModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'notauthorized',

@@ -5,6 +5,7 @@ import {IProfile} from '../../../../api/models/profile.model';
 import {Account} from '../../../../api/models/account.model';
 import {UserService} from '../../../../api/services/user.service';
 import {IUser} from '../../../../api/models/user.model';
+import {AuthenticationService} from '../../../../auth/authentication.service';
 
 @Component({
   selector: 'app-profile-setting',
@@ -16,9 +17,11 @@ export class ProfileSettingComponent implements OnInit {
   account: Account;
   profile: IProfile;
   user: IUser;
+
   constructor(public accountService: AccService,
               public profileService: ProfileService,
-              public userService: UserService) {
+              public userService: UserService,
+              private authService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -45,5 +48,9 @@ export class ProfileSettingComponent implements OnInit {
       .subscribe(result => {
         this.user = result;
       });
+  }
+
+  logOut() {
+    this.authService.logout();
   }
 }
