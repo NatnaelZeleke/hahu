@@ -15,6 +15,7 @@ import {PreferenceService} from '../../../../api/services/preference.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
 import {SaveModalComponent} from '../../home-con/home-page/save-modal/save-modal.component';
+import {ShareModalComponent} from '../../home-con/home-page/share-modal/share-modal.component';
 
 @Component({
   selector: 'app-detail',
@@ -91,6 +92,16 @@ export class DetailComponent implements OnInit {
         this.likeObject = result.body[0];
       }
     });
+  }
+
+  share() {
+    const initialState = {
+      title: 'Share Post',
+      message: '',
+      post: this.post,
+      userId: this.account.id
+    };
+    this.modalService.show(ShareModalComponent, {initialState});
   }
 
   like() {

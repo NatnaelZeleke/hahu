@@ -250,7 +250,10 @@ export class PostComponent implements OnInit {
       message: '',
       content: this.preference
     };
-    this.modalService.show(SaveModalComponent, {initialState});
+    this.modalService.show(SaveModalComponent, {
+      initialState: initialState,
+      class: 'sas-m'
+    });
   }
 
   share() {
@@ -260,7 +263,10 @@ export class PostComponent implements OnInit {
       post: this.post,
       userId: this.account.id
     };
-    this.modalService.show(ShareModalComponent, {initialState});
+    this.modalService.show(ShareModalComponent, {
+      initialState: initialState,
+      class: 'sas-m'
+    });
   }
 
 }

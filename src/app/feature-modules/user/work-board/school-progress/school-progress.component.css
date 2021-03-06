@@ -10,3 +10,7 @@
   position: relative;
   z-index: 1;
 }
+
+.dropdown-menu{
+  min-width: 100%;
+}
