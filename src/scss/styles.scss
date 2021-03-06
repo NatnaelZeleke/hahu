@@ -18,9 +18,6 @@
 @import "snow";
 
 
-.p-0-i {
-  padding: 0 !important;
-}
 
 html, body {
   background-color: #2b2e3f;
@@ -28,6 +25,13 @@ html, body {
   font-family: microsoftSans;
   height: 100%;
   font-size: 90%;
+}
+
+.p-0-i {
+  padding: 0 !important;
+}
+.fa-send-o{
+    transform: rotate(30deg);
 }
 
 body {
