@@ -51,7 +51,7 @@ export class HomePageComponent implements OnInit {
 
   loadPost() {
     this.spinner.show('postSpinner');
-    this.appPostService.getPost(0, 10)
+    this.appPostService.getPost(0, 10, {'pageId.specified': false})
       .subscribe(result => {
         this.spinner.hide('postSpinner');
       });

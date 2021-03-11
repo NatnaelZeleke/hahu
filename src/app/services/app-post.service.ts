@@ -15,8 +15,8 @@ export class AppPostService {
   constructor(public postService: PostService) {
   }
 
-  getPost(page: number, pagesize: number): Observable<IPost[]> {
-    return this.postService.query({})
+  getPost(page: number, pagesize: number, query: any): Observable<IPost[]> {
+    return this.postService.query(query)
       .pipe(map(result => {
         this.posts.push(...result.body);
         this.postsSubject.next(this.posts);
